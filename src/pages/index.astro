@@ -1,57 +1,22 @@
 --- {/* Este es el bloque de frontmatter */}
 // Esto es el script/frontmatter de Astro
-import Header from '../components/Header.astro'; // <-- Añade esta línea aquí
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro'; {/* <-- Añade esta línea */}
 --- {/* Este es el cierre del bloque de frontmatter */}
 
 <!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Stacksolver Tech</title> {/* Puedes cambiar el título aquí */}
-  </head>
+{/* ... resto del head y html ... */}
   <body>
-    {/* --- Aquí comienza el contenido del body --- */}
+    <Header /> {/* El componente Header ya está aquí */}
 
-    <Header /> {/* ¡Usamos el componente Header aquí! */}
-
-    <main> {/* Este es el contenido principal */}
-      <h1>Bienvenido a: Stacksolver tech - Editando!</h1>
+    <main> {/* El contenido principal */}
+      <h1>Bienvenido Santiago a: Stacksolver tech - Editando!</h1>
       <p>Esta es la página principal de Stacksolver Tech.</p>
       {/* Otros contenidos irán aquí */}
     </main>
 
-    <footer> {/* Este es el pie de página */}
-      <p>© 2024 Stacksolver Tech</p>
-    </footer>
+    <Footer />
 
-    {/* --- Aquí termina el contenido del body --- */}
   </body>
 </html>
-
-<style>
-  /* Aquí irán tus estilos CSS para esta página */
-  body {
-    font-family: sans-serif;
-    margin: 0; /* Elimina el margen por defecto del body */
-  }
-
-  main {
-    padding: 1rem; /* Espacio interior */
-    max-width: 800px; /* Ancho máximo para el contenido principal */
-    margin: 0 auto; /* Centra el bloque main en la página */
-  }
-  footer {
-    background-color: #333; /* Fondo gris oscuro para el pie de página */
-    color: white; /* Texto blanco */
-    padding: 1rem; /* Espacio interior */
-    text-align: center; /* Centra el texto */
-    margin-top: 2rem; /* Espacio encima del pie de página */
-  }
-  h1 {
-    color: #333; /* Color oscuro para el título */
-  }
-</style>
+{/* ... styles ... */}
