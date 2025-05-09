@@ -1,22 +1,31 @@
 --- {/* Este es el bloque de frontmatter */}
 // Esto es el script/frontmatter de Astro
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro'; {/* <-- Añade esta línea */}
+import BaseLayout from '../layouts/BaseLayout.astro'; {/* <-- Solo importa el Layout */}
 --- {/* Este es el cierre del bloque de frontmatter */}
 
-<!doctype html>
-{/* ... resto del head y html ... */}
-  <body>
-    <Header /> {/* El componente Header ya está aquí */}
+<BaseLayout> {/* <-- Abrimos la etiqueta del Layout */}
+  {/* Todo lo que está aquí dentro (y fuera del bloque ---) irá al <slot /> del Layout */}
 
-    <main> {/* El contenido principal */}
-      <h1>Bienvenido Santiago a: Stacksolver tech - Editando!</h1>
-      <p>Esta es la página principal de Stacksolver Tech.</p>
-      {/* Otros contenidos irán aquí */}
-    </main>
+  <main> {/* Este es el contenido específico de la página de inicio */}
+    <h1>Bienvenido  a: Stacksolver tech - Editando!</h1> {/* Tu h1 actual */}
+    <p>Esta es la página principal de Stacksolver Tech.</p> {/* Tu p actual */}
+    {/* Otros contenidos únicos de la homepage irán aquí */}
+  </main>
 
-    <Footer />
+  {/* Otros elementos que solo van en la homepage, FUERA del <main>, pero dentro del <BaseLayout> */}
 
-  </body>
-</html>
-{/* ... styles ... */}
+</BaseLayout> {/* <-- Cerramos la etiqueta del Layout */}
+
+<style>
+  /* Deja aquí los estilos CSS que solo aplican a elementos dentro de este <main> o a esta página */
+  /* Por ejemplo, los estilos específicos de main y h1 que tenías */
+  main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 {
+    color: #333;
+  }
+  /* Si no hay estilos específicos de esta página, este bloque <style> podría estar vacío o eliminarse */
+</style>

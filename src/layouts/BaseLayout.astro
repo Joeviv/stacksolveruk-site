@@ -1,0 +1,48 @@
+---
+// Importar los componentes Header y Footer
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Puedes definir props aquí si el layout necesitara recibir datos (ej: título de la página)
+// const { title = 'Título por defecto' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Descripción de tu sitio" /> {/* Actualiza esta descripción */}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Asegúrate que este archivo exista en public/ */}
+    <meta name="generator" content={Astro.generator} />
+    <title>Stacksolver Tech</title> {/* Este será el título por defecto. Lo haremos dinámico después */}
+
+    {/* Aquí puedes añadir enlaces a hojas de estilo globales si las tuvieras */}
+    {/* <link rel="stylesheet" href="/styles/global.css" /> */}
+  </head>
+  <body>
+    {/* El Header va antes del contenido principal */}
+    <Header />
+
+    {/* El contenido ÚNICO de cada página irá aquí (slot) */}
+    <main>
+      <slot /> {/* <-- ¡Esta es la magia de los Layouts! */}
+    </main>
+
+    {/* El Footer va después del contenido principal */}
+    <Footer />
+
+  </body>
+</html>
+
+<style is:global>
+  /* Estilos globales que afectan a todas las páginas que usen este layout */
+  /* Puedes mover aquí los estilos del body de index.astro */
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #fff; /* Fondo blanco por defecto */
+    color: #333; /* Texto oscuro por defecto */
+  }
+  /* Puedes añadir más estilos globales aquí, como para enlaces, tipografía base, etc. */
+</style>
