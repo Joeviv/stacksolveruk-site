@@ -1,23 +1,39 @@
 --- {/* Este es el bloque de frontmatter */}
 // Esto es el script/frontmatter de Astro
-import BaseLayout from '../layouts/BaseLayout.astro'; {/* <-- Solo importa el Layout */}
+import BaseLayout from '../layouts/BaseLayout.astro'; {/* Solo importa el Layout */}
 --- {/* Este es el cierre del bloque de frontmatter */}
 
-<BaseLayout> {/* <-- Abrimos la etiqueta del Layout */}
-  {/* Todo lo que está aquí dentro (y fuera del bloque ---) irá al <slot /> del Layout */}
+<BaseLayout> {/* Abrimos la etiqueta del Layout */}
+  {/* TODO lo que está aquí dentro (y fuera del bloque ---) irá al <slot /> del Layout */}
+  {/* Ya NO está el bloque <style> aquí dentro */}
 
-  <main> {/* Este es el contenido específico de la página de inicio */}
-    <h1>Bienvenido  a: Stacksolver tech - Editando!</h1> {/* Tu h1 actual */}
-    <p>Esta es la página principal de Stacksolver Tech.</p> {/* Tu p actual */}
-    {/* Otros contenidos únicos de la homepage irán aquí */}
+  <main> {/* Contenido específico de la página de inicio */}
+    <h1>Bienvenido Santiago a: Stacksolver tech - Editando!</h1>
+    <p>Esta es la página principal de Stacksolver Tech.</p>
+
+    {/* --- Nueva Sección: Servicios/Oferta --- */}
+    <section>
+      <h2>Nuestros Servicios</h2>
+      <p>Descubre cómo podemos ayudarte a revolucionar tu stack tecnológico.</p>
+    </section>
+
+    {/* --- Nueva Sección: Integraciones (basado en la imagen) --- */}
+    <section>
+      <h2>Integraciones</h2>
+      <p>Conectamos tus Apps: ahorra tiempo y recursos.</p>
+    </section>
+
+    {/* ... Puedes añadir más secciones según necesites ... */}
+
   </main>
 
   {/* Otros elementos que solo van en la homepage, FUERA del <main>, pero dentro del <BaseLayout> */}
 
 </BaseLayout> {/* <-- Cerramos la etiqueta del Layout */}
 
+{/* --- El bloque <style> ahora va AQUÍ FUERA del Layout --- */}
 <style>
-  /* Deja aquí los estilos CSS que solo aplican a elementos dentro de este <main> o a esta página */
+  /* Estilos CSS que solo aplican a elementos dentro de esta página */
   /* Por ejemplo, los estilos específicos de main y h1 que tenías */
   main {
     padding: 1rem;
@@ -27,5 +43,14 @@ import BaseLayout from '../layouts/BaseLayout.astro'; {/* <-- Solo importa el La
   h1 {
     color: #333;
   }
-  /* Si no hay estilos específicos de esta página, este bloque <style> podría estar vacío o eliminarse */
+  /* Estilos para las nuevas secciones */
+  section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+  }
+  section h2 {
+    color: #555;
+    margin-top: 0;
+  }
 </style>
