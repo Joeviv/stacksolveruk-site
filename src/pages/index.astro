@@ -1,56 +1,56 @@
 --- {/* Este es el bloque de frontmatter */}
-// Esto es el script/frontmatter de Astro
-import BaseLayout from '../layouts/BaseLayout.astro'; {/* Solo importa el Layout */}
---- {/* Este es el cierre del bloque de frontmatter */}
+// Importamos el Layout base y los componentes de la página principal
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturesGrid from '../components/FeaturesGrid.astro';
+import HeroSection from '../components/HeroSection.astro';
+// QUITAMOS: import IntegrationsSection from '../components/IntegrationsSection.astro';
 
-<BaseLayout> {/* Abrimos la etiqueta del Layout */}
-  {/* TODO lo que está aquí dentro (y fuera del bloque ---) irá al <slot /> del Layout */}
-  {/* Ya NO está el bloque <style> aquí dentro */}
+// Puedes añadir props aquí si la página lo necesita (ej: título específico para el <head>)
+// const pageTitle = "Inicio | Stacksolver Tech";
+--- {/* Cierre del frontmatter */}
 
-  <main> {/* Contenido específico de la página de inicio */}
-    <h1>Bienvenido Santiago a: Stacksolver tech - Editando!</h1>
-    <p>Esta es la página principal de Stacksolver Tech.</p>
+{/* Usamos el BaseLayout para la estructura común (head, header, footer, etc.) */}
+<BaseLayout> {/* Añade props aquí si el Layout las espera */}
 
-    {/* --- Nueva Sección: Servicios/Oferta --- */}
-    <section>
-      <h2>Nuestros Servicios</h2>
-      <p>Descubre cómo podemos ayudarte a revolucionar tu stack tecnológico.</p>
-    </section>
+  {/* Este es el contenido ÚNICO de la página de inicio. Irá al <slot /> en BaseLayout */}
+  <main>
 
-    {/* --- Nueva Sección: Integraciones (basado en la imagen) --- */}
-    <section>
-      <h2>Integraciones</h2>
-      <p>Conectamos tus Apps: ahorra tiempo y recursos.</p>
-    </section>
+    {/* --- La Sección Hero (parte superior de la homepage) --- */}
+    <HeroSection />
 
-    {/* ... Puedes añadir más secciones según necesites ... */}
+    {/* --- La Sección de Cuadrícula de Características (debajo del Hero) --- */}
+    <FeaturesGrid />
+
+    {/* --- QUITAMOS: La Sección de Integraciones --- */}
+    {/* <IntegrationsSection videoUrl="..." /> */}
+
+
+    {/* Puedes añadir otras secciones únicas de la homepage aquí si es necesario, debajo de las anteriores */}
+    {/* <section>
+        <h2>Otra Sección de la Homepage</h2>
+        <p>Contenido de otra sección.</p>
+    </section> */}
 
   </main>
 
-  {/* Otros elementos que solo van en la homepage, FUERA del <main>, pero dentro del <BaseLayout> */}
+  {/* Los bloques <style> y <script> en archivos .astro van fuera del Layout */}
+  <style>
+    /* Deja aquí los estilos CSS que solo aplican a elementos DENTRO de este <main> (o a otros elementos únicos de esta página) */
+    /* Si no hay estilos específicos de esta página (que no estén en los componentes o Layout), este bloque puede estar vacío o eliminarse */
+    main {
+      /* Ajustes de layout para el contenido principal si no están en BaseLayout */
+      margin: 0 auto; /* Centrar el contenido principal */
+      padding: 2rem 1rem; /* Espacio interior para el contenido principal */
+      /* Asegúrate de que el padding y margin no interfieran con los componentes hijos */
+    }
 
-</BaseLayout> {/* <-- Cerramos la etiqueta del Layout */}
+    /* Elimina cualquier estilo antiguo que solo aplicara a elementos que ya no están en el HTML de index.astro (h1, p, section) */
+  </style>
 
-{/* --- El bloque <style> ahora va AQUÍ FUERA del Layout --- */}
-<style>
-  /* Estilos CSS que solo aplican a elementos dentro de esta página */
-  /* Por ejemplo, los estilos específicos de main y h1 que tenías */
-  main {
-    padding: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  h1 {
-    color: #333;
-  }
-  /* Estilos para las nuevas secciones */
-  section {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    border-top: 1px solid #eee;
-  }
-  section h2 {
-    color: #555;
-    margin-top: 0;
-  }
-</style>
+  {/* Scripts client-side específicos de esta página si los hay */}
+  <script>
+    // Código JavaScript que solo se necesita en esta página
+    // console.log('Script de index.astro corriendo');
+  </script>
+
+</BaseLayout> {/* Cierre del BaseLayout */}

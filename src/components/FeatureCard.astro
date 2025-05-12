@@ -1,0 +1,137 @@
+---
+// Astro Frontmatter
+// Define las props que este componente espera (número, título, descripción y la URL del video MP4)
+interface Props {
+    number: number;
+    title: string;
+    description: string;
+    videoUrl: string; // Prop para la URL directa del video MP4
+}
+const { number, title, description, videoUrl } = Astro.props as Props;
+
+// Si tienes una imagen de miniatura separada, podrías definirla aquí o pasarla como otra prop
+// const thumbnailUrl = 'ruta/a/tu/miniatura.jpg';
+
+---
+
+{/* --- Estructura HTML para una Tarjeta de Característica --- */}
+<article class="feature-card"> {/* Usamos <article> por semántica */}
+  {/* Número de la tarjeta */}
+  <div class="card-number">{number}</div>
+
+  <!-- Contenedor para título y descripción -->
+  <div class="card-content">
+    <h3>{title}</h3> <!-- Título de la tarjeta -->
+    <p>{description}</p> <!-- Descripción de la tarjeta -->
+  </div>
+
+  <!-- Área para el Video MP4 -->
+  <div class="video-area"> {/* Contenedor para el video */}
+    <!-- Usamos la etiqueta <video> directamente, mostrando un placeholder si no hay URL -->
+    {videoUrl ? (
+        <video autoplay loop muted playsinline preload="metadata"> {/* <-- Ensure these attributes are here, and 'controls' is REMOVED */}
+            <source src={videoUrl} type="video/mp4" /> {/* Fuente del video */}
+            Tu navegador no soporta la etiqueta de video. <!-- Mensaje de fallback -->
+        </video>
+    ) : (
+        <!-- Si no hay URL de video, mostrar un placeholder o dejarlo vacío -->
+        <div class="video-placeholder">No hay video disponible</div> <!-- Ejemplo de placeholder -->
+    )}
+  </div>
+</article>
+<style> /* <-- This line should start right after </article> with nothing in between */
+  /* Estilos para la Tarjeta de Característica */
+  .feature-card {
+    background-color: white; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 2rem; /* Espacio interior */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    display: flex; /* Usar flexbox para layout dentro de la tarjeta */
+    flex-direction: column; /* Apilar contenido verticalmente */
+    align-items: center; /* Alinear elementos al centro horizontalmente */
+    text-align: center; /* Centrar el texto dentro de la tarjeta */
+    overflow: hidden; /* Oculta cualquier contenido que se salga de la tarjeta */
+    /* height: 100%; // Optional: ensure all cards have the same height if content varies */
+  }
+
+  .card-number {
+    font-size: 3rem; /* Tamaño grande para el número */
+    font-weight: bold;
+    color: #007bff; /* Ejemplo de color de acento (azul) */
+    margin-bottom: 1rem; /* Espacio debajo del número */
+  }
+
+  .card-content {
+      margin-bottom: 1rem; /* Espacio entre descripción y área de video */
+      width: 100%; /* Asegurar que el contenido toma el ancho completo */
+      text-align: center; /* Centrar texto dentro del contenido */
+  }
+
+  .card-content h3 {
+    font-size: 1.5rem; /* Tamaño del título */
+    margin-top: 0;
+    margin-bottom: 0.5rem; /* Espacio debajo del título */
+    color: #333;
+    text-align: center; /* Centrar título */
+  }
+
+  .card-content p {
+    font-size: 1rem; /* Tamaño de la descripción */
+    color: #555;
+    line-height: 1.5; /* Espaciado entre líneas */
+    text-align: center; /* Centrar descripción */
+  }
+
+  /* --- Estilos para la Área de Video MP4 --- */
+  .video-area {
+      width: 100%; /* Tomar el ancho completo de la tarjeta */
+      position: relative;
+      cursor: pointer; /* Puede ser interactivo (ej: clic para reproducir/pausar) */
+      overflow: hidden;
+      border-radius: 4px;
+      /* --- Forzar aspecto ratio 16:9 --- */
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100 = 56.25) */
+      height: 0; /* Set height to 0 when using padding-bottom for aspect ratio */
+  }
+
+  /* Estilos para la etiqueta <video> dentro del área (se posicionará sobre el padding) */
+  .video-area video {
+      position: absolute; /* Posicionar absolutamente sobre el padding */
+      top: 0;
+      left: 0;
+      width: 100%; /* Tomar el 100% del contenedor padre (.video-area) */
+      height: 100%; /* Tomar el 100% del contenedor padre */
+      display: block;
+  }
+
+
+  /* Optional: Style for the placeholder text if no video ID */
+  .video-placeholder {
+      width: 100%;
+      padding: 2rem 1rem;
+      background-color: #eee;
+      color: #666;
+      text-align: center;
+  }
+
+</style>
+
+<!-- --- JavaScript Script (Empty for now) --- -->
+<script>
+  // Note: Autoplay relies on browser policies (needs muted, sometimes user interaction)
+
+  // Example: Play/pause on click (alternative to autoplay)
+  // const videoArea = document.querySelector('.video-area');
+  // const video = videoArea?.querySelector('video');
+
+  // if (videoArea && video && !video.autoplay) { // Check if autoplay is NOT enabled by browser
+  //   videoArea.addEventListener('click', () => {
+  //     if (video.paused) {
+  //       video.play();
+  //     } else {
+  //       video.pause();
+  //     }
+  //   });
+  // }
+
+</script>

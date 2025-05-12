@@ -1,14 +1,42 @@
 ---
+import Navigation from './Navigation.astro'; // Import Navigation
 ---
 
 <header>
-    <p>Encabezado del sitio 4:41pm</p>
-  </header>
-  
-  <style>
-    header {
-      background-color: #f0f0f0; /* Un fondo gris claro para el encabezado */
-      padding: 1rem; /* Espacio interior */
-      text-align: center; /* Centra el texto */
-    }
-  </style>
+  {/* Left Side: Site Logo / Title */}
+  <div class="site-logo">
+    <a href="/">StackSolver</a> {/* The StackSolver link on the left */}
+  </div>
+
+  {/* Right Side: Navigation */}
+  <div class="header-nav-area">
+    {/* Usamos el componente Navigation. QUITAMOS la directiva client:load */}
+    <Navigation /> {/* <-- Directive client:load REMOVED */}
+  </div>
+
+</header>
+
+<style>
+  header {
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: white;
+  }
+
+  .site-logo a { /* Style for the StackSolver link on the left */
+      text-decoration: none;
+      color: white; /* Keep white */
+      font-size: 1rem; /* Standard size */
+      font-weight: normal; /* Normal weight */
+  }
+
+  .header-nav-area {
+      /* Container for the Navigation component */
+      /* Navigation component now handles its own internal layout/responsiveness */
+  }
+
+</style>

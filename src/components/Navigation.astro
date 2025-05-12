@@ -1,0 +1,161 @@
+---
+// Astro Frontmatter - JS/TS goes here later if needed
+---
+{/* --- HTML Structure for Navigation --- */}
+
+{/* Burger menu button - Only visible on small screens */}
+<button class="menu-toggle" aria-label="Open main menu">
+    <span aria-hidden="true"></span> {/* These spans will be the burger lines */}
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+  
+  {/* Navigation links list */}
+  <nav> {/* The nav element */ }
+    <ul> {/* The ul list */ }
+      {/* Links remain here */}
+      {/* StackSolver link moved to Header.astro */}
+      <li><a href="/productos">Productos</a></li>
+      <li><a href="/industrias">Industrias</a></li>
+      <li><a href="/estrategia-digital">Estrategia Digital</a></li>
+      <li><a href="/nosotros">Contact Us</a></li>
+    </ul>
+  </nav>
+  
+  {/* --- CSS Styles --- */}
+  <style>
+    /* Estilos base para la lista de navegación (aplica a escritorio por defecto) */
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex; /* <-- SHOW as flex (horizontal) on desktop by default */
+      flex-direction: row; /* Links in a row on desktop */
+      justify-content: flex-start; /* Align links to the start of the ul */
+      gap: 1.5rem; /* Space between links on desktop */
+      flex-wrap: wrap; /* Allow wrapping */
+    }
+  
+    nav ul li { margin: 0; }
+  
+    nav ul li a {
+      text-decoration: none;
+      color: white; /* White color for links */
+      font-weight: normal; /* Normal weight */
+      padding: 0.5rem 1rem; /* Padding around links */
+      transition: color 0.3s ease; /* Smooth hover effect */
+      display: block; /* Make links block elements for padding/margin */
+    }
+  
+    nav ul li a:hover { color: #ccc; }
+  
+    /* --- Styles for the mobile menu toggle button --- */
+    .menu-toggle {
+      display: none; /* <-- HIDE the button by default on large screens */
+      background: none; border: none; padding: 0.5rem; cursor: pointer;
+    }
+    .menu-toggle span {
+      display: block; width: 25px; height: 3px; background-color: white; margin-bottom: 5px; position: relative; transition: background-color 0.3s ease;
+    }
+    .menu-toggle span:last-child { margin-bottom: 0; }
+  
+    /* --- Media Query for Small Screens --- */
+    @media (max-width: 768px) {
+  
+      /* SHOW the burger button on small screens */
+      .menu-toggle {
+        display: block; /* <-- SHOW button on small screens */
+      }
+  
+      /* HIDE the navigation list (ul) by default on small screens */
+      nav ul {
+        /* These styles define how the list *looks* when visible on mobile */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links horizontally in the column */
+        padding: 1rem;
+        gap: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+        /* --- This is the key: HIDE THE UL BY DEFAULT ON MOBILE --- */
+        display: none; /* <-- HIDE THE UL BY DEFAULT ON MOBILE */
+  
+        /* Position it absolutely within the nav wrapper */
+        position: absolute; /* Needs parent nav to have position: relative or absolute/fixed */
+        top: 0;
+        right: 0; /* Align to the right edge of the nav wrapper */
+        background-color: #1a1a1a; /* Dark background for the dropdown menu container */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+         /* Ensure it takes full width of the nav wrapper */
+        width: 100%;
+      }
+  
+  
+      /* Style for list items and links inside the mobile menu */
+      nav ul li {
+          width: 100%;
+          text-align: center;
+      }
+  
+      nav ul li a {
+          padding: 0.8rem 1rem;
+          width: 100%;
+          display: block;
+          border-bottom: 1px solid #333;
+      }
+  
+      nav ul li:last-child a { border-bottom: none; }
+  
+      /* Style for when the menu is open - this class is toggled by JS */
+      /* Target the ul *inside* the open nav wrapper */
+      nav.is-open ul {
+        display: flex; /* <-- SHOW the ul when the nav wrapper has is-open */
+      }
+  
+      /* Ensure the nav wrapper is positioned relative/absolute for the ul's absolute position */
+      /* Since the ul is absolutely positioned *inside* nav, nav needs positioning */
+      nav { /* <-- Target the nav wrapper */
+         /* Desktop: display: block or flex */
+      }
+      nav.is-open {
+         /* If nav is hidden/shown using opacity/visibility, these rules handle that */
+      }
+  
+  
+    } /* End media query */
+  </style>
+  
+  {/* --- JavaScript Script --- */}
+  <script>
+    console.log('Navigation script loading');
+    // Get references to the button and the navigation element
+    const menuToggleButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('nav');
+    console.log('Toggle button:', menuToggleButton);
+    console.log('Navigation element:', navigation);
+  
+    if (menuToggleButton && navigation) {
+      console.log('Elements found, adding event listener.');
+      menuToggleButton.addEventListener('click', () => {
+        console.log('Button clicked!');
+        navigation.classList.toggle('is-open');
+        console.log('is-open class toggled. Current classes:', navigation.classList);
+        const isExpanded = navigation.classList.contains('is-open');
+        menuToggleButton.setAttribute('aria-expanded', isExpanded);
+      });
+  
+      // Optional: Close the menu when a link is clicked (useful for single-page navigation or mobile UX)
+      const navLinks = navigation.querySelectorAll('ul a'); // Select links within ul
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          // Only close if the menu is open AND screen is narrow
+          if (window.innerWidth <= 768 && navigation.classList.contains('is-open')) {
+             console.log('Link clicked, closing menu.');
+             navigation.classList.remove('is-open');
+             menuToggleButton.setAttribute('aria-expanded', false);
+          }
+        });
+      });
+    } else {
+        console.error("Menu toggle button or navigation element not found.");
+    }
+  </script>

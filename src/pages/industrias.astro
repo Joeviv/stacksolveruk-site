@@ -1,0 +1,22 @@
+---
+// Importamos el Layout base
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Puedes añadir props aquí si la página lo necesita
+const pageTitle = "Industrias | Stacksolver Tech";
+---
+
+<BaseLayout title={pageTitle}>
+
+  {/* Este es el contenido ÚNICO de la página de Industrias */}
+  <main>
+    <h1>Página de Industrias</h1>
+    <p>Descubre cómo nuestras soluciones se adaptan a diferentes industrias.</p>
+    {/* Añade contenido específico de industrias aquí */}
+  </main>
+
+  <style>
+    /* Estilos específicos de esta página (si los hay) */
+  </style>
+
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+// Importamos el Layout base
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Puedes añadir props aquí si la página lo necesita (ej: título específico para el <head>)
+const pageTitle = "Productos | Stacksolver Tech";
+---
+
+{/* Usamos el BaseLayout para la estructura común */}
+<BaseLayout title={pageTitle}> {/* Pasamos el título al Layout (asumiendo que BaseLayout acepta una prop 'title') */}
+
+  {/* Este es el contenido ÚNICO de la página de Productos */}
+  <main>
+    <h1>Página de Productos</h1>
+    <p>Aquí encontrarás información sobre nuestros productos y servicios.</p>
+    {/* Añade contenido específico de productos aquí */}
+  </main>
+
+  {/* Los bloques <style> y <script> en archivos .astro van fuera del Layout */}
+  <style>
+    /* Estilos específicos de esta página (si los hay) */
+  </style>
+
+</BaseLayout>

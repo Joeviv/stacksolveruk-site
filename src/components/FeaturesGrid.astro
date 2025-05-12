@@ -1,0 +1,91 @@
+---
+// Astro Frontmatter
+
+// Importar el componente FeatureCard
+import FeatureCard from './FeatureCard.astro';
+
+// Definir los datos para cada tarjeta de característica
+// TODO: Cambiar títulos y descripciones al español si ya los tienes definidos
+// TODO: Reemplazar 'URL_VIDEO_X.mp4' con URLs reales de tus videos MP4 de AWS S3
+
+const featureCardsDataEs = [
+    { number: 1, title: 'Transformación Empresarial y Gestión del Cambio', description: 'Empresas de todas las industrias pueden beneficiarse de un enfoque de transformación...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' }, // <-- Usar la URL MP4 real
+    { number: 2, title: 'Resiliencia Organizacional y Gestión de la Cadena de Suministro', description: 'El entorno empresarial es cada vez más volátil...', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' }, // <-- Usar la URL MP4 real (tu segundo video)
+    { number: 3, title: 'Liderazgo y Obeya', description: 'La transformación digital requiere ajustar la forma en que los líderes interactúan con las personas...', videoUrl: 'URL_VIDEO_3.mp4' }, // <-- Usar URLs MP4 reales
+    // Añade más objetos aquí para tarjetas adicionales con sus URLs de video
+    { number: 4, title: 'Tu Título 4', description: 'Tu Descripción 4', videoUrl: 'URL_VIDEO_4.mp4' },
+    { number: 5, title: 'Tu Título 5', description: 'Tu Descripción 5', videoUrl: 'URL_VIDEO_5.mp4' },
+    { number: 6, title: 'Tu Título 6', description: 'Tu Descripción 6', videoUrl: 'URL_VIDEO_6.mp4' },
+];
+
+// Usaremos los datos en español
+const dataToUse = featureCardsDataEs; // Usar datos en español
+
+// TODO: Cambiar títulos y descripciones en el encabezado de la sección al español
+
+---
+
+{/* --- Estructura HTML para la Sección de Cuadrícula de Características --- */}
+<section class="features-grid-section"> {/* Contenedor principal de esta sección */}
+  {/* Encabezado de la Sección */}
+  <div class="section-header">
+    <h2>Cómo Habilitamos la Transformación Organizacional</h2> {/* Título cambiado a español */}
+    <p>Ofrecemos varias propuestas de valor como parte de nuestros servicios de Excelencia Organizacional y Transformación.</p> {/* Descripción cambiada a español */}
+  </div>
+
+  {/* Contenedor de la Cuadrícula - Aquí estarán las tarjetas individuales */}
+  <div class="grid-container">
+    {/* --- Usar el componente FeatureCard para cada elemento en el array de datos --- */}
+    {dataToUse.map(card => (
+        <FeatureCard
+            number={card.number}
+            title={card.title}
+            description={card.description}
+            videoUrl={card.videoUrl} {/* Pasamos la URL del video MP4 */}
+            client:visible {/* Hacemos que FeatureCard sea una Island client:visible */}
+        />
+    ))}
+  </div>
+</section>
+
+{/* --- Estilos CSS para FeaturesGrid --- */}
+<style>
+  /* Estilos para la sección y el encabezado de la sección */
+  .features-grid-section {
+    padding: 3rem 1rem; /* Añadir algo de espacio interior */
+    background-color: #f8f8f8; /* Un fondo claro para distinguir la sección */
+    text-align: center; /* Centrar el texto del encabezado */
+  }
+
+  .section-header {
+    max-width: 800px; /* Limitar el ancho del texto del encabezado */
+    margin: 0 auto 2rem auto; /* Centrar el bloque y añadir margen abajo */
+    text-align: center; /* Asegurar que el texto del encabezado esté centrado */
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem; /* Tamaño de fuente grande para el título principal */
+    margin-bottom: 1rem;
+    color: #333; /* Color oscuro */
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: #555; /* Color ligeramente más claro para la descripción */
+  }
+
+  .grid-container {
+    /* --- Añadir estilos de cuadrícula para organizar las tarjetas --- */
+    display: grid; /* Usar CSS Grid */
+    /* Configurar una sola columna que ocupe todo el ancho disponible */
+    grid-template-columns: 1fr; /* <-- Configurar UNA sola columna para escritorio y móvil */
+    gap: 1.5rem; /* Espacio entre los elementos de la cuadrícula (las tarjetas) */
+    max-width: 700px; /* <-- Ajustar el ancho máximo de la CUADRÍCULA para que las tarjetas no sean demasiado anchas */
+    margin: 0 auto; /* Centrar el contenedor de la cuadrícula */
+    padding: 0 1rem; /* Añadir algo de espacio interior a los lados */
+  }
+
+  /* Ya no necesitamos un media query para cambiar grid-template-columns si siempre es 1fr */
+  /* @media (max-width: 768px) { ... } */
+
+</style>
