@@ -11,7 +11,7 @@ import FeatureCard from './FeatureCard.astro';
 const featureCardsDataEs = [
     { number: 1, title: 'Transformación Empresarial y Gestión del Cambio', description: 'Empresas de todas las industrias pueden beneficiarse de un enfoque de transformación...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' }, // <-- Usar la URL MP4 real
     { number: 2, title: 'Resiliencia Organizacional y Gestión de la Cadena de Suministro', description: 'El entorno empresarial es cada vez más volátil...', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' }, // <-- Usar la URL MP4 real (tu segundo video)
-    { number: 3, title: 'Liderazgo y Obeya', description: 'La transformación digital requiere ajustar la forma en que los líderes interactúan con las personas...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' }, // <-- Usar URLs MP4 reales
+    { number: 3, title: 'Liderazgo y Obeya', description: 'La transformación digital requiere ajustar la forma en que los líderes interactúan con las personas...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' }, // <-- Usar URLs MP4 reales (ejemplo)
     { number: 4, title: 'Tu Título 4', description: 'Tu Descripción 4', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
     { number: 5, title: 'cri 5', description: 'Tu Descripción 5', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
     { number: 6, title: 'CRI video 4', description: 'Tu Descripción 6', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
@@ -75,10 +75,9 @@ const dataToUse = featureCardsDataEs; // Usar datos en español
   .grid-container {
     /* --- Añadir estilos de cuadrícula para organizar las tarjetas --- */
     display: grid; /* Usar CSS Grid */
-    /* Configurar una sola columna que ocupe todo el ancho disponible */
-    grid-template-columns: 1fr; /* <-- Configurar UNA sola columna para escritorio y móvil */
+    grid-template-columns: 1fr; /* Configurar UNA sola columna para escritorio y móvil */
     gap: 1.5rem; /* Espacio entre los elementos de la cuadrícula (las tarjetas) */
-    max-width: 700px; /* <-- Ajustar el ancho máximo de la CUADRÍCULA para que las tarjetas no sean demasiado anchas */
+    max-width: 700px; /* Ajustar el ancho máximo de la CUADRÍCULA */
     margin: 0 auto; /* Centrar el contenedor de la cuadrícula */
     padding: 0 1rem; /* Añadir algo de espacio interior a los lados */
   }
