@@ -11,11 +11,10 @@ import FeatureCard from './FeatureCard.astro';
 const featureCardsDataEs = [
     { number: 1, title: 'Transformación Empresarial y Gestión del Cambio', description: 'Empresas de todas las industrias pueden beneficiarse de un enfoque de transformación...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' }, // <-- Usar la URL MP4 real
     { number: 2, title: 'Resiliencia Organizacional y Gestión de la Cadena de Suministro', description: 'El entorno empresarial es cada vez más volátil...', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' }, // <-- Usar la URL MP4 real (tu segundo video)
-    { number: 3, title: 'Liderazgo y Obeya', description: 'La transformación digital requiere ajustar la forma en que los líderes interactúan con las personas...', videoUrl: 'URL_VIDEO_3.mp4' }, // <-- Usar URLs MP4 reales
-    // Añade más objetos aquí para tarjetas adicionales con sus URLs de video
-    { number: 4, title: 'Tu Título 4', description: 'Tu Descripción 4', videoUrl: 'URL_VIDEO_4.mp4' },
-    { number: 5, title: 'Tu Título 5', description: 'Tu Descripción 5', videoUrl: 'URL_VIDEO_5.mp4' },
-    { number: 6, title: 'Tu Título 6', description: 'Tu Descripción 6', videoUrl: 'URL_VIDEO_6.mp4' },
+    { number: 3, title: 'Liderazgo y Obeya', description: 'La transformación digital requiere ajustar la forma en que los líderes interactúan con las personas...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' }, // <-- Usar URLs MP4 reales
+    { number: 4, title: 'Tu Título 4', description: 'Tu Descripción 4', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
+    { number: 5, title: 'cri 5', description: 'Tu Descripción 5', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
+    { number: 6, title: 'CRI video 4', description: 'Tu Descripción 6', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
 ];
 
 // Usaremos los datos en español
@@ -42,7 +41,6 @@ const dataToUse = featureCardsDataEs; // Usar datos en español
             title={card.title}
             description={card.description}
             videoUrl={card.videoUrl} {/* Pasamos la URL del video MP4 */}
-            client:visible {/* Hacemos que FeatureCard sea una Island client:visible */}
         />
     ))}
   </div>
