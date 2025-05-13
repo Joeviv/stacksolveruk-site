@@ -1,14 +1,16 @@
 ---
-// src/pages/nosotros.astro (Con endpoint de Formspree integrado)
+// src/pages/nosotros.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const pageTitle = "Sobre Stacksolver.tech y Contacto | Aliados en tu Transformación Digital";
-const contactEmail = "info@stacksolver.tech"; // Email para mostrar en la página
+const contactEmail = "info@stacksolver.tech"; 
 
 const clarisPartnerProfileUrl = "https://www.claris.com/partners/profile/company.20000006479/";
+const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
 
-// Endpoint de Formspree proporcionado por el usuario
-const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy"; 
+// IMPORTANTE: Reemplaza esto con la URL base de tu sitio desplegado en Amplify
+const siteBaseUrl = "https://stacksolver.tech"; 
+const thankYouPageUrl = `${siteBaseUrl}/gracias`; 
 ---
 
 <BaseLayout title={pageTitle}>
@@ -64,7 +66,6 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
         <div class="contact-content-wrapper">
           <div class="form-container">
             <h3>Envíanos un Mensaje</h3>
-            {/* FORMULARIO INTEGRADO CON FORMSPREE */}
             <form 
               action={formspreeEndpoint} 
               method="POST" 
@@ -80,7 +81,6 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                {/* El atributo name="_replyto" permite a Formspree usar este email como el "Reply-To" */}
                 <input type="email" id="email" name="_replyto" placeholder="tu.correo@ejemplo.com" required />
               </div>
               <div class="form-group">
@@ -92,12 +92,9 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
                 <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto o consulta..." required></textarea>
               </div>
               
-              {/* Campo oculto para definir el asunto del email que recibirás */}
               <input type="hidden" name="_subject" value="Nuevo Mensaje de Contacto desde Stacksolver.tech" />
-
-              {/* Campo oculto opcional para redirigir a una página de "gracias" personalizada después del envío. */}
-              {/* Ejemplo: <input type="hidden" name="_next" value="https://stacksolver.tech/gracias" /> */}
-              {/* Si no lo usas, Formspree muestra su propia página de agradecimiento o te redirige a la página de origen con un mensaje. */}
+              {/* Redirección a página de gracias personalizada. ASEGÚRATE DE QUE thankYouPageUrl es una URL absoluta */}
+              <input type="hidden" name="_next" value={thankYouPageUrl} />
               
               <button type="submit" class="cta-button form-submit-button">Enviar Mensaje</button>
             </form>
@@ -112,7 +109,6 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
                   <strong>Email:</strong> <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
                 </li>
               )}
-              {/* Puedes añadir más información de contacto aquí si es necesario */}
             </ul>
           </div>
         </div>
@@ -172,8 +168,29 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
   .contact-form textarea::placeholder { color: #95a5a6; }
   .contact-form textarea { resize: vertical; }
 
-  .cta-button.form-submit-button { background-color: #007bff; border: none; cursor: pointer; }
-  .cta-button.form-submit-button:hover { background-color: #0056b3; }
+  /* --- ESTILOS DEL BOTÓN ACTUALIZADOS --- */
+  .cta-button.form-submit-button { 
+    background-color: #ffffff; /* Fondo blanco */
+    color: #2c3e50; /* Texto oscuro (el mismo que el fondo .dark-bg) */
+    border: 1px solid #bdc3c7; /* Borde sutil */
+    cursor: pointer;
+    padding: 0.8rem 1.8rem; /* Más padding para hacerlo más grande */
+    font-size: 1.1rem; /* Fuente un poco más grande */
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block; /* Asegurar que el padding se aplique bien */
+    width: auto; /* Ajustar al contenido */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  }
+  .cta-button.form-submit-button:hover { 
+    background-color: #ecf0f1; /* Un gris muy claro al pasar el mouse */
+    color: #0056b3; /* Texto azul oscuro al pasar el mouse */
+    border-color: #0056b3;
+  }
+  /* --- FIN DE ESTILOS DEL BOTÓN ACTUALIZADOS --- */
+
   .info-container { text-align: center; }
   .contact-details { list-style: none; padding: 0; display: inline-block; text-align: left; }
   .contact-details li { margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; }
@@ -190,5 +207,9 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
     .section-header h1, .section-header h2 { font-size: 2.2rem; }
     .dark-bg .section-header p { max-width: 90%; }
     .contact-container-custom { padding-left: 0.8rem; padding-right: 0.8rem; }
+    .cta-button.form-submit-button {
+      width: 100%; /* En móvil, hacer que el botón ocupe todo el ancho puede ser bueno */
+      padding: 1rem;
+    }
   }
 </style>
