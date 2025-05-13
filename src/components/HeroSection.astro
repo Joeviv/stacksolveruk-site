@@ -1,111 +1,186 @@
 ---
-// Astro Frontmatter - No props needed for now
+// src/components/HeroSection.astro
+
+// 1. Definimos las imágenes para la PRIMERA FILA en un orden específico.
+//    Este es el orden "2, 1, 4, 3" que usamos anteriormente y te gustó.
+const imagesRow1 = [
+  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Imagen 2 del collage Hero (Fila 1)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Imagen 1 del collage Hero (Fila 1)", isCircle: false },
+  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Imagen 4 del collage Hero (Fila 1)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Imagen 3 del collage Hero (Fila 1)", isCircle: false },
+];
+
+// 2. Definimos las imágenes para la SEGUNDA FILA en un orden específico.
+//    Por ahora, usan las mismas fuentes y el mismo orden que la Fila 1 para mantener la apariencia visual,
+//    pero puedes cambiar 'src', 'alt', 'isCircle' y el orden aquí cuando tengas tus nuevas imágenes.
+const imagesRow2 = [
+  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Futura Imagen Rectangular D (Fila 2)", isCircle: false }, // Ejemplo: /images/hero/collage/nueva-img-d.jpg
+  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Futura Imagen Circular C (Fila 2)", isCircle: true },  // Ejemplo: /images/hero/collage/nueva-img-c.jpg
+  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Futura Imagen Circular A (Fila 2)", isCircle: true },  // Ejemplo: /images/hero/collage/nueva-img-a.jpg
+  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Futura Imagen Rectangular B (Fila 2)", isCircle: false }, // Ejemplo: /images/hero/collage/nueva-img-b.jpg
+];
+
+// 3. Combinamos las imágenes de ambas filas en el orden deseado para el renderizado final.
+const finalImagesToRender = [...imagesRow1, ...imagesRow2];
 ---
 
 {/* --- Estructura HTML para la Sección Hero --- */}
-<section class="hero-section"> {/* Contenedor principal de la sección Hero */}
-  <div class="hero-content"> {/* Contenedor para el texto y el botón */}
-    <h1>Revoluciona tu Stack Tecnológico</h1> {/* Título principal */}
-    <p>Ofrecemos soluciones integrales para optimizar tus operaciones y estrategia digital.</p> {/* Descripción */}
-    <a href="/nosotros" class="cta-button">Contáctanos</a> {/* Botón de llamada a la acción */}
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Revoluciona tu Stack Tecnológico</h1>
+    <p>Ofrecemos soluciones integrales para optimizar tus operaciones y estrategia digital.</p>
+    <a href="/nosotros" class="cta-button">Contáctanos</a>
   </div>
 
   {/* --- Área para las imágenes o elementos visuales del Hero --- */}
   <div class="hero-visuals">
-    {/* Añadir aquí las imágenes de tu collage - Dales una CLASE única a cada una */}
-    {/* Asegúrate de que estos archivos existan en public/images/hero/collage/ */}
-    <img src="/images/hero/collage/hero-img-1.jpg" alt="Imagen 1 del collage Hero" class="visual-item img-collage-1" loading="lazy" /> {/* Imagen 1 */}
-    <img src="/images/hero/collage/hero-img-2.jpg" alt="Imagen 2 del collage Hero" class="visual-item img-collage-2 visual-item-circle" loading="lazy" /> {/* Imagen 2 (circular) */}
-    <img src="/images/hero/collage/hero-img-3.jpg" alt="Imagen 3 del collage Hero" class="visual-item img-collage-3" loading="lazy" /> {/* <-- NUEVA Imagen 3 */}
-    <img src="/images/hero/collage/hero-img-4.jpg" alt="Imagen 4 del collage Hero" class="visual-item img-collage-4 visual-item-circle" loading="lazy" /> {/* <-- NUEVA Imagen 4 (circular) */}
-    {/* Añade más imágenes según necesites y dales clases */}
+    {/* 4. Iteramos sobre el array combinado para renderizar las 8 imágenes */}
+    {finalImagesToRender.map((image) => (
+      <img
+        src={image.src}
+        alt={image.alt}
+        class:list={["visual-item", { "visual-item-circle": image.isCircle }]}
+        loading="lazy"
+      />
+    ))}
   </div>
 </section>
 
-{/* --- Estilos CSS para HeroSection --- */}
+{/* --- Estilos CSS para HeroSection (SIN CAMBIOS RESPECTO AL ANTERIOR) --- */}
 <style>
   .hero-section {
     background-color: #fff;
     padding: 4rem 2rem;
     display: flex;
-    flex-direction: column; /* Vertical en móvil */
+    flex-direction: column; /* Vertical en móvil por defecto */
     align-items: center;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
     overflow: hidden;
   }
 
-  .hero-content { max-width: 700px; margin: 0 auto; }
-  .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; color: #333; }
-  .hero-content p { font-size: 1.2rem; color: #555; margin-bottom: 2rem; }
+  .hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 3.2rem);
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #555;
+    margin-bottom: 2rem;
+  }
 
   .cta-button {
-    display: inline-block; background-color: #1a1a1a; color: white;
-    padding: 1rem 2rem; text-decoration: none; border-radius: 4px;
-    font-size: 1.1rem; font-weight: bold; transition: background-color 0.3s ease;
+    display: inline-block;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
   }
-  .cta-button:hover { background-color: #333; }
+  .cta-button:hover {
+    background-color: #333;
+  }
 
-  /* --- Estilos para el área visual y las imágenes (collage simplificado) --- */
+  /* --- Estilos para el área visual del Hero --- */
   .hero-visuals {
-    width: 100%; max-width: 800px; margin: 0 auto;
+    width: 100%;
+    max-width: 800px; /* Ajusta según el ancho deseado para el collage */
+    margin: 0 auto;
     display: grid;
-    /* Simplified grid layout: auto-fit columns with a min/max size */
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta minmax para controlar cuántas caben por fila */
+    /* Móvil: 2 columnas */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1rem; /* Espacio entre imágenes */
-    min-height: 300px;
-    position: relative;
-    /* REMOVE grid-template-areas if you are using auto-fit */
-    /* grid-template-areas: ...; */
   }
 
   .visual-item {
-      width: 100%; height: 100%; display: block; object-fit: cover; /* Recortar imagen */
-      /* Reset any specific grid-area or positioning */
-      grid-area: auto !important; /* Ensure no grid-area is applied from old rules */
-      /* Optional: border-radius for all images */
-      /* border-radius: 8px; */
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Imágenes cuadradas */
+    object-fit: cover;
+    border-radius: 12px;
+    grid-area: auto !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   }
 
-  /* Styles for specific image shapes (apply border-radius here) */
   .visual-item-circle {
-      border-radius: 50%; /* Imagen circular */
-      /* No need for width/height auto here if grid handles dimensions */
+    border-radius: 50%;
   }
 
-  /* Remove specific grid-area rules for individual images if using auto-fit */
-  /* .img-collage-1 { grid-area: img1; ... } */
-
-
-  /* Media query for desktop layout (flex horizontal) */
+  /* --- Media Query para Tablets y Escritorios Pequeños --- */
   @media (min-width: 768px) {
-      .hero-section { flex-direction: row; text-align: left; align-items: center; justify-content: space-between; padding: 6rem 2rem; }
-      .hero-content { flex: 1; padding-right: 2rem; margin: 0; max-width: none; text-align: left; }
-      .hero-content h1, .hero-content p { text-align: left; }
+    .hero-section {
+      flex-direction: row;
+      text-align: left;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5rem 2rem;
+      gap: 3rem;
+    }
 
-      .hero-visuals { flex: 1; margin: 0; max-width: none; min-height: 300px; } /* General visual area styles */
-      /* Re-apply grid layout for desktop if needed, but keep it simple */
-      /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); // Could be the same as base */
-      /* grid-template-columns: repeat(3, 1fr); // Example: 3 columns on desktop */
+    .hero-content {
+      flex: 1 1 40%;
+      max-width: 500px;
+      margin: 0;
+      padding-right: 2rem;
+      text-align: left;
+    }
+    .hero-content h1, .hero-content p {
+      text-align: left;
+    }
+
+    .hero-visuals {
+      flex: 1 1 55%;
+      max-width: 700px;
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      gap: 1rem;
+      margin: 0;
+    }
   }
 
-  /* Media query for mobile layout (screens below 768px) */
+  /* --- Media Query para Escritorios más Grandes --- */
+  @media (min-width: 1024px) {
+    .hero-section {
+      padding: 6rem 3rem;
+      gap: 4rem;
+    }
+    .hero-content {
+      flex: 1 1 40%;
+      max-width: 550px;
+      padding-right: 3rem;
+    }
+    .hero-visuals {
+      flex: 1 1 55%;
+      max-width: 800px;
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      gap: 1.25rem;
+    }
+  }
+
+  /* --- Media Query específica para Móvil --- */
   @media (max-width: 767px) {
-      .hero-section { flex-direction: column; text-align: center; }
-      .hero-content { padding-right: 0; max-width: 700px; margin: 0 auto; }
-
-      .hero-visuals {
-          /* Adjust grid for smaller screens */
-          grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Smaller min-width for more images per row */
-          gap: 0.5rem;
-          min-height: 200px;
-      }
-
-      /* Ensure images fit in the simplified grid */
-      .visual-item { width: 100%; height: auto; border-radius: 8px; } /* Simple sizing for mobile */
-      .visual-item-circle { border-radius: 50%; } /* Keep circular shape if applies */
-
-      .hero-content h1, .hero-content p { text-align: center; }
+    .hero-section {
+      gap: 2rem;
+      padding: 3rem 1.5rem;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 6vw, 2.8rem);
+    }
+    .hero-content p {
+      font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+    .hero-visuals {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+      gap: 0.75rem;
+      max-width: 400px;
+    }
   }
-
 </style>

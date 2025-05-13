@@ -1,57 +1,25 @@
---- {/* Este es el bloque de frontmatter */}
-// Importamos el Layout base y los componentes de la página principal
+---
+// src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FeaturesGrid from '../components/FeaturesGrid.astro';
 import HeroSection from '../components/HeroSection.astro';
-// Quitamos: import IntegrationsSection de aquí
+import FeaturesGrid from '../components/FeaturesGrid.astro';
+import IntegrationsSection from '../components/IntegrationsSection.astro'; // <-- 1. Importar el nuevo componente
 
-// Puedes añadir props aquí si la página lo necesita (ej: título específico para el <head>)
-// const pageTitle = "Inicio | Stacksolver Tech";
---- {/* Cierre del frontmatter */}
-
-{/* Usamos el BaseLayout para la estructura común (head, header, footer, etc.) */}
-<BaseLayout> {/* Añade props aquí si el Layout las espera */}
-
-  {/* Este es el contenido ÚNICO de la página de inicio. Irá al <slot /> en BaseLayout */}
+const pageTitle = "Stacksolver Tech | Soluciones Tecnológicas Innovadoras";
+---
+<BaseLayout title={pageTitle}>
   <main>
-
-    {/* --- La Sección Hero (parte superior de la homepage) --- */}
     <HeroSection />
-
-    {/* --- La Sección de Cuadrícula de Características (debajo del Hero) --- */}
+     <IntegrationsSection /> {/* <-- 2. Añadir el componente a la página */}
     <FeaturesGrid />
-
-    {/* --- Ya NO está la Sección de Integraciones aquí --- */}
-    {/* <IntegrationsSection videoUrl="..." /> */}
-
-
-    {/* Puedes añadir otras secciones únicas de la homepage aquí si es necesario, debajo de las anteriores */}
-    {/* <section>
-        <h2>Otra Sección de la Homepage</h2>
-        <p>Contenido de otra sección.</p>
-    </section> */}
-
+   
+    {/* Aquí podrían ir otras secciones en el futuro */}
   </main>
+</BaseLayout>
 
-  {/* Los bloques <style> y <script> en archivos .astro van fuera del Layout */}
-  <style>
-    /* Deja aquí los estilos CSS que solo aplican a elementos DENTRO de este <main> (o a otros elementos únicos de esta página) */
-    /* Si no hay estilos específicos de esta página (que no estén en los componentes o Layout), este bloque puede estar vacío o eliminarse */
-    main {
-      /* Ajustes de layout para el contenido principal si no están en BaseLayout */
-      margin: 0 auto; /* Centrar el contenido principal */
-      padding: 2rem 1rem; /* Espacio interior para el contenido principal */
-      /* Asegúrate de que el padding y margin no interfieran con los componentes hijos */
-    }
-
-    /* Elimina cualquier estilo antiguo que solo aplicara a elementos que ya no están en el HTML de index.astro (h1, p, section) */
-  </style>
-
-  {/* Scripts client-side específicos de esta página si los hay */}
-  <script>
-    // Código JavaScript que solo se necesita en esta página
-    // console.log('Script de index.astro corriendo');
-    // Busca y elimina la línea: en archivos .astro van fuera del Layout */}
-  </script>
-
-</BaseLayout> {/* Cierre del BaseLayout */}
+<style>
+  main {
+    /* Puedes añadir estilos globales para el 'main' si es necesario,
+       o dejar que cada sección controle su propio padding y background. */
+  }
+</style>
