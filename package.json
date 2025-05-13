@@ -9,7 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^1.1.7",
     "astro": "^5.7.12"
   }
 }
