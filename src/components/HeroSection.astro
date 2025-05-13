@@ -1,40 +1,32 @@
 ---
 // src/components/HeroSection.astro
 
-// 1. Definimos las imágenes para la PRIMERA FILA en un orden específico.
-//    Este es el orden "2, 1, 4, 3" que usamos anteriormente y te gustó.
 const imagesRow1 = [
   { src: "/images/hero/collage/hero-img-2.jpg", alt: "Imagen 2 del collage Hero (Fila 1)", isCircle: true },
   { src: "/images/hero/collage/hero-img-1.jpg", alt: "Imagen 1 del collage Hero (Fila 1)", isCircle: false },
   { src: "/images/hero/collage/hero-img-4.jpg", alt: "Imagen 4 del collage Hero (Fila 1)", isCircle: true },
   { src: "/images/hero/collage/hero-img-3.jpg", alt: "Imagen 3 del collage Hero (Fila 1)", isCircle: false },
 ];
-
-// 2. Definimos las imágenes para la SEGUNDA FILA en un orden específico.
-//    Por ahora, usan las mismas fuentes y el mismo orden que la Fila 1 para mantener la apariencia visual,
-//    pero puedes cambiar 'src', 'alt', 'isCircle' y el orden aquí cuando tengas tus nuevas imágenes.
 const imagesRow2 = [
-  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Futura Imagen Rectangular D (Fila 2)", isCircle: false }, // Ejemplo: /images/hero/collage/nueva-img-d.jpg
-  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Futura Imagen Circular C (Fila 2)", isCircle: true },  // Ejemplo: /images/hero/collage/nueva-img-c.jpg
-  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Futura Imagen Circular A (Fila 2)", isCircle: true },  // Ejemplo: /images/hero/collage/nueva-img-a.jpg
-  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Futura Imagen Rectangular B (Fila 2)", isCircle: false }, // Ejemplo: /images/hero/collage/nueva-img-b.jpg
+  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Futura Imagen Rectangular D (Fila 2)", isCircle: false },
+  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Futura Imagen Circular C (Fila 2)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Futura Imagen Circular A (Fila 2)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Futura Imagen Rectangular B (Fila 2)", isCircle: false },
 ];
-
-// 3. Combinamos las imágenes de ambas filas en el orden deseado para el renderizado final.
 const finalImagesToRender = [...imagesRow1, ...imagesRow2];
 ---
 
-{/* --- Estructura HTML para la Sección Hero --- */}
 <section class="hero-section">
   <div class="hero-content">
-    <h1>Revoluciona tu Stack Tecnológico</h1>
-    <p>Ofrecemos soluciones integrales para optimizar tus operaciones y estrategia digital.</p>
-    <a href="/nosotros" class="cta-button">Contáctanos</a>
+    {/* ****** CAMBIO AQUÍ ****** */}
+    <h1>Transformamos Desafíos en Oportunidades con Tecnología a tu Medida.</h1>
+    <p>En Stacksolver.tech, no solo creamos tecnología; diseñamos el 'stack' (conjunto) de soluciones perfecto para que tu empresa crezca, innove y entienda el verdadero poder de una estrategia digital. Te ayudamos a iniciar, rediseñar y optimizar tus procesos con tecnología de vanguardia.</p>
+    {/* Mantenemos el botón actual, pero el enlace podría cambiar más adelante */}
+    <a href="/nosotros" class="cta-button">Descubre cómo podemos ayudarte</a>
+    {/* ****** FIN DEL CAMBIO ****** */}
   </div>
 
-  {/* --- Área para las imágenes o elementos visuales del Hero --- */}
   <div class="hero-visuals">
-    {/* 4. Iteramos sobre el array combinado para renderizar las 8 imágenes */}
     {finalImagesToRender.map((image) => (
       <img
         src={image.src}
@@ -46,8 +38,9 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
   </div>
 </section>
 
-{/* --- Estilos CSS para HeroSection (SIN CAMBIOS RESPECTO AL ANTERIOR) --- */}
+{/* Estilos CSS (SIN CAMBIOS) */}
 <style>
+  /* ... (Estilos existentes sin cambios) ... */
   .hero-section {
     background-color: #fff;
     padding: 4rem 2rem;
@@ -91,20 +84,18 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
     background-color: #333;
   }
 
-  /* --- Estilos para el área visual del Hero --- */
   .hero-visuals {
     width: 100%;
-    max-width: 800px; /* Ajusta según el ancho deseado para el collage */
+    max-width: 800px;
     margin: 0 auto;
     display: grid;
-    /* Móvil: 2 columnas */
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem; /* Espacio entre imágenes */
+    gap: 1rem;
   }
 
   .visual-item {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Imágenes cuadradas */
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 12px;
     grid-area: auto !important;
@@ -115,7 +106,6 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
     border-radius: 50%;
   }
 
-  /* --- Media Query para Tablets y Escritorios Pequeños --- */
   @media (min-width: 768px) {
     .hero-section {
       flex-direction: row;
@@ -125,7 +115,6 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
       padding: 5rem 2rem;
       gap: 3rem;
     }
-
     .hero-content {
       flex: 1 1 40%;
       max-width: 500px;
@@ -136,36 +125,31 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
     .hero-content h1, .hero-content p {
       text-align: left;
     }
-
     .hero-visuals {
       flex: 1 1 55%;
       max-width: 700px;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       margin: 0;
     }
   }
 
-  /* --- Media Query para Escritorios más Grandes --- */
   @media (min-width: 1024px) {
     .hero-section {
       padding: 6rem 3rem;
       gap: 4rem;
     }
     .hero-content {
-      flex: 1 1 40%;
       max-width: 550px;
       padding-right: 3rem;
     }
     .hero-visuals {
-      flex: 1 1 55%;
       max-width: 800px;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
   }
 
-  /* --- Media Query específica para Móvil --- */
   @media (max-width: 767px) {
     .hero-section {
       gap: 2rem;
@@ -178,7 +162,7 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
       font-size: clamp(0.9rem, 4vw, 1.1rem);
     }
     .hero-visuals {
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+      grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
       max-width: 400px;
     }

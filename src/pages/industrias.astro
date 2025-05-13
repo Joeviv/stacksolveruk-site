@@ -1,22 +1,128 @@
 ---
-// Importamos el Layout base
-import BaseLayout from '../layouts/BaseLayout.astro';
+// src/pages/industrias.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
 
-// Puedes añadir props aquí si la página lo necesita
-const pageTitle = "Industrias | Stacksolver Tech";
+const pageTitle = "Soluciones por Industria | Adaptabilidad Tecnológica - Stacksolver.tech";
+const heroTitle = "Tecnología que se Adapta a tu Sector";
+const heroLead = "Entendemos que cada industria tiene desafíos y oportunidades únicas. En Stacksolver.tech, aplicamos nuestra experiencia para crear soluciones tecnológicas que realmente impulsan tu negocio, sin importar el campo en el que te desenvuelvas.";
+
+// Ejemplos de industrias - puedes expandir esto con más detalle o casos específicos más adelante
+const industries = [
+  { name: "Salud", description: "Optimizamos la gestión de pacientes, historias clínicas electrónicas, procesos administrativos y cumplimiento normativo con soluciones seguras y eficientes.", icon: "⚕️" },
+  { name: "Educación", description: "Desde plataformas LMS personalizadas con Moodle hasta sistemas de gestión académica y administrativa, mejoramos la experiencia de aprendizaje y la eficiencia operativa.", icon: "🎓" },
+  { name: "Manufactura", description: "Implementamos sistemas ERP para el control de producción, gestión de inventarios, optimización de la cadena de suministro y análisis de costos, mejorando la productividad.", icon: "🏭" },
+  { name: "Servicios Profesionales", description: "Desarrollamos CRM a medida, herramientas de gestión de proyectos y sistemas de facturación que agilizan tus operaciones y mejoran la relación con tus clientes.", icon: "💼" },
+  { name: "Retail y Comercio", description: "Soluciones para gestión de inventario, puntos de venta (POS), programas de lealtad y análisis de ventas para optimizar la experiencia del cliente y la rentabilidad.", icon: "🛒" },
+  { name: "Sector Público", description: "Modernizamos procesos gubernamentales con sistemas de gestión documental, portales ciudadanos y herramientas para mejorar la transparencia y la eficiencia de los servicios públicos.", icon: "🏛️" }
+];
 ---
 
 <BaseLayout title={pageTitle}>
+  <main class="industrias-page">
+    
+    <header class="page-hero-general section-padding text-center light-bg">
+      <div class="container narrow-container">
+        <h1>{heroTitle}</h1>
+        <p class="lead">{heroLead}</p>
+      </div>
+    </header>
 
-  {/* Este es el contenido ÚNICO de la página de Industrias */}
-  <main>
-    <h1>Página de Industrias</h1>
-    <p>Descubre cómo nuestras soluciones se adaptan a diferentes industrias.</p>
-    {/* Añade contenido específico de industrias aquí */}
+    <section class="approach-section section-padding">
+      <div class="container narrow-container">
+        <h2 class="text-center">Nuestro Enfoque: Soluciones Transversales, Aplicación Específica</h2>
+        <p>
+          Si bien contamos con experiencia directa en diversos sectores, nuestra fortaleza radica en la capacidad de 
+          comprender los procesos fundamentales de cualquier negocio y aplicar principios tecnológicos sólidos. 
+          No ofrecemos soluciones genéricas; en su lugar, trabajamos contigo para:
+        </p>
+        <ul class="approach-list">
+          <li><strong>Analizar tus Desafíos Específicos:</strong> Entendemos a fondo tus flujos de trabajo, puntos débiles y objetivos.</li>
+          <li><strong>Diseñar 'Stacks' Tecnológicos a Medida:</strong> Combinamos las herramientas y plataformas adecuadas (Claris FileMaker, Astro, Moodle, herramientas de integración, IA) para abordar tus necesidades.</li>
+          <li><strong>Desarrollar con Flexibilidad y Escalabilidad:</strong> Creamos soluciones que pueden crecer y adaptarse junto con tu empresa.</li>
+          <li><strong>Enfocarnos en el Retorno de la Inversión:</strong> Buscamos que cada implementación tecnológica genere un impacto positivo y medible.</li>
+        </ul>
+        <p>
+          Ya sea que pertenezcas a una de las industrias listadas o a un nicho completamente diferente, estamos preparados 
+          para explorar cómo la tecnología puede transformar tu operación.
+        </p>
+      </div>
+    </section>
+
+    <section class="industries-showcase-section section-padding mid-tone-bg">
+      <div class="container">
+        <h2 class="text-center section-title-dark">Experiencia en Diversos Sectores</h2>
+        <div class="industries-grid">
+          {industries.map(industry => (
+            <div class="industry-card">
+              <span class="industry-icon">{industry.icon}</span>
+              <h3>{industry.name}</h3>
+              <p>{industry.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <section class="service-cta-section section-padding text-center">
+      <div class="container narrow-container">
+        <h2>¿Tu Industria no está en la Lista? ¡Hablemos!</h2>
+        <p>Nuestra metodología adaptable nos permite abordar los retos de cualquier sector. Cuéntanos sobre tu proyecto.</p>
+        <a href="/nosotros#contacto-section" class="cta-button large-cta">
+          Contactar para una Solución
+        </a>
+      </div>
+    </section>
+
   </main>
-
-  <style>
-    /* Estilos específicos de esta página (si los hay) */
-  </style>
-
 </BaseLayout>
+
+<style is:global>
+  /* Estilos generales de la página */
+  .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .narrow-container { max-width: 800px; }
+  .text-center { text-align: center; }
+  .light-bg { background-color: #f8f9fa; }
+  .mid-tone-bg { background-color: #e9ecef; }
+
+  .page-hero-general { border-bottom: 1px solid #dee2e6; }
+  .page-hero-general h1 { font-size: 2.8rem; color: #1a1a1a; margin-bottom: 0.75rem; }
+  .page-hero-general .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
+
+  .approach-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1.5rem; }
+  .approach-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .approach-list { list-style: none; padding-left: 0; margin-top: 1.5rem; }
+  .approach-list li { font-size: 1.1rem; color: #343a40; margin-bottom: 1rem; padding-left: 2rem; position: relative; }
+  .approach-list li::before { content: '✓'; color: #007bff; position: absolute; left: 0.25rem; font-size: 1.2em; font-weight: bold; }
+  .approach-list li strong { color: #1a1a1a; }
+  
+  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 2.5rem; }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .industry-card {
+    background-color: #fff;
+    padding: 1.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: center; /* Centrar contenido de la tarjeta */
+  }
+  .industry-icon { font-size: 2.5rem; color: #007bff; margin-bottom: 0.75rem; display: block; }
+  .industry-card h3 { font-size: 1.4rem; color: #333; margin-top: 0; margin-bottom: 0.5rem; }
+  .industry-card p { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+  .service-cta-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1rem; }
+  .service-cta-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .cta-button.large-cta { padding: 0.9rem 2.2rem; font-size: 1.15rem; background-color: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; }
+  .cta-button.large-cta:hover { background-color: #000; }
+
+  @media (max-width: 767px) {
+    .page-hero-general h1 { font-size: 2.3rem; }
+    .page-hero-general .lead { font-size: 1.15rem; }
+    .approach-section h2, .section-title-dark { font-size: 1.9rem; }
+    .industries-grid { grid-template-columns: 1fr; }
+  }
+</style>

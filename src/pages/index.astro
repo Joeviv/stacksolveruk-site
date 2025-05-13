@@ -2,24 +2,25 @@
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
-import FeaturesGrid from '../components/FeaturesGrid.astro';
-import IntegrationsSection from '../components/IntegrationsSection.astro'; // <-- 1. Importar el nuevo componente
+import HomeIntroSections from '../components/HomeIntroSections.astro';
+import DifferentiatorSection from '../components/DifferentiatorSection.astro';
+import IntegrationsSection from '../components/IntegrationsSection.astro';
+// import FeaturesGrid from '../components/FeaturesGrid.astro'; // <-- ELIMINADA IMPORTACIÓN
 
-const pageTitle = "Stacksolver Tech | Soluciones Tecnológicas Innovadoras";
+const pageTitle = "Stacksolver.tech: Soluciones Tecnológicas Inteligentes para Impulsar tu Negocio.";
 ---
 <BaseLayout title={pageTitle}>
   <main>
     <HeroSection />
-     <IntegrationsSection /> {/* <-- 2. Añadir el componente a la página */}
-    <FeaturesGrid />
-   
-    {/* Aquí podrían ir otras secciones en el futuro */}
+    <HomeIntroSections /> {/* Contiene "Nuestros Servicios Clave" (con videos) y "Problema/Solución" */}
+    <DifferentiatorSection />
+    <IntegrationsSection /> {/* Con su placeholder de imagen */}
+    {/* <FeaturesGrid /> */} {/* <-- ELIMINADA RENDERIZACIÓN */}
   </main>
 </BaseLayout>
 
 <style>
   main {
-    /* Puedes añadir estilos globales para el 'main' si es necesario,
-       o dejar que cada sección controle su propio padding y background. */
+    /* Estilos si son necesarios */
   }
 </style>

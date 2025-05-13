@@ -1,0 +1,217 @@
+---
+// src/components/HomeIntroSections.astro
+
+const videoUrlPlaceholder = 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4';
+
+// Datos para la presentación de servicios clave
+// TODO: Actualizar enlaces cuando las páginas de producto existan
+// TODO: Reemplazar videoUrlPlaceholder con URLs de video específicas para cada servicio
+const services = [
+  { name: "Diseño Web Moderno", description: "Creamos tu ventana al mundo digital: rápida, atractiva y funcional.", link: "/productos/diseno-web", videoUrl: videoUrlPlaceholder },
+  { name: "Apps a tu Medida (Claris FileMaker)", description: "Sistemas ERP, GRC y más, diseñados exclusivamente para tus necesidades.", link: "/productos/desarrollo-aplicaciones", videoUrl: videoUrlPlaceholder },
+  { name: "Integraciones Inteligentes", description: "Conectamos tus herramientas para que tus datos trabajen para ti.", link: "/productos/integracion-sistemas", videoUrl: videoUrlPlaceholder },
+  { name: "Plataformas de Aprendizaje (Moodle)", description: "Capacita a tu equipo de forma dinámica y efectiva.", link: "/productos/plataformas-aprendizaje", videoUrl: videoUrlPlaceholder },
+  { name: "Visualización de Datos Avanzada", description: "Transformamos números en decisiones claras.", link: "/productos/visualizacion-datos", videoUrl: videoUrlPlaceholder },
+  { name: "Inteligencia Artificial para Empresas", description: "IA segura y local para potenciar tu negocio.", link: "/productos/inteligencia-artificial", videoUrl: videoUrlPlaceholder },
+];
+---
+
+{/* ****** SECCIÓN DE SERVICIOS CLAVE (AHORA PRIMERO Y CON VIDEOS) ****** */}
+<section class="services-overview-section">
+  <div class="container">
+    <h2>Nuestros Servicios Clave</h2>
+    <div class="services-grid">
+      {services.map(service => (
+        <a href={service.link} class="service-card">
+          <div class="service-video-area">
+            {service.videoUrl ? (
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src={service.videoUrl} type="video/mp4" />
+                Tu navegador no soporta la etiqueta de video.
+              </video>
+            ) : (
+              <div class="video-placeholder">Video no disponible</div>
+            )}
+          </div>
+          <div class="service-content">
+            <h3>{service.name}</h3>
+            <p>{service.description}</p>
+            <span class="learn-more">Conocer más →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* ****** SECCIÓN PROBLEMA/SOLUCIÓN (AHORA SEGUNDO) ****** */}
+<section class="problem-solution-section utility-belt-bg">
+  <div class="container">
+    <h2>¿Afrontas estos desafíos tecnológicos?</h2>
+    <div class="problem-blocks">
+      <div class="problem-block">
+        <p class="question">¿Te sientes abrumado por la tecnología?</p>
+        <p class="answer">"Te guiamos paso a paso."</p>
+      </div>
+      <div class="problem-block">
+        <p class="question">¿Tus sistemas no se comunican entre sí?</p>
+        <p class="answer">"Creamos puentes de información."</p>
+      </div>
+      <div class="problem-block">
+        <p class="question">¿Necesitas una aplicación que realmente se ajuste a tu forma de trabajar?</p>
+        <p class="answer">"La diseñamos contigo."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Services Overview Section */
+  .services-overview-section {
+    padding: 4rem 1rem;
+    text-align: center;
+    background-color: #fff; /* Fondo blanco para esta sección */
+  }
+
+  .services-overview-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #333;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ajuste minmax para tarjetas más anchas */
+    gap: 2rem;
+  }
+
+  .service-card {
+    background-color: #f8f9fa; /* Un gris muy claro para la tarjeta */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Para que el video no se desborde de los bordes redondeados */
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+ /* Estilos para el área del video en la tarjeta de servicio */
+  .service-video-area {
+    width: 100%;
+    position: relative;
+    background-color: #e0e0e0; /* Color de fondo mientras carga el video */
+    /* Forzar aspecto ratio ~2:1 para los videos (más panorámico) */
+    padding-bottom: 50%; /* (1 / 2 * 100) = 50%. Puedes probar 42.55% para ~2.35:1 si es necesario */
+    height: 0;
+    overflow: hidden; /* Oculta partes del video que no encajen */
+    /* Opcional: Añadir una altura máxima si el padding-bottom no es suficiente control */
+    /* max-height: 200px; */ /* Descomenta y ajusta este valor si es necesario */
+  }
+
+  .service-video-area video,
+  .service-video-area .video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para que el video cubra el área sin distorsionarse */
+  }
+  
+  .video-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .service-content {
+    padding: 1.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que esta parte crezca y empuje el "learn more" hacia abajo */
+  }
+
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin-top: 0; /* Quitar margen superior si el video está arriba */
+    margin-bottom: 0.75rem;
+    color: #333;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .learn-more {
+    color: #007bff;
+    font-weight: bold;
+    align-self: flex-start;
+    margin-top: auto; /* Empuja este elemento al final del contenedor flex .service-content */
+  }
+
+  /* Problem Solution Section */
+  .problem-solution-section {
+    padding: 3.5rem 1rem; /* Ajuste de padding */
+    background-color: #f0f4f8; /* Un azul-gris muy claro */
+    text-align: center;
+  }
+
+  .problem-solution-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem; /* Un poco más de espacio */
+    color: #2c3e50; /* Un azul oscuro */
+  }
+
+  .problem-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem; /* Mantenemos el gap */
+  }
+
+  .problem-block {
+    background-color: #fff;
+    padding: 1.5rem; /* Mantenemos padding */
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(44, 62, 80, 0.1); /* Sombra más sutil y acorde al fondo */
+    flex-basis: 300px;
+    text-align: left;
+    transition: transform 0.2s ease-out;
+  }
+  .problem-block:hover {
+      transform: translateY(-3px);
+  }
+
+  .problem-block .question {
+    font-weight: 600; /* Un poco más de peso */
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .problem-block .answer {
+    font-size: 1rem;
+    color: #34495e; /* Gris oscuro azulado */
+    line-height: 1.5;
+  }
+</style>

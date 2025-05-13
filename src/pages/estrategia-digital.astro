@@ -1,22 +1,136 @@
 ---
-// Importamos el Layout base
-import BaseLayout from '../layouts/BaseLayout.astro';
+// src/pages/estrategia-digital.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
 
-// Puedes añadir props aquí si la página lo necesita
-const pageTitle = "Estrategia Digital | Stacksolver Tech";
+const pageTitle = "Estrategia Digital Personalizada | Potenciamos tu Negocio - Stacksolver.tech";
+const heroTitle = "Tu Estrategia Digital, Potenciada por Expertos";
+const heroLead = "En Stacksolver.tech, no solo implementamos tecnología; te acompañamos en la definición y ejecución de una estrategia digital integral que impulse tus objetivos de negocio y te prepare para el futuro.";
+
+// Pilares de la estrategia digital - puedes adaptarlos
+const strategyPillars = [
+  { name: "Diagnóstico y Comprensión Profunda", description: "Comenzamos por entender a fondo tu negocio, tus procesos actuales, tus desafíos y tus metas a corto, mediano y largo plazo.", icon: "🔍" },
+  { name: "Diseño del 'Stack Tecnológico' Ideal", description: "Con base en el diagnóstico, diseñamos una combinación personalizada de herramientas, plataformas y procesos (tu 'stack') que se alinee perfectamente con tu estrategia.", icon: "🧱" },
+  { name: "Implementación Ágil y Centrada en el Valor", description: "Desarrollamos e integramos las soluciones de forma iterativa, asegurando entregas de valor tempranas y la capacidad de adaptarnos a medida que avanzamos.", icon: "⚙️" },
+  { name: "Optimización y Evolución Continua", description: "La tecnología y el mercado cambian. Te ayudamos a monitorear, optimizar y evolucionar tu stack tecnológico para mantener la competitividad y aprovechar nuevas oportunidades.", icon: "📈" },
+  { name: "Capacitación y Adopción", description: "Aseguramos que tu equipo comprenda y adopte las nuevas herramientas y procesos, maximizando el retorno de tu inversión tecnológica.", icon: "🤝" }
+];
 ---
 
 <BaseLayout title={pageTitle}>
+  <main class="estrategia-digital-page">
+    
+    <header class="page-hero-general section-padding text-center light-bg">
+      <div class="container narrow-container">
+        <h1>{heroTitle}</h1>
+        <p class="lead">{heroLead}</p>
+      </div>
+    </header>
 
-  {/* Este es el contenido ÚNICO de la página de Estrategia Digital */}
-  <main>
-    <h1>Página de Estrategia Digital</h1>
-    <p>Conoce nuestro enfoque para impulsar tu estrategia digital.</p>
-    {/* Añade contenido específico de estrategia digital aquí */}
+    <section class="philosophy-section section-padding">
+      <div class="container narrow-container">
+        <h2 class="text-center">Más que Tecnología, una Verdadera Transformación</h2>
+        <p>
+          Entendemos que la transformación digital va más allá de simplemente adoptar nuevas herramientas. Se trata de 
+          repensar procesos, empoderar a tus equipos y crear nuevas formas de valor para tus clientes. 
+          Nuestra aproximación a la estrategia digital se basa en ser tus aliados tecnológicos, guiándote 
+          en cada paso del camino.
+        </p>
+        <div class="stack-solver-explanation">
+            <h3>El Poder del Enfoque "Stack Solver"</h3>
+            <p>
+                No creemos en soluciones únicas para todos. Cada empresa es un mundo, con sus propias particularidades. 
+                El enfoque "Stack Solver" implica un análisis detallado de tus necesidades para construir una arquitectura 
+                tecnológica – tu 'stack' – que no solo resuelva problemas actuales, sino que también siente las bases 
+                para el crecimiento futuro y la innovación continua.
+            </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillars-section section-padding mid-tone-bg">
+      <div class="container">
+        <h2 class="text-center section-title-dark">Pilares de Nuestra Consultoría en Estrategia Digital</h2>
+        <div class="pillars-grid">
+          {strategyPillars.map(pillar => (
+            <div class="pillar-card">
+              <span class="pillar-icon">{pillar.icon}</span>
+              <h3>{pillar.name}</h3>
+              <p>{pillar.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <section class="service-cta-section section-padding text-center">
+      <div class="container narrow-container">
+        <h2>¿Listo para Definir o Redefinir tu Estrategia Digital?</h2>
+        <p>Permítenos ser el catalizador de tu transformación. Juntos, podemos diseñar el futuro tecnológico de tu empresa.</p>
+        <a href="/nosotros#contacto-section" class="cta-button large-cta">
+          Iniciar Conversación Estratégica
+        </a>
+      </div>
+    </section>
+
   </main>
-
-  <style>
-    /* Estilos específicos de esta página (si los hay) */
-  </style>
-
 </BaseLayout>
+
+<style is:global>
+  /* Estilos generales de la página */
+  .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .narrow-container { max-width: 800px; }
+  .text-center { text-align: center; }
+  .light-bg { background-color: #f8f9fa; }
+  .mid-tone-bg { background-color: #e9ecef; }
+
+  .page-hero-general { border-bottom: 1px solid #dee2e6; }
+  .page-hero-general h1 { font-size: 2.8rem; color: #1a1a1a; margin-bottom: 0.75rem; }
+  .page-hero-general .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
+
+  .philosophy-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1.5rem; }
+  .philosophy-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .stack-solver-explanation {
+    background-color: #e0e5e9; /* Mismo fondo que en otras definiciones */
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: left; /* Para que el texto dentro no se centre */
+  }
+  .stack-solver-explanation h3 {
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 2.5rem; }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Pueden ser más de 2 o 3 columnas si caben */
+    gap: 1.5rem;
+  }
+  .pillar-card {
+    background-color: #fff;
+    padding: 1.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: center; 
+  }
+  .pillar-icon { font-size: 2.5rem; color: #007bff; margin-bottom: 0.75rem; display: block; }
+  .pillar-card h3 { font-size: 1.3rem; color: #333; margin-top: 0; margin-bottom: 0.5rem; }
+  .pillar-card p { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+  .service-cta-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1rem; }
+  .service-cta-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .cta-button.large-cta { padding: 0.9rem 2.2rem; font-size: 1.15rem; background-color: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; }
+  .cta-button.large-cta:hover { background-color: #000; }
+
+  @media (max-width: 767px) {
+    .page-hero-general h1 { font-size: 2.3rem; }
+    .page-hero-general .lead { font-size: 1.15rem; }
+    .philosophy-section h2, .section-title-dark { font-size: 1.9rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+</style>

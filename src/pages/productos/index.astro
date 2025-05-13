@@ -1,0 +1,198 @@
+---
+// src/pages/productos/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = "Nuestros Servicios | Soluciones Tecnológicas a tu Medida - Stacksolver.tech";
+const videoUrlPlaceholder = 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4';
+
+const services = [
+  { name: "Diseño Web Moderno y Funcional", description: "Creamos tu ventana al mundo digital: rápida, atractiva y funcional, asegurando una primera impresión impactante.", link: "/productos/diseno-web", videoUrl: videoUrlPlaceholder, pageExcerpt: "Descubre cómo transformamos tu presencia online con sitios web ultrarrápidos y centrados en el usuario, utilizando tecnologías como Astro." },
+  { name: "Desarrollo de Aplicaciones a Medida (Claris FileMaker)", description: "Sistemas ERP, GRC y más, diseñados exclusivamente para tus necesidades operativas y estratégicas.", link: "/productos/desarrollo-aplicaciones", videoUrl: videoUrlPlaceholder, pageExcerpt: "Como Partners Oficiales de Claris, creamos soluciones robustas que se adaptan perfectamente a tus procesos, desde gestión integral hasta módulos específicos." },
+  { name: "Integración de Sistemas y Datos", description: "Conectamos tus herramientas para que tus datos fluyan y trabajen para ti, optimizando tus flujos de trabajo.", link: "/productos/integracion-sistemas", videoUrl: videoUrlPlaceholder, pageExcerpt: "Hacemos que tus CRM, ERP y otras aplicaciones compartan información automáticamente, eliminando silos y mejorando la toma de decisiones." },
+  { name: "Plataformas de Aprendizaje (LMS con Moodle)", description: "Capacita a tu equipo de forma dinámica, efectiva y moderna con entornos de aprendizaje virtual personalizados.", link: "/productos/plataformas-aprendizaje", videoUrl: videoUrlPlaceholder, pageExcerpt: "Impulsa el conocimiento en tu organización con Moodle: desde onboarding hasta desarrollo de habilidades complejas." },
+  { name: "Visualización Avanzada de Datos (Looker Studio)", description: "Transformamos números complejos en dashboards interactivos y decisiones claras para tu negocio.", link: "/productos/visualizacion-datos", videoUrl: videoUrlPlaceholder, pageExcerpt: "Convierte tus datos en insights accionables con Google Looker Studio, conectando múltiples fuentes para una visión 360º." },
+  { name: "Inteligencia Artificial para Empresas", description: "IA local, segura y personalizada para potenciar tus resultados y mantener el control de tus datos.", link: "/productos/inteligencia-artificial", videoUrl: videoUrlPlaceholder, pageExcerpt: "Implementamos soluciones de IA y Machine Learning con herramientas como Ollama, entrenadas con tu información para resolver tus desafíos." },
+];
+---
+
+<BaseLayout title={pageTitle}>
+  <main class="productos-index-page">
+    <header class="page-header text-center section-padding light-bg">
+      <div class="container">
+        <h1>Nuestros Servicios Tecnológicos</h1>
+        <p class="lead">
+          En Stacksolver.tech, ofrecemos un abanico de soluciones diseñadas para resolver tus desafíos y potenciar tu crecimiento. 
+          Cada servicio se enfoca en entregar resultados tangibles, combinando innovación, experiencia y un profundo entendimiento 
+          de tus necesidades para construir el 'stack' tecnológico perfecto para ti.
+        </p>
+      </div>
+    </header>
+
+    <section class="services-list-section section-padding">
+      <div class="container">
+        <div class="services-grid-detailed">
+          {services.map(service => (
+            <div class="service-item-card">
+              <a href={service.link} class="service-video-link-wrapper">
+                <div class="service-video-area-detailed">
+                  {service.videoUrl ? (
+                    <video autoplay loop muted playsinline preload="metadata">
+                      <source src={service.videoUrl} type="video/mp4" />
+                      Tu navegador no soporta la etiqueta de video.
+                    </video>
+                  ) : (
+                    <div class="video-placeholder-detailed">Video no disponible</div>
+                  )}
+                </div>
+              </a>
+              <div class="service-content-detailed">
+                <a href={service.link}><h2>{service.name}</h2></a>
+                <p class="excerpt">{service.pageExcerpt || service.description}</p>
+                <a href={service.link} class="cta-button-service">
+                  Conocer más detalles →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .text-center {
+    text-align: center;
+  }
+  
+  .light-bg {
+    background-color: #f8f9fa;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    color: #1a1a1a; 
+    margin-bottom: 1rem;
+  }
+  .page-header .lead {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .services-grid-detailed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 992px) {
+    .services-grid-detailed {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .service-item-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  .service-item-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  }
+
+  .service-video-link-wrapper {
+    display: block;
+    text-decoration: none;
+  }
+
+  .service-video-area-detailed {
+    width: 100%;
+    position: relative;
+    background-color: #e9ecef;
+    padding-bottom: 50%;
+    height: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .service-video-area-detailed video,
+  .service-video-area-detailed .video-placeholder-detailed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-placeholder-detailed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+  }
+
+  .service-content-detailed {
+    padding: 1.5rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .service-content-detailed h2 {
+    font-size: 1.6rem;
+    color: #1a1a1a; 
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+  .service-content-detailed a { 
+      text-decoration: none;
+      color: inherit; 
+  }
+  .service-content-detailed a:hover h2 {
+      text-decoration: underline;
+      color: #000000; 
+  }
+
+  .service-content-detailed .excerpt {
+    font-size: 1rem;
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .cta-button-service {
+    display: inline-block;
+    background-color: #1a1a1a; 
+    color: #ffffff !important; /* Asegurar color de texto blanco, !important por si acaso */
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500; 
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    align-self: flex-start;
+    border: 1px solid #1a1a1a; 
+  }
+  .cta-button-service:hover {
+    background-color: #000000; 
+  }
+
+</style>

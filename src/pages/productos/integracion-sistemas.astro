@@ -1,0 +1,187 @@
+---
+// src/pages/productos/integracion-sistemas.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "Integración de Sistemas y Datos | Conectamos tus Herramientas - Stacksolver.tech";
+const serviceName = "Integración de Sistemas y Datos";
+const heroLead = "Conectamos tus Herramientas: Datos que Fluyen, Decisiones que Impactan.";
+
+const integrationTools = ["Claris Connect", "Make (antes Integromat)", "Zapier"];
+---
+
+<BaseLayout title={pageTitle}>
+  <main class="service-detail-page integration-services-page">
+    
+    <header class="service-hero section-padding text-center light-bg">
+      <div class="container narrow-container">
+        {/* <img src="/images/products/integration-hero.png" alt="Integración de Sistemas y Datos" class="service-hero-image"/> */}
+        <h1>{serviceName}</h1>
+        <p class="lead">{heroLead}</p>
+      </div>
+    </header>
+
+    <section class="introduction-benefits-section section-padding">
+      <div class="container narrow-container">
+        <h2>¿Tus aplicaciones de trabajo no se hablan entre sí?</h2>
+        <p>
+          Hacemos que tus diferentes sistemas (CRM, ERP, aplicaciones de marketing, etc.) compartan información automáticamente. 
+          Esto se traduce en menos trabajo manual, una drástica reducción de errores y una visión completa de tu negocio 
+          para tomar decisiones más inteligentes y ágiles.
+        </p>
+        
+        <div class="what-is-integration">
+          <h3>¿Qué es la Integración de Sistemas?</h3>
+          <p>
+            Es como construir puentes robustos y eficientes entre tus diferentes programas de software. 
+            Estos puentes permiten que puedan intercambiar datos de forma segura y en tiempo real (o programado), 
+            convirtiendo información aislada y dispersa en conocimiento unificado y útil para la acción.
+          </p>
+        </div>
+
+        <h3 class="benefits-title">Beneficios de Integrar tus Sistemas con Nosotros:</h3>
+        <ul class="benefits-list">
+          <li>
+            <strong>Ahorra Tiempo y Reduce Errores Drásticamente:</strong> Elimina la necesidad de ingresar datos manualmente en múltiples lugares, minimizando la duplicidad y el riesgo de errores humanos.
+          </li>
+          <li>
+            <strong>Información Unificada y Consistente:</strong> Ten una única fuente de verdad para todos tus datos críticos, permitiéndote entender mejor lo que sucede en cada área de tu empresa.
+          </li>
+          <li>
+            <strong>Procesos Más Ágiles y Eficientes:</strong> Mejora la colaboración entre tus equipos y optimiza tus flujos de trabajo al automatizar la transferencia de información.
+          </li>
+          <li>
+            <strong>Mejora en la Toma de Decisiones:</strong> Accede a datos actualizados y consolidados para fundamentar tus estrategias y tomar decisiones más rápidas e informadas.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="tools-iot-section section-padding mid-tone-bg">
+      <div class="container narrow-container">
+        <h2>Nuestras Herramientas y un Paso Más Allá</h2>
+        
+        <div class="tools-highlight">
+          <span class="feature-icon">🛠️</span> {/* Icono herramientas */}
+          <h3>Plataformas de Integración Líderes</h3>
+          <p>
+            Utilizamos plataformas de integración como servicio (iPaaS) reconocidas y potentes como 
+            <strong>{integrationTools.join(", ")}</strong>, y otras soluciones personalizadas, 
+            para crear conexiones fiables y escalables entre tus aplicaciones.
+          </p>
+        </div>
+
+        <div class="iot-highlight">
+          <span class="feature-icon">🔗</span> {/* Icono IoT / conexión */}
+          <h3>Integración con el Mundo Físico (IoT)</h3>
+          <p>
+            <strong>¿Qué es IoT (Internet de las Cosas)?</strong> Es la tecnología que permite que máquinas, equipos industriales, 
+            sensores y otros dispositivos físicos se conecten a internet y envíen datos valiosos sobre su funcionamiento y entorno.
+          </p>
+          <p>
+            Si tus equipos lo permiten, podemos capturar esta información y llevarla directamente a tus bases de datos 
+            o sistemas de análisis, abriendo un nuevo mundo de posibilidades para el monitoreo, mantenimiento predictivo 
+            y optimización de operaciones.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-cta-section section-padding text-center">
+      <div class="container narrow-container">
+        <h2>Optimiza tus Flujos de Trabajo con Integraciones Inteligentes</h2>
+        <p>Permite que tus sistemas trabajen en conjunto y libera el verdadero potencial de tus datos.</p>
+        <a href="/nosotros#contacto-section" class="cta-button large-cta">
+          Consulta sobre Integración de Datos
+        </a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* Estilos heredados/globales */
+  .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .narrow-container { max-width: 800px; }
+  .text-center { text-align: center; }
+
+  .service-detail-page .light-bg { background-color: #f8f9fa; }
+  .service-detail-page .mid-tone-bg { background-color: #e9ecef; }
+
+  .service-hero { border-bottom: 1px solid #dee2e6; }
+  .service-hero h1 { font-size: 2.8rem; color: #1a1a1a; margin-bottom: 0.75rem; }
+  .service-hero .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
+
+  .introduction-benefits-section h2,
+  .tools-iot-section h2,
+  .service-cta-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1.5rem; text-align: center; }
+  
+  .introduction-benefits-section p,
+  .tools-iot-section p,
+  .service-cta-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+
+  .what-is-integration {
+    background-color: #e0e5e9; /* Un poco diferente al mid-tone-bg */
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem; /* Espacio antes de los beneficios */
+  }
+  .what-is-integration h3 {
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .benefits-title {
+    font-size: 1.5rem;
+    color: #0056b3; 
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5rem;
+  }
+  .benefits-list { list-style: none; padding-left: 0; }
+  .benefits-list li { font-size: 1.1rem; color: #343a40; margin-bottom: 1rem; padding-left: 2rem; position: relative; }
+  .benefits-list li::before { content: '❯'; color: #007bff; position: absolute; left: 0.25rem; font-size: 1.3em; line-height: 1; font-weight: bold; }
+  .benefits-list li strong { color: #1a1a1a; display: block; margin-bottom: 0.25rem; }
+
+  .tools-iot-section .tools-highlight,
+  .tools-iot-section .iot-highlight {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+    margin-bottom: 2rem; 
+  }
+  .tools-iot-section .feature-icon {
+    display: block;
+    font-size: 2.8rem; 
+    color: #007bff; 
+    margin-bottom: 1rem;
+    text-align: center; 
+  }
+  .tools-iot-section h3 { /* Para los títulos dentro de tools-highlight e iot-highlight */
+    font-size: 1.6rem;
+    color: #0056b3; 
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+   .tools-iot-section p strong { /* Para resaltar los nombres de las herramientas */
+      font-weight: 600;
+      color: #1a1a1a;
+   }
+
+  .cta-button.large-cta { padding: 0.9rem 2.2rem; font-size: 1.15rem; background-color: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; }
+  .cta-button.large-cta:hover { background-color: #000; }
+
+  @media (max-width: 767px) {
+    .service-hero h1 { font-size: 2.3rem; }
+    .service-hero .lead { font-size: 1.15rem; }
+    .introduction-benefits-section h2,
+    .tools-iot-section h2,
+    .service-cta-section h2 { font-size: 1.9rem; }
+  }
+</style>

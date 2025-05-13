@@ -1,5 +1,28 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "compilerOptions": {
+    "baseUrl": ".", // Directorio base para la resolución de paths
+    "paths": {
+      "@/*": ["src/*"], // Alias @/ para apuntar a src/
+      // Si quieres alias más específicos, puedes añadirlos aquí:
+      // "@components/*": ["src/components/*"],
+      // "@layouts/*": ["src/layouts/*"],
+      // "@pages/*": ["src/pages/*"]
+    },
+    // Estas opciones son comunes y buenas tenerlas, aunque Astro puede ponerlas por defecto
+    "jsx": "preserve",
+    "jsxImportSource": "astro",
+    "allowSyntheticDefaultImports": true, // A menudo útil
+    "esModuleInterop": true // Mejora la interoperabilidad con módulos CommonJS
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*.astro", // Sé más específico con lo que Astro debe procesar
+    "src/**/*.ts",   // Incluye archivos TypeScript si los tienes
+    "src/**/*.js"    // Incluye archivos JavaScript si los tienes
+  ],
+  "exclude": [
+    "node_modules", // Siempre excluye node_modules
+    "dist"          // Excluye el directorio de build
+  ]
 }

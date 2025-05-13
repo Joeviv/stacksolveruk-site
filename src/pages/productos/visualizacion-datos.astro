@@ -1,0 +1,130 @@
+---
+// src/pages/productos/visualizacion-datos.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "Visualización Avanzada de Datos con Looker Studio | Stacksolver.tech";
+const serviceName = "Visualización Avanzada de Datos";
+const subServiceName = "Decisiones Inteligentes con Google Looker Studio";
+const heroLead = "Tus Datos, Claros Como el Agua: Transformamos Números en Dashboards Impactantes.";
+
+const lookerStudioBenefits = [
+  { title: "Entiende tus Números de un Vistazo", description: "Diseñamos informes y dashboards interactivos que son claros, concisos y fáciles de interpretar, incluso para usuarios no técnicos." },
+  { title: "Decisiones Basadas en Hechos, no en Suposiciones", description: "Accede a información actualizada en tiempo real (o según la frecuencia que necesites) para fundamentar tus estrategias y tomar acciones más efectivas." },
+  { title: "Conecta Todas tus Fuentes de Datos", description: "Integramos datos de múltiples orígenes: Google Sheets, Google Analytics, Google Ads, bases de datos SQL, CRMs, y muchas más, todo en un solo lugar." },
+  { title: "Dashboards Personalizados y Compartibles", description: "Creamos visualizaciones a la medida de tus KPIs y objetivos, fácilmente compartibles con tu equipo o stakeholders." }
+];
+---
+
+<BaseLayout title={pageTitle}>
+  <main class="service-detail-page looker-studio-page">
+    
+    <header class="service-hero section-padding text-center light-bg">
+      <div class="container narrow-container">
+        {/* <img src="/images/products/looker-studio-hero.png" alt="Visualización de Datos con Looker Studio" class="service-hero-image"/> */}
+        <h1>{serviceName}</h1>
+        <p class="sub-service-name">{subServiceName}</p>
+        <p class="lead">{heroLead}</p>
+      </div>
+    </header>
+
+    <section class="introduction-visualization section-padding">
+      <div class="container narrow-container">
+        <h2>¿Tienes muchos datos pero te cuesta entenderlos y aprovecharlos?</h2>
+        <p>
+          En la era digital, los datos son uno de tus activos más valiosos, pero solo si puedes traducirlos en conocimiento accionable. 
+          Transformamos hojas de cálculo complejas y bases de datos extensas en gráficos dinámicos, tablas interactivas y 
+          paneles (dashboards) intuitivos que te muestran lo que realmente importa de tu negocio de forma clara y visual.
+        </p>
+        
+        <div class="what-is-dataviz">
+          <h3>¿Qué es la Visualización de Datos?</h3>
+          <p>
+            Es el arte y la ciencia de contar historias con tus datos. Utilizamos elementos visuales como gráficos, mapas, 
+            indicadores y tablas para representar la información de manera que sea fácilmente comprensible. 
+            Te ayuda a identificar tendencias, patrones, correlaciones y oportunidades que de otra manera podrían pasar desapercibidas 
+            en filas y columnas de números.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits-looker-section section-padding mid-tone-bg">
+      <div class="container"> {/* Contenedor más ancho para la cuadrícula */}
+        <h2 class="text-center section-title-dark">Beneficios de Nuestras Visualizaciones con Google Looker Studio</h2>
+        <div class="benefits-grid">
+          {lookerStudioBenefits.map(benefit => (
+            <div class="benefit-card">
+              <span class="benefit-icon">📊</span> {/* Placeholder icon */}
+              <h4>{benefit.title}</h4>
+              <p>{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <section class="service-cta-section section-padding text-center">
+      <div class="container narrow-container">
+        <h2>Descubre el Poder Oculto en tus Datos</h2>
+        <p>Permítenos ayudarte a transformar tus datos en tu mayor ventaja competitiva.</p>
+        <a href="/nosotros#contacto-section" class="cta-button large-cta">
+          Solicita una Demo de Visualización
+        </a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* Estilos heredados/globales */
+  .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .narrow-container { max-width: 800px; }
+  .text-center { text-align: center; }
+
+  .service-detail-page .light-bg { background-color: #f8f9fa; }
+  .service-detail-page .mid-tone-bg { background-color: #e9ecef; }
+
+  .service-hero { border-bottom: 1px solid #dee2e6; }
+  .service-hero h1 { font-size: 2.8rem; color: #1a1a1a; margin-bottom: 0.25rem; }
+  .service-hero .sub-service-name { font-size: 1.5rem; color: #007bff; font-weight: 500; margin-bottom: 0.75rem; }
+  .service-hero .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
+
+  .introduction-visualization p { font-size: 1.1rem; line-height: 1.8; color: #343a40; margin-bottom: 1.5rem; }
+  .what-is-dataviz { background-color: #e0e5e9; padding: 1.5rem 2rem; border-radius: 8px; margin-top: 2rem; }
+  .what-is-dataviz h3 { font-size: 1.6rem; color: #1a1a1a; margin-top: 0; margin-bottom: 0.75rem; }
+  
+  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 2.5rem; }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ajuste para tarjetas un poco más anchas */
+    gap: 1.5rem;
+  }
+  .benefit-card {
+    background-color: #fff;
+    padding: 1.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .benefit-icon { font-size: 2rem; color: #007bff; margin-bottom: 0.75rem; }
+  .benefit-card h4 { font-size: 1.25rem; color: #333; margin-top: 0; margin-bottom: 0.5rem; }
+  .benefit-card p { font-size: 0.95rem; color: #555; line-height: 1.6; flex-grow: 1; }
+
+  .service-cta-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1rem; }
+  .service-cta-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .cta-button.large-cta { padding: 0.9rem 2.2rem; font-size: 1.15rem; background-color: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; }
+  .cta-button.large-cta:hover { background-color: #000; }
+
+  @media (max-width: 767px) {
+    .service-hero h1 { font-size: 2.3rem; }
+    .service-hero .sub-service-name { font-size: 1.3rem; }
+    .service-hero .lead { font-size: 1.15rem; }
+    .section-title-dark { font-size: 1.9rem; }
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+</style>

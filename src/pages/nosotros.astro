@@ -1,22 +1,352 @@
 ---
-// Importamos el Layout base
+// src/pages/nosotros.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Puedes añadir props aquí si la página lo necesita
-const pageTitle = "Sobre Nosotros y Contacto | Stacksolver Tech";
+const pageTitle = "Sobre Stacksolver.tech y Contacto | Aliados en tu Transformación Digital";
+const contactEmail = "info@stacksolver.tech";
+
+const clarisPartnerProfileUrl = "https://www.claris.com/partners/profile/company.20000006479/";
 ---
 
 <BaseLayout title={pageTitle}>
+  <main class="nosotros-contacto-page">
+    
+    <section class="sobre-nosotros-section section-padding">
+      <div class="container">
+        <header class="section-header text-center">
+          <h1>Somos tus Aliados en la Transformación Digital</h1>
+        </header>
 
-  {/* Este es el contenido ÚNICO de la página Sobre Nosotros y Contacto */}
-  <main>
-    <h1>Sobre Nosotros y Contacto</h1>
-    <p>Información sobre Stacksolver Tech y cómo contactarnos.</p>
-    {/* Añade contenido de Sobre Nosotros y el formulario de contacto aquí */}
+        <div class="content-grid">
+          <div class="mision-filosofia">
+            <h2>Nuestra Misión</h2>
+            <p>En Stacksolver.tech, nuestra misión es clara: resolver tus problemas de negocio y ayudarte a descubrir nuevas oportunidades a través del uso inteligente y estratégico de la tecnología. Queremos que cada empresa, sin importar su tamaño, pueda iniciar, rediseñar y comprender a fondo su estrategia digital para alcanzar el éxito.</p>
+
+            <h2>Nuestra Filosofía "Stack Solver"</h2>
+            <p>Creemos firmemente que no existe una solución tecnológica única para todos. Por eso, nuestro enfoque se basa en diseñar y construir 'stacks' de soluciones: combinaciones personalizadas de tecnologías y servicios que se adaptan perfectamente a tus necesidades y objetivos específicos.</p>
+          </div>
+
+          <div class="partners-claris">
+            <div class="partner-card">
+              <h3>Partners Oficiales de Claris</h3>
+              <a href={clarisPartnerProfileUrl} target="_blank" rel="noopener noreferrer" title="Ver perfil oficial en Claris Partner Network">
+                <img 
+                  src="/images/logos/claris-partner-profile-summary.png" 
+                  alt="Resumen del perfil de StackSolver en Claris Partner Network" 
+                  class="partner-profile-summary-img" 
+                />
+              </a>
+              <p class="claris-explanation">
+                Estamos orgullosos de ser Partners Oficiales de Claris en Colombia. Esta alianza nos permite ofrecerte
+                las mejores soluciones de desarrollo de aplicaciones personalizadas con FileMaker, respaldadas por el
+                conocimiento y soporte directo del creador de la plataforma. 
+                <a href={clarisPartnerProfileUrl} target="_blank" rel="noopener noreferrer" class="verify-link">Verifícalo aquí.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* --- SECCIÓN CONTACTO CON TEXTO Y ESTRUCTURA ACTUALIZADOS --- */}
+    <section class="contacto-section section-padding dark-bg">
+      <div class="container contact-container-custom"> {/* Contenedor con posible ancho personalizado */}
+        <header class="section-header text-center">
+          <h2 class="text-light">Hablemos de tu Próximo Proyecto</h2>
+          {/* ****** TEXTO INTRODUCTORIO ACTUALIZADO ****** */}
+          <p class="text-light-muted">
+            Nos encantaría conocer tus ideas y desafíos. No importa dónde te encuentres, podemos agendar una 
+            videoconferencia para entender tus requerimientos. Tenemos plena disponibilidad para colaborar 
+            con empresas en cualquier país, ya sea de forma remota o presencial si el proyecto lo requiere.
+            <br /> {/* Salto de línea para separar visualmente */}
+            <strong>Puedes diligenciar el formulario a continuación o, si lo prefieres, enviarnos un email directamente.</strong>
+          </p>
+          {/* ****** FIN DEL TEXTO ACTUALIZADO ****** */}
+        </header>
+
+        {/* ****** ESTRUCTURA DE CONTACTO MODIFICADA: UNA SOLA COLUMNA PARA FORMULARIO E INFO ****** */}
+        <div class="contact-content-wrapper">
+          <div class="form-container">
+            <h3>Envíanos un Mensaje</h3>
+            <form class="contact-form-placeholder">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre Completo" required />
+              </div>
+              <div class="form-group">
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu Empresa" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu.correo@ejemplo.com" required />
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono (Opcional)</label>
+                {/* ****** PLACEHOLDER DE TELÉFONO ACTUALIZADO ****** */}
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: +57 300 1234567 o Código País + Número" />
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto o consulta..." required></textarea>
+              </div>
+              <button type="submit" class="cta-button form-submit-button">Enviar Mensaje</button>
+              <p class="form-notice"><em>Este formulario es un placeholder. La funcionalidad de envío se implementará más adelante.</em></p>
+            </form>
+          </div>
+
+          <div class="info-container text-center"> {/* Centrado para mejor visualización debajo del form */}
+            <h3>Nuestra Información de Contacto</h3>
+            <ul class="contact-details">
+              {contactEmail && (
+                <li>
+                  <span class="icon">📧</span>
+                  <strong>Email:</strong> <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+        {/* ****** FIN DE ESTRUCTURA MODIFICADA ****** */}
+      </div>
+    </section>
   </main>
-
-  <style>
-    /* Estilos específicos de esta página (si los hay) */
-  </style>
-
 </BaseLayout>
+
+<style is:global>
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  .section-header h1, .section-header h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  .section-header p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* Estilos específicos para la página nosotros/contacto */
+  .nosotros-contacto-page .content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.5fr); 
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .mision-filosofia h2 {
+    font-size: 1.8rem;
+    color: #0056b3;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .mision-filosofia p {
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 1.5rem;
+  }
+
+  .partner-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+  }
+  .partner-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  .partner-profile-summary-img {
+    width: 100%; 
+    max-width: 400px; 
+    height: auto;
+    border-radius: 6px;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    display: block;
+  }
+  .partner-card .claris-explanation {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-top: 1rem;
+  }
+  .verify-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  /* Sección Contacto */
+  .dark-bg {
+    background-color: #2c3e50;
+  }
+  .text-light {
+    color: #ffffff !important;
+  }
+  .text-light-muted {
+    color: #bdc3c7 !important;
+  }
+  .dark-bg .section-header h2 {
+    color: #ffffff;
+  }
+  .dark-bg .section-header p { 
+    color: #ecf0f1; 
+    max-width: 800px;
+  }
+  .dark-bg .section-header p strong { /* Para resaltar la nueva frase */
+    color: #fff; 
+    font-weight: 600;
+  }
+
+  .contact-container-custom { /* Ancho un poco más reducido para la sección de contacto si es una sola columna */
+      max-width: 800px; 
+  }
+
+  .contact-content-wrapper { /* Nuevo wrapper para el contenido de contacto */
+    /* No se necesita grid aquí si todo va en una columna */
+  }
+
+  .form-container {
+    margin-bottom: 3rem; /* Espacio entre el formulario y la info de contacto */
+  }
+
+  .form-container h3, .info-container h3 {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+   .info-container h3 { /* Para el título de "Nuestra Información de Contacto" */
+    margin-top:0; /* Si va debajo del form, quitarle margen superior */
+   }
+
+
+  .contact-form-placeholder .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .contact-form-placeholder label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ecf0f1;
+    font-weight: 500;
+  }
+  .contact-form-placeholder input[type="text"],
+  .contact-form-placeholder input[type="email"],
+  .contact-form-placeholder input[type="tel"],
+  .contact-form-placeholder textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #7f8c8d;
+    border-radius: 4px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    font-size: 1rem;
+  }
+  .contact-form-placeholder input::placeholder,
+  .contact-form-placeholder textarea::placeholder {
+    color: #95a5a6;
+  }
+  .contact-form-placeholder textarea {
+    resize: vertical;
+  }
+  .cta-button.form-submit-button {
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+  }
+  .cta-button.form-submit-button:hover {
+    background-color: #0056b3;
+  }
+  .form-notice {
+    font-size: 0.85rem;
+    color: #bdc3c7;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .info-container { /* Estilos para el contenedor de información de contacto */
+      /* Ya no es parte de un grid de 2 columnas, se puede centrar si es necesario */
+      /* text-align: center; Lo hemos puesto directamente en el div */
+  }
+
+  .contact-details {
+    list-style: none;
+    padding: 0;
+    color: #ecf0f1;
+    display: inline-block; /* Para que el ul se centre si el .info-container está centrado */
+    text-align: left; /* Para que el contenido del li esté alineado a la izquierda */
+  }
+  .contact-details li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+  .contact-details .icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #007bff;
+  }
+  .contact-details a {
+    color: #ecf0f1;
+    text-decoration: none;
+  }
+  .contact-details a:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+
+  /* Media queries para responsividad */
+  @media (max-width: 991px) {
+    .nosotros-contacto-page .content-grid {
+      grid-template-columns: 1fr; 
+    }
+    .partners-claris {
+        margin-top: 2rem;
+    }
+    .partner-card { 
+        max-width: 550px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
+  @media (max-width: 767px) {
+    .section-header h1, .section-header h2 {
+        font-size: 2.2rem; 
+    }
+    /* Ya no necesitamos .contacto-grid con 1fr aquí porque es una sola columna por defecto */
+    .dark-bg .section-header p {
+        max-width: 90%;
+    }
+    .contact-container-custom { /* Ajustar padding en móvil para la sección de contacto */
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+    }
+  }
+
+</style>

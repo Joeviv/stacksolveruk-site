@@ -1,0 +1,175 @@
+---
+// src/pages/productos/inteligencia-artificial.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "Inteligencia Artificial y Machine Learning para Empresas | Stacksolver.tech";
+const serviceName = "Inteligencia Artificial y Machine Learning";
+const subServiceName = "IA Local, Segura y Enfocada en tus Resultados";
+const heroLead = "Llevamos la IA a tu empresa de forma práctica, segura y personalizada.";
+
+const aiBenefits = [
+  { title: "Decisiones Más Rápidas e Informadas", description: "Aprovecha el poder predictivo y analítico de la IA para tomar decisiones estratégicas con mayor confianza y velocidad." },
+  { title: "Automatización Inteligente de Procesos", description: "Libera a tu equipo de tareas repetitivas y complejas, permitiéndoles enfocarse en actividades de mayor valor añadido." },
+  { title: "Descubrimiento de Nuevas Oportunidades", description: "Identifica patrones, tendencias y insights ocultos en tus datos que pueden revelar nuevas líneas de negocio o mejoras operativas." },
+  { title: "Personalización Avanzada", description: "Desde la segmentación de clientes hasta la recomendación de productos, ofrece experiencias hiper-personalizadas que incrementan la lealtad." }
+];
+---
+
+<BaseLayout title={pageTitle}>
+  <main class="service-detail-page ai-ml-page">
+    
+    <header class="service-hero section-padding text-center light-bg">
+      <div class="container narrow-container">
+        {/* <img src="/images/products/ai-hero.png" alt="Inteligencia Artificial para Empresas" class="service-hero-image"/> */}
+        <h1>{serviceName}</h1>
+        <p class="sub-service-name">{subServiceName}</p>
+        <p class="lead">{heroLead}</p>
+      </div>
+    </header>
+
+    <section class="introduction-ai section-padding">
+      <div class="container narrow-container">
+        <h2>Integramos IA locales usando herramientas como Ollama, manteniendo tus datos bajo tu control.</h2>
+        <p>
+          Entrenamos estos modelos con tu propia información para que te ofrezcan respuestas y soluciones 
+          verdaderamente útiles y relevantes para tus desafíos específicos, garantizando la privacidad y seguridad de tus activos de datos.
+        </p>
+        
+        <div class="what-is-ai-ml">
+          <h3>¿Qué es la IA y el Machine Learning?</h3>
+          <p>
+            <strong>Inteligencia Artificial (IA):</strong> Es la capacidad de las computadoras y sistemas para 'pensar' y realizar tareas 
+            que tradicionalmente requieren inteligencia humana, como el aprendizaje, la resolución de problemas, 
+            el reconocimiento de patrones y la toma de decisiones.
+          </p>
+          <p>
+            <strong>Machine Learning (Aprendizaje Automático):</strong> Es una rama fundamental de la IA donde las máquinas aprenden 
+            de los datos por sí mismas, mejorando su rendimiento y precisión con el tiempo sin necesidad de ser 
+            explícitamente reprogramadas para cada nuevo escenario o detalle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-prop-benefits-section section-padding mid-tone-bg">
+      <div class="container">
+        <h2 class="text-center section-title-dark">Nuestra Propuesta de Valor en IA</h2>
+        <div class="value-prop-grid">
+            <div class="value-card">
+                <span class="value-icon">🛡️</span> {/* Icono Seguridad */}
+                <h4>IA Local y Segura con Ollama</h4>
+                <p>Tus datos son valiosos y privados. Al utilizar IA local, mantenemos tu información sensible dentro de tu propio entorno, ofreciéndote control total y una capa adicional de seguridad y cumplimiento.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🎯</span> {/* Icono Personalización */}
+                <h4>Entrenamiento Personalizado de Modelos</h4>
+                <p>Alimentamos y ajustamos los modelos de IA con los datos específicos de tu empresa. Esto asegura que la IA entienda profundamente tu contexto operativo y te proporcione respuestas precisas y relevantes.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">📈</span> {/* Icono Aplicaciones/Resultados */}
+                <h4>Aplicaciones Prácticas de Machine Learning</h4>
+                <p>Te ayudamos a implementar soluciones de aprendizaje automático para predecir tendencias, automatizar tareas complejas, realizar segmentación avanzada de clientes, optimizar inventarios y mucho más.</p>
+            </div>
+        </div>
+
+        <h3 class="text-center benefits-subheader">Beneficios Concretos de la IA para tu Negocio:</h3>
+        <div class="benefits-grid-ai">
+          {aiBenefits.map(benefit => (
+            <div class="benefit-card-ai">
+              {/* No añadimos icono aquí para diferenciarlo de la sección superior */}
+              <h5>{benefit.title}</h5>
+              <p>{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <section class="service-cta-section section-padding text-center">
+      <div class="container narrow-container">
+        <h2>Explora el Potencial de la IA para tu Negocio</h2>
+        <p>Descubre cómo la inteligencia artificial puede convertirse en un motor de innovación y eficiencia para tu empresa.</p>
+        <a href="/nosotros#contacto-section" class="cta-button large-cta">
+          Hablemos sobre tu Proyecto de IA
+        </a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* Estilos heredados/globales */
+  .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .narrow-container { max-width: 800px; }
+  .text-center { text-align: center; }
+
+  .service-detail-page .light-bg { background-color: #f8f9fa; }
+  .service-detail-page .mid-tone-bg { background-color: #e9ecef; }
+
+  .service-hero { border-bottom: 1px solid #dee2e6; }
+  .service-hero h1 { font-size: 2.8rem; color: #1a1a1a; margin-bottom: 0.25rem; }
+  .service-hero .sub-service-name { font-size: 1.5rem; color: #007bff; font-weight: 500; margin-bottom: 0.75rem; }
+  .service-hero .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
+
+  .introduction-ai p { font-size: 1.1rem; line-height: 1.8; color: #343a40; margin-bottom: 1.5rem; }
+  .what-is-ai-ml { background-color: #e0e5e9; padding: 1.5rem 2rem; border-radius: 8px; margin-top: 2rem; }
+  .what-is-ai-ml h3 { font-size: 1.6rem; color: #1a1a1a; margin-top: 0; margin-bottom: 0.75rem; }
+  .what-is-ai-ml p { font-size: 1.05rem; margin-bottom: 1rem;}
+  .what-is-ai-ml p:last-child { margin-bottom: 0; }
+  .what-is-ai-ml strong { color: #0056b3; }
+  
+  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 2.5rem; }
+  .benefits-subheader {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 3rem; /* Espacio después de la propuesta de valor */
+    margin-bottom: 1.5rem;
+  }
+
+  .value-prop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .value-card {
+    background-color: #fff;
+    padding: 1.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: left;
+  }
+  .value-icon { font-size: 2rem; color: #007bff; margin-bottom: 0.75rem; display: block; }
+  .value-card h4 { font-size: 1.25rem; color: #1a1a1a; margin-top: 0; margin-bottom: 0.5rem; }
+  .value-card p { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+  .benefits-grid-ai {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Tarjetas un poco más pequeñas */
+    gap: 1rem; /* Gap un poco menor */
+  }
+  .benefit-card-ai {
+    background-color: transparent; /* Sin fondo para diferenciarlas */
+    padding: 1rem;
+    border: 1px solid #ced4da; /* Borde sutil */
+    border-radius: 6px;
+    text-align: left;
+  }
+  .benefit-card-ai h5 { font-size: 1.1rem; color: #0056b3; margin-top: 0; margin-bottom: 0.5rem; }
+  .benefit-card-ai p { font-size: 0.9rem; color: #495057; line-height: 1.5; margin-bottom:0; }
+
+
+  .service-cta-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1rem; }
+  .service-cta-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .cta-button.large-cta { padding: 0.9rem 2.2rem; font-size: 1.15rem; background-color: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; }
+  .cta-button.large-cta:hover { background-color: #000; }
+
+  @media (max-width: 767px) {
+    .service-hero h1 { font-size: 2.3rem; }
+    .service-hero .sub-service-name { font-size: 1.3rem; }
+    .service-hero .lead { font-size: 1.15rem; }
+    .section-title-dark, .benefits-subheader { font-size: 1.9rem; }
+    .value-prop-grid, .benefits-grid-ai { grid-template-columns: 1fr; }
+  }
+</style>
