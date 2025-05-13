@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
+    "dependencies": {
     "astro": "^5.7.12"
   }
 }
