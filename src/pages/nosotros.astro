@@ -8,9 +8,7 @@ const contactEmail = "info@stacksolver.tech";
 const clarisPartnerProfileUrl = "https://www.claris.com/partners/profile/company.20000006479/";
 const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
 
-// IMPORTANTE: Reemplaza esto con la URL base de tu sitio desplegado en Amplify
-const siteBaseUrl = "https://main.d32nw37hm0xjtx.amplifyapp.com"; 
-const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
+// Ya no necesitamos siteBaseUrl ni thankYouPageUrl para la redirección _next con AJAX
 ---
 
 <BaseLayout title={pageTitle}>
@@ -66,8 +64,10 @@ const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
         <div class="contact-content-wrapper">
           <div class="form-container">
             <h3>Envíanos un Mensaje</h3>
+            {/* <!-- MODIFICACIÓN: Añadimos un ID al formulario para seleccionarlo con JS --> */}
             <form 
-              action={formspreeEndpoint} 
+              id="contactForm" 
+              action={formspreeEndpoint}  {/* action y method aún son útiles como fallback si JS falla */}
               method="POST" 
               class="contact-form" 
             >
@@ -93,10 +93,14 @@ const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
               </div>
               
               <input type="hidden" name="_subject" value="Nuevo Mensaje de Contacto desde Stacksolver.tech" />
-              {/* Redirección a página de gracias personalizada. ASEGÚRATE DE QUE thankYouPageUrl es una URL absoluta */}
-              <input type="hidden" name="_next" value={thankYouPageUrl} />
+              {/* <!-- ELIMINAMOS _next ya que AJAX manejará el mensaje de éxito -->
+              <input type="hidden" name="_next" value={thankYouPageUrl} /> 
+              --> */}
               
               <button type="submit" class="cta-button form-submit-button">Enviar Mensaje</button>
+              
+              {/* <!-- NUEVO: Contenedor para mensajes de estado del formulario --> */}
+              <div id="formStatus" class="form-status-message" aria-live="polite"></div>
             </form>
           </div>
 
@@ -117,7 +121,73 @@ const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
   </main>
 </BaseLayout>
 
+{/* <!-- INICIO: Script para envío AJAX del formulario --> */}
+<script define:vars={{ formspreeEndpoint }}>
+  const form = document.getElementById('contactForm');
+  const statusMessage = document.getElementById('formStatus');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  if (form) {
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevenir el envío tradicional
+      
+      const formData = new FormData(form);
+      const originalButtonText = submitButton.textContent;
+
+      // Mostrar mensaje de "Enviando..." y deshabilitar botón
+      statusMessage.textContent = 'Enviando mensaje...';
+      statusMessage.className = 'form-status-message status-sending';
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+
+      try {
+        const response = await fetch(form.action, { // Usamos form.action que tiene el endpoint
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json' // Pedir respuesta JSON a Formspree
+          }
+        });
+
+        if (response.ok) {
+          // Éxito
+          statusMessage.textContent = '¡Gracias! Tu mensaje ha sido enviado correctamente.';
+          statusMessage.className = 'form-status-message status-success';
+          form.reset(); // Limpiar el formulario
+          setTimeout(() => { // Opcional: Limpiar mensaje de éxito después de unos segundos
+            statusMessage.textContent = '';
+            statusMessage.className = 'form-status-message';
+          }, 5000);
+        } else {
+          // Error en la respuesta de Formspree (ej. error de validación del lado del servidor)
+          const data = await response.json();
+          if (data.errors && data.errors.length > 0) {
+            statusMessage.textContent = data.errors.map(error => error.message).join(', ');
+          } else if (data.error) {
+             statusMessage.textContent = data.error;
+          } else {
+            statusMessage.textContent = 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.';
+          }
+          statusMessage.className = 'form-status-message status-error';
+        }
+      } catch (error) {
+        // Error de red u otro error de JavaScript
+        console.error('Error al enviar el formulario:', error);
+        statusMessage.textContent = 'Error de conexión. Por favor, verifica tu internet e inténtalo de nuevo.';
+        statusMessage.className = 'form-status-message status-error';
+      } finally {
+        // Rehabilitar botón y restaurar texto original
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  }
+</script>
+{/* <!-- FIN: Script para envío AJAX del formulario --> */}
+
+
 <style is:global>
+  /* ... (Todos tus estilos existentes van aquí SIN CAMBIOS) ... */
   .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .narrow-container { max-width: 800px; }
@@ -168,28 +238,32 @@ const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
   .contact-form textarea::placeholder { color: #95a5a6; }
   .contact-form textarea { resize: vertical; }
 
-  /* --- ESTILOS DEL BOTÓN ACTUALIZADOS --- */
   .cta-button.form-submit-button { 
-    background-color: #ffffff; /* Fondo blanco */
-    color: #2c3e50; /* Texto oscuro (el mismo que el fondo .dark-bg) */
-    border: 1px solid #bdc3c7; /* Borde sutil */
+    background-color: #ffffff; 
+    color: #2c3e50; 
+    border: 1px solid #bdc3c7; 
     cursor: pointer;
-    padding: 0.8rem 1.8rem; /* Más padding para hacerlo más grande */
-    font-size: 1.1rem; /* Fuente un poco más grande */
+    padding: 0.8rem 1.8rem; 
+    font-size: 1.1rem; 
     font-weight: bold;
     border-radius: 5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    display: inline-block; /* Asegurar que el padding se aplique bien */
-    width: auto; /* Ajustar al contenido */
+    display: inline-block; 
+    width: auto; 
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
   }
   .cta-button.form-submit-button:hover { 
-    background-color: #ecf0f1; /* Un gris muy claro al pasar el mouse */
-    color: #0056b3; /* Texto azul oscuro al pasar el mouse */
+    background-color: #ecf0f1; 
+    color: #0056b3; 
     border-color: #0056b3;
   }
-  /* --- FIN DE ESTILOS DEL BOTÓN ACTUALIZADOS --- */
+  .cta-button.form-submit-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    border-color: #cccccc;
+  }
 
   .info-container { text-align: center; }
   .contact-details { list-style: none; padding: 0; display: inline-block; text-align: left; }
@@ -197,6 +271,31 @@ const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
   .contact-details .icon { font-size: 1.5rem; margin-right: 1rem; color: #007bff; }
   .contact-details a { color: #ecf0f1; text-decoration: none; }
   .contact-details a:hover { color: #007bff; text-decoration: underline; }
+
+  /* <!-- NUEVO: Estilos para el mensaje de estado del formulario --> */
+  .form-status-message {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  .form-status-message.status-sending {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+  }
+  .form-status-message.status-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+  }
+  .form-status-message.status-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+
 
   @media (max-width: 991px) {
     .nosotros-contacto-page .content-grid { grid-template-columns: 1fr; }
@@ -208,7 +307,7 @@ const thankYouPageUrl = "https://www.google.com"; // PRUEBA DE REDIRECCIÓN
     .dark-bg .section-header p { max-width: 90%; }
     .contact-container-custom { padding-left: 0.8rem; padding-right: 0.8rem; }
     .cta-button.form-submit-button {
-      width: 100%; /* En móvil, hacer que el botón ocupe todo el ancho puede ser bueno */
+      width: 100%; 
       padding: 1rem;
     }
   }
