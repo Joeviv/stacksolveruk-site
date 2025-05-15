@@ -1,15 +1,17 @@
 ---
 // src/components/Navigation.astro
+
+// Define navigation links with updated English text and paths
 const navLinks = [
-  { href: "/", text: "Inicio" },
-  { href: "/productos", text: "Productos" },
-  { href: "/industrias", text: "Industrias" },
-  { href: "/estrategia-digital", text: "Estrategia Digital" },
-  { href: "/nosotros", text: "Nosotros" }
+  { href: "/", text: "Home" },
+  { href: "/services", text: "Services" }, // UPDATED from /productos
+  { href: "/industries", text: "Industries" },
+  { href: "/digital-strategy", text: "Digital Strategy" }, // UPDATED from /estrategia-digital
+  { href: "/about-us", text: "About Us" } // UPDATED from /nosotros
 ];
 ---
 
-<nav class="main-navigation" aria-label="Navegación Principal">
+<nav class="main-navigation" aria-label="Main Navigation">
   <ul id="navigation-menu-desktop" class="navigation-menu-desktop">
     {navLinks.map(link => (
       <li>
@@ -21,7 +23,7 @@ const navLinks = [
   </ul>
 
   <button class="menu-toggle" aria-expanded="false" aria-controls="navigation-menu-mobile">
-    <span class="sr-only">Abrir menú</span>
+    <span class="sr-only">Open menu</span> {/* Translated sr-only text */}
     <span class="hamburger-icon">
       <span class="line line1"></span>
       <span class="line line2"></span>
@@ -43,24 +45,48 @@ const navLinks = [
 <style>
   .main-navigation {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Align items to the end (right) */
     align-items: center;
-    /* No necesitamos position:relative aquí si el menú móvil es fixed */
+    /* No need for position:relative here if the mobile menu is fixed */
   }
 
-  /* --- ESTILOS PARA ESCRITORIO (BASE) --- */
+  /* --- DESKTOP STYLES (BASE) --- */
   .navigation-menu-desktop {
     display: flex; 
-    list-style: none; padding: 0; margin: 0;
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
   }
-  .navigation-menu-desktop li { margin-left: 1.8rem; }
-  .navigation-menu-desktop li:first-child { margin-left: 0; }
-  .nav-link-desktop { color: #e0e0e0; text-decoration: none; font-size: 1rem; padding: 0.5rem 0; transition: color 0.2s ease; }
-  .nav-link-desktop:hover, .nav-link-desktop:focus { color: #ffffff; }
+  .navigation-menu-desktop li { 
+    margin-left: 1.8rem; 
+  }
+  .navigation-menu-desktop li:first-child { 
+    margin-left: 0; 
+  }
+  .nav-link-desktop { 
+    color: #e0e0e0; 
+    text-decoration: none; 
+    font-size: 1rem; 
+    padding: 0.5rem 0; 
+    transition: color 0.2s ease; 
+  }
+  .nav-link-desktop:hover, 
+  .nav-link-desktop:focus { 
+    color: #ffffff; 
+  }
 
-  .menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; padding: 0.5rem; z-index: 10001; /* MUY ALTO */ position: relative;}
+  .menu-toggle { 
+    display: none; /* Hidden on desktop */
+    background: none; 
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+    padding: 0.5rem; 
+    z-index: 10001; /* VERY HIGH, to be above mobile menu when closed */
+    position: relative; /* For z-index stacking context if needed */
+  }
 
-  /* --- ESTILOS PARA MÓVIL --- */
+  /* --- MOBILE STYLES --- */
   .navigation-menu-mobile {
     display: flex; 
     flex-direction: column;
@@ -69,37 +95,35 @@ const navLinks = [
     padding: 0; 
     margin: 0;
     
-    /* ****** CAMBIO PRINCIPAL AQUÍ ****** */
-    position: fixed; /* Posicionado relativo a la ventana */
-    top: 0;          /* Desde la parte superior de la ventana */
+    position: fixed; /* Positioned relative to the viewport */
+    top: 0;          /* From the top of the viewport */
     left: 0;
-    width: 100vw;    /* Ancho completo de la ventana */
-    height: 100vh;   /* Alto completo de la ventana */
-    /* ****** FIN CAMBIO PRINCIPAL ****** */
+    width: 100vw;    /* Full viewport width */
+    height: 100vh;   /* Full viewport height */
     
-    background-color: rgba(44, 62, 80, 0.98); /* Fondo oscuro, ligeramente transparente */
-    z-index: 10000; /* MUY ALTO, para estar encima de todo */
+    background-color: rgba(44, 62, 80, 0.98); /* Dark, slightly transparent background */
+    z-index: 10000; /* VERY HIGH, to be above everything else */
     
-    /* Control de visibilidad con transform y opacity para una transición suave */
+    /* Visibility control with transform and opacity for a smooth transition */
     opacity: 0;
     visibility: hidden;
-    transform: translateX(100%); /* Inicia fuera de la pantalla a la derecha */
+    transform: translateX(100%); /* Starts off-screen to the right */
     transition: opacity 0.3s ease, visibility 0s linear 0.3s, transform 0.3s ease-in-out; 
   }
 
   .navigation-menu-mobile.is-open {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0%); /* Se desliza a la vista desde la derecha */
-    padding-top: 70px; /* Espacio para no superponerse con el header si el header es fijo también */
-                       /* Ajusta 70px a la altura de tu header */
-    overflow-y: auto; /* Scroll si el contenido es más largo */
+    transform: translateX(0%); /* Slides into view from the right */
+    padding-top: 70px; /* Space to avoid overlapping with the header if the header is also fixed */
+                       /* Adjust 70px to your header's height */
+    overflow-y: auto; /* Scroll if content is longer */
   }
 
   .navigation-menu-mobile li {
     margin: 0;
-    width: 90%; /* Un poco menos del ancho para que no pegue a los bordes */
-    max-width: 400px; /* Ancho máximo para los items */
+    width: 90%; /* Slightly less than full width so it doesn't touch the edges */
+    max-width: 400px; /* Max width for items */
     text-align: center;
   }
   .nav-link-mobile { 
@@ -107,31 +131,66 @@ const navLinks = [
     padding: 1rem 1rem; 
     color: #ecf0f1; 
     text-decoration: none;
-    font-size: 1.2rem; /* Un poco más grande para overlay */
+    font-size: 1.2rem; /* Slightly larger for overlay */
     font-weight: 500;
     border-bottom: 1px solid rgba(255,255,255,0.1); 
-    margin-bottom: 0.5rem; /* Espacio entre items */
+    margin-bottom: 0.5rem; /* Space between items */
     border-radius: 4px;
   }
-  .navigation-menu-mobile li:last-child .nav-link-mobile { border-bottom: none; }
-  .nav-link-mobile:hover, .nav-link-mobile:focus { 
+  .navigation-menu-mobile li:last-child .nav-link-mobile { 
+    border-bottom: none; 
+  }
+  .nav-link-mobile:hover, 
+  .nav-link-mobile:focus { 
     background-color: rgba(52, 73, 94, 0.8); 
     color: #ffffff; 
   }
 
-  @media (max-width: 767px) {
-    .navigation-menu-desktop { display: none; } 
-    .menu-toggle { display: block; } 
+  @media (max-width: 767px) { /* Mobile breakpoint */
+    .navigation-menu-desktop { 
+      display: none; 
+    } 
+    .menu-toggle { 
+      display: block; 
+    } 
   }
 
-  /* Icono Hamburguesa */
-  .hamburger-icon { width: 24px; height: 18px; position: relative; display: inline-block; }
-  .hamburger-icon .line { display: block; position: absolute; height: 3px; width: 100%; background: #fff; border-radius: 3px; opacity: 1; left: 0; transform: rotate(0deg); transition: .25s ease-in-out; }
-  .line1 { top: 0px; } .line2 { top: 7px; } .line3 { top: 14px; }
+  /* Hamburger Icon */
+  .hamburger-icon { 
+    width: 24px; 
+    height: 18px; 
+    position: relative; 
+    display: inline-block; 
+  }
+  .hamburger-icon .line { 
+    display: block; 
+    position: absolute; 
+    height: 3px; 
+    width: 100%; 
+    background: #fff; 
+    border-radius: 3px; 
+    opacity: 1; 
+    left: 0; 
+    transform: rotate(0deg); 
+    transition: .25s ease-in-out; 
+  }
+  .line1 { top: 0px; } 
+  .line2 { top: 7px; } 
+  .line3 { top: 14px; }
   .menu-toggle[aria-expanded="true"] .line1 { top: 7px; transform: rotate(135deg); }
   .menu-toggle[aria-expanded="true"] .line2 { opacity: 0; left: -24px; }
   .menu-toggle[aria-expanded="true"] .line3 { top: 7px; transform: rotate(-135deg); }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+  .sr-only { /* Screen-reader only text */
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip: rect(0, 0, 0, 0); 
+    white-space: nowrap; 
+    border-width: 0; 
+  }
 </style>
 
 <script>
@@ -143,6 +202,17 @@ const navLinks = [
       const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
       menuToggle.setAttribute('aria-expanded', String(!isExpanded));
       navMenuMobile.classList.toggle('is-open'); 
+    });
+
+    // Add event listener to close menu when a link is clicked (optional but good UX)
+    const mobileLinks = navMenuMobile.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenuMobile.classList.contains('is-open')) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          navMenuMobile.classList.remove('is-open');
+        }
+      });
     });
   }
 </script>

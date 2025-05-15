@@ -1,106 +1,106 @@
 ---
 // Astro Frontmatter
-// Define las props que este componente espera (número, título, descripción y la URL del video MP4)
+// Define the props this component expects (number, title, description, and the MP4 video URL)
 interface Props {
     number: number;
     title: string;
     description: string;
-    videoUrl: string; // Prop para la URL directa del video MP4
+    videoUrl: string; // Prop for the direct MP4 video URL
 }
 const { number, title, description, videoUrl } = Astro.props as Props;
 
-// Si tienes una imagen de miniatura separada, podrías definirla aquí o pasarla como otra prop
-// const thumbnailUrl = 'ruta/a/tu/miniatura.jpg';
+// If you have a separate thumbnail image, you could define it here or pass it as another prop
+// const thumbnailUrl = 'path/to/your/thumbnail.jpg';
 
 ---
 
-{/* --- Estructura HTML para una Tarjeta de Característica --- */}
-<article class="feature-card"> {/* Usamos <article> por semántica */}
-  {/* Número de la tarjeta */}
+{/* --- HTML Structure for a Feature Card --- */}
+<article class="feature-card"> {/* Using <article> for semantics */}
+  {/* Card number */}
   <div class="card-number">{number}</div>
 
-  <!-- Contenedor para título y descripción -->
+  <!-- Container for title and description -->
   <div class="card-content">
-    <h3>{title}</h3> <!-- Título de la tarjeta -->
-    <p>{description}</p> <!-- Descripción de la tarjeta -->
+    <h3>{title}</h3> <!-- Card title -->
+    <p>{description}</p> <!-- Card description -->
   </div>
 
-  <!-- Área para el Video MP4 -->
-  <div class="video-area"> {/* Contenedor para el video */}
-    <!-- Usamos la etiqueta <video> directamente, mostrando un placeholder si no hay URL -->
+  <!-- Area for the MP4 Video -->
+  <div class="video-area"> {/* Container for the video */}
+    <!-- Using the <video> tag directly, showing a placeholder if no URL -->
     {videoUrl ? (
         <video autoplay loop muted playsinline preload="metadata"> {/* <-- Ensure these attributes are here, and 'controls' is REMOVED */}
-            <source src={videoUrl} type="video/mp4" /> {/* Fuente del video */}
-            Tu navegador no soporta la etiqueta de video. <!-- Mensaje de fallback -->
+            <source src={videoUrl} type="video/mp4" /> {/* Video source */}
+            Your browser does not support the video tag. <!-- Fallback message -->
         </video>
     ) : (
-        <!-- Si no hay URL de video, mostrar un placeholder o dejarlo vacío -->
-        <div class="video-placeholder">No hay video disponible</div> <!-- Ejemplo de placeholder -->
+        <!-- If no video URL, show a placeholder or leave it empty -->
+        <div class="video-placeholder">Video not available</div> <!-- Example placeholder -->
     )}
   </div>
 </article>
-<style> /* <-- This line should start right after </article> with nothing in between */
-  /* Estilos para la Tarjeta de Característica */
+<style>
+  /* Styles for the Feature Card */
   .feature-card {
-    background-color: white; /* Fondo blanco */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 2rem; /* Espacio interior */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
-    display: flex; /* Usar flexbox para layout dentro de la tarjeta */
-    flex-direction: column; /* Apilar contenido verticalmente */
-    align-items: center; /* Alinear elementos al centro horizontalmente */
-    text-align: center; /* Centrar el texto dentro de la tarjeta */
-    overflow: hidden; /* Oculta cualquier contenido que se salga de la tarjeta */
+    background-color: white; /* White background */
+    border-radius: 8px; /* Rounded borders */
+    padding: 2rem; /* Inner spacing */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    display: flex; /* Use flexbox for layout within the card */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Align items to the centre horizontally */
+    text-align: center; /* Centre text within the card */
+    overflow: hidden; /* Hide any content that overflows the card */
     /* height: 100%; // Optional: ensure all cards have the same height if content varies */
   }
 
   .card-number {
-    font-size: 3rem; /* Tamaño grande para el número */
+    font-size: 3rem; /* Large size for the number */
     font-weight: bold;
-    color: #007bff; /* Ejemplo de color de acento (azul) */
-    margin-bottom: 1rem; /* Espacio debajo del número */
+    color: #007bff; /* Example accent colour (blue) */
+    margin-bottom: 1rem; /* Space below the number */
   }
 
   .card-content {
-      margin-bottom: 1rem; /* Espacio entre descripción y área de video */
-      width: 100%; /* Asegurar que el contenido toma el ancho completo */
-      text-align: center; /* Centrar texto dentro del contenido */
+      margin-bottom: 1rem; /* Space between description and video area */
+      width: 100%; /* Ensure content takes full width */
+      text-align: center; /* Centre text within content */
   }
 
   .card-content h3 {
-    font-size: 1.5rem; /* Tamaño del título */
+    font-size: 1.5rem; /* Title size */
     margin-top: 0;
-    margin-bottom: 0.5rem; /* Espacio debajo del título */
+    margin-bottom: 0.5rem; /* Space below title */
     color: #333;
-    text-align: center; /* Centrar título */
+    text-align: center; /* Centre title */
   }
 
   .card-content p {
-    font-size: 1rem; /* Tamaño de la descripción */
+    font-size: 1rem; /* Description size */
     color: #555;
-    line-height: 1.5; /* Espaciado entre líneas */
-    text-align: center; /* Centrar descripción */
+    line-height: 1.5; /* Line spacing */
+    text-align: center; /* Centre description */
   }
 
-  /* --- Estilos para la Área de Video MP4 --- */
+  /* --- Styles for the MP4 Video Area --- */
   .video-area {
-      width: 100%; /* Tomar el ancho completo de la tarjeta */
+      width: 100%; /* Take full width of the card */
       position: relative;
-      cursor: pointer; /* Puede ser interactivo (ej: clic para reproducir/pausar) */
+      cursor: pointer; /* Can be interactive (e.g., click to play/pause) */
       overflow: hidden;
       border-radius: 4px;
-      /* --- Forzar aspecto ratio 16:9 --- */
+      /* --- Force 16:9 aspect ratio --- */
       padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100 = 56.25) */
       height: 0; /* Set height to 0 when using padding-bottom for aspect ratio */
   }
 
-  /* Estilos para la etiqueta <video> dentro del área (se posicionará sobre el padding) */
+  /* Styles for the <video> tag within the area (will be positioned over the padding) */
   .video-area video {
-      position: absolute; /* Posicionar absolutamente sobre el padding */
+      position: absolute; /* Position absolutely over the padding */
       top: 0;
       left: 0;
-      width: 100%; /* Tomar el 100% del contenedor padre (.video-area) */
-      height: 100%; /* Tomar el 100% del contenedor padre */
+      width: 100%; /* Take 100% of the parent container (.video-area) */
+      height: 100%; /* Take 100% of the parent container */
       display: block;
   }
 
@@ -133,5 +133,4 @@ const { number, title, description, videoUrl } = Astro.props as Props;
   //     }
   //   });
   // }
-
 </script>

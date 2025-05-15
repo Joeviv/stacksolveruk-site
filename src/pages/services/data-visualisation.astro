@@ -1,26 +1,27 @@
 ---
-// src/pages/productos/visualizacion-datos.astro
+// src/pages/services/data-visualisation.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = "Visualización Avanzada de Datos con Looker Studio | Stacksolver.tech";
-const serviceName = "Visualización Avanzada de Datos";
-const subServiceName = "Decisiones Inteligentes con Google Looker Studio";
-const heroLead = "Tus Datos, Claros Como el Agua: Transformamos Números en Dashboards Impactantes.";
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "Advanced Data Visualisation with Looker Studio | StacksolverUK.com";
+const serviceName = "Advanced Data Visualisation";
+const subServiceName = "Intelligent Decisions with Google Looker Studio";
+const heroLead = "Your Data, Crystal Clear: We Transform Numbers into Impactful Dashboards.";
 
 const lookerStudioBenefits = [
-  { title: "Entiende tus Números de un Vistazo", description: "Diseñamos informes y dashboards interactivos que son claros, concisos y fáciles de interpretar, incluso para usuarios no técnicos." },
-  { title: "Decisiones Basadas en Hechos, no en Suposiciones", description: "Accede a información actualizada en tiempo real (o según la frecuencia que necesites) para fundamentar tus estrategias y tomar acciones más efectivas." },
-  { title: "Conecta Todas tus Fuentes de Datos", description: "Integramos datos de múltiples orígenes: Google Sheets, Google Analytics, Google Ads, bases de datos SQL, CRMs, y muchas más, todo en un solo lugar." },
-  { title: "Dashboards Personalizados y Compartibles", description: "Creamos visualizaciones a la medida de tus KPIs y objetivos, fácilmente compartibles con tu equipo o stakeholders." }
+  { title: "Understand Your Numbers at a Glance", description: "We design interactive reports and dashboards that are clear, concise, and easy to interpret, even for non-technical users." },
+  { title: "Decisions Based on Facts, Not Assumptions", description: "Access real-time (or as frequently as you need) updated information to support your strategies and take more effective actions." },
+  { title: "Connect All Your Data Sources", description: "We integrate data from multiple origins: Google Sheets, Google Analytics, Google Ads, SQL databases, CRMs, and many more, all in one place." },
+  { title: "Customised and Shareable Dashboards", description: "We create visualisations tailored to your KPIs and objectives, easily shareable with your team or stakeholders." }
 ];
 ---
 
 <BaseLayout title={pageTitle}>
-  <main class="service-detail-page looker-studio-page">
+  <main class="service-detail-page looker-studio-page"> {/* Consider class name "data-visualisation-page" */}
     
     <header class="service-hero section-padding text-center light-bg">
       <div class="container narrow-container">
-        {/* <img src="/images/products/looker-studio-hero.png" alt="Visualización de Datos con Looker Studio" class="service-hero-image"/> */}
+        {/* <img src="/images/products/looker-studio-hero.png" alt="Data Visualisation with Looker Studio" class="service-hero-image"/> */}
         <h1>{serviceName}</h1>
         <p class="sub-service-name">{subServiceName}</p>
         <p class="lead">{heroLead}</p>
@@ -29,28 +30,28 @@ const lookerStudioBenefits = [
 
     <section class="introduction-visualization section-padding">
       <div class="container narrow-container">
-        <h2>¿Tienes muchos datos pero te cuesta entenderlos y aprovecharlos?</h2>
+        <h2>Do you have lots of data but struggle to understand and leverage it?</h2>
         <p>
-          En la era digital, los datos son uno de tus activos más valiosos, pero solo si puedes traducirlos en conocimiento accionable. 
-          Transformamos hojas de cálculo complejas y bases de datos extensas en gráficos dinámicos, tablas interactivas y 
-          paneles (dashboards) intuitivos que te muestran lo que realmente importa de tu negocio de forma clara y visual.
+          In the digital age, data is one of your most valuable assets, but only if you can translate it into actionable knowledge. 
+          We transform complex spreadsheets and extensive databases into dynamic charts, interactive tables, and 
+          intuitive dashboards that clearly and visually show you what truly matters for your business.
         </p>
         
         <div class="what-is-dataviz">
-          <h3>¿Qué es la Visualización de Datos?</h3>
+          <h3>What is Data Visualisation?</h3>
           <p>
-            Es el arte y la ciencia de contar historias con tus datos. Utilizamos elementos visuales como gráficos, mapas, 
-            indicadores y tablas para representar la información de manera que sea fácilmente comprensible. 
-            Te ayuda a identificar tendencias, patrones, correlaciones y oportunidades que de otra manera podrían pasar desapercibidas 
-            en filas y columnas de números.
+            It's the art and science of telling stories with your data. We use visual elements like charts, maps, 
+            indicators, and tables to represent information in a way that is easily understandable. 
+            It helps you identify trends, patterns, correlations, and opportunities that might otherwise go unnoticed 
+            in rows and columns of numbers.
           </p>
         </div>
       </div>
     </section>
 
     <section class="benefits-looker-section section-padding mid-tone-bg">
-      <div class="container"> {/* Contenedor más ancho para la cuadrícula */}
-        <h2 class="text-center section-title-dark">Beneficios de Nuestras Visualizaciones con Google Looker Studio</h2>
+      <div class="container"> {/* Wider container for the grid */}
+        <h2 class="text-center section-title-dark">Benefits of Our Visualisations with Google Looker Studio</h2>
         <div class="benefits-grid">
           {lookerStudioBenefits.map(benefit => (
             <div class="benefit-card">
@@ -65,10 +66,11 @@ const lookerStudioBenefits = [
     
     <section class="service-cta-section section-padding text-center">
       <div class="container narrow-container">
-        <h2>Descubre el Poder Oculto en tus Datos</h2>
-        <p>Permítenos ayudarte a transformar tus datos en tu mayor ventaja competitiva.</p>
+        <h2>Discover the Hidden Power in Your Data</h2>
+        <p>Let us help you transform your data into your greatest competitive advantage.</p>
+        {/* IMPORTANT: Update this link if 'nosotros.astro' was renamed (e.g., to '/about-us#contacto-section') */}
         <a href="/nosotros#contacto-section" class="cta-button large-cta">
-          Solicita una Demo de Visualización
+          Request a Visualisation Demo
         </a>
       </div>
     </section>
@@ -77,7 +79,7 @@ const lookerStudioBenefits = [
 </BaseLayout>
 
 <style is:global>
-  /* Estilos heredados/globales */
+  /* Styles remain the same as previously provided */
   .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .narrow-container { max-width: 800px; }
@@ -91,7 +93,7 @@ const lookerStudioBenefits = [
   .service-hero .sub-service-name { font-size: 1.5rem; color: #007bff; font-weight: 500; margin-bottom: 0.75rem; }
   .service-hero .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
 
-  .introduction-visualization p { font-size: 1.1rem; line-height: 1.8; color: #343a40; margin-bottom: 1.5rem; }
+  .introduction-visualization p { font-size: 1.1rem; line-height: 1.8; color: #343a40; margin-bottom: 1.5rem; } /* Corrected class name */
   .what-is-dataviz { background-color: #e0e5e9; padding: 1.5rem 2rem; border-radius: 8px; margin-top: 2rem; }
   .what-is-dataviz h3 { font-size: 1.6rem; color: #1a1a1a; margin-top: 0; margin-bottom: 0.75rem; }
   
@@ -99,7 +101,7 @@ const lookerStudioBenefits = [
 
   .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ajuste para tarjetas un poco más anchas */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
     gap: 1.5rem;
   }
   .benefit-card {

@@ -5,22 +5,23 @@ import HeroSection from '../components/HeroSection.astro';
 import HomeIntroSections from '../components/HomeIntroSections.astro';
 import DifferentiatorSection from '../components/DifferentiatorSection.astro';
 import IntegrationsSection from '../components/IntegrationsSection.astro';
-// import FeaturesGrid from '../components/FeaturesGrid.astro'; // <-- ELIMINADA IMPORTACIÓN
+// import FeaturesGrid from '../components/FeaturesGrid.astro'; // <-- IMPORT REMOVED (as per original)
 
-const pageTitle = "Stacksolver.tech: Soluciones Tecnológicas Inteligentes para Impulsar tu Negocio.";
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "StacksolverUK.com: Intelligent Technology Solutions to Boost Your Business.";
 ---
 <BaseLayout title={pageTitle}>
   <main>
     <HeroSection />
-    <HomeIntroSections /> {/* Contiene "Nuestros Servicios Clave" (con videos) y "Problema/Solución" */}
+    <HomeIntroSections /> {/* Contains "Our Key Services" (with videos) and "Problem/Solution" */}
     <DifferentiatorSection />
-    <IntegrationsSection /> {/* Con su placeholder de imagen */}
-    {/* <FeaturesGrid /> */} {/* <-- ELIMINADA RENDERIZACIÓN */}
+    <IntegrationsSection /> {/* With its image placeholder */}
+    {/* <FeaturesGrid /> */} {/* <-- RENDERING REMOVED (as per original) */}
   </main>
 </BaseLayout>
 
 <style>
   main {
-    /* Estilos si son necesarios */
+    /* Styles if needed */
   }
 </style>

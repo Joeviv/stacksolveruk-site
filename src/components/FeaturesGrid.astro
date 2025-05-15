@@ -1,23 +1,24 @@
 ---
 import FeatureCard from './FeatureCard.astro';
 
-// Datos para las tarjetas de característica
-const featureCardsDataEs = [
-    { number: 1, title: 'Transformación Empresarial y Gestión del Cambio', description: 'Empresas de todas las industrias pueden beneficiarse de un enfoque de transformación...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
-    { number: 2, title: 'Resiliencia Organizacional y Gestión de la Cadena de Suministro', description: 'El entorno empresarial es cada vez más volátil...', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
-    { number: 3, title: 'Liderazgo', description: 'La transformación digital requiere ajustar la forma en que los líderes interactúan con las personas...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
-    { number: 4, title: 'Mejoraaaa Continua y Kaizen', description: 'Implementación de procesos de mejora continua para optimización operativa', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
-    { number: 5, title: 'Automatización de Procesos', description: 'Soluciones inteligentes para automatizar flujos de trabajo críticos', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
-    { number: 6, title: 'Analítica Avanzada', description: 'Uso de datos para impulsar decisiones estratégicas y operativas', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' }
+// Data for the feature cards - Translated to British English
+const featureCardsData = [
+    { number: 1, title: 'Business Transformation and Change Management', description: 'Companies across all industries can benefit from a transformation-focused approach...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
+    { number: 2, title: 'Organisational Resilience and Supply Chain Management', description: 'The business environment is increasingly volatile...', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
+    { number: 3, title: 'Leadership in the Digital Age', description: 'Digital transformation requires adjusting how leaders interact with their people...', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
+    { number: 4, title: 'Continuous Improvement and Kaizen', description: 'Implementation of continuous improvement processes for operational optimisation.', videoUrl: 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4' },
+    { number: 5, title: 'Process Automation', description: 'Intelligent solutions to automate critical workflows.', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' },
+    { number: 6, title: 'Advanced Analytics', description: 'Using data to drive strategic and operational decisions.', videoUrl: 'https://comercial-media.s3.amazonaws.com/cri.mp4' }
 ];
 
-const dataToUse = featureCardsDataEs;
+// Using the translated data
+const dataToUse = featureCardsData; 
 ---
 
 <section class="features-grid-section">
   <div class="section-header">
-    <h2>Cómo Habilitamos la Transformación Organizacional</h2>
-    <p>Ofrecemos varias propuestas de valor como parte de nuestros servicios de Excelencia Organizacional y Transformación.</p>
+    <h2>How We Enable Organisational Transformation</h2>
+    <p>We offer several value propositions as part of our Organisational Excellence and Transformation services.</p>
   </div>
 
   <div class="grid-container">
@@ -58,7 +59,7 @@ const dataToUse = featureCardsDataEs;
 
   .grid-container {
     display: grid;
-    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-columns: 1fr; /* Single column */
     gap: 1.5rem;
     max-width: 700px;
     margin: 0 auto;

@@ -5,33 +5,33 @@ import Navigation from './Navigation.astro'; // Import Navigation
 <header>
   {/* Left Side: Site Logo / Title */}
   <div class="site-logo">
-    <a href="/">StackSolver</a> {/* The StackSolver link on the left */}
+    <a href="/">StacksolverUK</a> {/* The StacksolverUK link on the left - UPDATED */}
   </div>
 
   {/* Right Side: Navigation */}
   <div class="header-nav-area">
-    {/* Usamos el componente Navigation. QUITAMOS la directiva client:load */}
-    <Navigation /> {/* <-- Directive client:load REMOVED */}
+    {/* Using the Navigation component. client:load directive was already removed as per original comment */}
+    <Navigation /> 
   </div>
 
 </header>
 
 <style>
   header {
-    background-color: #1a1a1a;
+    background-color: #1a1a1a; /* Dark background for header */
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens if necessary */
     color: white;
   }
 
-  .site-logo a { /* Style for the StackSolver link on the left */
+  .site-logo a { /* Style for the StacksolverUK link on the left */
       text-decoration: none;
       color: white; /* Keep white */
-      font-size: 1rem; /* Standard size */
-      font-weight: normal; /* Normal weight */
+      font-size: 1.5rem; /* Slightly larger for better visibility */
+      font-weight: bold; /* Make it bold */
   }
 
   .header-nav-area {

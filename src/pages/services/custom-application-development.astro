@@ -1,0 +1,185 @@
+---
+// src/pages/services/custom-application-development.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "Custom Application Development with Claris FileMaker | StacksolverUK.com";
+const serviceName = "Bespoke Application Development"; // "Bespoke" is common in British English
+const subServiceName = "Powered by Claris FileMaker"; // Emphasises technology used
+
+// Array of solutions
+const clarisSolutions = [
+  { name: "GRC (Governance, Risk, and Compliance) Systems", description: "Keep your rules clear, identify and control issues, and ensure regulatory compliance, all in one place." },
+  { name: "Tailored ERP (Enterprise Resource Planning) Systems", description: "Connect and manage all important areas of your company so they work in harmony and you have full control." },
+  { name: "Process Management Solutions", description: "Make your work flow smoothly and more efficiently." },
+  { name: "Intelligent Financial Systems", description: "Control your budgets, income, and expenses with logic and a comprehensive overview." },
+  { name: "Inventory Management (No Surprises)", description: "Optimise your stock, your purchases, and avoid losses." },
+  { name: "Efficient Production Systems", description: "Closely monitor costs, materials, and times to produce better and faster." },
+  { name: "Comprehensive Human Resources Management", description: "From onboarding and training to development, payroll, and document management. Everything organised." },
+  { name: "Optimised Sales and Distribution Channels", description: "Streamline your sales and how you reach your customers." },
+  { name: "CRM (Customer and Supplier Relationship Management)", description: "Get to know your contacts thoroughly, manage sales opportunities, and offer support that delights." },
+  { name: "Knowledge Libraries & Document Management", description: "A central place for all your important documents and resources." },
+  { name: "Task and Project Management (Internal and External)", description: "Keep everything under control and achieve your goals." },
+  { name: "Specialised Industry Solutions", description: "Experience creating apps for Healthcare, Education, Manufacturing, and more. We understand your unique challenges." }
+];
+
+// This URL points to the Stacksolver (Colombia) Claris profile.
+// The text linking to it should reflect this context if StacksolverUK is not directly listed.
+const clarisPartnerProfileUrl = "https://www.claris.com/partners/profile/company.20000006479/";
+
+---
+
+<BaseLayout title={pageTitle}>
+  <main class="service-detail-page claris-filemaker-page">
+    
+    <header class="service-hero section-padding text-center light-bg">
+      <div class="container narrow-container">
+        <h1>{serviceName}</h1>
+        <p class="sub-service-name">{subServiceName}</p>
+        <p class="lead">
+          Tired of adapting your company to generic software? We create custom applications that perfectly fit your processes.
+        </p>
+      </div>
+    </header>
+
+    <section class="introduction-claris section-padding">
+      <div class="container narrow-container">
+        <p>
+          At StacksolverUK.com, we specialise in creating powerful business applications using Claris FileMaker, designed to optimise every corner of your operation. Our team leverages deep expertise (our wider group includes an <a href={clarisPartnerProfileUrl} target="_blank" rel="noopener noreferrer" class="claris-partner-link-inline">Official Claris Partner</a>) to deliver robust and tailored solutions. From complex ERP and GRC systems to industry-specific applications, we design software that works the way you want it to.
+        </p>
+        
+        <div class="what-is-claris">
+          <h3>What is Claris FileMaker?</h3>
+          <p>It's a leading Rapid Application Development (RAD) platform that enables us to quickly design, build, and deploy robust, secure, scalable, and user-friendly applications, fully customised to your needs. We can also assist with software procurement and licensing enquiries.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-showcase-section section-padding mid-tone-bg">
+      <div class="container">
+        <h2 class="text-center section-title-dark">Our Flagship Solutions with Claris FileMaker</h2>
+        <p class="text-center section-subtitle-dark">We create a wide range of applications to transform your business management:</p>
+        <div class="solutions-grid">
+          {clarisSolutions.map(solution => (
+            <div class="solution-card">
+              <span class="solution-icon">🧩</span>
+              <h4>{solution.name}</h4>
+              <p>{solution.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <section class="service-cta-section section-padding text-center">
+      <div class="container narrow-container">
+        <h2>Transform Your Management with a Bespoke App</h2>
+        <p>Leveraging our Claris FileMaker expertise, we are ready to build the solution your company needs. Let's talk!</p>
+        {/* IMPORTANT: Update this link if 'nosotros.astro' was renamed (e.g., to '/about-us#contacto-section') */}
+        <a href="/nosotros#contacto-section" class="cta-button large-cta">
+          Discuss Your Project
+        </a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* Styles remain the same as previously provided for this file */
+  .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .narrow-container { max-width: 800px; }
+  .text-center { text-align: center; }
+
+  .service-detail-page .light-bg { background-color: #f8f9fa; }
+  .service-detail-page .mid-tone-bg { background-color: #e9ecef; }
+
+  .service-hero { border-bottom: 1px solid #dee2e6; }
+  .service-hero h1 { font-size: 2.8rem; color: #1a1a1a; margin-bottom: 0.25rem; }
+  .service-hero .sub-service-name {
+    font-size: 1.5rem;
+    color: #007bff; /* Claris Blue or similar */
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .service-hero .lead { font-size: 1.3rem; color: #495057; line-height: 1.6; }
+
+  .introduction-claris p {
+    font-size: 1.1rem;
+    line-height: 1.8; 
+    color: #343a40;
+    margin-bottom: 1.5rem;
+  }
+  .claris-partner-link-inline {
+    color: #007bff;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .claris-partner-link-inline:hover {
+    text-decoration: underline;
+  }
+  .what-is-claris {
+    background-color: #e9ecef; 
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+  .what-is-claris h3 {
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 0.75rem; }
+  .section-subtitle-dark { font-size: 1.1rem; color: #495057; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;}
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; 
+  }
+  .solution-card {
+    background-color: #fff;
+    padding: 1.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  .solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.09);
+  }
+  .solution-icon {
+    font-size: 2rem; 
+    color: #007bff; 
+    margin-bottom: 0.75rem;
+  }
+  .solution-card h4 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  .solution-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1; 
+  }
+
+  .service-cta-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1rem; }
+  .service-cta-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
+  .cta-button.large-cta { padding: 0.9rem 2.2rem; font-size: 1.15rem; background-color: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; }
+  .cta-button.large-cta:hover { background-color: #000; }
+
+  @media (max-width: 767px) {
+    .service-hero h1 { font-size: 2.3rem; }
+    .service-hero .sub-service-name { font-size: 1.3rem; }
+    .service-hero .lead { font-size: 1.15rem; }
+    .section-title-dark { font-size: 1.9rem; }
+    .solutions-grid { grid-template-columns: 1fr; }
+  }
+</style>

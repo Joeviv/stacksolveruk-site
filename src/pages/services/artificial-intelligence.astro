@@ -1,26 +1,27 @@
 ---
-// src/pages/productos/inteligencia-artificial.astro
+// src/pages/services/artificial-intelligence.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = "Inteligencia Artificial y Machine Learning para Empresas | Stacksolver.tech";
-const serviceName = "Inteligencia Artificial y Machine Learning";
-const subServiceName = "IA Local, Segura y Enfocada en tus Resultados";
-const heroLead = "Llevamos la IA a tu empresa de forma práctica, segura y personalizada.";
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "Artificial Intelligence and Machine Learning for Businesses | StacksolverUK.com";
+const serviceName = "Artificial Intelligence and Machine Learning";
+const subServiceName = "Local, Secure AI Focused on Your Results";
+const heroLead = "We bring AI to your company in a practical, secure, and personalised way.";
 
 const aiBenefits = [
-  { title: "Decisiones Más Rápidas e Informadas", description: "Aprovecha el poder predictivo y analítico de la IA para tomar decisiones estratégicas con mayor confianza y velocidad." },
-  { title: "Automatización Inteligente de Procesos", description: "Libera a tu equipo de tareas repetitivas y complejas, permitiéndoles enfocarse en actividades de mayor valor añadido." },
-  { title: "Descubrimiento de Nuevas Oportunidades", description: "Identifica patrones, tendencias y insights ocultos en tus datos que pueden revelar nuevas líneas de negocio o mejoras operativas." },
-  { title: "Personalización Avanzada", description: "Desde la segmentación de clientes hasta la recomendación de productos, ofrece experiencias hiper-personalizadas que incrementan la lealtad." }
+  { title: "Faster and More Informed Decisions", description: "Leverage the predictive and analytical power of AI to make strategic decisions with greater confidence and speed." },
+  { title: "Intelligent Process Automation", description: "Free your team from repetitive and complex tasks, allowing them to focus on higher value-added activities." },
+  { title: "Discovery of New Opportunities", description: "Identify hidden patterns, trends, and insights in your data that can reveal new business lines or operational improvements." },
+  { title: "Advanced Personalisation", description: "From customer segmentation to product recommendations, offer hyper-personalised experiences that increase loyalty." }
 ];
 ---
 
 <BaseLayout title={pageTitle}>
-  <main class="service-detail-page ai-ml-page">
+  <main class="service-detail-page ai-ml-page"> {/* Consider class name "ai-ml-services-page" or similar */}
     
     <header class="service-hero section-padding text-center light-bg">
       <div class="container narrow-container">
-        {/* <img src="/images/products/ai-hero.png" alt="Inteligencia Artificial para Empresas" class="service-hero-image"/> */}
+        {/* <img src="/images/products/ai-hero.png" alt="Artificial Intelligence for Businesses" class="service-hero-image"/> */}
         <h1>{serviceName}</h1>
         <p class="sub-service-name">{subServiceName}</p>
         <p class="lead">{heroLead}</p>
@@ -29,23 +30,23 @@ const aiBenefits = [
 
     <section class="introduction-ai section-padding">
       <div class="container narrow-container">
-        <h2>Integramos IA locales usando herramientas como Ollama, manteniendo tus datos bajo tu control.</h2>
+        <h2>We integrate local AI using tools like Ollama, keeping your data under your control.</h2>
         <p>
-          Entrenamos estos modelos con tu propia información para que te ofrezcan respuestas y soluciones 
-          verdaderamente útiles y relevantes para tus desafíos específicos, garantizando la privacidad y seguridad de tus activos de datos.
+          We train these models with your own information so they offer you truly useful and relevant 
+          answers and solutions for your specific challenges, ensuring the privacy and security of your data assets.
         </p>
         
         <div class="what-is-ai-ml">
-          <h3>¿Qué es la IA y el Machine Learning?</h3>
+          <h3>What are AI and Machine Learning?</h3>
           <p>
-            <strong>Inteligencia Artificial (IA):</strong> Es la capacidad de las computadoras y sistemas para 'pensar' y realizar tareas 
-            que tradicionalmente requieren inteligencia humana, como el aprendizaje, la resolución de problemas, 
-            el reconocimiento de patrones y la toma de decisiones.
+            <strong>Artificial Intelligence (AI):</strong> It's the ability of computers and systems to 'think' and perform tasks 
+            that traditionally require human intelligence, such as learning, problem-solving, 
+            pattern recognition, and decision-making.
           </p>
           <p>
-            <strong>Machine Learning (Aprendizaje Automático):</strong> Es una rama fundamental de la IA donde las máquinas aprenden 
-            de los datos por sí mismas, mejorando su rendimiento y precisión con el tiempo sin necesidad de ser 
-            explícitamente reprogramadas para cada nuevo escenario o detalle.
+            <strong>Machine Learning (ML):</strong> It's a fundamental branch of AI where machines learn 
+            from data on their own, improving their performance and accuracy over time without needing to be 
+            explicitly reprogrammed for each new scenario or detail.
           </p>
         </div>
       </div>
@@ -53,30 +54,30 @@ const aiBenefits = [
 
     <section class="value-prop-benefits-section section-padding mid-tone-bg">
       <div class="container">
-        <h2 class="text-center section-title-dark">Nuestra Propuesta de Valor en IA</h2>
+        <h2 class="text-center section-title-dark">Our AI Value Proposition</h2>
         <div class="value-prop-grid">
             <div class="value-card">
-                <span class="value-icon">🛡️</span> {/* Icono Seguridad */}
-                <h4>IA Local y Segura con Ollama</h4>
-                <p>Tus datos son valiosos y privados. Al utilizar IA local, mantenemos tu información sensible dentro de tu propio entorno, ofreciéndote control total y una capa adicional de seguridad y cumplimiento.</p>
+                <span class="value-icon">🛡️</span> {/* Security Icon */}
+                <h4>Local and Secure AI with Ollama</h4>
+                <p>Your data is valuable and private. By using local AI, we keep your sensitive information within your own environment, offering you full control and an additional layer of security and compliance.</p>
             </div>
             <div class="value-card">
-                <span class="value-icon">🎯</span> {/* Icono Personalización */}
-                <h4>Entrenamiento Personalizado de Modelos</h4>
-                <p>Alimentamos y ajustamos los modelos de IA con los datos específicos de tu empresa. Esto asegura que la IA entienda profundamente tu contexto operativo y te proporcione respuestas precisas y relevantes.</p>
+                <span class="value-icon">🎯</span> {/* Personalisation Icon */}
+                <h4>Custom Model Training</h4>
+                <p>We feed and fine-tune AI models with your company's specific data. This ensures that the AI deeply understands your operational context and provides you with accurate and relevant responses.</p>
             </div>
             <div class="value-card">
-                <span class="value-icon">📈</span> {/* Icono Aplicaciones/Resultados */}
-                <h4>Aplicaciones Prácticas de Machine Learning</h4>
-                <p>Te ayudamos a implementar soluciones de aprendizaje automático para predecir tendencias, automatizar tareas complejas, realizar segmentación avanzada de clientes, optimizar inventarios y mucho más.</p>
+                <span class="value-icon">📈</span> {/* Applications/Results Icon */}
+                <h4>Practical Machine Learning Applications</h4>
+                <p>We help you implement machine learning solutions to predict trends, automate complex tasks, perform advanced customer segmentation, optimise inventories, and much more.</p>
             </div>
         </div>
 
-        <h3 class="text-center benefits-subheader">Beneficios Concretos de la IA para tu Negocio:</h3>
+        <h3 class="text-center benefits-subheader">Tangible Benefits of AI for Your Business:</h3>
         <div class="benefits-grid-ai">
           {aiBenefits.map(benefit => (
             <div class="benefit-card-ai">
-              {/* No añadimos icono aquí para diferenciarlo de la sección superior */}
+              {/* No icon added here to differentiate from the section above */}
               <h5>{benefit.title}</h5>
               <p>{benefit.description}</p>
             </div>
@@ -87,10 +88,11 @@ const aiBenefits = [
     
     <section class="service-cta-section section-padding text-center">
       <div class="container narrow-container">
-        <h2>Explora el Potencial de la IA para tu Negocio</h2>
-        <p>Descubre cómo la inteligencia artificial puede convertirse en un motor de innovación y eficiencia para tu empresa.</p>
+        <h2>Explore the Potential of AI for Your Business</h2>
+        <p>Discover how artificial intelligence can become an engine of innovation and efficiency for your company.</p>
+        {/* IMPORTANT: Update this link if 'nosotros.astro' was renamed (e.g., to '/about-us#contacto-section') */}
         <a href="/nosotros#contacto-section" class="cta-button large-cta">
-          Hablemos sobre tu Proyecto de IA
+          Discuss Your AI Project
         </a>
       </div>
     </section>
@@ -99,7 +101,7 @@ const aiBenefits = [
 </BaseLayout>
 
 <style is:global>
-  /* Estilos heredados/globales */
+  /* Styles remain the same as previously provided */
   .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .narrow-container { max-width: 800px; }
@@ -124,7 +126,7 @@ const aiBenefits = [
   .benefits-subheader {
     font-size: 1.8rem;
     color: #333;
-    margin-top: 3rem; /* Espacio después de la propuesta de valor */
+    margin-top: 3rem; 
     margin-bottom: 1.5rem;
   }
 
@@ -146,13 +148,13 @@ const aiBenefits = [
 
   .benefits-grid-ai {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Tarjetas un poco más pequeñas */
-    gap: 1rem; /* Gap un poco menor */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 1rem; 
   }
   .benefit-card-ai {
-    background-color: transparent; /* Sin fondo para diferenciarlas */
+    background-color: transparent; 
     padding: 1rem;
-    border: 1px solid #ced4da; /* Borde sutil */
+    border: 1px solid #ced4da; 
     border-radius: 6px;
     text-align: left;
   }

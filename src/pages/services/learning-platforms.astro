@@ -1,36 +1,37 @@
 ---
-// src/pages/productos/plataformas-aprendizaje.astro
+// src/pages/services/learning-platforms.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = "Plataformas de Aprendizaje LMS con Moodle | Stacksolver.tech";
-const serviceName = "Plataformas de Aprendizaje (LMS)";
-const subServiceName = "Creamos tu Entorno Ideal con Moodle";
-const heroLead = "Capacitación que Inspira y Transforma Conocimiento en Resultados.";
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "LMS Learning Platforms with Moodle | StacksolverUK.com";
+const serviceName = "Learning Platforms (LMS)";
+const subServiceName = "We Create Your Ideal Environment with Moodle";
+const heroLead = "Training That Inspires and Transforms Knowledge into Results.";
 
-// Ventajas de Moodle - puedes expandir estas o hacerlas más dinámicas
+// Advantages of Moodle - you can expand these or make them more dynamic
 const moodleAdvantages = [
-  { title: "Experiencia Moderna e Intuitiva", description: "Interfaces fáciles de usar para que el aprendizaje sea agradable y accesible para todos tus usuarios." },
-  { title: "Cursos Totalmente Personalizables", description: "Adaptamos la plataforma para reflejar tu marca, tus contenidos y tus metodologías de enseñanza únicas." },
-  { title: "Aprendizaje Interactivo y Enganchador", description: "Creamos cursos con videos, cuestionarios, foros, tareas y actividades que realmente motivan y capturan la atención." },
-  { title: "Acceso Multidispositivo", description: "Tu equipo o clientes pueden aprender donde quieran y cuando quieran, desde computadores, tablets o móviles." },
-  { title: "Seguimiento Detallado del Progreso", description: "Mide la participación, el avance y la efectividad de tus programas de capacitación con herramientas analíticas integradas." }
+  { title: "Modern and Intuitive Experience", description: "User-friendly interfaces so learning is enjoyable and accessible for all your users." },
+  { title: "Fully Customisable Courses", description: "We adapt the platform to reflect your brand, your content, and your unique teaching methodologies." },
+  { title: "Interactive and Engaging Learning", description: "We create courses with videos, quizzes, forums, assignments, and activities that truly motivate and capture attention." },
+  { title: "Multi-Device Access", description: "Your team or clients can learn wherever and whenever they want, from computers, tablets, or mobiles." },
+  { title: "Detailed Progress Tracking", description: "Measure participation, progress, and the effectiveness of your training programmes with integrated analytical tools." }
 ];
 
 const idealForUses = [
-  "Cursos de inducción y onboarding para nuevos empleados.",
-  "Capacitación técnica en productos, servicios o procedimientos.",
-  "Desarrollo de habilidades blandas (liderazgo, comunicación, etc.).",
-  "Programas de cumplimiento normativo y certificaciones.",
-  "Creación de academias online para clientes o socios."
+  "Induction and onboarding courses for new employees.",
+  "Technical training on products, services, or procedures.",
+  "Development of soft skills (leadership, communication, etc.).",
+  "Regulatory compliance programmes and certifications.",
+  "Creation of online academies for clients or partners."
 ];
 ---
 
 <BaseLayout title={pageTitle}>
-  <main class="service-detail-page lms-moodle-page">
+  <main class="service-detail-page lms-moodle-page"> {/* Consider class name "lms-services-page" */}
     
     <header class="service-hero section-padding text-center light-bg">
       <div class="container narrow-container">
-        {/* <img src="/images/products/lms-hero.png" alt="Plataformas de Aprendizaje LMS Moodle" class="service-hero-image"/> */}
+        {/* <img src="/images/products/lms-hero.png" alt="LMS Moodle Learning Platforms" class="service-hero-image"/> */}
         <h1>{serviceName}</h1>
         <p class="sub-service-name">{subServiceName}</p>
         <p class="lead">{heroLead}</p>
@@ -39,28 +40,28 @@ const idealForUses = [
 
     <section class="introduction-lms section-padding">
       <div class="container narrow-container">
-        <h2>Impulsa el Conocimiento en tu Organización</h2>
+        <h2>Boost Knowledge in Your Organisation</h2>
         <p>
-          Con plataformas de aprendizaje virtual (LMS) dinámicas y efectivas. Nos encargamos de la 
-          configuración completa y personalizada de Moodle para tus cursos de bienvenida a nuevos empleados (onboarding), 
-          entrenamiento en procedimientos, desarrollo de habilidades y mucho más, creando un ecosistema de aprendizaje 
-          que realmente funciona.
+          With dynamic and effective virtual learning platforms (LMS). We handle the 
+          complete and personalised configuration of Moodle for your new employee onboarding courses, 
+          procedural training, skills development, and much more, creating a learning 
+          ecosystem that truly works.
         </p>
         
         <div class="what-is-lms">
-          <h3>¿Qué es un LMS (Sistema de Gestión de Aprendizaje)?</h3>
+          <h3>What is an LMS (Learning Management System)?</h3>
           <p>
-            Un LMS es tu propia 'escuela virtual' o 'universidad corporativa' online. Es una plataforma robusta donde 
-            puedes crear, gestionar, impartir, y realizar un seguimiento exhaustivo de cursos y programas de capacitación 
-            diseñados específicamente para tu equipo, clientes o cualquier audiencia que necesites formar.
+            An LMS is your own online 'virtual school' or 'corporate university'. It's a robust platform where 
+            you can create, manage, deliver, and comprehensively track courses and training programmes 
+            designed specifically for your team, clients, or any audience you need to train.
           </p>
         </div>
       </div>
     </section>
 
     <section class="moodle-advantages-section section-padding mid-tone-bg">
-      <div class="container"> {/* Contenedor más ancho para la cuadrícula de ventajas */}
-        <h2 class="text-center section-title-dark">Ventajas Clave de Moodle con Stacksolver.tech</h2>
+      <div class="container"> {/* Wider container for the advantages grid */}
+        <h2 class="text-center section-title-dark">Key Advantages of Moodle with StacksolverUK.com</h2>
         <div class="advantages-grid">
           {moodleAdvantages.map(advantage => (
             <div class="advantage-card">
@@ -75,7 +76,7 @@ const idealForUses = [
 
     <section class="ideal-for-section section-padding">
         <div class="container narrow-container">
-            <h2 class="text-center">Ideal para Diversas Necesidades de Capacitación:</h2>
+            <h2 class="text-center">Ideal for Diverse Training Needs:</h2>
             <ul class="ideal-for-list">
                 {idealForUses.map(use => (
                     <li>{use}</li>
@@ -86,10 +87,11 @@ const idealForUses = [
     
     <section class="service-cta-section section-padding text-center">
       <div class="container narrow-container">
-        <h2>Impulsa el Talento de tu Equipo con Moodle</h2>
-        <p>Diseñemos juntos la plataforma de aprendizaje que tu organización merece.</p>
+        <h2>Boost Your Team's Talent with Moodle</h2>
+        <p>Let's design the learning platform your organisation deserves together.</p>
+        {/* IMPORTANT: Update this link if 'nosotros.astro' was renamed (e.g., to '/about-us#contacto-section') */}
         <a href="/nosotros#contacto-section" class="cta-button large-cta">
-          Más Información sobre LMS
+          More Information about LMS
         </a>
       </div>
     </section>
@@ -98,7 +100,7 @@ const idealForUses = [
 </BaseLayout>
 
 <style is:global>
-  /* Estilos heredados/globales */
+  /* Styles remain the same as previously provided */
   .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .narrow-container { max-width: 800px; }
@@ -116,7 +118,7 @@ const idealForUses = [
   .what-is-lms { background-color: #e0e5e9; padding: 1.5rem 2rem; border-radius: 8px; margin-top: 2rem; }
   .what-is-lms h3 { font-size: 1.6rem; color: #1a1a1a; margin-top: 0; margin-bottom: 0.75rem; }
   
-  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 2.5rem; } /* Aumentado margen inferior */
+  .section-title-dark { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 2.5rem; }
 
   .advantages-grid {
     display: grid;
@@ -130,7 +132,7 @@ const idealForUses = [
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
-    text-align: left; /* Alinear texto a la izquierda en tarjetas */
+    text-align: left; 
   }
   .advantage-icon { font-size: 2rem; color: #007bff; margin-bottom: 0.75rem; }
   .advantage-card h4 { font-size: 1.25rem; color: #333; margin-top: 0; margin-bottom: 0.5rem; }
@@ -140,27 +142,27 @@ const idealForUses = [
   .ideal-for-list {
     list-style: none;
     padding-left: 0;
-    display: grid; /* Usar grid para mejor distribución si son muchos items */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dos columnas si caben */
-    gap: 0.75rem 1.5rem; /* Gap vertical y horizontal */
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 0.75rem 1.5rem; 
     
   }
   .ideal-for-list li {
     font-size: 1.05rem;
     color: #343a40;
-    padding: 0.5rem 0 0.5rem 1.8rem; /* Padding para el ícono */
+    padding: 0.5rem 0 0.5rem 1.8rem; 
     position: relative;
-    border-left: 3px solid #007bff; /* Línea azul a la izquierda */
-    background-color: #f8f9fa; /* Fondo sutil para cada item */
+    border-left: 3px solid #007bff; 
+    background-color: #f8f9fa; 
     border-radius: 4px;
   }
   .ideal-for-list li::before {
-    content: ' LMS'; /* Podría ser un icono de libro o similar */
-    font-family: sans-serif; /* Para asegurar que se vea simple */
+    content: ' LMS'; 
+    font-family: sans-serif; 
     background-color: #007bff;
     color: white;
     position: absolute;
-    left: -1px; /* Para que se alinee con el borde */
+    left: -1px; 
     top: 50%;
     transform: translateY(-50%);
     padding: 0.1em 0.4em;
@@ -180,6 +182,6 @@ const idealForUses = [
     .service-hero .sub-service-name { font-size: 1.3rem; }
     .service-hero .lead { font-size: 1.15rem; }
     .section-title-dark { font-size: 1.9rem; }
-    .ideal-for-list { grid-template-columns: 1fr; /* Una columna en móvil */ }
+    .ideal-for-list { grid-template-columns: 1fr; }
   }
 </style>

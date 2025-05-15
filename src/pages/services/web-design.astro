@@ -1,13 +1,14 @@
 ---
-// src/pages/productos/diseno-web.astro
+// src/pages/services/web-design.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = "Diseño Web Moderno y Funcional | Stacksolver.tech";
-const serviceName = "Diseño Web Moderno y Funcional";
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "Modern and Functional Web Design | StacksolverUK.com";
+const serviceName = "Modern and Functional Web Design";
 
 const heroImages = [
-  { src: "/images/products/WebHero1.png", alt: "Ejemplo de Diseño Web Moderno 1" },
-  { src: "/images/products/WebHero2.png", alt: "Ejemplo de Diseño Web Moderno 2" },
+  { src: "/images/products/WebHero1.png", alt: "Example of Modern Web Design 1" },
+  { src: "/images/products/WebHero2.png", alt: "Example of Modern Web Design 2" },
 ];
 ---
 
@@ -16,12 +17,10 @@ const heroImages = [
     
     <header class="service-hero section-padding text-center light-bg">
       <div class="container narrow-container">
-        {/* ****** TEXTO DEL HERO AHORA ANTES DE LAS IMÁGENES ****** */}
         <h1>{serviceName}</h1>
         <p class="lead">
-          Tu Primera Impresión Digital: Páginas Web que Cautivan y Funcionan.
+          Your First Digital Impression: Websites That Captivate and Perform.
         </p>
-        {/* ****** FIN DEL CAMBIO DE POSICIÓN DEL TEXTO ****** */}
 
         {heroImages && heroImages.length > 0 && (
           <div class="service-hero-image-gallery">
@@ -42,22 +41,19 @@ const heroImages = [
 
     <section class="introduction-benefits-section section-padding">
       <div class="container narrow-container">
-        <h2>Hoy, tu página web es mucho más que una tarjeta de presentación; es un motor para tu negocio.</h2>
-        <p>En Stacksolver.tech, creamos experiencias web modernas y dinámicas con tecnología de punta como Astro, asegurando velocidad, innovación y resultados.</p>
+        <h2>Today, your website is much more than a business card; it's an engine for your business.</h2>
+        <p>At StacksolverUK.com, we create modern and dynamic web experiences with cutting-edge technology like Astro, ensuring speed, innovation, and results.</p>
         
-        <h3 class="benefits-title">Beneficios de una Web Moderna con Nosotros:</h3>
+        <h3 class="benefits-title">Benefits of a Modern Website with Us:</h3>
         <ul class="benefits-list">
           <li>
-            {/* ICONO DE BENEFICIO ACTUALIZADO */}
-            <strong>Diseño Atractivo y Centrado en el Usuario:</strong> Creamos sitios web que no solo se ven bien, sino que son fáciles de navegar y guían a tus visitantes hacia tus objetivos.
+            <strong>Attractive and User-Centred Design:</strong> We create websites that not only look good but are easy to navigate and guide your visitors towards your objectives.
           </li>
           <li>
-            {/* ICONO DE BENEFICIO ACTUALIZADO */}
-            <strong>Rendimiento Superior con Astro:</strong> Utilizamos Astro para construir sitios web ultrarrápidos. ¿Qué significa esto para ti? Mejor posicionamiento en Google (SEO), usuarios más felices y mayores tasas de conversión.
+            <strong>Superior Performance with Astro:</strong> We use Astro to build ultra-fast websites. What does this mean for you? Better Google ranking (SEO), happier users, and higher conversion rates.
           </li>
           <li>
-            {/* ICONO DE BENEFICIO ACTUALIZADO */}
-            <strong>Adaptable a Cualquier Dispositivo (Responsive):</strong> Tu web se verá y funcionará perfectamente en móviles, tablets y computadores de escritorio, garantizando una experiencia óptima para todos tus usuarios.
+            <strong>Adaptable to Any Device (Responsive):</strong> Your website will look and function perfectly on mobiles, tablets, and desktop computers, ensuring an optimal experience for all your users.
           </li>
         </ul>
       </div>
@@ -65,16 +61,15 @@ const heroImages = [
 
     <section class="innovative-features-section section-padding mid-tone-bg">
       <div class="container narrow-container">
-        <h2>Funcionalidades Innovadoras para tus Clientes</h2>
+        <h2>Innovative Features for Your Clients</h2>
         <div class="feature-highlight">
-          {/* ICONO DE CARACTERÍSTICA ACTUALIZADO */}
-          <span class="feature-icon">💡</span> {/* Podría ser también 🚀 o ✨ */}
-          <h3>Portales Exclusivos para Clientes</h3>
+          <span class="feature-icon">💡</span> {/* Could also be 🚀 or ✨ */}
+          <h3>Exclusive Client Portals</h3>
           <p>
-            Imagina ofrecer a tus clientes un espacio privado y seguro donde pueden ver el avance de sus proyectos en tiempo real: 
-            cronogramas detallados, costos actualizados (con posibilidad de conexión a tus sistemas ERP/GRC), fases completadas, 
-            documentación relevante y mucho más. Esta transparencia no solo genera confianza, sino que también optimiza la comunicación 
-            y la satisfacción del cliente.
+            Imagine offering your clients a private and secure space where they can see the progress of their projects in real time: 
+            detailed timelines, updated costs (with potential connection to your ERP/GRC systems), completed phases, 
+            relevant documentation, and much more. This transparency not only builds trust but also optimises communication 
+            and client satisfaction.
           </p>
         </div>
       </div>
@@ -82,10 +77,11 @@ const heroImages = [
 
     <section class="service-cta-section section-padding text-center">
       <div class="container narrow-container">
-        <h2>¿Listo para una Web de Alto Impacto?</h2>
-        <p>Hablemos sobre cómo podemos llevar tu presencia online al siguiente nivel.</p>
+        <h2>Ready for a High-Impact Website?</h2>
+        <p>Let's talk about how we can take your online presence to the next level.</p>
+        {/* IMPORTANT: Update this link if 'nosotros.astro' was renamed (e.g., to '/about-us#contacto-section') */}
         <a href="/nosotros#contacto-section" class="cta-button large-cta">
-          Solicitar Consulta Gratuita
+          Request a Free Consultation
         </a>
       </div>
     </section>
@@ -93,6 +89,7 @@ const heroImages = [
 </BaseLayout>
 
 <style is:global>
+  /* Styles remain the same as previously provided */
   .section-padding {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
@@ -126,8 +123,8 @@ const heroImages = [
     display: grid;
     grid-template-columns: 1fr; 
     gap: 1.5rem; 
-    margin-top: 2rem; /* Espacio DESPUÉS del título y lead */
-    margin-bottom: 0; /* Ajustado ya que el padding del hero maneja el espacio inferior */
+    margin-top: 2rem; 
+    margin-bottom: 0; 
   }
 
   .gallery-image-wrapper { 
@@ -150,13 +147,12 @@ const heroImages = [
     font-size: 2.8rem;
     color: #1a1a1a; 
     margin-bottom: 0.75rem;
-    /* margin-top ya no es necesario aquí si el texto va primero */
   }
   .service-hero .lead {
     font-size: 1.3rem;
     color: #495057;
     line-height: 1.6;
-    margin-bottom: 0; /* El espacio lo dará el margin-top de la galería de imágenes */
+    margin-bottom: 0; 
   }
 
   .introduction-benefits-section h2,
@@ -191,17 +187,16 @@ const heroImages = [
     font-size: 1.1rem;
     color: #343a40;
     margin-bottom: 1rem;
-    padding-left: 2rem; /* Aumentado para dar más espacio al nuevo icono */
+    padding-left: 2rem; 
     position: relative;
   }
   .benefits-list li::before { 
-    /* ICONO DE CHECK ACTUALIZADO */
-    content: '❯'; /* O '›', '•', '‣' o un SVG */
-    color: #007bff; /* Azul principal, más moderno que el verde */
+    content: '❯'; 
+    color: #007bff; 
     position: absolute;
-    left: 0.25rem; /* Ajustado para el nuevo icono */
-    font-size: 1.3em; /* Hacerlo un poco más grande y visible */
-    line-height: 1; /* Para alinear mejor verticalmente */
+    left: 0.25rem; 
+    font-size: 1.3em; 
+    line-height: 1; 
     font-weight: bold;
   }
   .benefits-list li strong {
@@ -219,9 +214,9 @@ const heroImages = [
   }
   .feature-icon {
     display: block;
-    font-size: 3rem; /* Un poco más grande para el nuevo icono */
+    font-size: 3rem; 
     color: #007bff; 
-    margin-bottom: 1rem; /* Más espacio */
+    margin-bottom: 1rem; 
     text-align: center; 
   }
   .feature-highlight h3 {
@@ -266,10 +261,10 @@ const heroImages = [
         max-height: 220px; 
     }
      .benefits-list li {
-        padding-left: 1.8rem; /* Ajuste para móvil del padding del ícono */
+        padding-left: 1.8rem; 
     }
     .benefits-list li::before {
-        left: 0; /* Ícono más pegado en móvil */
+        left: 0; 
     }
   }
 </style>

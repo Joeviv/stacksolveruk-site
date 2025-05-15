@@ -1,29 +1,67 @@
 ---
-// src/pages/productos/index.astro
-import BaseLayout from '../../layouts/BaseLayout.astro';
+// src/pages/services/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro'; // Path to BaseLayout is correct
 
-const pageTitle = "Nuestros Servicios | Soluciones Tecnológicas a tu Medida - Stacksolver.tech";
-const videoUrlPlaceholder = 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4';
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "Our Services | Tailored Technology Solutions - StacksolverUK.com";
+const videoUrlPlaceholder = 'https://comercial-media.s3.amazonaws.com/ClarisConnectShort7.mp4'; // Placeholder video
 
 const services = [
-  { name: "Diseño Web Moderno y Funcional", description: "Creamos tu ventana al mundo digital: rápida, atractiva y funcional, asegurando una primera impresión impactante.", link: "/productos/diseno-web", videoUrl: videoUrlPlaceholder, pageExcerpt: "Descubre cómo transformamos tu presencia online con sitios web ultrarrápidos y centrados en el usuario, utilizando tecnologías como Astro." },
-  { name: "Desarrollo de Aplicaciones a Medida (Claris FileMaker)", description: "Sistemas ERP, GRC y más, diseñados exclusivamente para tus necesidades operativas y estratégicas.", link: "/productos/desarrollo-aplicaciones", videoUrl: videoUrlPlaceholder, pageExcerpt: "Como Partners Oficiales de Claris, creamos soluciones robustas que se adaptan perfectamente a tus procesos, desde gestión integral hasta módulos específicos." },
-  { name: "Integración de Sistemas y Datos", description: "Conectamos tus herramientas para que tus datos fluyan y trabajen para ti, optimizando tus flujos de trabajo.", link: "/productos/integracion-sistemas", videoUrl: videoUrlPlaceholder, pageExcerpt: "Hacemos que tus CRM, ERP y otras aplicaciones compartan información automáticamente, eliminando silos y mejorando la toma de decisiones." },
-  { name: "Plataformas de Aprendizaje (LMS con Moodle)", description: "Capacita a tu equipo de forma dinámica, efectiva y moderna con entornos de aprendizaje virtual personalizados.", link: "/productos/plataformas-aprendizaje", videoUrl: videoUrlPlaceholder, pageExcerpt: "Impulsa el conocimiento en tu organización con Moodle: desde onboarding hasta desarrollo de habilidades complejas." },
-  { name: "Visualización Avanzada de Datos (Looker Studio)", description: "Transformamos números complejos en dashboards interactivos y decisiones claras para tu negocio.", link: "/productos/visualizacion-datos", videoUrl: videoUrlPlaceholder, pageExcerpt: "Convierte tus datos en insights accionables con Google Looker Studio, conectando múltiples fuentes para una visión 360º." },
-  { name: "Inteligencia Artificial para Empresas", description: "IA local, segura y personalizada para potenciar tus resultados y mantener el control de tus datos.", link: "/productos/inteligencia-artificial", videoUrl: videoUrlPlaceholder, pageExcerpt: "Implementamos soluciones de IA y Machine Learning con herramientas como Ollama, entrenadas con tu información para resolver tus desafíos." },
+  { 
+    name: "Modern and Functional Web Design", 
+    description: "We create your window to the digital world: fast, attractive, and functional, ensuring an impactful first impression.", 
+    link: "/services/web-design", // UPDATED LINK
+    videoUrl: videoUrlPlaceholder, 
+    pageExcerpt: "Discover how we transform your online presence with ultra-fast, user-centred websites, using technologies like Astro." 
+  },
+  { 
+    name: "Bespoke Application Development (Claris FileMaker)", 
+    description: "ERP systems, GRC, and more, designed exclusively for your operational and strategic needs.", 
+    link: "/services/custom-application-development", // UPDATED LINK
+    videoUrl: videoUrlPlaceholder, 
+    // Note: "Official Claris Partners" wording adjusted here to align with previous changes for UK context.
+    pageExcerpt: "Leveraging our deep Claris FileMaker expertise (our wider group includes an Official Claris Partner), we create robust solutions that perfectly adapt to your processes, from comprehensive management to specific modules." 
+  },
+  { 
+    name: "Systems and Data Integration", 
+    description: "We connect your tools so your data flows and works for you, optimising your workflows.", 
+    link: "/services/systems-integration", // TEMPORARY LINK - will need final English name
+    videoUrl: videoUrlPlaceholder, 
+    pageExcerpt: "We enable your CRM, ERP, and other applications to share information automatically, eliminating silos and improving decision-making." 
+  },
+  { 
+    name: "Learning Platforms (LMS with Moodle)", 
+    description: "Train your team dynamically, effectively, and modernly with personalised virtual learning environments.", 
+    link: "/services/learning-platforms", // TEMPORARY LINK - will need final English name
+    videoUrl: videoUrlPlaceholder, 
+    pageExcerpt: "Boost knowledge in your organisation with Moodle: from onboarding to developing complex skills." 
+  },
+  { 
+    name: "Advanced Data Visualisation (Looker Studio)", 
+    description: "We transform complex numbers into interactive dashboards and clear business decisions.", 
+    link: "/services/data-visualisation", // TEMPORARY LINK - will need final English name
+    videoUrl: videoUrlPlaceholder, 
+    pageExcerpt: "Turn your data into actionable insights with Google Looker Studio, connecting multiple sources for a 360º view." 
+  },
+  { 
+    name: "Artificial Intelligence for Businesses", 
+    description: "Local, secure, and personalised AI to enhance your results and maintain control of your data.", 
+    link: "/services/artificial-intelligence", // TEMPORARY LINK - will need final English name
+    videoUrl: videoUrlPlaceholder, 
+    pageExcerpt: "We implement AI and Machine Learning solutions with tools like Ollama, trained with your information to solve your challenges." 
+  },
 ];
 ---
 
 <BaseLayout title={pageTitle}>
-  <main class="productos-index-page">
+  <main class="productos-index-page"> {/* Consider renaming class e.g., "services-index-page" */}
     <header class="page-header text-center section-padding light-bg">
       <div class="container">
-        <h1>Nuestros Servicios Tecnológicos</h1>
+        <h1>Our Technology Services</h1>
         <p class="lead">
-          En Stacksolver.tech, ofrecemos un abanico de soluciones diseñadas para resolver tus desafíos y potenciar tu crecimiento. 
-          Cada servicio se enfoca en entregar resultados tangibles, combinando innovación, experiencia y un profundo entendimiento 
-          de tus necesidades para construir el 'stack' tecnológico perfecto para ti.
+          At StacksolverUK.com, we offer a range of solutions designed to solve your challenges and boost your growth. 
+          Each service focuses on delivering tangible results, combining innovation, experience, and a deep understanding 
+          of your needs to build the perfect technology 'stack' for you.
         </p>
       </div>
     </header>
@@ -38,10 +76,10 @@ const services = [
                   {service.videoUrl ? (
                     <video autoplay loop muted playsinline preload="metadata">
                       <source src={service.videoUrl} type="video/mp4" />
-                      Tu navegador no soporta la etiqueta de video.
+                      Your browser does not support the video tag.
                     </video>
                   ) : (
-                    <div class="video-placeholder-detailed">Video no disponible</div>
+                    <div class="video-placeholder-detailed">Video not available</div>
                   )}
                 </div>
               </a>
@@ -49,7 +87,7 @@ const services = [
                 <a href={service.link}><h2>{service.name}</h2></a>
                 <p class="excerpt">{service.pageExcerpt || service.description}</p>
                 <a href={service.link} class="cta-button-service">
-                  Conocer más detalles →
+                  Learn more →
                 </a>
               </div>
             </div>
@@ -61,6 +99,7 @@ const services = [
 </BaseLayout>
 
 <style is:global>
+  /* Styles remain the same as previously provided */
   .section-padding {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -127,7 +166,7 @@ const services = [
     width: 100%;
     position: relative;
     background-color: #e9ecef;
-    padding-bottom: 50%;
+    padding-bottom: 50%; /* Aspect ratio for video */
     height: 0;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -182,7 +221,7 @@ const services = [
   .cta-button-service {
     display: inline-block;
     background-color: #1a1a1a; 
-    color: #ffffff !important; /* Asegurar color de texto blanco, !important por si acaso */
+    color: #ffffff !important; 
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border-radius: 4px;

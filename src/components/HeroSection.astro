@@ -2,28 +2,26 @@
 // src/components/HeroSection.astro
 
 const imagesRow1 = [
-  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Imagen 2 del collage Hero (Fila 1)", isCircle: true },
-  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Imagen 1 del collage Hero (Fila 1)", isCircle: false },
-  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Imagen 4 del collage Hero (Fila 1)", isCircle: true },
-  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Imagen 3 del collage Hero (Fila 1)", isCircle: false },
+  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Hero collage image 2 (Row 1)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Hero collage image 1 (Row 1)", isCircle: false },
+  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Hero collage image 4 (Row 1)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Hero collage image 3 (Row 1)", isCircle: false },
 ];
 const imagesRow2 = [
-  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Futura Imagen Rectangular D (Fila 2)", isCircle: false },
-  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Futura Imagen Circular C (Fila 2)", isCircle: true },
-  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Futura Imagen Circular A (Fila 2)", isCircle: true },
-  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Futura Imagen Rectangular B (Fila 2)", isCircle: false },
+  { src: "/images/hero/collage/hero-img-3.jpg", alt: "Future Rectangular Image D (Row 2)", isCircle: false },
+  { src: "/images/hero/collage/hero-img-4.jpg", alt: "Future Circular Image C (Row 2)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-2.jpg", alt: "Future Circular Image A (Row 2)", isCircle: true },
+  { src: "/images/hero/collage/hero-img-1.jpg", alt: "Future Rectangular Image B (Row 2)", isCircle: false },
 ];
 const finalImagesToRender = [...imagesRow1, ...imagesRow2];
 ---
 
 <section class="hero-section">
   <div class="hero-content">
-    {/* ****** CAMBIO AQUÍ ****** */}
-    <h1>Transformamos Desafíos en Oportunidades con Tecnología a tu Medida.</h1>
-    <p>En Stacksolver.tech, no solo creamos tecnología; diseñamos el 'stack' (conjunto) de soluciones perfecto para que tu empresa crezca, innove y entienda el verdadero poder de una estrategia digital. Te ayudamos a iniciar, rediseñar y optimizar tus procesos con tecnología de vanguardia.</p>
-    {/* Mantenemos el botón actual, pero el enlace podría cambiar más adelante */}
-    <a href="/nosotros" class="cta-button">Descubre cómo podemos ayudarte</a>
-    {/* ****** FIN DEL CAMBIO ****** */}
+    <h1>We Transform Challenges into Opportunities with Technology Tailored to You.</h1>
+    <p>At StacksolverUK.com, we don't just create technology; we design the perfect 'stack' (set) of solutions for your company to grow, innovate, and understand the true power of a digital strategy. We help you initiate, redesign, and optimise your processes with cutting-edge technology.</p>
+    {/* IMPORTANT: Update this link to your 'About Us' page path (e.g., /about-us) */}
+    <a href="/about-us" class="cta-button">Discover how we can help</a>
   </div>
 
   <div class="hero-visuals">
@@ -38,14 +36,14 @@ const finalImagesToRender = [...imagesRow1, ...imagesRow2];
   </div>
 </section>
 
-{/* Estilos CSS (SIN CAMBIOS) */}
+{/* CSS Styles (NO CHANGES from original) */}
 <style>
-  /* ... (Estilos existentes sin cambios) ... */
+  /* ... (Existing styles remain unchanged) ... */
   .hero-section {
     background-color: #fff;
     padding: 4rem 2rem;
     display: flex;
-    flex-direction: column; /* Vertical en móvil por defecto */
+    flex-direction: column; /* Vertical on mobile by default */
     align-items: center;
     text-align: center;
     gap: 2rem;

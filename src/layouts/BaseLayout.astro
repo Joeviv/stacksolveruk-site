@@ -1,48 +1,69 @@
 ---
-// Importar los componentes Header y Footer
+// Import the Header and Footer components
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-// Puedes definir props aquí si el layout necesitara recibir datos (ej: título de la página)
-// const { title = 'Título por defecto' } = Astro.props;
+// You can define props here if the layout needs to receive data (e.g., page title)
+// const { title = 'Default Title' } = Astro.props; // Example if you pass title dynamically
+interface Props {
+	title?: string; // Make title optional for pages that might not set one
+}
+const { title } = Astro.props;
+const siteName = "StacksolverUK.com"; // Define your site name here
+const defaultPageTitle = `${siteName} | Intelligent Technology Solutions`;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en-GB"> {/* UPDATED to British English */}
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Descripción de tu sitio" /> {/* Actualiza esta descripción */}
+    {/* UPDATE THIS DESCRIPTION for your UK site */}
+    <meta name="description" content="StacksolverUK.com offers bespoke technology solutions, including custom software development, web design, systems integration, and AI, to help businesses in the UK thrive." /> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Asegúrate que este archivo exista en public/ */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Ensure this file exists in public/ */}
     <meta name="generator" content={Astro.generator} />
-    <title>Stacksolver Tech</title> {/* Este será el título por defecto. Lo haremos dinámico después */}
+    {/* This title will be used if a page doesn't provide one, or combined with it */}
+    <title>{title ? `${title} | ${siteName}` : defaultPageTitle}</title> 
 
-    {/* Aquí puedes añadir enlaces a hojas de estilo globales si las tuvieras */}
+    {/* You can add links to global stylesheets here if you have them */}
     {/* <link rel="stylesheet" href="/styles/global.css" /> */}
   </head>
   <body>
-    {/* El Header va antes del contenido principal */}
+    {/* The Header comes before the main content */}
     <Header />
 
-    {/* El contenido ÚNICO de cada página irá aquí (slot) */}
+    {/* The UNIQUE content of each page will go here (slot) */}
     <main>
-      <slot /> {/* <-- ¡Esta es la magia de los Layouts! */}
+      <slot /> {/* <-- This is the magic of Layouts! */}
     </main>
 
-    {/* El Footer va después del contenido principal */}
+    {/* The Footer comes after the main content */}
     <Footer />
 
   </body>
 </html>
 
 <style is:global>
-  /* Estilos globales que afectan a todas las páginas que usen este layout */
-  /* Puedes mover aquí los estilos del body de index.astro */
+  /* Global styles that affect all pages using this layout */
+  /* You can move the body styles from index.astro here */
   body {
-    font-family: sans-serif;
+    font-family: sans-serif; /* Consider choosing a specific font stack */
     margin: 0;
-    background-color: #fff; /* Fondo blanco por defecto */
-    color: #333; /* Texto oscuro por defecto */
+    background-color: #fff; /* Default white background */
+    color: #333; /* Default dark text */
+    display: flex; /* Added for sticky footer */
+    flex-direction: column; /* Added for sticky footer */
+    min-height: 100vh; /* Added for sticky footer */
   }
-  /* Puedes añadir más estilos globales aquí, como para enlaces, tipografía base, etc. */
+  main {
+    flex-grow: 1; /* Added for sticky footer - ensures main content pushes footer down */
+  }
+  /* You can add more global styles here, such as for links, base typography, etc. */
+  a {
+    color: #007bff; /* Example link colour */
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 </style>

@@ -1,48 +1,49 @@
 ---
 // src/components/IntegrationsSection.astro
-// De momento, no necesitamos props para este componente.
-// Usaremos una imagen estática como placeholder visual.
-const placeholderImageUrl = "/images/hero/collage/hero-img-1.jpg"; // Reutilizamos una imagen existente
+// No props needed for this component at the moment.
+// We'll use a static image as a visual placeholder.
+const placeholderImageUrl = "/images/hero/collage/hero-img-1.jpg"; // Reusing an existing image
 ---
 
 <section class="integrations-section">
   <div class="section-content">
     <div class="text-content">
-      <h2>Conectamos tus Sistemas, Potenciamos tu Negocio</h2>
+      <h2>We Connect Your Systems, Empowering Your Business</h2>
       <p>
-        En Stacksolver Tech, entendemos que la verdadera eficiencia se logra cuando todas tus
-        herramientas trabajan en armonía. Nos especializamos en integrar tus aplicaciones
-        existentes, desde CRMs y ERPs hasta plataformas de marketing y, crucialmente,
-        soluciones personalizadas basadas en Claris FileMaker, para crear un ecosistema
-        tecnológico cohesivo y potente.
+        At StacksolverUK.com, we understand that true efficiency is achieved when all your
+        tools work in harmony. We specialise in integrating your existing applications,
+        from CRMs and ERPs to marketing platforms and, crucially,
+        custom solutions based on Claris FileMaker, to create a cohesive
+        and powerful technology ecosystem.
       </p>
-      <a href="/estrategia-digital#integraciones" class="cta-button-integrations">Descubre Más</a>
+      {/* IMPORTANT: Update this link to your 'Digital Strategy' page path (e.g., /digital-strategy#integrations) */}
+      <a href="/digital-strategy#integrations" class="cta-button-integrations">Discover More</a>
     </div>
     <div class="visual-content">
-      <img src={placeholderImageUrl} alt="Visualización de integraciones tecnológicas" loading="lazy" />
+      <img src={placeholderImageUrl} alt="Visualisation of technology integrations" loading="lazy" />
     </div>
   </div>
 </section>
 
 <style>
   .integrations-section {
-    background-color: #ffffff; /* Fondo blanco o un color sutil diferente */
+    background-color: #ffffff; /* White background or a different subtle colour */
     padding: 4rem 2rem;
-    text-align: center; /* Centrado para móvil inicialmente */
+    text-align: center; /* Centred for mobile initially */
   }
 
   .section-content {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column; /* Apilado en móvil */
+    flex-direction: column; /* Stacked on mobile */
     align-items: center;
     gap: 2rem;
   }
 
   .text-content {
-    max-width: 600px; /* Ancho máximo para el texto */
-    text-align: center; /* Centrado por defecto */
+    max-width: 600px; /* Max width for text */
+    text-align: center; /* Centred by default */
   }
 
   .text-content h2 {
@@ -60,7 +61,7 @@ const placeholderImageUrl = "/images/hero/collage/hero-img-1.jpg"; // Reutilizam
 
   .cta-button-integrations {
     display: inline-block;
-    background-color: #007bff; /* Un color diferente para este CTA, o usa el mismo que el hero */
+    background-color: #007bff; /* A different colour for this CTA, or use the same as the hero */
     color: white;
     padding: 0.8rem 1.8rem;
     text-decoration: none;
@@ -76,35 +77,35 @@ const placeholderImageUrl = "/images/hero/collage/hero-img-1.jpg"; // Reutilizam
 
   .visual-content {
     width: 100%;
-    max-width: 500px; /* Tamaño máximo para la imagen/visualización */
+    max-width: 500px; /* Max size for the image/visualisation */
   }
 
   .visual-content img {
     width: 100%;
     height: auto;
-    border-radius: 8px; /* Bordes redondeados para la imagen */
+    border-radius: 8px; /* Rounded borders for the image */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
 
-  /* Media query para escritorio (layout horizontal) */
-  @media (min-width: 992px) { /* Un breakpoint un poco más grande para este layout */
+  /* Media query for desktop (horizontal layout) */
+  @media (min-width: 992px) { /* Slightly larger breakpoint for this layout */
     .integrations-section {
-      text-align: left; /* Alinear texto a la izquierda en escritorio */
+      text-align: left; /* Align text to the left on desktop */
     }
     .section-content {
-      flex-direction: row; /* Lado a lado */
+      flex-direction: row; /* Side by side */
       justify-content: space-between;
       align-items: center;
       gap: 3rem;
     }
     .text-content {
-      flex: 1; /* Que el texto ocupe el espacio disponible */
-      text-align: left; /* Alinear texto a la izquierda */
-      max-width: none; /* Quitar restricción de ancho si es necesario para el flex */
+      flex: 1; /* Let the text take available space */
+      text-align: left; /* Align text to the left */
+      max-width: none; /* Remove width restriction if necessary for flex */
     }
     .visual-content {
-      flex: 1; /* Que el visual ocupe el espacio disponible */
-      max-width: 500px; /* Mantener un tamaño máximo razonable para la imagen */
+      flex: 1; /* Let the visual take available space */
+      max-width: 500px; /* Maintain a reasonable max size for the image */
     }
   }
 </style>

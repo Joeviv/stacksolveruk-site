@@ -1,23 +1,24 @@
 ---
-// src/pages/estrategia-digital.astro
+// src/pages/digital-strategy.astro (Suggested new name)
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = "Estrategia Digital Personalizada | Potenciamos tu Negocio - Stacksolver.tech";
-const heroTitle = "Tu Estrategia Digital, Potenciada por Expertos";
-const heroLead = "En Stacksolver.tech, no solo implementamos tecnología; te acompañamos en la definición y ejecución de una estrategia digital integral que impulse tus objetivos de negocio y te prepare para el futuro.";
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' for UK site branding
+const pageTitle = "Custom Digital Strategy | Powering Your Business - StacksolverUK.com"; 
+const heroTitle = "Your Digital Strategy, Powered by Experts";
+const heroLead = "At StacksolverUK.com, we don't just implement technology; we partner with you to define and execute a comprehensive digital strategy that drives your business objectives and prepares you for the future.";
 
-// Pilares de la estrategia digital - puedes adaptarlos
+// Pillars of digital strategy - you can adapt these
 const strategyPillars = [
-  { name: "Diagnóstico y Comprensión Profunda", description: "Comenzamos por entender a fondo tu negocio, tus procesos actuales, tus desafíos y tus metas a corto, mediano y largo plazo.", icon: "🔍" },
-  { name: "Diseño del 'Stack Tecnológico' Ideal", description: "Con base en el diagnóstico, diseñamos una combinación personalizada de herramientas, plataformas y procesos (tu 'stack') que se alinee perfectamente con tu estrategia.", icon: "🧱" },
-  { name: "Implementación Ágil y Centrada en el Valor", description: "Desarrollamos e integramos las soluciones de forma iterativa, asegurando entregas de valor tempranas y la capacidad de adaptarnos a medida que avanzamos.", icon: "⚙️" },
-  { name: "Optimización y Evolución Continua", description: "La tecnología y el mercado cambian. Te ayudamos a monitorear, optimizar y evolucionar tu stack tecnológico para mantener la competitividad y aprovechar nuevas oportunidades.", icon: "📈" },
-  { name: "Capacitación y Adopción", description: "Aseguramos que tu equipo comprenda y adopte las nuevas herramientas y procesos, maximizando el retorno de tu inversión tecnológica.", icon: "🤝" }
+  { name: "In-depth Diagnosis and Understanding", description: "We start by thoroughly understanding your business, current processes, challenges, and your short, medium, and long-term goals.", icon: "🔍" },
+  { name: "Designing the Ideal 'Technology Stack'", description: "Based on the diagnosis, we design a customised combination of tools, platforms, and processes (your 'stack') that aligns perfectly with your strategy.", icon: "🧱" },
+  { name: "Agile and Value-Centric Implementation", description: "We develop and integrate solutions iteratively, ensuring early value delivery and the ability to adapt as we progress.", icon: "⚙️" },
+  { name: "Continuous Optimisation and Evolution", description: "Technology and the market change. We help you monitor, optimise, and evolve your technology stack to maintain competitiveness and seize new opportunities.", icon: "📈" },
+  { name: "Training and Adoption", description: "We ensure your team understands and adopts the new tools and processes, maximising the return on your technology investment.", icon: "🤝" }
 ];
 ---
 
 <BaseLayout title={pageTitle}>
-  <main class="estrategia-digital-page">
+  <main class="estrategia-digital-page"> {/* Consider renaming class e.g., "digital-strategy-page" */}
     
     <header class="page-hero-general section-padding text-center light-bg">
       <div class="container narrow-container">
@@ -28,20 +29,20 @@ const strategyPillars = [
 
     <section class="philosophy-section section-padding">
       <div class="container narrow-container">
-        <h2 class="text-center">Más que Tecnología, una Verdadera Transformación</h2>
+        <h2 class="text-center">More Than Technology, a True Transformation</h2>
         <p>
-          Entendemos que la transformación digital va más allá de simplemente adoptar nuevas herramientas. Se trata de 
-          repensar procesos, empoderar a tus equipos y crear nuevas formas de valor para tus clientes. 
-          Nuestra aproximación a la estrategia digital se basa en ser tus aliados tecnológicos, guiándote 
-          en cada paso del camino.
+          We understand that digital transformation goes beyond simply adopting new tools. It's about 
+          rethinking processes, empowering your teams, and creating new forms of value for your customers. 
+          Our approach to digital strategy is based on being your technology partners, guiding you 
+          every step of the way.
         </p>
         <div class="stack-solver-explanation">
-            <h3>El Poder del Enfoque "Stack Solver"</h3>
+            <h3>The Power of the "Stack Solver" Approach</h3>
             <p>
-                No creemos en soluciones únicas para todos. Cada empresa es un mundo, con sus propias particularidades. 
-                El enfoque "Stack Solver" implica un análisis detallado de tus necesidades para construir una arquitectura 
-                tecnológica – tu 'stack' – que no solo resuelva problemas actuales, sino que también siente las bases 
-                para el crecimiento futuro y la innovación continua.
+                We don't believe in one-size-fits-all solutions. Every company is unique, with its own particularities. 
+                The "Stack Solver" approach involves a detailed analysis of your needs to build a technology 
+                architecture – your 'stack' – that not only solves current problems but also lays the foundation 
+                for future growth and continuous innovation.
             </p>
         </div>
       </div>
@@ -49,7 +50,7 @@ const strategyPillars = [
 
     <section class="pillars-section section-padding mid-tone-bg">
       <div class="container">
-        <h2 class="text-center section-title-dark">Pilares de Nuestra Consultoría en Estrategia Digital</h2>
+        <h2 class="text-center section-title-dark">Pillars of Our Digital Strategy Consultancy</h2>
         <div class="pillars-grid">
           {strategyPillars.map(pillar => (
             <div class="pillar-card">
@@ -64,10 +65,11 @@ const strategyPillars = [
     
     <section class="service-cta-section section-padding text-center">
       <div class="container narrow-container">
-        <h2>¿Listo para Definir o Redefinir tu Estrategia Digital?</h2>
-        <p>Permítenos ser el catalizador de tu transformación. Juntos, podemos diseñar el futuro tecnológico de tu empresa.</p>
+        <h2>Ready to Define or Redefine Your Digital Strategy?</h2>
+        <p>Allow us to be the catalyst for your transformation. Together, we can design the technological future of your company.</p>
+        {/* IMPORTANT: Update this link if 'nosotros.astro' was renamed (e.g., to '/about-us#contacto-section') */}
         <a href="/nosotros#contacto-section" class="cta-button large-cta">
-          Iniciar Conversación Estratégica
+          Start a Strategic Conversation
         </a>
       </div>
     </section>
@@ -76,7 +78,7 @@ const strategyPillars = [
 </BaseLayout>
 
 <style is:global>
-  /* Estilos generales de la página */
+  /* Global page styles */
   .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .narrow-container { max-width: 800px; }
@@ -91,11 +93,11 @@ const strategyPillars = [
   .philosophy-section h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 1.5rem; }
   .philosophy-section p { font-size: 1.1rem; line-height: 1.7; color: #343a40; margin-bottom: 1.5rem; }
   .stack-solver-explanation {
-    background-color: #e0e5e9; /* Mismo fondo que en otras definiciones */
+    background-color: #e0e5e9; /* Same background as in other definitions */
     padding: 1.5rem 2rem;
     border-radius: 8px;
     margin-top: 2rem;
-    text-align: left; /* Para que el texto dentro no se centre */
+    text-align: left; /* So text inside isn't centred */
   }
   .stack-solver-explanation h3 {
     font-size: 1.6rem;
@@ -108,7 +110,7 @@ const strategyPillars = [
 
   .pillars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Pueden ser más de 2 o 3 columnas si caben */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Can be more than 2 or 3 columns if they fit */
     gap: 1.5rem;
   }
   .pillar-card {

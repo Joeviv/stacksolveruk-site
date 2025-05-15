@@ -1,111 +1,90 @@
 ---
-// src/pages/nosotros.astro
+// src/pages/about-us.astro (Suggested new name)
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = "Sobre Stacksolver.tech y Contacto | Aliados en tu Transformación Digital";
-const contactEmail = "info@stacksolver.tech"; 
+// Consider changing 'Stacksolver.tech' to 'StacksolverUK.com' if this title is specific to the UK site branding
+const pageTitle = "About StacksolverUK.com & Contact | Your Partners in Digital Transformation"; 
+// You might want to update this email to info@stacksolveruk.com if that's the UK contact
+const contactEmail = "info@stacksolveruk.com"; // Updated to UK for consistency
 
-const clarisPartnerProfileUrl = "https://www.claris.com/partners/profile/company.20000006479/";
 const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
 
-// Ya no necesitamos siteBaseUrl ni thankYouPageUrl para la redirección _next con AJAX
+// No longer need siteBaseUrl or thankYouPageUrl for _next redirection with AJAX
 ---
 
 <BaseLayout title={pageTitle}>
-  <main class="nosotros-contacto-page">
+  <main class="nosotros-contacto-page"> {/* You might want to rename this class later e.g., "about-contact-page" */}
     
-    <section class="sobre-nosotros-section section-padding">
+    <section class="sobre-nosotros-section section-padding"> {/* Class name could be "about-us-section" */}
       <div class="container">
         <header class="section-header text-center">
-          <h1>Somos tus Aliados en la Transformación Digital</h1>
+          <h1>We Are Your Partners in Digital Transformation</h1>
         </header>
-        <div class="content-grid">
-          <div class="mision-filosofia">
-            <h2>Nuestra Misión</h2>
-            <p>En Stacksolver.tech, nuestra misión es clara: resolver tus problemas de negocio y ayudarte a descubrir nuevas oportunidades a través del uso inteligente y estratégico de la tecnología. Queremos que cada empresa, sin importar su tamaño, pueda iniciar, rediseñar y comprender a fondo su estrategia digital para alcanzar el éxito.</p>
-            <h2>Nuestra Filosofía "Stack Solver"</h2>
-            <p>Creemos firmemente que no existe una solución tecnológica única para todos. Por eso, nuestro enfoque se basa en diseñar y construir 'stacks' de soluciones: combinaciones personalizadas de tecnologías y servicios que se adaptan perfectamente a tus necesidades y objetivos específicos.</p>
+        <div class="content-grid"> {/* This grid now only has one child directly */}
+          <div class="mision-filosofia"> {/* Class name could be "mission-philosophy" */}
+            <h2>Our Mission</h2>
+            <p>At StacksolverUK.com, our mission is clear: to solve your business problems and help you discover new opportunities through the intelligent and strategic use of technology. We want every company, regardless of its size, to be able to launch, redesign, and thoroughly understand its digital strategy to achieve success.</p>
+            <h2>Our "Stack Solver" Philosophy</h2>
+            <p>We firmly believe that there is no one-size-fits-all technological solution. Therefore, our approach is based on designing and building 'stacks' of solutions: customised combinations of technologies and services that are perfectly tailored to your specific needs and objectives.</p>
           </div>
-          <div class="partners-claris">
-            <div class="partner-card">
-              <h3>Partners Oficiales de Claris</h3>
-              <a href={clarisPartnerProfileUrl} target="_blank" rel="noopener noreferrer" title="Ver perfil oficial en Claris Partner Network">
-                <img 
-                  src="/images/logos/claris-partner-profile-summary.png" 
-                  alt="Resumen del perfil de StackSolver en Claris Partner Network" 
-                  class="partner-profile-summary-img" 
-                />
-              </a>
-              <p class="claris-explanation">
-                Estamos orgullosos de ser Partners Oficiales de Claris en Colombia. Esta alianza nos permite ofrecerte
-                las mejores soluciones de desarrollo de aplicaciones personalizadas con FileMaker, respaldadas por el
-                conocimiento y soporte directo del creador de la plataforma. 
-                <a href={clarisPartnerProfileUrl} target="_blank" rel="noopener noreferrer" class="verify-link">Verifícalo aquí.</a>
-              </p>
-            </div>
-          </div>
+          {/* CLARIS PARTNER SECTION REMOVED */}
         </div>
       </div>
     </section>
 
-    <section id="contacto-section" class="contacto-section section-padding dark-bg">
+    <section id="contacto-section" class="contacto-section section-padding dark-bg"> {/* Class name could be "contact-section" */}
       <div class="container contact-container-custom">
         <header class="section-header text-center">
-          <h2 class="text-light">Hablemos de tu Próximo Proyecto</h2>
+          <h2 class="text-light">Let's Talk About Your Next Project</h2>
           <p class="text-light-muted">
-            Nos encantaría conocer tus ideas y desafíos. No importa dónde te encuentres, podemos agendar una 
-            videoconferencia para entender tus requerimientos. Tenemos plena disponibilidad para colaborar 
-            con empresas en cualquier país, ya sea de forma remota o presencial si el proyecto lo requiere.
+            We would love to hear about your ideas and challenges. No matter where you are located, we can schedule a 
+            video conference to understand your requirements. We are fully available to collaborate 
+            with companies in any country, either remotely or in person if the project requires it.
             <br /> 
-            <strong>Puedes diligenciar el formulario a continuación o, si lo prefieres, enviarnos un email directamente.</strong>
+            <strong>You can fill out the form below or, if you prefer, send us an email directly.</strong>
           </p>
         </header>
 
         <div class="contact-content-wrapper">
           <div class="form-container">
-            <h3>Envíanos un Mensaje</h3>
-            {/* <!-- MODIFICACIÓN: Añadimos un ID al formulario para seleccionarlo con JS --> */}
+            <h3>Send Us a Message</h3>
             <form 
               id="contactForm" 
-              action={formspreeEndpoint}  {/* action y method aún son útiles como fallback si JS falla */}
+              action={formspreeEndpoint}
               method="POST" 
               class="contact-form" 
             >
               <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre Completo" required />
+                <label for="nombre">Name</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Your Full Name" required />
               </div>
               <div class="form-group">
-                <label for="empresa">Empresa</label>
-                <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu Empresa" />
+                <label for="empresa">Company</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Your Company Name" />
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="_replyto" placeholder="tu.correo@ejemplo.com" required />
+                <input type="email" id="email" name="_replyto" placeholder="your.email@example.com" required />
               </div>
               <div class="form-group">
-                <label for="telefono">Teléfono (Opcional)</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: +57 300 1234567 o Código País + Número" />
+                <label for="telefono">Telephone (Optional)</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="E.g., +44 7700 900000 or Country Code + Number" />
               </div>
               <div class="form-group">
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto o consulta..." required></textarea>
+                <label for="mensaje">Message</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tell us about your project or query..." required></textarea>
               </div>
               
-              <input type="hidden" name="_subject" value="Nuevo Mensaje de Contacto desde Stacksolver.tech" />
-              {/* <!-- ELIMINAMOS _next ya que AJAX manejará el mensaje de éxito -->
-              <input type="hidden" name="_next" value={thankYouPageUrl} /> 
-              --> */}
+              <input type="hidden" name="_subject" value="New Contact Message from StacksolverUK.com" /> 
               
-              <button type="submit" class="cta-button form-submit-button">Enviar Mensaje</button>
+              <button type="submit" class="cta-button form-submit-button">Send Message</button>
               
-              {/* <!-- NUEVO: Contenedor para mensajes de estado del formulario --> */}
               <div id="formStatus" class="form-status-message" aria-live="polite"></div>
             </form>
           </div>
 
           <div class="info-container text-center"> 
-            <h3>Nuestra Información de Contacto</h3>
+            <h3>Our Contact Information</h3>
             <ul class="contact-details">
               {contactEmail && (
                 <li>
@@ -121,7 +100,7 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
   </main>
 </BaseLayout>
 
-{/* <!-- INICIO: Script para envío AJAX del formulario --> */}
+{/* <!-- START: Script for AJAX form submission --> */}
 <script define:vars={{ formspreeEndpoint }}>
   const form = document.getElementById('contactForm');
   const statusMessage = document.getElementById('formStatus');
@@ -129,65 +108,65 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
 
   if (form) {
     form.addEventListener('submit', async function(event) {
-      event.preventDefault(); // Prevenir el envío tradicional
+      event.preventDefault(); 
       
       const formData = new FormData(form);
       const originalButtonText = submitButton.textContent;
 
-      // Mostrar mensaje de "Enviando..." y deshabilitar botón
-      statusMessage.textContent = 'Enviando mensaje...';
+      statusMessage.textContent = 'Sending message...';
       statusMessage.className = 'form-status-message status-sending';
       submitButton.disabled = true;
-      submitButton.textContent = 'Enviando...';
+      submitButton.textContent = 'Sending...';
 
       try {
-        const response = await fetch(form.action, { // Usamos form.action que tiene el endpoint
+        const response = await fetch(form.action, {
           method: 'POST',
           body: formData,
           headers: {
-            'Accept': 'application/json' // Pedir respuesta JSON a Formspree
+            'Accept': 'application/json'
           }
         });
 
         if (response.ok) {
-          // Éxito
-          statusMessage.textContent = '¡Gracias! Tu mensaje ha sido enviado correctamente.';
+          statusMessage.textContent = 'Thank you! Your message has been sent successfully.';
           statusMessage.className = 'form-status-message status-success';
-          form.reset(); // Limpiar el formulario
-          setTimeout(() => { // Opcional: Limpiar mensaje de éxito después de unos segundos
+          form.reset(); 
+          setTimeout(() => { 
             statusMessage.textContent = '';
             statusMessage.className = 'form-status-message';
           }, 5000);
         } else {
-          // Error en la respuesta de Formspree (ej. error de validación del lado del servidor)
           const data = await response.json();
           if (data.errors && data.errors.length > 0) {
             statusMessage.textContent = data.errors.map(error => error.message).join(', ');
           } else if (data.error) {
              statusMessage.textContent = data.error;
           } else {
-            statusMessage.textContent = 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.';
+            statusMessage.textContent = 'There was a problem sending your message. Please try again.';
           }
           statusMessage.className = 'form-status-message status-error';
         }
       } catch (error) {
-        // Error de red u otro error de JavaScript
-        console.error('Error al enviar el formulario:', error);
-        statusMessage.textContent = 'Error de conexión. Por favor, verifica tu internet e inténtalo de nuevo.';
+        console.error('Error sending form:', error);
+        statusMessage.textContent = 'Connection error. Please check your internet connection and try again.';
         statusMessage.className = 'form-status-message status-error';
       } finally {
-        // Rehabilitar botón y restaurar texto original
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;
       }
     });
   }
 </script>
-{/* <!-- FIN: Script para envío AJAX del formulario --> */}
+{/* <!-- END: Script for AJAX form submission --> */}
 
 
 <style is:global>
-  /* ... (Todos tus estilos existentes van aquí SIN CAMBIOS) ... */
+  /* ... (All your existing styles go here WITHOUT CHANGES) ... */
+  /* Note: You might want to check if the .content-grid styling for a single item looks good */
+  /* If .mision-filosofia now looks too narrow, you might adjust .content-grid or .mision-filosofia styling. */
+  /* For example, you could change .nosotros-contacto-page .content-grid to: */
+  /* .nosotros-contacto-page .content-grid { display: block; } or grid-template-columns: 1fr; */
+  
   .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .container { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .narrow-container { max-width: 800px; }
@@ -200,14 +179,10 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
   .section-header { margin-bottom: 3rem; }
   .section-header h1, .section-header h2 { font-size: 2.8rem; margin-bottom: 0.5rem; color: #333; }
   .section-header p { font-size: 1.1rem; color: #555; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;}
-  .nosotros-contacto-page .content-grid { display: grid; grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.5fr); gap: 3rem; align-items: flex-start; }
+  .nosotros-contacto-page .content-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: flex-start; } /* Adjusted to 1fr for single column */
   .mision-filosofia h2 { font-size: 1.8rem; color: #0056b3; margin-top: 1.5rem; margin-bottom: 0.75rem; }
   .mision-filosofia p { line-height: 1.7; color: #444; margin-bottom: 1.5rem; }
-  .partner-card { background-color: #fff; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
-  .partner-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #333; }
-  .partner-profile-summary-img { width: 100%; max-width: 400px; height: auto; border-radius: 6px; margin-left: auto; margin-right: auto; margin-bottom: 1rem; border: 1px solid #ddd; display: block; }
-  .partner-card .claris-explanation { font-size: 0.95rem; line-height: 1.6; color: #555; margin-top: 1rem; }
-  .verify-link { display: inline-block; margin-top: 0.5rem; font-weight: bold; color: #007bff; }
+  /* .partner-card styles removed as section is gone */
   .dark-bg { background-color: #2c3e50; }
   .text-light { color: #ffffff !important; }
   .text-light-muted { color: #bdc3c7 !important; }
@@ -272,7 +247,6 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
   .contact-details a { color: #ecf0f1; text-decoration: none; }
   .contact-details a:hover { color: #007bff; text-decoration: underline; }
 
-  /* <!-- NUEVO: Estilos para el mensaje de estado del formulario --> */
   .form-status-message {
     margin-top: 1.5rem;
     padding: 0.75rem 1.25rem;
@@ -298,9 +272,9 @@ const formspreeEndpoint = "https://formspree.io/f/xqaqgdoy";
 
 
   @media (max-width: 991px) {
-    .nosotros-contacto-page .content-grid { grid-template-columns: 1fr; }
-    .partners-claris { margin-top: 2rem; }
-    .partner-card { max-width: 550px; margin-left: auto; margin-right: auto; }
+    /* .nosotros-contacto-page .content-grid { grid-template-columns: 1fr; } */ /* Already set to 1fr above */
+    /* .partners-claris styles removed */
+    /* .partner-card styles removed */
   }
   @media (max-width: 767px) {
     .section-header h1, .section-header h2 { font-size: 2.2rem; }

@@ -1,16 +1,19 @@
 ---
+const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-    <p>© 2024 Stacksolver Tech</p> {/* O el texto que tuvieras */}
-  </footer>
+    <p>© {currentYear} StacksolverUK.com. All rights reserved.</p> {/* Updated Text */}
+</footer>
   
-  <style>
+<style>
     footer {
-      background-color: #333;
+      background-color: #333; /* Dark background for footer */
       color: white;
-      padding: 1rem;
+      padding: 1.5rem 1rem; /* Slightly more padding */
       text-align: center;
-      margin-top: 2rem;
+      /* margin-top: 2rem; */ /* Removed margin-top; BaseLayout's flexbox handles spacing */
+      width: 100%; /* Ensure footer spans full width */
+      box-sizing: border-box; /* Include padding in width calculation */
     }
-  </style>
+</style>
