@@ -12,7 +12,7 @@ import {
 
 export const prerender = true;
 
-// 1. Generación de rutas estáticas (SEO Friendly)
+// Static path generation (SEO friendly)
 export async function getStaticPaths() {
     const paths = [];
 
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
     return paths;
 }
 
-// 2. Obtener datos de la página actual
+// Get data for the current page
 const { section, subsection } = Astro.props;
 const {
     title,
@@ -55,7 +55,7 @@ const {
     <div
         class="p-6 md:p-12 lg:p-16 max-w-7xl mx-auto w-full animate-in fade-in duration-500"
     >
-        {/* Breadcrumbs (Navegación migas de pan) */}
+        {/* Breadcrumbs */}
         <div class="flex items-center gap-2 text-sm text-zinc-500 mb-8">
             <a
                 href="/"
@@ -97,7 +97,7 @@ const {
                     </p>
                 </div>
 
-                {/* Grid de Características (Vertical list) */}
+                {/* Features grid (vertical list) */}
                 <div class="grid grid-cols-1 gap-6 mb-12">
                     {
                         features.map((feature) => (
@@ -120,7 +120,7 @@ const {
                     }
                 </div>
 
-                {/* Plan de Implementación moved to full width below */}
+                {/* Implementation plan moved to full width below */}
 
                 {/* Gantt moved to full width below */}
 

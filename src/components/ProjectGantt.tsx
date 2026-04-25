@@ -78,9 +78,9 @@ export const ProjectGantt = ({ steps }: { steps: ImplementationStep[] }) => {
             <div className="flex flex-col mb-8">
                 <h3 className="text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-2 mb-2">
                     <CalendarDaysIcon className="w-6 h-6 text-olive-600 dark:text-olive-500" />
-                    Cronograma Interactivo
+                    Interactive timeline
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm">Ajusta las fechas de cada fase para personalizar tu plan de implementación.</p>
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm">Adjust the dates of each phase to tailor your implementation plan.</p>
             </div>
 
             {/* Scrollable Container */}
@@ -153,10 +153,10 @@ export const ProjectGantt = ({ steps }: { steps: ImplementationStep[] }) => {
                                                 width: `${widthPercent}%`,
                                                 minWidth: '40px'
                                             }}
-                                            title={`${durationDays} Días`}
+                                            title={`${durationDays} days`}
                                         >
                                             <span className="text-[10px] font-bold text-white/90 whitespace-nowrap drop-shadow-md">
-                                                {durationDays} Días
+                                                {durationDays} days
                                             </span>
                                         </div>
                                     </div>
