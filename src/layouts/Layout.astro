@@ -1,0 +1,110 @@
+---
+// File: src/layouts/Layout.astro
+import "../styles/global.css";
+import Navbar from "../components/Navbar";
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	keywords?: string;
+	type?: "website" | "article";
+	canonicalURL?: string;
+	robots?: string;
+}
+
+const {
+	title,
+	description = "Stacksolver UK — Bespoke technology consultancy based in Brighton. GRC, ERP, Claris FileMaker and ethical AI for the United Kingdom, Europe and the United States.",
+	image = "/og-image.png",
+	keywords = "",
+	type = "website",
+	canonicalURL = Astro.url.href,
+	robots = "index, follow",
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.href : "https://www.stacksolveruk.com";
+const socialImageURL = new URL(image, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="en-GB">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<script is:inline>
+			(function() {
+				try {
+					const localTheme = localStorage.getItem('theme');
+					if (localTheme === 'dark') {
+						document.documentElement.classList.add('dark');
+					} else {
+						document.documentElement.classList.remove('dark');
+					}
+				} catch (e) {
+					console.error("Error setting theme", e);
+				}
+			})();
+		</script>
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		{keywords && <meta name="keywords" content={keywords} />}
+		<meta name="robots" content={robots} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+		<meta property="og:locale" content="en_GB" />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImageURL} />
+
+		<script
+			type="application/ld+json"
+			is:inline
+			set:html={JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				name: "Stacksolver UK",
+				url: siteUrl,
+				description: description,
+				publisher: {
+					"@type": "Organization",
+					name: "Stacksolver UK Limited",
+					logo: {
+						"@type": "ImageObject",
+						url: `${siteUrl}/favicon.svg`,
+					},
+				},
+			})}
+		/>
+
+		<script
+			is:inline
+			src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+		></script>
+		<script is:inline>
+			window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+				"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+		</script>
+	</head>
+	<body
+		class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-50 font-sans flex flex-col min-h-screen overflow-x-hidden transition-colors duration-300"
+	>
+		<Navbar client:load />
+
+		<main class="flex-1 w-full relative min-h-screen">
+			<slot />
+		</main>
+	</body>
+</html>

@@ -1,0 +1,263 @@
+/* File: src/styles/global.css
+   Stacksolver UK Design System v2
+   Fonts: Inter (UI + headings), JetBrains Mono (code)
+   Two modes: light (default) + dark (data-theme="dark" or .dark)
+*/
+@import "tailwindcss";
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
+/* -------------------------------------------------------------------------
+   Fonts
+   ------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('/fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('/fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* -------------------------------------------------------------------------
+   Tailwind 4 @theme — tokens exposed as utility classes (bg-olive-500, etc)
+   ------------------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Brand — olive (bright military) + army (deep variant) */
+  --color-olive-50:   #f4f7e9;
+  --color-olive-100:  #e7eecf;
+  --color-olive-200:  #d0de9f;
+  --color-olive-300:  #b5ca6c;
+  --color-olive-400:  #9bb84a;
+  --color-olive-500:  #85a03a;  /* primary accent */
+  --color-olive-600:  #6d8530;
+  --color-olive-700:  #556a26;
+  --color-olive-800:  #4b5320;  /* army */
+  --color-olive-900:  #3d4418;
+
+  --color-army:       #4b5320;
+}
+
+/* -------------------------------------------------------------------------
+   CSS variables (runtime tokens for hand-written CSS)
+   ------------------------------------------------------------------------- */
+:root {
+  --ss-olive:            #85a03a;
+  --ss-olive-hover:      #94b043;
+  --ss-olive-active:     #6d8530;
+  --ss-army:             #4b5320;
+  --ss-olive-soft:       rgba(133, 160, 58, 0.12);
+  --ss-olive-glow:       0 0 0 3px rgba(133, 160, 58, 0.18);
+
+  --ss-white:            #ffffff;
+  --ss-zinc-50:          #fafafa;
+  --ss-zinc-100:         #f4f4f5;
+  --ss-zinc-200:         #e4e4e7;
+  --ss-zinc-300:         #d4d4d8;
+  --ss-zinc-400:         #a1a1aa;
+  --ss-zinc-500:         #71717a;
+  --ss-zinc-600:         #52525b;
+  --ss-zinc-700:         #3f3f46;
+  --ss-zinc-800:         #27272a;
+  --ss-zinc-900:         #18181b;
+  --ss-zinc-950:         #0a0a0a;
+
+  --bg:                  var(--ss-white);
+  --bg-soft:             var(--ss-zinc-100);
+  --bg-muted:            var(--ss-zinc-50);
+  --surface:             var(--ss-white);
+  --surface-elevated:    var(--ss-white);
+  --border:              var(--ss-zinc-200);
+  --border-strong:       var(--ss-zinc-300);
+
+  --fg-1:                var(--ss-zinc-900);
+  --fg-2:                var(--ss-zinc-600);
+  --fg-3:                var(--ss-zinc-400);
+  --fg-inverse:          var(--ss-white);
+  --fg-accent:           var(--ss-army);
+  --fg-link:             var(--ss-army);
+
+  --success:             #16a34a;
+  --success-soft:        #dcfce7;
+  --warning:             #d97706;
+  --warning-soft:        #fef3c7;
+  --danger:              #be185d;
+  --danger-soft:         #fce7f3;
+  --info:                #2563eb;
+  --info-soft:           #dbeafe;
+
+  --radius-sm:           6px;
+  --radius-md:           8px;
+  --radius-lg:           12px;
+  --radius-xl:           16px;
+  --radius-full:         9999px;
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+
+  --shadow-xs: 0 1px 0 rgba(24, 24, 27, 0.04);
+  --shadow-sm: 0 1px 2px rgba(24, 24, 27, 0.06), 0 1px 1px rgba(24, 24, 27, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(24, 24, 27, 0.08), 0 2px 4px -1px rgba(24, 24, 27, 0.04);
+  --shadow-lg: 0 12px 32px -8px rgba(24, 24, 27, 0.12), 0 4px 8px -2px rgba(24, 24, 27, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(133, 160, 58, 0.25);
+
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-md:   17px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+  --text-3xl:  44px;
+  --text-4xl:  60px;
+  --text-5xl:  80px;
+
+  --leading-tight:  1.15;
+  --leading-snug:   1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.65;
+
+  --tracking-tight-xl: -0.03em;
+  --tracking-tight:    -0.015em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.04em;
+  --tracking-caps:     0.08em;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0.1, 1);
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:      120ms;
+  --dur-base:      200ms;
+  --dur-slow:      360ms;
+}
+
+/* -------------------------------------------------------------------------
+   Dark mode — first-class
+   ------------------------------------------------------------------------- */
+:root[data-theme="dark"],
+.dark {
+  --bg:                  #0a0a0a;
+  --bg-soft:             #101010;
+  --bg-muted:            #141414;
+  --surface:             #18181b;
+  --surface-elevated:    #1f1f23;
+  --border:              #27272a;
+  --border-strong:       #3f3f46;
+
+  --fg-1:                #fafafa;
+  --fg-2:                #a1a1aa;
+  --fg-3:                #52525b;
+  --fg-inverse:          #0a0a0a;
+  --fg-accent:           #a6c04d;
+  --fg-link:             #a6c04d;
+
+  --success-soft:        rgba(22, 163, 74, 0.16);
+  --warning-soft:        rgba(217, 119, 6, 0.16);
+  --danger-soft:         rgba(190, 24, 93, 0.18);
+  --info-soft:           rgba(37, 99, 235, 0.18);
+
+  --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 16px -4px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
+  --shadow-focus: 0 0 0 3px rgba(166, 192, 77, 0.28);
+
+  --ss-olive-soft: rgba(133, 160, 58, 0.18);
+  --ss-olive-glow: 0 0 24px rgba(133, 160, 58, 0.35),
+                   0 0 0 1px rgba(133, 160, 58, 0.45) inset;
+}
+
+/* -------------------------------------------------------------------------
+   Base elements
+   ------------------------------------------------------------------------- */
+html, body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  color: var(--fg-1);
+  background: var(--bg);
+}
+
+body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  @apply bg-white text-zinc-900 dark:bg-black dark:text-zinc-50;
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-accent);
+}
+
+/* Focus ring — consistent across interactive elements */
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-md);
+}
+
+/* -------------------------------------------------------------------------
+   Legacy utilities — preserved from pre-v2 (used by existing components)
+   ------------------------------------------------------------------------- */
+.glass-panel {
+  background-color: rgba(24, 24, 27, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(39, 39, 42, 0.5);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(133, 160, 58, 0.5);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #27272a;
+  border-radius: 9999px;
+  border: 2px solid #09090b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3f3f46;
+}
+
+::selection {
+  background: rgba(133, 160, 58, 0.35);
+  color: #fff;
+}
