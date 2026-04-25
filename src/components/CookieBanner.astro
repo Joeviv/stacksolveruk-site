@@ -1,0 +1,94 @@
+---
+// File: src/components/CookieBanner.astro
+// GDPR + UK PECR compliant cookie consent banner.
+// Strictly necessary cookies are always on. Analytics requires consent.
+---
+
+<div
+  id="cookie-banner"
+  class="hidden fixed bottom-0 inset-x-0 z-[60] bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-t border-zinc-200 dark:border-zinc-800 shadow-2xl"
+  role="dialog"
+  aria-labelledby="cookie-banner-title"
+  aria-describedby="cookie-banner-desc"
+>
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-6">
+    <div class="flex flex-col lg:flex-row items-start lg:items-center gap-6 justify-between">
+      <div class="flex-1">
+        <h2 id="cookie-banner-title" class="font-semibold text-zinc-900 dark:text-white mb-2">
+          We use cookies
+        </h2>
+        <p id="cookie-banner-desc" class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          Strictly necessary cookies make this site work. With your consent, we also use anonymous
+          analytics cookies to understand how the site is used and improve it.
+          See our <a href="/legal/cookies" class="text-olive-600 dark:text-olive-400 hover:underline">Cookie Policy</a>
+          and <a href="/legal/privacy" class="text-olive-600 dark:text-olive-400 hover:underline">Privacy Policy</a>.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button
+          type="button"
+          id="cookie-reject"
+          class="px-4 py-2 rounded-lg bg-transparent text-zinc-900 dark:text-white text-sm font-medium border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+        >
+          Reject non-essential
+        </button>
+        <button
+          type="button"
+          id="cookie-accept"
+          class="px-4 py-2 rounded-lg bg-olive-500 text-zinc-900 text-sm font-semibold border border-olive-500 hover:bg-olive-600 transition-colors"
+        >
+          Accept all
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = 'cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept');
+    var rejectBtn = document.getElementById('cookie-reject');
+
+    function setConsent(value) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          analytics: value === 'accept',
+          marketing: false,
+          timestamp: new Date().toISOString(),
+          version: 1,
+        }));
+      } catch (e) {}
+      if (banner) banner.classList.add('hidden');
+    }
+
+    function show() {
+      if (banner) banner.classList.remove('hidden');
+    }
+
+    function init() {
+      var stored = null;
+      try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+      if (!stored) {
+        show();
+      }
+      if (acceptBtn) acceptBtn.addEventListener('click', function () { setConsent('accept'); });
+      if (rejectBtn) rejectBtn.addEventListener('click', function () { setConsent('reject'); });
+
+      // Footer "Cookie Preferences" trigger
+      document.querySelectorAll('[data-cookie-prefs]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          show();
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

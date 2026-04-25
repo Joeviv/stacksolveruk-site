@@ -4,7 +4,6 @@ import {
   Bars3Icon,
   XMarkIcon,
   ChevronDownIcon,
-  CodeBracketIcon
 } from '@heroicons/react/24/outline';
 import { SERVICES_MENU } from '../data/menuData';
 import ThemeToggle from './ThemeToggle';
@@ -55,11 +54,18 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 bg-olive-500 rounded-lg flex items-center justify-center shadow-lg shadow-olive-500/30 group-hover:scale-110 transition-transform">
-                <CodeBracketIcon className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-zinc-900 dark:text-white text-lg tracking-tight">Stacksolver UK</span>
+            <a href="/" className="flex items-center gap-2 group" aria-label="Stacksolver UK home">
+              <img
+                src="/general/logo-mark-v2.svg"
+                alt=""
+                className="w-8 h-8 group-hover:scale-110 transition-transform"
+                width="32"
+                height="32"
+              />
+              <span className="font-bold text-zinc-900 dark:text-white text-lg tracking-tight inline-flex items-center gap-1.5">
+                Stacksolver
+                <span className="inline-flex items-center justify-center text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded bg-olive-500 text-white">UK</span>
+              </span>
             </a>
           </div>
 
@@ -130,6 +136,26 @@ export default function Navbar() {
               </div>
 
               <a
+                href="/industries"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/industries')
+                  ? 'text-olive-500 bg-olive-50 dark:text-white dark:bg-zinc-900'
+                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
+                  }`}
+              >
+                Industries
+              </a>
+
+              <a
+                href="/method"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/method')
+                  ? 'text-olive-500 bg-olive-50 dark:text-white dark:bg-zinc-900'
+                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
+                  }`}
+              >
+                Method
+              </a>
+
+              <a
                 href="/about"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/about')
                   ? 'text-olive-500 bg-olive-50 dark:text-white dark:bg-zinc-900'
@@ -137,6 +163,16 @@ export default function Navbar() {
                   }`}
               >
                 About
+              </a>
+
+              <a
+                href="/trust"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/trust')
+                  ? 'text-olive-500 bg-olive-50 dark:text-white dark:bg-zinc-900'
+                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
+                  }`}
+              >
+                Trust
               </a>
 
               <a
@@ -214,11 +250,35 @@ export default function Navbar() {
             </div>
 
             <a
+              href="/industries"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/industries') ? 'bg-olive-50 text-olive-500 dark:bg-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
+                }`}
+            >
+              Industries
+            </a>
+
+            <a
+              href="/method"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/method') ? 'bg-olive-50 text-olive-500 dark:bg-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
+                }`}
+            >
+              Method
+            </a>
+
+            <a
               href="/about"
               className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/about') ? 'bg-olive-50 text-olive-500 dark:bg-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
                 }`}
             >
               About
+            </a>
+
+            <a
+              href="/trust"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/trust') ? 'bg-olive-50 text-olive-500 dark:bg-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
+                }`}
+            >
+              Trust
             </a>
 
             <a

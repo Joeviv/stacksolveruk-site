@@ -3,9 +3,9 @@
 import Layout from '../layouts/Layout.astro';
 import HeroV2 from '../components/hero/HeroV2';
 
-const seoTitle = "Stacksolver UK | Claris FileMaker Partner, GRC & ERP Experts (+18 years)";
-const seoDescription = "Brighton-based technology consultancy serving the United Kingdom, Europe and the United States. GRC and ERP systems, bespoke Claris FileMaker apps (+18 years) and ISO-grade AI implementation.";
-const seoKeywords = "Claris FileMaker Partner UK, Bespoke ERP UK, GRC Consultancy UK, ISO 27001 UK, ISO 42001 AI, Sovereign AI, British Software Company, FileMaker Consultancy Europe";
+const seoTitle = "Stacksolver UK | Cyber Security, AI Engineering & Compliance Consultancy";
+const seoDescription = "Independent Cyber Security, AI Engineering and Compliance consultancy based in Brighton. Serving the United Kingdom, Europe and the United States. Senior expertise. Lean delivery. Auditable by design.";
+const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK, Sovereign AI, ISO 42001, ISO 27001 UK, NIS2 readiness, DORA compliance, Procurement AI, HR AI, AI Red Teaming, Local AI Stack, Brighton consultancy";
 ---
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
@@ -17,23 +17,26 @@ const seoKeywords = "Claris FileMaker Partner UK, Bespoke ERP UK, GRC Consultanc
       <div class="lg:col-span-1">
         <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Who we are</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          A British technology consultancy.
+          A British consultancy with a clear specialty.
         </h2>
       </div>
       <div class="lg:col-span-2 space-y-5 text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed">
         <p>
           Stacksolver UK Limited is a Brighton-based consultancy serving organisations across the
-          <strong>United Kingdom, Europe and the United States</strong>. We design and deliver bespoke
-          enterprise systems where governance, risk and compliance are not bolted on — they are built in.
+          <strong>United Kingdom, Europe and the United States</strong>.
+          <strong>Cyber security is our specialty</strong> — and the rest of what we do, from
+          AI engineering to governance and compliance, is built around it.
         </p>
         <p>
-          Our work spans <strong>tailored ERP development</strong>, <strong>Claris FileMaker</strong> bespoke applications
-          (+18 years on the platform), <strong>ISO 27001 and ISO 42001</strong> implementation, and <strong>sovereign AI</strong>
-          deployments where every byte stays inside your perimeter.
+          Our work spans <strong>Cyber Essentials Plus and penetration testing</strong>,
+          <strong>AI engineering with a strong focus on Procurement + AI and HR + AI</strong>,
+          <strong>ISO 27001 and ISO 42001</strong> implementation, and
+          <strong>NIS2, DORA and supply chain risk</strong> programmes for firms with European exposure.
         </p>
         <p>
-          We work primarily with <strong>regulated industries</strong>: fiduciary services, corporate services,
-          legal, financial services and AI-sensitive sectors where audit trails and data sovereignty are not optional.
+          We work primarily with <strong>regulated industries</strong>: financial services, healthcare,
+          professional services, technology and corporate services, where audit trails and
+          data sovereignty are not optional.
         </p>
       </div>
     </div>
@@ -45,84 +48,119 @@ const seoKeywords = "Claris FileMaker Partner UK, Bespoke ERP UK, GRC Consultanc
       <div class="text-center max-w-2xl mx-auto mb-16">
         <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What we do</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Four pillars. One coherent practice.
+          Cyber as our core, with four practices around it.
         </h2>
       </div>
 
+      <!-- Featured: Cyber -->
+      <a href="/services/cyber" class="group block mb-6 p-8 bg-white dark:bg-zinc-900 border-2 border-olive-500 rounded-xl hover:bg-olive-50 dark:hover:bg-olive-500/5 transition-colors">
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-olive-500 flex items-center justify-center text-white font-bold text-lg">
+            01
+          </div>
+          <div class="flex-1">
+            <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">Our specialty</div>
+            <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Cyber Security</h3>
+            <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              Cyber Essentials Plus, penetration testing, vCISO, security architecture and incident response —
+              for UK businesses entering corporate procurement and for firms preparing for the next regulator.
+            </p>
+          </div>
+          <div class="flex-shrink-0 text-olive-500 self-center text-xl" aria-hidden>→</div>
+        </div>
+      </a>
+
+      <!-- Other 4 practices -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="/services/erp-filemaker" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">Claris FileMaker</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Bespoke ERP</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">Finance, HR, projects, inventory and operations in one tailored system.</p>
+
+        <a href="/services/ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">02 · AI Engineering</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">AI &amp; All Its Flavours</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Sovereign AI inside your perimeter. Ethical by default. ISO 42001 ready.
+          </p>
+        </a>
+
+        <a href="/services/areas-ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">03 · Areas + AI</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Procurement + AI · HR + AI</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            AI embedded in the function, not floating above it. Outcomes by department.
+          </p>
         </a>
 
         <a href="/services/grc" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">ISO 27001 · 42001</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Native GRC</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">Automated audits and regulatory compliance embedded in every transaction.</p>
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">04 · GRC</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Governance &amp; Compliance</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Risk register, vCISO retainer, DPO-as-a-Service, internal audit. Designed in, not bolted on.
+          </p>
         </a>
 
-        <a href="/services/ai-local" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">Zero data egress</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Sovereign AI</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">Specialised agents inside your perimeter. Immutable audit logs, audit-ready.</p>
+        <a href="/services/risk-resilience" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">05 · Resilience</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">NIS2 · DORA · TPRM</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Regulatory tailwind 2026–2027. Ready your operations for European supervision.
+          </p>
         </a>
+      </div>
 
-        <a href="/services/apple-business" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">ABM · MDM · VPP</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Apple Business</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">Apple Business Manager rollout and support. Corporate accounts, MDM, training.</p>
+      <!-- Secondary services row -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/services/iso-compliance" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="text-sm font-semibold text-zinc-900 dark:text-white">ISO Frameworks</div>
+          <div class="text-xs text-zinc-500 dark:text-zinc-500">27001 · 42001 · 27701 · 22301 · SOC 2</div>
         </a>
+        <a href="/services/ai-security" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="text-sm font-semibold text-zinc-900 dark:text-white">AI Security &amp; Red Teaming</div>
+          <div class="text-xs text-zinc-500 dark:text-zinc-500">OWASP Top 10 LLM · MITRE ATLAS</div>
+        </a>
+        <a href="/services/local-ai" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="text-sm font-semibold text-zinc-900 dark:text-white">Local AI Stack</div>
+          <div class="text-xs text-zinc-500 dark:text-zinc-500">Apple Silicon · NVIDIA · Bedrock private</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries strip -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+      <div class="text-center mb-10">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Who we work with</p>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Built for regulated industries.
+        </h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
+        <a href="/industries#tech" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Technology</a>
+        <a href="/industries#professional-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Professional Services</a>
+        <a href="/industries#financial-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Financial Services</a>
+        <a href="/industries#healthcare" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Healthcare</a>
+        <a href="/industries#corporate-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Corporate Services</a>
       </div>
     </div>
   </section>
 
   <!-- CTA section -->
-  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
         Ready to talk?
       </h2>
       <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-        Tell us about your project, your constraints and your timeline. We will reply within two working days.
+        Tell us about your project, your constraints and your timeline.
+        We will reply within two working days.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-3">
         <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
           Contact us <span aria-hidden>→</span>
         </a>
-        <a href="/diagnostic" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
-          Start a diagnostic
+        <a href="/trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+          Trust Center
         </a>
       </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-      <div>
-        <div class="font-bold text-zinc-900 dark:text-white mb-2">Stacksolver UK Limited</div>
-        <p class="text-zinc-600 dark:text-zinc-400">Company Number 16227080</p>
-        <p class="text-zinc-600 dark:text-zinc-400">215 Ditchling Road,<br />Brighton, BN1 6JD<br />United Kingdom</p>
-      </div>
-      <div>
-        <div class="font-semibold text-zinc-900 dark:text-white mb-2">Sitemap</div>
-        <ul class="space-y-1">
-          <li><a href="/" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500">Home</a></li>
-          <li><a href="/about" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500">About</a></li>
-          <li><a href="/method" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500">Method</a></li>
-          <li><a href="/contact" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="font-semibold text-zinc-900 dark:text-white mb-2">Get in touch</div>
-        <p class="text-zinc-600 dark:text-zinc-400">
-          <a href="mailto:office@stacksolveruk.com" class="hover:text-olive-500">office@stacksolveruk.com</a>
-        </p>
-        <p class="text-zinc-600 dark:text-zinc-400 mt-3 text-xs">
-          © {new Date().getFullYear()} Stacksolver UK Limited. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
 </Layout>

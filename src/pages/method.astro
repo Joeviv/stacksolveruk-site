@@ -1,58 +1,185 @@
 ---
 // File: src/pages/method.astro
 import Layout from '../layouts/Layout.astro';
+
+const principles = [
+  {
+    n: '01',
+    title: 'Senior practitioners only.',
+    body: "No bench warmers. No junior staff billed at senior rates. Every engagement is led by someone with at least fifteen years in cyber, AI or compliance — and our specialists have the certifications and scars to prove it.",
+  },
+  {
+    n: '02',
+    title: 'Cyber security is the core. Everything else is built around it.',
+    body: 'AI engineering, GRC, ISO frameworks, NIS2 and DORA all rest on the same foundation: control, evidence and audit trail. We do not sell consulting that ignores those fundamentals.',
+  },
+  {
+    n: '03',
+    title: 'Lean overhead. Honest pricing.',
+    body: 'We have no oversized office, no rotating account managers, no internal partner pyramid to feed. That is why we can deliver work that competes with Big 4 quality at a fraction of the price.',
+  },
+  {
+    n: '04',
+    title: 'Fixed-fee where it makes sense.',
+    body: 'For implementations and assessments with definable scope, we quote fixed fees. You know what you are getting and what it costs before we start. Time-and-materials is reserved for genuine R&D and ongoing retainers.',
+  },
+  {
+    n: '05',
+    title: 'Compliance by design, not by retrofit.',
+    body: 'DPIAs, risk registers, evidence packs, audit trails — these are not artefacts we add at the end. They are designed in from week one, because that is the only way they actually work.',
+  },
+  {
+    n: '06',
+    title: 'Independent. No vendor lock-in.',
+    body: 'We do not resell tools we cannot defend. We do not take kickbacks. When we recommend a platform — Vanta, Drata, AWS Bedrock, Mosyle, anything — it is because it is the right fit for you, not for our commission.',
+  },
+];
+
+const stages = [
+  {
+    n: 1,
+    title: 'Discovery',
+    body: 'Understand current state, regulatory constraints and business objectives. We meet your team, read your documents, look at your systems where appropriate, and produce a scoping memo with a prioritised roadmap.',
+    output: 'Scoping memo + prioritised roadmap',
+  },
+  {
+    n: 2,
+    title: 'Design',
+    body: 'Architecture, data model, security controls, integration points — agreed with your stakeholders before a single line of code is written or a single policy issued. Where compliance is in scope, the DPIA and risk treatment plan land here.',
+    output: 'Solution design + risk treatment plan',
+  },
+  {
+    n: 3,
+    title: 'Delivery',
+    body: 'Iterative build with weekly checkpoints, structured user acceptance testing and a documented handover. For implementations, we go-live in production. For assessments, we deliver the report and the remediation plan.',
+    output: 'Working system / Final report + handover pack',
+  },
+  {
+    n: 4,
+    title: 'Support',
+    body: 'Optional ongoing retainer covering enhancements, regulatory updates, surveillance audits and operational support. Many of our clients prefer a quarterly checkpoint rather than a continuous engagement — we accommodate either.',
+    output: 'Continuous compliance + quarterly review',
+  },
+];
+
+const antiOffers = [
+  'We do not run multi-year transformation programmes with armies of consultants. That is not who we are.',
+  'We do not deliver "AI strategy" decks without working code or measurable outcomes behind them.',
+  'We do not sell software licences as a primary revenue line. We are vendor-agnostic.',
+  'We do not staff junior consultants on critical cyber work. There are no learning seats on your engagement.',
+  'We do not promise compliance without rigour. If we say you are ready, you are ready.',
+];
 ---
 
 <Layout
   title="Method | Stacksolver UK"
-  description="How Stacksolver UK delivers bespoke enterprise systems: discovery, design, delivery and continuous support — with governance built in from day one."
+  description="How Stacksolver UK delivers Cyber, AI and Compliance work. Senior practitioners only. Lean overhead. Fixed-fee where it makes sense. Compliance by design. Independent."
 >
-  <section class="min-h-screen flex items-center bg-white dark:bg-black">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-24">
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-24 pb-16">
       <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-6">Method</p>
       <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
-        Discovery. Design. Delivery. Support.
+        How we work.
       </h1>
-      <p class="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mb-12">
-        Every engagement follows the same four-stage cadence. Each stage produces a tangible artefact
-        and a clear go / no-go decision before the next stage begins.
+      <p class="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        We are a boutique. That word is overused — here is what it actually means in practice.
       </p>
-      <ol class="space-y-6">
-        <li class="flex gap-5">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-olive-500 text-zinc-900 font-bold flex items-center justify-center">1</div>
-          <div>
-            <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-1">Discovery</h3>
-            <p class="text-zinc-600 dark:text-zinc-400">Understand current state, regulatory constraints and business objectives. Output: scoping memo and prioritised roadmap.</p>
-          </div>
-        </li>
-        <li class="flex gap-5">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-olive-500 text-zinc-900 font-bold flex items-center justify-center">2</div>
-          <div>
-            <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-1">Design</h3>
-            <p class="text-zinc-600 dark:text-zinc-400">Solution architecture, data model, security controls and integration points — agreed with your stakeholders before a single line of code is written.</p>
-          </div>
-        </li>
-        <li class="flex gap-5">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-olive-500 text-zinc-900 font-bold flex items-center justify-center">3</div>
-          <div>
-            <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-1">Delivery</h3>
-            <p class="text-zinc-600 dark:text-zinc-400">Iterative build with weekly demos, structured user acceptance testing and a documented handover.</p>
-          </div>
-        </li>
-        <li class="flex gap-5">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-olive-500 text-zinc-900 font-bold flex items-center justify-center">4</div>
-          <div>
-            <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-1">Support</h3>
-            <p class="text-zinc-600 dark:text-zinc-400">Ongoing retainer covering enhancements, compliance updates and operational support.</p>
-          </div>
-        </li>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Six principles</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-12">
+        What we believe and how we behave.
+      </h2>
+      <ol class="space-y-10">
+        {principles.map((p) => (
+          <li class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-olive-500/10 text-olive-600 dark:text-olive-400 font-mono text-sm flex items-center justify-center font-semibold">
+              {p.n}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">{p.title}</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">{p.body}</p>
+            </div>
+          </li>
+        ))}
       </ol>
-      <p class="text-zinc-500 dark:text-zinc-500 italic pt-12 mt-12 border-t border-zinc-200 dark:border-zinc-800">
-        A detailed methodology page with case studies and downloadable framework is being prepared.
+    </div>
+  </section>
+
+  <!-- The four-stage cadence -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">The cadence</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+        Discovery. Design. Delivery. Support.
+      </h2>
+      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-12 max-w-2xl">
+        Every engagement follows the same four-stage cadence. Each stage produces a tangible artefact
+        and a clear go / no-go decision before the next stage begins. No surprises, no scope drift.
       </p>
-      <div class="mt-8 flex flex-wrap gap-3">
+      <ol class="space-y-8">
+        {stages.map((s) => (
+          <li class="grid grid-cols-[auto_1fr] gap-6 items-start">
+            <div class="w-12 h-12 rounded-full bg-olive-500 text-zinc-900 font-bold flex items-center justify-center text-lg">
+              {s.n}
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">{s.title}</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-3">{s.body}</p>
+              <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">
+                Output: <span class="text-zinc-700 dark:text-zinc-300 normal-case tracking-normal">{s.output}</span>
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- What we do not do -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What we do not do</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Knowing the difference matters.
+      </h2>
+      <p class="text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed mb-8">
+        We are clear about who we are and who we are not. If any of the below sounds like what you need,
+        you are better served by a different kind of provider.
+      </p>
+      <ul class="space-y-3">
+        {antiOffers.map((line) => (
+          <li class="flex gap-3 text-zinc-700 dark:text-zinc-300 leading-relaxed">
+            <span class="text-olive-500 font-bold flex-shrink-0">—</span>
+            <span>{line}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+        Ready to discuss your project?
+      </h2>
+      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8 max-w-2xl mx-auto">
+        Tell us what you are working on, what is bothering you, and what success looks like.
+        We will reply within two working days.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
         <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
-          Discuss your project <span aria-hidden>→</span>
+          Contact us <span aria-hidden>→</span>
+        </a>
+        <a href="/trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+          Trust Center
         </a>
       </div>
     </div>

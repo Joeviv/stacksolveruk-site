@@ -1,0 +1,106 @@
+---
+// File: src/components/Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+
+    <!-- Trust strip -->
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pb-10 mb-10 border-b border-zinc-200 dark:border-zinc-800">
+      <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-olive-500"></span>
+        Cyber Essentials Plus (in progress)
+      </span>
+      <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-olive-500"></span>
+        ICO Registered (pending)
+      </span>
+      <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-olive-500"></span>
+        ISO 27001 Aligned
+      </span>
+      <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-olive-500"></span>
+        Insured
+      </span>
+    </div>
+
+    <!-- Footer columns -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
+
+      <!-- Company -->
+      <div class="md:col-span-1">
+        <div class="font-bold text-zinc-900 dark:text-white mb-3">Stacksolver UK Limited</div>
+        <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          Company Number 16227080<br />
+          215 Ditchling Road,<br />
+          Brighton, BN1 6JD<br />
+          United Kingdom
+        </p>
+        <p class="text-zinc-600 dark:text-zinc-400 mt-4">
+          <a href="mailto:office@stacksolveruk.com" class="hover:text-olive-500 transition-colors">office@stacksolveruk.com</a>
+        </p>
+      </div>
+
+      <!-- Sitemap -->
+      <div>
+        <div class="font-semibold text-zinc-900 dark:text-white mb-3">Sitemap</div>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Home</a></li>
+          <li><a href="/about" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">About</a></li>
+          <li><a href="/method" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Method</a></li>
+          <li><a href="/industries" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Industries</a></li>
+          <li><a href="/trust" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Trust Center</a></li>
+          <li><a href="/contact" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="font-semibold text-zinc-900 dark:text-white mb-3">Services</div>
+        <ul class="space-y-2">
+          <li><a href="/services/cyber" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Cyber Security</a></li>
+          <li><a href="/services/ai" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">AI Engineering</a></li>
+          <li><a href="/services/areas-ai" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Areas + AI</a></li>
+          <li><a href="/services/grc" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">GRC &amp; Compliance</a></li>
+          <li><a href="/services/iso-compliance" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">ISO Frameworks</a></li>
+          <li><a href="/services/risk-resilience" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">NIS2 · DORA · TPRM</a></li>
+          <li><a href="/services/ai-security" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">AI Security</a></li>
+          <li><a href="/services/local-ai" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Local AI Stack</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <div class="font-semibold text-zinc-900 dark:text-white mb-3">Legal</div>
+        <ul class="space-y-2">
+          <li><a href="/legal/privacy" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Privacy Policy</a></li>
+          <li><a href="/legal/cookies" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Cookie Policy</a></li>
+          <li><a href="/legal/terms" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Terms of Service</a></li>
+          <li><a href="/legal/modern-slavery" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Modern Slavery</a></li>
+          <li><a href="/legal/anti-bribery" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Anti-Bribery</a></li>
+          <li><a href="/legal/whistleblowing" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Whistleblowing</a></li>
+          <li><a href="/legal/equal-opportunities" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Equal Opportunities</a></li>
+          <li><a href="/legal/acceptable-use" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">Acceptable Use</a></li>
+          <li><a href="/legal/ico-registration" class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors">ICO Registration</a></li>
+          <li>
+            <button
+              type="button"
+              data-cookie-prefs
+              class="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 transition-colors text-left"
+            >
+              Cookie Preferences
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-500">
+      <p>© {year} Stacksolver UK Limited. All rights reserved.</p>
+      <p>Brighton · London · serving the United Kingdom, Europe and the United States.</p>
+    </div>
+  </div>
+</footer>

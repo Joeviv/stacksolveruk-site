@@ -1,0 +1,63 @@
+---
+// File: src/pages/legal/index.astro
+import Layout from '../../layouts/Layout.astro';
+import { LEGAL_DOCS } from '../../data/legal';
+---
+
+<Layout
+  title="Legal | Stacksolver UK"
+  description="Stacksolver UK Limited — public legal policies, statements and notices. Privacy, Cookies, Terms, Modern Slavery, Anti-Bribery, Whistleblowing, Equal Opportunities, Acceptable Use, ICO Registration."
+>
+  <!-- Hero -->
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-24 pb-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-6">Legal</p>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Public legal documents.
+      </h1>
+      <p class="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        These are the policies, statements and notices that govern how we operate and how we engage
+        with the public, our clients, our suppliers and our team. They are reviewed regularly and
+        updated as applicable law and our practice evolve.
+      </p>
+    </div>
+  </section>
+
+  <!-- Documents grid -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-16">
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {LEGAL_DOCS.map((d) => (
+          <li>
+            <a
+              href={`/legal/${d.slug}`}
+              class="block p-5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors"
+            >
+              <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">
+                {d.category}
+              </p>
+              <p class="text-zinc-900 dark:text-white font-semibold mb-1">{d.title}</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-500">
+                Last reviewed: {d.reviewDate}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Note -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-16 text-zinc-700 dark:text-zinc-300 leading-relaxed">
+      <p>
+        For our compliance posture overview, certifications and insurance, see our
+        <a href="/trust" class="text-olive-600 dark:text-olive-400 hover:underline">Trust Center</a>.
+      </p>
+      <p class="mt-4">
+        For questions about any of these documents, contact
+        <a href="mailto:office@stacksolveruk.com" class="text-olive-600 dark:text-olive-400 hover:underline">office@stacksolveruk.com</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

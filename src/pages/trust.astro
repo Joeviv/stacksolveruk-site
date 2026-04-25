@@ -1,0 +1,211 @@
+---
+// File: src/pages/trust.astro
+import Layout from '../layouts/Layout.astro';
+import { LEGAL_DOCS } from '../data/legal';
+
+const certs = [
+  {
+    name: 'Cyber Essentials Plus',
+    status: 'In progress',
+    detail: 'Independent technical audit by an NCSC-accredited certification body. Badge published once issued.',
+    link: 'https://www.ncsc.gov.uk/cyberessentials/overview',
+    linkLabel: 'NCSC scheme',
+  },
+  {
+    name: 'ICO Registration',
+    status: 'In progress',
+    detail: 'Registration as a data controller under the Data Protection (Charges and Information) Regulations 2018. Number published once issued.',
+    link: '/legal/ico-registration',
+    linkLabel: 'See notice',
+  },
+  {
+    name: 'Companies House',
+    status: 'Active',
+    detail: 'Stacksolver UK Limited · Company Number 16227080 · Registered in England and Wales.',
+    link: 'https://find-and-update.company-information.service.gov.uk/company/16227080',
+    linkLabel: 'Public registry',
+  },
+  {
+    name: 'ISO 27001:2022 Aligned',
+    status: 'Self-attested',
+    detail: 'We operate against the ISO 27001:2022 control set. Formal certification programme planned in line with our growth.',
+    link: '/services/iso-compliance/iso-27001',
+    linkLabel: 'Read more',
+  },
+];
+
+const insurance = [
+  { name: 'Professional Indemnity', detail: 'Coverage in place to support our consultancy engagements with mid-market clients.' },
+  { name: 'Cyber Liability', detail: 'Coverage appropriate for the cyber and AI nature of our work.' },
+  { name: 'Public Liability', detail: 'Standard public liability cover for our operations.' },
+];
+
+const frameworks = [
+  'ISO/IEC 27001:2022',
+  'ISO/IEC 27002:2022',
+  'ISO/IEC 27701:2019',
+  'ISO/IEC 22301',
+  'ISO/IEC 42001:2023',
+  'NIST Cybersecurity Framework 2.0',
+  'NIST AI Risk Management Framework',
+  'UK GDPR · EU GDPR · DPA 2018',
+  'NIS2 Directive (EU 2022/2555)',
+  'DORA (EU Regulation 2022/2554)',
+  'OWASP Top 10 for LLM Applications',
+  'MITRE ATLAS',
+  'NCSC Cyber Essentials',
+  'EU AI Act',
+  'UK AI Regulation White Paper',
+];
+---
+
+<Layout
+  title="Trust Center | Stacksolver UK"
+  description="Stacksolver UK Limited — compliance posture, certifications, insurance, policies and frameworks. We hold ourselves to what we ask of others."
+>
+  <!-- Hero -->
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-24 pb-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-6">Trust Center</p>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Compliance &amp; trust.
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        We hold ourselves to the standards we ask of others. This page consolidates our
+        certifications, insurance, frameworks and public policies in one place — for procurement
+        teams, auditors and clients who need to verify before engaging.
+      </p>
+    </div>
+  </section>
+
+  <!-- Certifications & Memberships -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">01</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Certifications &amp; registrations.
+      </h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {certs.map((c) => (
+          <li class="p-5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="text-zinc-900 dark:text-white font-semibold">{c.name}</h3>
+              <span class="flex-shrink-0 inline-flex items-center text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-olive-500/10 text-olive-700 dark:text-olive-400">
+                {c.status}
+              </span>
+            </div>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-3">{c.detail}</p>
+            <a href={c.link} class="text-xs text-olive-600 dark:text-olive-400 hover:underline">
+              {c.linkLabel} →
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Insurance -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">02</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Insurance.
+      </h2>
+      <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6 max-w-3xl">
+        We carry insurance appropriate to the nature, scale and risk of our consultancy work.
+        Specific policy limits and certificates are available to clients on request as part of
+        supplier onboarding.
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {insurance.map((i) => (
+          <li class="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+            <h3 class="text-zinc-900 dark:text-white font-semibold mb-2">{i.name}</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{i.detail}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Public legal documents -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">03</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Public policies &amp; statements.
+      </h2>
+      <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6 max-w-3xl">
+        Reviewed regularly and signed by the directors where appropriate. The full library is also
+        available on the <a href="/legal" class="text-olive-600 dark:text-olive-400 hover:underline">Legal page</a>.
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {LEGAL_DOCS.map((d) => (
+          <li>
+            <a
+              href={`/legal/${d.slug}`}
+              class="block px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors"
+            >
+              <span class="text-zinc-900 dark:text-white font-medium">{d.shortTitle}</span>
+              <span class="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">{d.category} · reviewed {d.reviewDate}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Frameworks -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">04</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Frameworks we operate within.
+      </h2>
+      <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed mb-8 max-w-3xl">
+        These are the standards, regulations and frameworks our work is anchored to.
+        Where we deliver implementation services, we cite the specific clauses, controls or articles
+        we are working against.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {frameworks.map((f) => (
+          <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800">
+            {f}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DPA template -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">05</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+        Data Processing Agreement.
+      </h2>
+      <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-3xl">
+        We hold a UK GDPR Article 28-compliant Data Processing Agreement template that we offer to
+        all clients where Stacksolver UK Limited acts as a processor. The template is provided
+        on request as part of onboarding. Contact
+        <a href="mailto:office@stacksolveruk.com" class="text-olive-600 dark:text-olive-400 hover:underline">office@stacksolveruk.com</a>
+        to receive a copy for your legal team's review.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+        Need something specific for procurement?
+      </h2>
+      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8 max-w-2xl mx-auto">
+        Insurance certificates, security questionnaires, supplier onboarding forms — tell us what
+        you need and we will return it promptly.
+      </p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+        Contact us <span aria-hidden>→</span>
+      </a>
+    </div>
+  </section>
+</Layout>

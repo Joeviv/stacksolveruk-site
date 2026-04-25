@@ -1,0 +1,160 @@
+---
+// File: src/pages/legal/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import { LEGAL_DOCS, getDocBySlug } from '../../data/legal';
+
+export function getStaticPaths() {
+  return LEGAL_DOCS.map((d) => ({ params: { slug: d.slug } }));
+}
+
+const { slug } = Astro.params;
+const doc = getDocBySlug(slug as string);
+
+if (!doc) {
+  return Astro.redirect('/');
+}
+
+// Minimal markdown -> HTML renderer for the simple structure used in legal docs:
+// ## H2, ### H3, **bold**, `inline code`, - bullet lists, paragraphs, blank-line separated.
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function inline(s: string): string {
+  // bold
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  // inline code
+  s = s.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-xs">$1</code>');
+  // links: [text](url)
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-olive-600 dark:text-olive-400 hover:underline">$1</a>');
+  return s;
+}
+
+function mdToHtml(md: string): string {
+  const lines = md.split(/\r?\n/);
+  const out: string[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (line.trim() === '') { i++; continue; }
+
+    // Headings
+    if (line.startsWith('### ')) {
+      out.push('<h3 class="text-xl font-semibold text-zinc-900 dark:text-white mt-8 mb-3">' + inline(escapeHtml(line.slice(4))) + '</h3>');
+      i++; continue;
+    }
+    if (line.startsWith('## ')) {
+      out.push('<h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-10 mb-4">' + inline(escapeHtml(line.slice(3))) + '</h2>');
+      i++; continue;
+    }
+
+    // Bullet list
+    if (line.startsWith('- ')) {
+      const items: string[] = [];
+      while (i < lines.length && lines[i].startsWith('- ')) {
+        items.push('<li class="text-zinc-700 dark:text-zinc-300 leading-relaxed">' + inline(escapeHtml(lines[i].slice(2))) + '</li>');
+        i++;
+      }
+      out.push('<ul class="list-disc pl-6 space-y-2 my-4">' + items.join('') + '</ul>');
+      continue;
+    }
+
+    // Ordered list (numbers)
+    if (/^\d+\.\s/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
+        items.push('<li class="text-zinc-700 dark:text-zinc-300 leading-relaxed">' + inline(escapeHtml(lines[i].replace(/^\d+\.\s/, ''))) + '</li>');
+        i++;
+      }
+      out.push('<ol class="list-decimal pl-6 space-y-2 my-4">' + items.join('') + '</ol>');
+      continue;
+    }
+
+    // Paragraph (collect until blank or heading)
+    const para: string[] = [line];
+    i++;
+    while (
+      i < lines.length &&
+      lines[i].trim() !== '' &&
+      !lines[i].startsWith('## ') &&
+      !lines[i].startsWith('### ') &&
+      !lines[i].startsWith('- ') &&
+      !/^\d+\.\s/.test(lines[i])
+    ) {
+      para.push(lines[i]);
+      i++;
+    }
+    out.push('<p class="text-zinc-700 dark:text-zinc-300 leading-relaxed my-4">' + inline(escapeHtml(para.join(' '))) + '</p>');
+  }
+  return out.join('\n');
+}
+
+const html = mdToHtml(doc.body);
+---
+
+<Layout
+  title={`${doc.title} | Stacksolver UK`}
+  description={`Stacksolver UK Limited — ${doc.title}. Last reviewed ${doc.reviewDate}.`}
+  robots="index, follow"
+>
+  <!-- Hero -->
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 pt-24 pb-10">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">
+        Legal · {doc.category}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
+        {doc.title}
+      </h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-500">
+        Last reviewed: <strong class="text-zinc-700 dark:text-zinc-300">{doc.reviewDate}</strong>
+        · Next review: <strong class="text-zinc-700 dark:text-zinc-300">{doc.nextReview}</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 py-16">
+      <article class="prose-content" set:html={html}></article>
+
+      {doc.signatories && (
+        <div class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+          <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">Approved by</p>
+          <ul class="space-y-1">
+            {doc.signatories.map((s) => (
+              <li class="text-zinc-700 dark:text-zinc-300">{s}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 text-sm text-zinc-500 dark:text-zinc-500">
+        <p>
+          Stacksolver UK Limited · Company Number 16227080 · 215 Ditchling Road, Brighton, BN1 6JD ·
+          <a href="mailto:office@stacksolveruk.com" class="text-olive-600 dark:text-olive-400 hover:underline">office@stacksolveruk.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other legal docs -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 py-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Other legal documents</p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {LEGAL_DOCS.filter((d) => d.slug !== doc.slug).map((d) => (
+          <li>
+            <a
+              href={`/legal/${d.slug}`}
+              class="block px-4 py-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors"
+            >
+              <span class="text-zinc-900 dark:text-white font-medium">{d.shortTitle}</span>
+              <span class="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">{d.category}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>
