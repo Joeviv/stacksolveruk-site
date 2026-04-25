@@ -2,6 +2,8 @@
 // File: src/layouts/Layout.astro
 import "../styles/global.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
 
 interface Props {
 	title: string;
@@ -15,7 +17,7 @@ interface Props {
 
 const {
 	title,
-	description = "Stacksolver UK — Bespoke technology consultancy based in Brighton. GRC, ERP, Claris FileMaker and ethical AI for the United Kingdom, Europe and the United States.",
+	description = "Stacksolver UK Limited — independent Cyber Security, AI Engineering and Compliance consultancy. Brighton-based, serving the United Kingdom, Europe and the United States.",
 	image = "/og-image.png",
 	keywords = "",
 	type = "website",
@@ -106,5 +108,8 @@ const socialImageURL = new URL(image, siteUrl).href;
 		<main class="flex-1 w-full relative min-h-screen">
 			<slot />
 		</main>
+
+		<Footer />
+		<CookieBanner />
 	</body>
 </html>

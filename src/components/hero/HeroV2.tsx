@@ -32,13 +32,13 @@ export default function HeroV2() {
   const bg = isDark ? '#0a0a0a' : '#ffffff';
 
   const copy = {
-    eyebrow: 'GRC · ETHICAL AI · SOVEREIGN AI',
-    headline: 'Integrate AI into the systems that already run your business.',
-    sub: 'GRC-native, sovereign AI, governance-first. Built for regulated industries — serving the United Kingdom, Europe and the United States from London.',
-    quote: "Don't trust only the data you can see. Listen to what is missing —",
-    quoteBold: "we will help you find it.",
-    primary: 'Start a diagnostic',
-    secondary: 'See our method',
+    eyebrow: 'CYBER · AI · COMPLIANCE',
+    headline: 'Cyber Security, AI Engineering and Compliance — built for regulated industries.',
+    sub: 'Independent boutique consultancy. Senior expertise. Lean delivery. Serving the United Kingdom, Europe and the United States from Brighton and London.',
+    quote: "Cyber is our specialty.",
+    quoteBold: "Everything else is built around it.",
+    primary: 'Contact us',
+    secondary: 'Explore industries',
   };
 
   return (
@@ -135,7 +135,7 @@ export default function HeroV2() {
             </p>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', pointerEvents: 'auto' }}>
-              <a href="/diagnostic" style={{
+              <a href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '14px 22px', background: olive, color: '#0a0a0a',
                 borderRadius: 8, fontSize: 15, fontWeight: 600, textDecoration: 'none',
@@ -149,7 +149,7 @@ export default function HeroV2() {
                 onMouseLeave={e => { e.currentTarget.style.background = olive; }}>
                 {copy.primary} <span aria-hidden>→</span>
               </a>
-              <a href="/method" style={{
+              <a href="/industries" style={{
                 display: 'inline-flex', alignItems: 'center',
                 padding: '14px 22px', background: 'transparent', color: strong,
                 borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: 'none',

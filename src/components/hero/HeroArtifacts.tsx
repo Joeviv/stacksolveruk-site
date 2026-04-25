@@ -53,7 +53,7 @@ export function ERPDashboardMock({ theme = 'dark' }: ERPDashboardMockProps) {
     { icon: <IconDatabase />, title: 'Supply Chain', desc: 'Optimal stock',       status: 'ok' },
     { icon: <IconCpu />,      title: 'Local AI',     desc: 'Agents active',       status: 'ok' },
   ];
-  const footer = { processes: 'processes', tasks: 'tasks today', toast: 'Native GRC', toastSub: 'Every transaction' };
+  const footer = { processes: 'processes', tasks: 'tasks today', toast: 'Cyber-first GRC', toastSub: 'Auditable by design' };
 
   return (
     <div style={{
@@ -124,10 +124,10 @@ export function ERPDashboardMock({ theme = 'dark' }: ERPDashboardMockProps) {
 
 interface Cap { icon: ReactNode; title: string; desc: string; tag: string; href: string; }
 const CAPS: Cap[] = [
-  { icon: <IconDatabase />, title: 'Custom ERP',    desc: 'Finance, HR, projects, inventory and operations in one system tailored to your processes.', tag: 'CLARIS FILEMAKER', href: '/services/erp-filemaker' },
-  { icon: <IconShield />,   title: 'Native GRC',    desc: 'Automated audits and regulatory compliance embedded in every transaction. Built for regulated industries.', tag: 'ISO 27001 · 42001 · EU AI ACT', href: '/services/grc' },
-  { icon: <IconCpu />,      title: 'Sovereign AI',  desc: 'Specialised agents running inside your perimeter. Zero data egress, immutable audit logs, audit-ready.', tag: 'ZERO DATA EGRESS', href: '/services/ai-local' },
-  { icon: <IconApple />,    title: 'Apple Business',desc: 'Apple Business Manager rollout and support. Corporate accounts, MDM integration, training.', tag: 'ABM · MDM · VPP', href: '/services/apple-business' },
+  { icon: <IconShield />,   title: 'Cyber Security',           desc: 'Cyber Essentials Plus, penetration testing, vCISO and incident response — for UK businesses entering corporate procurement.', tag: 'OUR SPECIALTY', href: '/services/cyber' },
+  { icon: <IconCpu />,      title: 'AI Engineering',           desc: 'Sovereign AI inside your perimeter. Ethical by default. ISO 42001 ready, EU AI Act aligned.',                                tag: 'SOVEREIGN · ETHICAL · AUDITABLE', href: '/services/ai' },
+  { icon: <IconDatabase />, title: 'Areas + AI',               desc: 'AI embedded in the function — Procurement + AI and HR + AI as our anchor practices.',                                       tag: 'PROCUREMENT · HR · FINANCE', href: '/services/areas-ai' },
+  { icon: <IconApple />,    title: 'NIS2 · DORA · TPRM',       desc: 'EU regulatory tailwind 2026–2027. Ready your operations for European supervision and supply chain risk.',                    tag: 'RISK & RESILIENCE', href: '/services/risk-resilience' },
 ];
 
 interface CapabilityStripProps { lang?: 'en'; theme?: 'dark' | 'light'; }
