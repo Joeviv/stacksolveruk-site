@@ -1,13 +1,32 @@
 // File: src/components/hero/HeroV2.tsx
-// Hero section v2 — dot-matrix world map + ERP dashboard mock + capability cards.
-// Stacksolver UK — English only.
-import { useEffect, useState } from 'react';
-import HeroDotMap from './HeroDotMap';
-import { ERPDashboardMock, CapabilityStrip, FadeReveal } from './HeroArtifacts';
+// Hero — full-width Europe map on top, copy + capability strip below, metric strip at the bottom.
+// New positioning: AI · Cyber Security · Procurement (Claude Design handoff 2026-04-29).
+import { useEffect, useRef, useState } from 'react';
+import HeroDotMap, { CITIES } from './HeroDotMap';
+import {
+  ERPDashboardMock,
+  CapabilityStrip,
+  FadeReveal,
+  HeroAnchor,
+  CityMarker,
+} from './HeroArtifacts';
+
+const HERO_COPY = {
+  eyebrow: 'AI · CYBER SECURITY · PROCUREMENT',
+  headline: 'AI, cyber and procurement, embedded into the systems that already run your business.',
+  sub: 'A British technology partner working across regulated industries — financial services, healthcare, manufacturing and the public sector. We make AI accountable, networks defensible, and procurement faster.',
+  primary: 'Book a discovery call',
+  secondary: 'See our method',
+  metrics: [
+    'UK-based, EU-wide delivery',
+    '18+ years in regulated systems',
+    'ISO 27001 · Cyber Essentials Plus',
+  ],
+};
 
 export default function HeroV2() {
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
-  const lang: 'en' = 'en';
+  const mapSvgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -25,120 +44,104 @@ export default function HeroV2() {
   }, []);
 
   const isDark = theme === 'dark';
-  const olive = '#85a03a';
-  const oliveBright = isDark ? '#a6c04d' : '#6d8530';
-  const strong = isDark ? '#fafafa' : '#18181b';
-  const muted = isDark ? '#a1a1aa' : '#52525b';
-  const bg = isDark ? '#0a0a0a' : '#ffffff';
-
-  const copy = {
-    eyebrow: 'CYBER · AI · COMPLIANCE',
-    headline: 'Cyber Security, AI Engineering and Compliance — built for regulated industries.',
-    sub: 'Independent boutique consultancy. Senior expertise. Lean delivery. Serving the United Kingdom, Europe and the United States from Brighton and London.',
-    quote: "Cyber is our specialty.",
-    quoteBold: "Everything else is built around it.",
-    primary: 'Contact us',
-    secondary: 'Explore industries',
-  };
+  const olive       = '#85a03a';
+  const oliveBright = isDark ? '#a6c04d' : '#85a03a';
+  const strong      = isDark ? '#fafafa' : '#18181b';
+  const muted       = isDark ? '#a1a1aa' : '#52525b';
+  const bg          = isDark ? '#0a0a0a' : '#ffffff';
+  const bgSoft      = isDark ? '#101010' : '#fafafa';
+  const border      = isDark ? '#27272a' : '#e4e4e7';
 
   return (
-    <section style={{
-      position: 'relative',
-      background: bg,
-      color: strong,
-      overflow: 'hidden',
-      paddingBottom: 64,
-    }}>
-      <div style={{
-        position: 'relative',
-        minHeight: 'calc(100vh - 52px)',
-      }}>
-        <div aria-hidden="false" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-          <HeroDotMap theme={theme} regionHighlight="both" arcDensity="transatlantic" arcIntensity="normal" />
+    <section style={{ position: 'relative', background: bg, color: strong, overflow: 'hidden' }}>
+      {/* MAP BAND — full-width, top of the hero */}
+      <div style={{ position: 'relative', width: '100%', height: 'min(58vh, 620px)', minHeight: 380 }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <HeroDotMap
+            theme={theme}
+            arcDensity="all"
+            arcIntensity="normal"
+            svgRefOut={mapSvgRef}
+          />
         </div>
 
-        <div aria-hidden style={{
-          position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
-          background: isDark
-            ? 'linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.70) 30%, rgba(10,10,10,0.20) 55%, rgba(10,10,10,0) 75%)'
-            : 'linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.78) 30%, rgba(255,255,255,0.28) 55%, rgba(255,255,255,0) 75%)',
-        }} />
+        {/* Geo-anchored DOM overlays — same box as map, above SVG */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
+          {CITIES.map(city => (
+            <HeroAnchor key={city.key} svgRef={mapSvgRef} lat={city.lat} lon={city.lon}>
+              <CityMarker city={city} theme={theme} />
+            </HeroAnchor>
+          ))}
 
-        <div aria-hidden style={{
-          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-          backgroundImage: isDark
-            ? 'radial-gradient(rgba(250,250,250,0.035) 1px, transparent 1px)'
-            : 'radial-gradient(rgba(24,24,27,0.05) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-          maskImage: 'linear-gradient(90deg, black 0%, black 25%, transparent 55%)',
-          WebkitMaskImage: 'linear-gradient(90deg, black 0%, black 25%, transparent 55%)',
-        }} />
-
-        <div style={{
-          position: 'absolute',
-          top: 72, right: 64,
-          zIndex: 4,
-          pointerEvents: 'auto',
-        }} className="ss-erp-mock">
-          <FadeReveal restOpacity={0.32}>
-            <ERPDashboardMock theme={theme} lang={lang} />
-          </FadeReveal>
+          {/* ERP mock anchored over Atlantic, top-left of map */}
+          <HeroAnchor svgRef={mapSvgRef} lat={58} lon={-10}>
+            <div className="ss-erp-mock">
+              <FadeReveal restOpacity={0.32}>
+                <ERPDashboardMock theme={theme} />
+              </FadeReveal>
+            </div>
+          </HeroAnchor>
         </div>
 
-        <div className="ss-hero-grid" style={{
-          position: 'relative', zIndex: 3,
-          maxWidth: 1440, margin: '0 auto', padding: '0 32px',
-          minHeight: 'calc(100vh - 52px)',
-          display: 'grid', gridTemplateColumns: 'minmax(0, 560px) 1fr',
-          gap: 48, alignItems: 'center',
+        {/* Bottom fade into bg so transition into copy is soft */}
+        <div aria-hidden style={{
+          position: 'absolute', left: 0, right: 0, bottom: 0, height: 120, zIndex: 2,
           pointerEvents: 'none',
-        }}>
-          <div style={{ padding: '48px 0', maxWidth: 600 }}>
+          background: isDark
+            ? 'linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,1) 100%)'
+            : 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)',
+        }} />
+      </div>
+
+      {/* COPY BAND — below the map */}
+      <div style={{
+        position: 'relative', zIndex: 3, width: '100%',
+        maxWidth: 1280, margin: '0 auto', padding: '40px 32px 72px',
+      }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 48 }} className="ss-hero-grid">
+          <div style={{ maxWidth: 880 }}>
             <div style={{
               fontFamily: 'JetBrains Mono, monospace', fontSize: 12, fontWeight: 600,
               letterSpacing: '0.12em', textTransform: 'uppercase',
               color: oliveBright, marginBottom: 24,
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              pointerEvents: 'none',
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: 9999, background: oliveBright, boxShadow: isDark ? `0 0 10px ${oliveBright}` : 'none' }} />
-              {copy.eyebrow}
+              <span style={{
+                width: 6, height: 6, borderRadius: 9999, background: oliveBright,
+                boxShadow: isDark ? `0 0 10px ${oliveBright}` : 'none',
+              }} />
+              {HERO_COPY.eyebrow}
             </div>
 
             <h1 style={{
               fontFamily: 'Inter, sans-serif',
-              fontSize: 'clamp(40px, 5.2vw, 72px)',
-              lineHeight: 1.02, letterSpacing: '-0.03em', fontWeight: 700,
-              margin: '0 0 20px', color: strong, textWrap: 'balance' as 'balance',
-              pointerEvents: 'none',
+              fontSize: 'clamp(36px, 4.4vw, 60px)',
+              lineHeight: 1.04,
+              letterSpacing: '-0.03em',
+              fontWeight: 600,
+              margin: '0 0 24px',
+              color: strong,
+              textWrap: 'balance' as 'balance',
             }}>
-              {copy.headline}
+              {HERO_COPY.headline}
             </h1>
 
-            <div style={{
-              margin: '0 0 24px', padding: '12px 16px',
-              borderLeft: `2px solid ${olive}`,
-              background: isDark ? 'rgba(133,160,58,0.08)' : 'rgba(133,160,58,0.06)',
-              borderRadius: '0 10px 10px 0',
-              pointerEvents: 'auto',
-            }}>
-              <p style={{ fontSize: 15, lineHeight: 1.55, color: muted, margin: 0 }}>
-                {copy.quote} <strong style={{ color: oliveBright, fontWeight: 700 }}>{copy.quoteBold}</strong>
-              </p>
-            </div>
-
             <p style={{
-              fontSize: 18, lineHeight: 1.55, color: muted,
-              margin: '0 0 32px', maxWidth: 560, pointerEvents: 'none',
+              fontSize: 19, lineHeight: 1.55, color: muted,
+              margin: '0 0 32px', maxWidth: 720,
+              textWrap: 'pretty' as 'pretty',
             }}>
-              {copy.sub}
+              {HERO_COPY.sub}
             </p>
 
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', pointerEvents: 'auto' }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <a href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '14px 22px', background: olive, color: '#0a0a0a',
-                borderRadius: 8, fontSize: 15, fontWeight: 600, textDecoration: 'none',
+                padding: '14px 22px',
+                background: olive, color: '#0a0a0a',
+                borderRadius: 8,
+                fontSize: 15, fontWeight: 600, letterSpacing: '-0.005em',
+                textDecoration: 'none',
                 border: `1px solid ${olive}`,
                 boxShadow: isDark
                   ? '0 0 0 1px rgba(133,160,58,0.35) inset, 0 0 32px rgba(133,160,58,0.28), 0 2px 0 rgba(0,0,0,0.2)'
@@ -146,41 +149,76 @@ export default function HeroV2() {
                 transition: 'background 200ms',
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = '#94b043'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = olive; }}>
-                {copy.primary} <span aria-hidden>→</span>
+                onMouseLeave={e => { e.currentTarget.style.background = olive; }}
+              >
+                {HERO_COPY.primary} <span aria-hidden>→</span>
               </a>
-              <a href="/industries" style={{
+              <a href="/method" style={{
                 display: 'inline-flex', alignItems: 'center',
-                padding: '14px 22px', background: 'transparent', color: strong,
-                borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: 'none',
-                border: `1px solid ${olive}`, transition: 'background 200ms',
+                padding: '14px 22px',
+                background: 'transparent', color: strong,
+                borderRadius: 8,
+                fontSize: 15, fontWeight: 500, textDecoration: 'none',
+                border: `1px solid ${olive}`,
+                transition: 'background 200ms',
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(133,160,58,0.12)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
-                {copy.secondary}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+              >
+                {HERO_COPY.secondary}
               </a>
             </div>
           </div>
-          <div />
+
+          <div>
+            <CapabilityStrip theme={theme} />
+          </div>
         </div>
       </div>
 
+      {/* METRIC STRIP */}
       <div style={{
-        maxWidth: 1440, margin: '-24px auto 0',
-        padding: '0 32px', position: 'relative', zIndex: 5,
+        borderTop: `1px solid ${border}`,
+        borderBottom: `1px solid ${border}`,
+        background: bgSoft,
       }}>
-        <CapabilityStrip lang={lang} theme={theme} />
+        <div style={{
+          maxWidth: 1440, margin: '0 auto', padding: '0 32px',
+          minHeight: 72, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          gap: 0, flexWrap: 'wrap',
+        }}>
+          {HERO_COPY.metrics.map((m, i) => (
+            <div key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <div style={{
+                padding: '14px 32px',
+                fontSize: 14, fontWeight: 500, color: muted,
+                fontFamily: 'Inter, sans-serif',
+                letterSpacing: '-0.005em',
+                whiteSpace: 'nowrap',
+              }}>
+                {m}
+              </div>
+              {i < HERO_COPY.metrics.length - 1 && (
+                <div style={{ width: 1, height: 24, background: border }} />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       <style>{`
-        @media (max-width: 1100px) {
+        @keyframes ss-cm-pulse {
+          0%   { transform: scale(0.8); opacity: 0.85; }
+          70%  { transform: scale(1.6); opacity: 0; }
+          100% { transform: scale(1.6); opacity: 0; }
+        }
+        @media (max-width: 820px) {
           .ss-erp-mock { display: none !important; }
         }
         @media (max-width: 900px) {
           .ss-hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 24px !important;
-            padding: 0 24px !important;
+            gap: 32px !important;
           }
         }
       `}</style>

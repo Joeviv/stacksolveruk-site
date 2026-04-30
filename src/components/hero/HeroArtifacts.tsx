@@ -1,6 +1,15 @@
 // File: src/components/hero/HeroArtifacts.tsx
-// ERP dashboard mock + capability strip — English only.
-import { useState, type ReactNode, type CSSProperties, cloneElement, isValidElement } from 'react';
+// ERP dashboard mock + HeroAnchor + CityMarker + CapabilityStrip — English only.
+import {
+  useEffect,
+  useState,
+  type ReactNode,
+  type CSSProperties,
+  cloneElement,
+  isValidElement,
+  type MutableRefObject,
+} from 'react';
+import type { City } from './HeroDotMap';
 
 const SvgIcon = ({ children, size = 18 }: { children: ReactNode; size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{children}</svg>
@@ -11,10 +20,10 @@ const IconUser     = () => <SvgIcon><circle cx="12" cy="8" r="4"/><path d="M4 21
 const IconBranch   = () => <SvgIcon><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v2c0 3 3 6 6 6M18 8v2c0 3-3 6-6 6"/></SvgIcon>;
 const IconDatabase = () => <SvgIcon><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></SvgIcon>;
 const IconCpu      = () => <SvgIcon><rect x="5" y="5" width="14" height="14" rx="1.5"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></SvgIcon>;
-const IconApple    = () => <SvgIcon><path d="M16 8c0-2 1.5-3.5 3.5-3.5M12.5 21c-2.5 0-3.5-1.5-5-4s-2.5-8 1-10c2-1 4 0 4.5 1 .5-1 2.5-2 4.5-1 3.5 2 2.5 7.5 1 10-1.5 2.5-2.5 4-5 4"/></SvgIcon>;
 
+// ---------- FadeReveal ----------
 interface FadeRevealProps { children: ReactNode; restOpacity?: number; style?: CSSProperties; }
-export function FadeReveal({ children, restOpacity = 0.28, style }: FadeRevealProps) {
+export function FadeReveal({ children, restOpacity = 0.32, style }: FadeRevealProps) {
   const [hover, setHover] = useState(false);
   return (
     <div
@@ -32,8 +41,9 @@ export function FadeReveal({ children, restOpacity = 0.28, style }: FadeRevealPr
   );
 }
 
-interface ERPDashboardMockProps { theme?: 'dark' | 'light'; lang?: 'en'; }
-export function ERPDashboardMock({ theme = 'dark' }: ERPDashboardMockProps) {
+// ---------- ERP Dashboard Mock (compact 260px wide, 6 tiles) ----------
+interface ERPDashboardMockProps { theme?: 'dark' | 'light'; }
+export function ERPDashboardMock({ theme = 'light' }: ERPDashboardMockProps) {
   const isDark = theme === 'dark';
   const surface  = isDark ? '#18181b' : '#ffffff';
   const innerBg  = isDark ? '#0f0f11' : '#ffffff';
@@ -46,18 +56,17 @@ export function ERPDashboardMock({ theme = 'dark' }: ERPDashboardMockProps) {
   const olive    = '#85a03a';
 
   const tiles = [
-    { icon: <IconActivity />, title: 'Finance',      desc: 'Daily close ✓',       status: 'ok' },
-    { icon: <IconShield />,   title: 'GRC',          desc: '0 pending alerts',    status: 'ok' },
-    { icon: <IconUser />,     title: 'HR',           desc: 'Payroll current',     status: 'ok' },
-    { icon: <IconBranch />,   title: 'Projects',     desc: '3 in progress',       status: 'warn' },
-    { icon: <IconDatabase />, title: 'Supply Chain', desc: 'Optimal stock',       status: 'ok' },
-    { icon: <IconCpu />,      title: 'Local AI',     desc: 'Agents active',       status: 'ok' },
+    { icon: <IconCpu />,      title: 'AI Copilots',    desc: '14 agents live',     status: 'ok' },
+    { icon: <IconShield />,   title: 'Cyber Posture',  desc: 'No critical issues', status: 'ok' },
+    { icon: <IconBranch />,   title: 'Procurement',    desc: '23 RFQs in flight',  status: 'warn' },
+    { icon: <IconActivity />, title: 'Operations',     desc: 'All systems normal', status: 'ok' },
+    { icon: <IconDatabase />, title: 'Data Estate',    desc: 'Lineage 100%',       status: 'ok' },
+    { icon: <IconUser />,     title: 'Workforce',      desc: 'Access reviewed',    status: 'ok' },
   ];
-  const footer = { processes: 'processes', tasks: 'tasks today', toast: 'Cyber-first GRC', toastSub: 'Auditable by design' };
 
   return (
     <div style={{
-      width: 300,
+      width: 260,
       background: surface,
       border: `1px solid ${border}`,
       borderRadius: 10,
@@ -67,54 +76,82 @@ export function ERPDashboardMock({ theme = 'dark' }: ERPDashboardMockProps) {
       overflow: 'hidden',
       fontFamily: 'Inter, sans-serif',
     }}>
-      <div style={{ background: headerBg, borderBottom: `1px solid ${border}`, padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ display: 'flex', gap: 5 }}>
-          <span style={{ width: 8, height: 8, borderRadius: 9999, background: '#ef4444' }} />
-          <span style={{ width: 8, height: 8, borderRadius: 9999, background: '#f59e0b' }} />
-          <span style={{ width: 8, height: 8, borderRadius: 9999, background: '#22c55e' }} />
+      <div style={{
+        background: headerBg, borderBottom: `1px solid ${border}`,
+        padding: '7px 10px', display: 'flex', alignItems: 'center', gap: 8,
+      }}>
+        <div style={{ display: 'flex', gap: 4 }}>
+          <span style={{ width: 7, height: 7, borderRadius: 9999, background: '#ef4444' }} />
+          <span style={{ width: 7, height: 7, borderRadius: 9999, background: '#f59e0b' }} />
+          <span style={{ width: 7, height: 7, borderRadius: 9999, background: '#22c55e' }} />
         </div>
-        <div style={{ fontSize: 11, color: muted, letterSpacing: '-0.01em' }}>
-          Stacksolver UK ERP · <span style={{ color: strong, fontWeight: 500 }}>Dashboard</span>
+        <div style={{ fontSize: 10, color: muted, letterSpacing: '-0.01em' }}>
+          StackSolver Console · <span style={{ color: strong, fontWeight: 500 }}>Operations</span>
         </div>
       </div>
-      <div style={{ padding: 10, background: innerBg, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+
+      <div style={{
+        padding: 8, background: innerBg,
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6,
+      }}>
         {tiles.map((t, i) => (
-          <div key={i} style={{ background: tileBg, border: `1px solid ${border}`, borderRadius: 7, padding: 10, position: 'relative' }}>
-            <div style={{ width: 22, height: 22, borderRadius: 4, background: iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: muted, marginBottom: 8 }}>
-              {isValidElement(t.icon) ? cloneElement(t.icon as any, { size: 13 }) : t.icon}
+          <div key={i} style={{
+            background: tileBg, border: `1px solid ${border}`,
+            borderRadius: 7, padding: 8, position: 'relative',
+          }}>
+            <div style={{
+              width: 20, height: 20, borderRadius: 4, background: iconBg,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: muted, marginBottom: 6,
+            }}>
+              {isValidElement(t.icon) ? cloneElement(t.icon as any, { size: 12 }) : t.icon}
             </div>
-            <div style={{ fontSize: 11, fontWeight: 600, color: strong, letterSpacing: '-0.01em' }}>{t.title}</div>
-            <div style={{ fontSize: 10, color: muted, marginTop: 2 }}>{t.desc}</div>
+            <div style={{ fontSize: 10, fontWeight: 600, color: strong, letterSpacing: '-0.01em' }}>{t.title}</div>
+            <div style={{ fontSize: 9, color: muted, marginTop: 1 }}>{t.desc}</div>
             <span style={{
-              position: 'absolute', top: 10, right: 10, width: 6, height: 6, borderRadius: 9999,
+              position: 'absolute', top: 8, right: 8,
+              width: 5, height: 5, borderRadius: 9999,
               background: t.status === 'warn' ? '#f59e0b' : '#22c55e',
-              boxShadow: t.status === 'warn' ? '0 0 8px rgba(245,158,11,0.7)' : '0 0 8px rgba(34,197,94,0.7)',
+              boxShadow: t.status === 'warn'
+                ? '0 0 8px rgba(245,158,11,0.7)'
+                : '0 0 8px rgba(34,197,94,0.7)',
             }} />
           </div>
         ))}
       </div>
-      <div style={{ borderTop: `1px solid ${border}`, background: innerBg, padding: '8px 12px', display: 'flex', gap: 16, position: 'relative' }}>
+
+      <div style={{
+        borderTop: `1px solid ${border}`, background: innerBg,
+        padding: '7px 10px', display: 'flex', gap: 14, position: 'relative',
+      }}>
         <div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: strong, letterSpacing: '-0.02em' }}>247</div>
-          <div style={{ fontSize: 9, color: muted }}>{footer.processes}</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: strong, letterSpacing: '-0.02em' }}>247</div>
+          <div style={{ fontSize: 8, color: muted }}>workflows</div>
         </div>
         <div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: strong, letterSpacing: '-0.02em' }}>38</div>
-          <div style={{ fontSize: 9, color: muted }}>{footer.tasks}</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: strong, letterSpacing: '-0.02em' }}>38</div>
+          <div style={{ fontSize: 8, color: muted }}>tasks today</div>
         </div>
         <div style={{
           position: 'absolute', right: -8, bottom: -14,
           background: surface, border: `1px solid ${border}`,
-          borderRadius: 8, padding: '6px 10px',
-          display: 'flex', alignItems: 'center', gap: 8,
-          boxShadow: isDark ? '0 10px 24px -8px rgba(0,0,0,0.6)' : '0 10px 24px -8px rgba(24,24,27,0.15)',
+          borderRadius: 8, padding: '5px 8px',
+          display: 'flex', alignItems: 'center', gap: 6,
+          boxShadow: isDark
+            ? '0 10px 24px -8px rgba(0,0,0,0.6)'
+            : '0 10px 24px -8px rgba(24,24,27,0.15)',
         }}>
-          <div style={{ width: 18, height: 18, borderRadius: 4, background: 'rgba(133,160,58,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: olive }}>
-            <SvgIcon size={11}><polyline points="20 6 9 17 4 12"/></SvgIcon>
+          <div style={{
+            width: 16, height: 16, borderRadius: 4,
+            background: 'rgba(133,160,58,0.18)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: olive,
+          }}>
+            <SvgIcon size={10}><polyline points="20 6 9 17 4 12"/></SvgIcon>
           </div>
           <div>
-            <div style={{ fontSize: 10, fontWeight: 600, color: strong, letterSpacing: '-0.01em' }}>{footer.toast}</div>
-            <div style={{ fontSize: 9, color: muted }}>{footer.toastSub}</div>
+            <div style={{ fontSize: 9, fontWeight: 600, color: strong, letterSpacing: '-0.01em' }}>ISO 27001</div>
+            <div style={{ fontSize: 8, color: muted }}>Continuous audit</div>
           </div>
         </div>
       </div>
@@ -122,16 +159,182 @@ export function ERPDashboardMock({ theme = 'dark' }: ERPDashboardMockProps) {
   );
 }
 
+// ---------- HeroAnchor ----------
+// Renders children locked to a (lat, lon) point inside a parent SVG ref.
+// Tracks the SVG's live viewBox + getBoundingClientRect via ResizeObserver.
+const HA_VW = 1440;
+const HA_VH = 720;
+
+interface HeroAnchorProps {
+  svgRef: MutableRefObject<SVGSVGElement | null>;
+  lat: number;
+  lon: number;
+  children: ReactNode;
+  style?: CSSProperties;
+}
+export function HeroAnchor({ svgRef, lat, lon, children, style }: HeroAnchorProps) {
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    const projX = ((lon + 180) / 360) * HA_VW;
+    const projY = ((90 - lat) / 180) * HA_VH;
+
+    const update = () => {
+      const svg = svgRef?.current;
+      if (!svg) return;
+      const vb = svg.viewBox.baseVal;
+      const vbX = vb.x, vbY = vb.y, vbW = vb.width, vbH = vb.height;
+      if (!vbW || !vbH) return;
+      const rect = svg.getBoundingClientRect();
+      const scale = Math.min(rect.width / vbW, rect.height / vbH);
+      const renderedW = vbW * scale;
+      const renderedH = vbH * scale;
+      const padX = (rect.width - renderedW) / 2;
+      const padY = (rect.height - renderedH) / 2;
+      setPos({
+        x: padX + (projX - vbX) * scale,
+        y: padY + (projY - vbY) * scale,
+      });
+    };
+
+    update();
+    const ro = new ResizeObserver(update);
+    if (svgRef?.current) ro.observe(svgRef.current);
+    window.addEventListener('resize', update);
+    const t = setTimeout(update, 0);
+    return () => { ro.disconnect(); window.removeEventListener('resize', update); clearTimeout(t); };
+  }, [svgRef, lat, lon]);
+
+  if (!pos) return null;
+  return (
+    <div style={{
+      position: 'absolute',
+      left: pos.x, top: pos.y,
+      transform: 'translate(-50%, -50%)',
+      pointerEvents: 'auto',
+      ...style,
+    }}>
+      {children}
+    </div>
+  );
+}
+
+// ---------- CityMarker ----------
+interface CityMarkerProps { city: City; theme?: 'dark' | 'light'; }
+export function CityMarker({ city, theme = 'light' }: CityMarkerProps) {
+  const isDark = theme === 'dark';
+  const [hover, setHover] = useState(false);
+  const isHub = city.hub === true;
+  const olive       = '#85a03a';
+  const oliveBright = isDark ? '#a6c04d' : '#6d8530';
+  const labelStrong = isDark ? '#fafafa' : '#18181b';
+  const labelMuted  = isDark ? '#d4d4d8' : '#3f3f46';
+  const tooltipBg   = isDark ? '#18181b' : '#ffffff';
+  const tooltipBd   = isDark ? '#27272a' : '#e4e4e7';
+  const tooltipSub  = isDark ? '#a1a1aa' : '#52525b';
+
+  const dotSize = isHub ? 12 : 7;
+
+  return (
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: 'relative',
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', gap: 4,
+        cursor: 'pointer',
+      }}
+    >
+      <div style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: isHub ? 13 : 11,
+        fontWeight: isHub ? 700 : 600,
+        letterSpacing: '-0.01em',
+        color: isHub ? labelStrong : labelMuted,
+        whiteSpace: 'nowrap',
+        textShadow: isDark
+          ? '0 0 4px rgba(10,10,10,0.95), 0 0 4px rgba(10,10,10,0.95), 0 1px 2px rgba(0,0,0,0.6)'
+          : '0 0 4px rgba(255,255,255,0.95), 0 0 4px rgba(255,255,255,0.95)',
+        pointerEvents: 'none',
+      }}>
+        {city.name}
+      </div>
+
+      <div style={{ position: 'relative', width: dotSize, height: dotSize }}>
+        {isHub && (
+          <span style={{
+            position: 'absolute', inset: -8,
+            borderRadius: 9999,
+            background: `radial-gradient(circle, ${olive}66 0%, ${olive}00 70%)`,
+            animation: 'ss-cm-pulse 2.4s ease-out infinite',
+            pointerEvents: 'none',
+          }} />
+        )}
+        {!isHub && (
+          <span style={{
+            position: 'absolute', inset: -3,
+            borderRadius: 9999,
+            border: `1px solid ${olive}99`,
+            opacity: 0.6,
+          }} />
+        )}
+        <span style={{
+          position: 'absolute', inset: 0,
+          borderRadius: 9999,
+          background: isHub ? '#fff' : oliveBright,
+          boxShadow: isHub
+            ? `0 0 0 2px ${olive}, 0 0 12px ${oliveBright}, 0 0 24px ${olive}88`
+            : `0 0 0 1px ${isDark ? 'rgba(10,10,10,0.6)' : 'rgba(255,255,255,0.85)'}, 0 0 6px ${oliveBright}88`,
+        }} />
+      </div>
+
+      {hover && (
+        <div role="tooltip" style={{
+          position: 'absolute', left: '50%', bottom: 'calc(100% + 14px)',
+          transform: 'translateX(-50%)',
+          background: tooltipBg, border: `1px solid ${tooltipBd}`,
+          borderRadius: 10, padding: '8px 12px', minWidth: 160,
+          boxShadow: isDark
+            ? '0 16px 40px -12px rgba(0,0,0,0.8), 0 0 0 1px rgba(133,160,58,0.25) inset'
+            : '0 12px 32px -8px rgba(24,24,27,0.18)',
+          pointerEvents: 'none', zIndex: 20,
+        }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 600,
+            color: labelStrong, letterSpacing: '-0.01em',
+          }}>
+            <span>{city.name}</span>
+            <span style={{ fontSize: 11, color: tooltipSub, fontWeight: 500 }}>· {city.country}</span>
+          </div>
+          <div style={{
+            marginTop: 4,
+            fontFamily: 'JetBrains Mono, monospace', fontSize: 11,
+            color: tooltipSub, letterSpacing: '0.02em',
+            display: 'flex', alignItems: 'center', gap: 6,
+          }}>
+            <span style={{ color: oliveBright, fontWeight: 600 }}>{city.population}</span>
+            <span>population</span>
+            {city.hub && <span style={{ color: oliveBright, marginLeft: 4 }}>· hub</span>}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------- CapabilityStrip ----------
 interface Cap { icon: ReactNode; title: string; desc: string; tag: string; href: string; }
 const CAPS: Cap[] = [
-  { icon: <IconShield />,   title: 'Cyber Security',           desc: 'Cyber Essentials Plus, penetration testing, vCISO and incident response — for UK businesses entering corporate procurement.', tag: 'OUR SPECIALTY', href: '/services/cyber' },
-  { icon: <IconCpu />,      title: 'AI Engineering',           desc: 'Sovereign AI inside your perimeter. Ethical by default. ISO 42001 ready, EU AI Act aligned.',                                tag: 'SOVEREIGN · ETHICAL · AUDITABLE', href: '/services/ai' },
-  { icon: <IconDatabase />, title: 'Areas + AI',               desc: 'AI embedded in the function — Procurement + AI and HR + AI as our anchor practices.',                                       tag: 'PROCUREMENT · HR · FINANCE', href: '/services/areas-ai' },
-  { icon: <IconApple />,    title: 'NIS2 · DORA · TPRM',       desc: 'EU regulatory tailwind 2026–2027. Ready your operations for European supervision and supply chain risk.',                    tag: 'RISK & RESILIENCE', href: '/services/risk-resilience' },
+  { icon: <IconCpu />,      title: 'Applied AI',      desc: 'Practical AI built into the systems you already run — copilots, decision support, document automation, with full auditability.', tag: 'AGENTS · RAG · EVALS',     href: '/services/ai' },
+  { icon: <IconShield />,   title: 'Cyber Security',  desc: 'Network defence, identity hardening, incident response and assurance against ISO 27001 and Cyber Essentials Plus.',                tag: 'SOC · MDR · ASSURANCE',    href: '/services/cyber' },
+  { icon: <IconBranch />,   title: 'Procurement',     desc: 'Sourcing, supplier risk and contract intelligence — purpose-built for regulated industries and public-sector buyers.',             tag: 'CCS · GCLOUD · DPS',       href: '/services/areas-ai/procurement-ai' },
+  { icon: <IconDatabase />, title: 'Industry Stacks', desc: 'Reference implementations for financial services, healthcare, manufacturing and the public sector. Compliance-first.',            tag: 'FCA · NHS · MOD · GDS',    href: '/industries' },
 ];
 
-interface CapabilityStripProps { lang?: 'en'; theme?: 'dark' | 'light'; }
-export function CapabilityStrip({ theme = 'dark' }: CapabilityStripProps) {
+interface CapabilityStripProps { theme?: 'dark' | 'light'; }
+export function CapabilityStrip({ theme = 'light' }: CapabilityStripProps) {
   const isDark = theme === 'dark';
   const items = CAPS;
   const border = isDark ? '#27272a' : '#e4e4e7';
@@ -159,11 +362,9 @@ export function CapabilityStrip({ theme = 'dark' }: CapabilityStripProps) {
           borderRight: i < items.length - 1 ? `1px solid ${border}` : 'none',
           minWidth: 0, textDecoration: 'none', color: 'inherit',
           position: 'relative',
-          transition: 'background 220ms, transform 220ms',
+          transition: 'background 220ms',
         }}
-          onMouseEnter={e => {
-            e.currentTarget.style.background = isDark ? 'rgba(133,160,58,0.10)' : 'rgba(133,160,58,0.06)';
-          }}
+          onMouseEnter={e => { e.currentTarget.style.background = isDark ? 'rgba(133,160,58,0.10)' : 'rgba(133,160,58,0.06)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
           className="ss-cap-card"
         >
@@ -171,10 +372,7 @@ export function CapabilityStrip({ theme = 'dark' }: CapabilityStripProps) {
           <div style={{ fontSize: 15, fontWeight: 600, color: strong, letterSpacing: '-0.01em', marginBottom: 6 }}>{c.title}</div>
           <div style={{ fontSize: 13, lineHeight: 1.5, color: muted, marginBottom: 14, textWrap: 'pretty' as 'pretty' }}>{c.desc}</div>
           <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: tagCol }}>{c.tag}</div>
-          <div style={{
-            position: 'absolute', right: 16, top: 18, fontSize: 12, color: olive, opacity: 0,
-            transition: 'opacity 220ms',
-          }} className="ss-cap-arrow">→</div>
+          <div style={{ position: 'absolute', right: 16, top: 18, fontSize: 12, color: olive, opacity: 0, transition: 'opacity 220ms' }} className="ss-cap-arrow">→</div>
         </a>
       ))}
       <style>{`
