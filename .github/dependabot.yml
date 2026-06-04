@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # NPM dependencies (ecosistema JS — cubre pnpm via package.json/lockfile)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
