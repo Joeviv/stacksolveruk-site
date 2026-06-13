@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /fox4ndstack
 
 # Sitemap
 Sitemap: https://www.stacksolveruk.com/sitemap-index.xml
