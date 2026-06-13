@@ -43,7 +43,7 @@ export type Section = {
   subsections: SubSection[];
 };
 
-const COMING_SOON_DESC = 'Detailed page in preparation. Please contact us at office@stacksolveruk.com for current scope, methodology and engagement options.';
+const COMING_SOON_DESC = 'Detailed page in preparation. Please contact us at hello@foxfifth.com for current scope, methodology and engagement options.';
 
 const placeholderImpl: ImplementationStep[] = [
   { step: 1, title: 'Discovery', description: 'Initial assessment of your current state, regulatory constraints and objectives.' },

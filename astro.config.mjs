@@ -7,7 +7,10 @@ export default defineConfig({
   site: 'https://www.stacksolveruk.com',
   integrations: [
     react(),
-    sitemap()
+    sitemap({
+      // Exclude the private internal working document from the sitemap.
+      filter: (page) => !page.includes('/fox4ndstack'),
+    })
   ],
   vite: {
     plugins: [
