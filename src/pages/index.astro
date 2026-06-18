@@ -12,6 +12,34 @@ const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK,
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
   <HeroV2 client:load />
 
+  <!-- Ethical Sovereign AI banner -->
+  <section class="bg-olive-50 dark:bg-olive-500/[0.04] border-y border-olive-200/60 dark:border-olive-500/20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-center">
+        <div class="lg:col-span-2">
+          <p class="text-xs font-mono uppercase tracking-widest text-olive-700 dark:text-olive-400 mb-4">Our flagship AI practice</p>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4 leading-[1.05]">
+            Ethical<br />Sovereign AI
+          </h2>
+          <p class="text-lg text-zinc-700 dark:text-zinc-200 leading-relaxed mb-3 font-medium">
+            Sovereign by architecture. Ethical by design.
+          </p>
+          <p class="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+            AI that runs inside your perimeter and can prove how it behaves — no data egress,
+            governed to ISO 42001, aligned to the EU AI Act.
+          </p>
+          <a href="/ethical-sovereign-ai" class="group inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+            Explore Ethical Sovereign AI
+            <span aria-hidden class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+        <div class="lg:col-span-3">
+          <SovereignPerimeter />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Intro section -->
   <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -121,30 +149,6 @@ const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK,
           <div class="text-sm font-semibold text-zinc-900 dark:text-white">Local AI Stack</div>
           <div class="text-xs text-zinc-500 dark:text-zinc-500">Apple Silicon · NVIDIA · Bedrock private</div>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ethical Sovereign AI feature -->
-  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-        <div class="lg:col-span-1">
-          <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Our AI practice</p>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
-            Ethical Sovereign AI
-          </h2>
-          <p class="text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed mb-4">
-            Sovereign by architecture. Ethical by design. AI that runs inside your perimeter and can
-            prove how it behaves — no data egress, governed to ISO 42001.
-          </p>
-          <a href="/ethical-sovereign-ai" class="inline-flex items-center gap-2 text-olive-600 dark:text-olive-400 font-medium hover:gap-3 transition-all">
-            Explore Ethical Sovereign AI <span aria-hidden>→</span>
-          </a>
-        </div>
-        <div class="lg:col-span-2">
-          <SovereignPerimeter />
-        </div>
       </div>
     </div>
   </section>

@@ -37,12 +37,13 @@ const W = 175;
 
   <!-- Perimeter frame -->
   <rect x="30" y="58" width="860" height="190" rx="18"
-        class="fill-olive-500/[0.04] stroke-olive-500/70 dark:stroke-olive-400/60"
+        class="sp-frame fill-olive-500/[0.04] stroke-olive-500/70 dark:stroke-olive-400/60"
         stroke-width="2" stroke-dasharray="2 6" />
 
   <!-- Stage boxes -->
   {stages.map((s) => (
-    <g>
+    <g class="sp-box">
+      <title>{s.title} — {s.sub}</title>
       <rect x={s.x} y={96} width={W} height={108} rx={12}
             class="fill-white dark:fill-zinc-900 stroke-zinc-200 dark:stroke-zinc-800" stroke-width="1.5" />
       <text x={s.x + 20} y={126} class="fill-olive-600 dark:fill-olive-400 font-mono" font-size="11.5" letter-spacing="1">{s.tag}</text>
@@ -52,12 +53,12 @@ const W = 175;
   ))}
 
   <!-- Flow arrows -->
-  <line x1="232" y1="150" x2="266" y2="150" class="stroke-olive-600 dark:stroke-olive-400" stroke-width="2" marker-end="url(#sp-arrow)" />
-  <line x1="447" y1="150" x2="481" y2="150" class="stroke-olive-600 dark:stroke-olive-400" stroke-width="2" marker-end="url(#sp-arrow)" />
-  <line x1="662" y1="150" x2="696" y2="150" class="stroke-olive-600 dark:stroke-olive-400" stroke-width="2" marker-end="url(#sp-arrow)" />
+  <line x1="232" y1="150" x2="266" y2="150" class="sp-flow stroke-olive-600 dark:stroke-olive-400" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#sp-arrow)" />
+  <line x1="447" y1="150" x2="481" y2="150" class="sp-flow stroke-olive-600 dark:stroke-olive-400" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#sp-arrow)" />
+  <line x1="662" y1="150" x2="696" y2="150" class="sp-flow stroke-olive-600 dark:stroke-olive-400" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#sp-arrow)" />
 
   <!-- Severed egress path -->
-  <line x1="460" y1="250" x2="460" y2="300" class="stroke-red-500" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#sp-arrow-r)" />
+  <line x1="460" y1="250" x2="460" y2="300" class="sp-egress stroke-red-500" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#sp-arrow-r)" />
   <text x="478" y="280" class="fill-red-600 dark:fill-red-400 font-sans" font-size="14" font-weight="600">no data egress</text>
 
   <!-- External foreign node -->
@@ -74,3 +75,21 @@ const W = 175;
   <line x1="470" y1="411" x2="490" y2="411" class="stroke-red-500" stroke-width="2" stroke-dasharray="5 4" />
   <text x="498" y="415" class="fill-zinc-600 dark:fill-zinc-400 font-sans" font-size="13.5">severed path</text>
 </svg>
+
+<style>
+  .sp-box { transition: transform .25s ease; cursor: default; }
+  .sp-box rect { transition: stroke .2s ease, stroke-width .2s ease; }
+  .sp-box:hover { transform: translateY(-4px); }
+  .sp-box:hover rect { stroke: #85a03a; stroke-width: 2.5; }
+  .sp-frame { animation: sp-march 2.6s linear infinite; }
+  .sp-flow { animation: sp-flow 1.1s linear infinite; }
+  .sp-egress { animation: sp-egress 1.8s ease-in-out infinite; }
+  @keyframes sp-march { to { stroke-dashoffset: -32; } }
+  @keyframes sp-flow { to { stroke-dashoffset: -18; } }
+  @keyframes sp-egress { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .sp-frame, .sp-flow, .sp-egress { animation: none; }
+    .sp-box, .sp-box rect { transition: none; }
+    .sp-box:hover { transform: none; }
+  }
+</style>
