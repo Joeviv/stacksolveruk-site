@@ -17,6 +17,7 @@ export const siteSEO = {
 			"Incident Response UK",
 			"Security Architecture UK",
 			"AI Engineering UK",
+			"Ethical Sovereign AI",
 			"Sovereign AI",
 			"Ethical AI",
 			"AI Governance",

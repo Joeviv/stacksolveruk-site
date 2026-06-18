@@ -1,0 +1,76 @@
+---
+// File: src/components/sovereignty/SovereignPerimeter.astro
+// "Where your sovereignty is won or lost" — the AI pipeline drawn inside a
+// control boundary. Static, theme-aware via Tailwind dark: utilities. EN-UK.
+// Concept is our own; not derived word-for-word from any third-party material.
+const stages = [
+  { tag: "01 · data",      title: "Your data",        sub: "kept in-house",     x: 55 },
+  { tag: "02 · model",     title: "Your model",       sub: "open-weight",       x: 270 },
+  { tag: "03 · inference", title: "Private inference", sub: "hardware you own",  x: 485 },
+  { tag: "04 · delivery",  title: "Apps & users",     sub: "audit-logged",      x: 700 },
+];
+const W = 175;
+---
+
+<svg viewBox="0 0 920 440" width="100%" role="img" class="block" xmlns="http://www.w3.org/2000/svg">
+  <title>The sovereign AI perimeter</title>
+  <desc>
+    An AI pipeline — your data, your model, private inference, apps and users — enclosed
+    inside a single boundary marked "inside your perimeter, zero data egress". A severed
+    red path drops to an external "public AI service, foreign cloud" node, showing where a
+    public model would send your data instead.
+  </desc>
+
+  <defs>
+    <marker id="sp-arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L6.5,3 L0,6 Z" class="fill-olive-600 dark:fill-olive-400" />
+    </marker>
+    <marker id="sp-arrow-r" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L6.5,3 L0,6 Z" class="fill-red-500" />
+    </marker>
+  </defs>
+
+  <!-- Boundary label -->
+  <text x="34" y="40" class="fill-olive-600 dark:fill-olive-400 font-mono" font-size="14" letter-spacing="1.5">
+    // inside your perimeter · zero data egress
+  </text>
+
+  <!-- Perimeter frame -->
+  <rect x="30" y="58" width="860" height="190" rx="18"
+        class="fill-olive-500/[0.04] stroke-olive-500/70 dark:stroke-olive-400/60"
+        stroke-width="2" stroke-dasharray="2 6" />
+
+  <!-- Stage boxes -->
+  {stages.map((s) => (
+    <g>
+      <rect x={s.x} y={96} width={W} height={108} rx={12}
+            class="fill-white dark:fill-zinc-900 stroke-zinc-200 dark:stroke-zinc-800" stroke-width="1.5" />
+      <text x={s.x + 20} y={126} class="fill-olive-600 dark:fill-olive-400 font-mono" font-size="11.5" letter-spacing="1">{s.tag}</text>
+      <text x={s.x + 20} y={160} class="fill-zinc-900 dark:fill-white font-sans" font-size="20" font-weight="600">{s.title}</text>
+      <text x={s.x + 20} y={184} class="fill-zinc-500 dark:fill-zinc-400 font-sans" font-size="13.5">{s.sub}</text>
+    </g>
+  ))}
+
+  <!-- Flow arrows -->
+  <line x1="232" y1="150" x2="266" y2="150" class="stroke-olive-600 dark:stroke-olive-400" stroke-width="2" marker-end="url(#sp-arrow)" />
+  <line x1="447" y1="150" x2="481" y2="150" class="stroke-olive-600 dark:stroke-olive-400" stroke-width="2" marker-end="url(#sp-arrow)" />
+  <line x1="662" y1="150" x2="696" y2="150" class="stroke-olive-600 dark:stroke-olive-400" stroke-width="2" marker-end="url(#sp-arrow)" />
+
+  <!-- Severed egress path -->
+  <line x1="460" y1="250" x2="460" y2="300" class="stroke-red-500" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#sp-arrow-r)" />
+  <text x="478" y="280" class="fill-red-600 dark:fill-red-400 font-sans" font-size="14" font-weight="600">no data egress</text>
+
+  <!-- External foreign node -->
+  <rect x="355" y="306" width="210" height="62" rx="12"
+        class="fill-zinc-100 dark:fill-zinc-800/60 stroke-zinc-300 dark:stroke-zinc-700" stroke-width="1.5" />
+  <text x="460" y="334" text-anchor="middle" class="fill-zinc-700 dark:fill-zinc-300 font-sans" font-size="17" font-weight="600">Public AI service</text>
+  <text x="460" y="354" text-anchor="middle" class="fill-zinc-500 dark:fill-zinc-500 font-sans" font-size="13">foreign cloud · your data leaves</text>
+
+  <!-- Legend -->
+  <rect x="55" y="404" width="14" height="14" rx="3" class="fill-olive-500" />
+  <text x="78" y="415" class="fill-zinc-600 dark:fill-zinc-400 font-sans" font-size="13.5">inside your perimeter</text>
+  <rect x="280" y="404" width="14" height="14" rx="3" class="fill-zinc-300 dark:fill-zinc-700" />
+  <text x="303" y="415" class="fill-zinc-600 dark:fill-zinc-400 font-sans" font-size="13.5">foreign provider</text>
+  <line x1="470" y1="411" x2="490" y2="411" class="stroke-red-500" stroke-width="2" stroke-dasharray="5 4" />
+  <text x="498" y="415" class="fill-zinc-600 dark:fill-zinc-400 font-sans" font-size="13.5">severed path</text>
+</svg>

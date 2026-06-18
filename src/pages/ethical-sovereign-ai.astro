@@ -1,0 +1,403 @@
+---
+// File: src/pages/ethical-sovereign-ai.astro
+// Campaign landing — the named category Stacksolver UK owns for its AI practice.
+// Audience: UK + Europe, regulated industries. Voice: senior, lean, auditable.
+import Layout from "../layouts/Layout.astro";
+import SovereignPerimeter from "../components/sovereignty/SovereignPerimeter.astro";
+import SovereigntyLadder from "../components/sovereignty/SovereigntyLadder.astro";
+
+const seoTitle = "Ethical Sovereign AI | Stacksolver UK";
+const seoDescription =
+  "Ethical Sovereign AI from Stacksolver UK: artificial intelligence that runs inside your perimeter (sovereign) and can prove how it behaves (ethical). No data egress. Governed to ISO 42001 and aligned to the EU AI Act. For regulated firms in the UK and Europe.";
+const seoKeywords =
+  "Ethical Sovereign AI, Sovereign AI UK, Sovereign AI Europe, Ethical AI, ISO 42001, EU AI Act, on-premise AI, private AI, data residency, no data egress, AI governance, Sovereign RAG, UK GDPR, data sovereignty";
+
+const pillars = [
+  {
+    tag: "01 · Sovereign",
+    head: "Sovereign by architecture",
+    sub: "Where it runs.",
+    points: [
+      "Models, vector store and interface on hardware or in a cloud account you own.",
+      "Zero data egress — your data never leaves your perimeter or your jurisdiction.",
+      "Apple Silicon, NVIDIA on-premise, or a dedicated private cloud (AWS Bedrock, Azure OpenAI). Your choice, not ours.",
+      "No third party trains on your data. Ever.",
+    ],
+  },
+  {
+    tag: "02 · Ethical",
+    head: "Ethical by design",
+    sub: "How it behaves — and how you prove it.",
+    points: [
+      "Every prompt and response logged to immutable, audit-ready records.",
+      "Defined authorisation boundaries: the system can only reach the tools and data you grant it.",
+      "Bias, safety and red-team testing before go-live, documented as evidence.",
+      "Explainable decisions — no hidden model behaviour your auditors cannot inspect.",
+    ],
+  },
+  {
+    tag: "03 · Governed",
+    head: "Governed to standard",
+    sub: "How it stays accountable.",
+    points: [
+      "An AI Management System (ISO 42001:2023), run by our GRC practice — not bolted on later.",
+      "Risk register mapped to EU AI Act risk categories and NIST AI RMF.",
+      "DPIA and AI risk assessment delivered with the deployment, not after it.",
+      "Owned by a named person, reviewed on a defined cadence.",
+    ],
+  },
+];
+
+const deliverables = [
+  {
+    title: "Sovereign RAG",
+    desc: "Retrieval-augmented generation across your documents, fully on-premise or in your private cloud. Zero data egress, audit-ready logs.",
+    href: "/services/ai/sovereign-rag",
+    badge: "Ollama · vLLM · Bedrock · Azure OpenAI",
+  },
+  {
+    title: "Ethical AI Sandbox",
+    desc: "An auditable piloting framework for regulated environments. DPIA, AI risk assessment and EU AI Act mapping delivered with the pilot, with a clear go / no-go before scale-out.",
+    href: "/services/ai/ethical-ai-sandbox",
+    badge: "EU AI Act · ISO 42001 · NIST AI RMF",
+  },
+  {
+    title: "AI Governance (ISO 42001)",
+    desc: "Build the AI Management System the EU AI Act and UK regulators now expect — charter, policies, roles and an AI-specific risk register.",
+    href: "/services/ai/ai-governance-iso-42001",
+    badge: "ISO 42001:2023 · EU AI Act",
+  },
+  {
+    title: "Local AI Stack",
+    desc: "Sovereign deployment on hardware you own — single-node Apple Silicon or NVIDIA — for teams that want speed without surrendering control.",
+    href: "/services/local-ai",
+    badge: "Apple Silicon · NVIDIA · private cloud",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is Ethical Sovereign AI?",
+    a: "Ethical Sovereign AI is artificial intelligence that runs inside your own perimeter — on hardware or in a cloud account you control (sovereign) — and that can prove how it behaves through immutable audit logs, defined authorisation boundaries and pre-deployment safety testing (ethical). Stacksolver UK governs it to ISO 42001 and aligns it to the EU AI Act.",
+  },
+  {
+    q: "How is it different from using ChatGPT or a public AI service?",
+    a: "With a public service your prompts and documents leave your organisation and sit on infrastructure you do not control, in a jurisdiction you may not have chosen. With Ethical Sovereign AI your data never leaves your perimeter, no third party trains on it, and every interaction is logged as compliance evidence.",
+  },
+  {
+    q: "Does it satisfy the EU AI Act and UK GDPR?",
+    a: "It is designed to. We deliver a DPIA, an AI risk register mapped to EU AI Act categories and NIST AI RMF, and an AI Management System built to ISO 42001. Data residency and no-egress architecture address the GDPR and UK GDPR concerns that drive most sovereignty requirements.",
+  },
+];
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  type="article"
+>
+  <!-- Hero -->
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 pt-20 pb-16 lg:pt-28 lg:pb-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-5">
+        Our AI practice
+      </p>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
+        Ethical Sovereign AI
+      </h1>
+      <p class="text-2xl md:text-3xl font-light text-zinc-800 dark:text-zinc-200 mb-8 leading-snug">
+        Sovereign by architecture. Ethical by design.
+      </p>
+      <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-3xl">
+        AI that runs inside your perimeter — on infrastructure you own — and can
+        <strong>prove how it behaves</strong>. No data egress. No hidden model behaviour.
+        Governed to <strong>ISO 42001</strong> and aligned to the <strong>EU AI Act</strong>.
+        Built for regulated organisations across the <strong>United Kingdom and Europe</strong>.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-3">
+        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+          Talk to us <span aria-hidden>→</span>
+        </a>
+        <a href="/services/ai" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+          See the full AI practice
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Definition strip -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-y border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-14">
+      <p class="text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 leading-relaxed font-light">
+        Most AI tools ask you to send your data somewhere else and trust what happens to it.
+        <strong class="font-semibold text-zinc-900 dark:text-white">Ethical Sovereign AI inverts that.</strong>
+        The model comes to your data — not the other way round — and every decision it makes is logged,
+        bounded and auditable. You get the capability without surrendering control, and you can prove it
+        to a regulator, a client or your own board.
+      </p>
+    </div>
+  </section>
+
+  <!-- Perimeter diagram -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <div class="max-w-2xl mb-10">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Where sovereignty is won or lost</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          The whole chain stays inside your boundary.
+        </h2>
+        <p class="mt-4 text-zinc-600 dark:text-zinc-400 text-lg">
+          Data, model, inference and delivery all sit on infrastructure you control. The path that
+          would carry your data to a foreign provider is severed at your perimeter.
+        </p>
+      </div>
+      <SovereignPerimeter />
+    </div>
+  </section>
+
+  <!-- Three pillars -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <div class="max-w-2xl mb-14">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What the name means</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Two commitments, proven three ways.
+        </h2>
+        <p class="mt-4 text-zinc-600 dark:text-zinc-400 text-lg">
+          We do not ask you to take "ethical" and "sovereign" on faith. Each one is something we build
+          in and hand you the evidence for.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {pillars.map((p) => (
+          <div class="flex flex-col p-8 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">{p.tag}</div>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white">{p.head}</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-500 mb-5">{p.sub}</p>
+            <ul class="space-y-3">
+              {p.points.map((pt) => (
+                <li class="flex gap-3 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  <span class="text-olive-500 dark:text-olive-400 flex-shrink-0" aria-hidden>—</span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Readiness ladder -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <div class="max-w-2xl mb-10">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Where are you now</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Four levels, from dependent to sovereign.
+        </h2>
+        <p class="mt-4 text-zinc-600 dark:text-zinc-400 text-lg">
+          Most organisations sit at level 0 or 1 without realising it. We assess where you are, then
+          build the shortest defensible path to the level your regulators and clients expect.
+        </p>
+      </div>
+      <SovereigntyLadder />
+    </div>
+  </section>
+
+  <!-- Why now -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-1">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Why now</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          The regulatory tailwind is already here.
+        </h2>
+      </div>
+      <div class="lg:col-span-2 space-y-5 text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed">
+        <p>
+          The <strong>EU AI Act</strong> is phasing in obligations through 2025–2027. <strong>UK GDPR</strong>
+          and the ICO already expect demonstrable control over personal data. Across Europe, data residency
+          and digital sovereignty have moved from preference to procurement requirement.
+        </p>
+        <p>
+          Firms that adopt AI the convenient way — by piping confidential data to a US cloud — are quietly
+          accumulating risk they will have to unwind. Ethical Sovereign AI lets you adopt the capability
+          <strong>once, correctly</strong>: inside your jurisdiction, on infrastructure you control, with the
+          governance evidence built in from day one.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+          {["EU AI Act", "ISO 42001", "UK GDPR / ICO", "NIST AI RMF", "Data residency", "Schrems II"].map((t) => (
+            <span class="px-3 py-1 rounded-full text-sm bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">{t}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contrast -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          The convenient way, and the sovereign way.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40">
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-5">Public AI service</h3>
+          <ul class="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+            <li>Your data leaves your organisation.</li>
+            <li>It sits in a jurisdiction you did not choose.</li>
+            <li>You cannot see or keep the logs an auditor will ask for.</li>
+            <li>Terms, models and behaviour can change under you.</li>
+            <li>"Trust us" is the only assurance on offer.</li>
+          </ul>
+        </div>
+        <div class="p-8 rounded-2xl border-2 border-olive-500 bg-white dark:bg-zinc-900">
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-5">Ethical Sovereign AI</h3>
+          <ul class="space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+            <li>Your data never leaves your perimeter.</li>
+            <li>It stays in your jurisdiction, on infrastructure you own.</li>
+            <li>Every interaction is logged as compliance evidence.</li>
+            <li>You control the model, the version and the policy.</li>
+            <li>Auditable by design — you can prove all of the above.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us — the moat -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <div class="max-w-3xl mb-12">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Why Stacksolver</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Anyone can run a local model. Few can govern it.
+        </h2>
+        <p class="mt-5 text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
+          Deploying an open-weight model is the easy part. Making it defensible is the work — and it is
+          our specialty. <strong>Cyber security is our core.</strong> We deploy your AI sovereign, secure
+          it as the cyber consultancy we are, govern it with a <strong>GRC practice built for ISO 42001
+          and UK regulators</strong>, and hand you the audit evidence to prove all three. One team, not four suppliers.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">01</div>
+          <div class="font-semibold text-zinc-900 dark:text-white">Deploy</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">sovereign, inside your perimeter</div>
+        </div>
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">02</div>
+          <div class="font-semibold text-zinc-900 dark:text-white">Secure</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">as cyber specialists</div>
+        </div>
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">03</div>
+          <div class="font-semibold text-zinc-900 dark:text-white">Govern</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">GRC · ISO 42001</div>
+        </div>
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">04</div>
+          <div class="font-semibold text-zinc-900 dark:text-white">Prove</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">auditable evidence</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <div class="max-w-2xl mb-12">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">How we deliver it</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Four ways in.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {deliverables.map((d) => (
+          <a href={d.href} class="group flex flex-col p-8 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-olive-600 dark:group-hover:text-olive-400 transition-colors">{d.title}</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5 flex-grow">{d.desc}</p>
+            <div class="text-xs font-mono text-zinc-500 dark:text-zinc-500">{d.badge}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (AEO / answer-engine optimisation) -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-10">
+        Questions buyers ask.
+      </h2>
+      <div class="space-y-8">
+        {faqs.map((f) => (
+          <div>
+            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">{f.q}</h3>
+            <p class="text-zinc-600 dark:text-zinc-300 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+        Adopt AI once, correctly.
+      </h2>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
+        Tell us about your data, your regulators and your timeline. We will reply within two working days.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+          Contact us <span aria-hidden>→</span>
+        </a>
+        <a href="/trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+          Trust Center
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structured data: Service + FAQ (AEO) -->
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Ethical Sovereign AI",
+      serviceType: "Sovereign AI engineering and governance",
+      provider: {
+        "@type": "Organization",
+        name: "Stacksolver UK Limited",
+        url: "https://www.stacksolveruk.com",
+      },
+      areaServed: ["United Kingdom", "Europe"],
+      description: seoDescription,
+      url: "https://www.stacksolveruk.com/ethical-sovereign-ai",
+    })}
+  />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    })}
+  />
+</Layout>

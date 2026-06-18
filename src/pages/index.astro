@@ -2,10 +2,11 @@
 // File: src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import HeroV2 from '../components/hero/HeroV2';
+import SovereignPerimeter from '../components/sovereignty/SovereignPerimeter.astro';
 
 const seoTitle = "Stacksolver UK | Cyber Security, AI Engineering & Compliance Consultancy";
 const seoDescription = "Independent Cyber Security, AI Engineering and Compliance consultancy based in Brighton. Serving the United Kingdom, Europe and the United States. Senior expertise. Lean delivery. Auditable by design.";
-const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK, Sovereign AI, ISO 42001, ISO 27001 UK, NIS2 readiness, DORA compliance, Procurement AI, HR AI, AI Red Teaming, Local AI Stack, Brighton consultancy";
+const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK, Ethical Sovereign AI, Sovereign AI, ISO 42001, ISO 27001 UK, NIS2 readiness, DORA compliance, Procurement AI, HR AI, AI Red Teaming, Local AI Stack, Brighton consultancy";
 ---
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
@@ -73,11 +74,11 @@ const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK,
       <!-- Other 4 practices -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <a href="/services/ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+        <a href="/ethical-sovereign-ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
           <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">02 · AI Engineering</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">AI &amp; All Its Flavours</h3>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Ethical Sovereign AI</h3>
           <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Sovereign AI inside your perimeter. Ethical by default. ISO 42001 ready.
+            Sovereign by architecture. Ethical by design. Inside your perimeter, governed to ISO 42001.
           </p>
         </a>
 
@@ -120,6 +121,30 @@ const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK,
           <div class="text-sm font-semibold text-zinc-900 dark:text-white">Local AI Stack</div>
           <div class="text-xs text-zinc-500 dark:text-zinc-500">Apple Silicon · NVIDIA · Bedrock private</div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ethical Sovereign AI feature -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+        <div class="lg:col-span-1">
+          <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Our AI practice</p>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+            Ethical Sovereign AI
+          </h2>
+          <p class="text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed mb-4">
+            Sovereign by architecture. Ethical by design. AI that runs inside your perimeter and can
+            prove how it behaves — no data egress, governed to ISO 42001.
+          </p>
+          <a href="/ethical-sovereign-ai" class="inline-flex items-center gap-2 text-olive-600 dark:text-olive-400 font-medium hover:gap-3 transition-all">
+            Explore Ethical Sovereign AI <span aria-hidden>→</span>
+          </a>
+        </div>
+        <div class="lg:col-span-2">
+          <SovereignPerimeter />
+        </div>
       </div>
     </div>
   </section>
