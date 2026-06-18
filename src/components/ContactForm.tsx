@@ -11,15 +11,26 @@ export default function ContactForm() {
     setStatus('SUBMITTING');
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get('name'),
+      email: fd.get('email'),
+      organisation: fd.get('organisation'),
+      phone: fd.get('phone'),
+      topic: fd.get('topic'),
+      message: fd.get('message'),
+      _gotcha: fd.get('_gotcha'),
+    };
 
     try {
-      const response = await fetch("https://formspree.io/f/xqaqgdoy", {
+      // Sovereign endpoint: our own AWS Lambda + SES in eu-west-2 (London). No third-party form processor.
+      const response = await fetch("https://3q32yvnja6bqkxwk3e4r44zrti0vkjfn.lambda-url.eu-west-2.on.aws/", {
         method: "POST",
-        body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {

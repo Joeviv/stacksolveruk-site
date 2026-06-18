@@ -161,6 +161,8 @@ We do not sell personal data. We may share your data with:
 - **Regulators and law enforcement** where required by law.
 - **Subcontractors** engaged on a specific client project, only to the extent strictly necessary.
 
+Enquiries submitted through our website contact form are processed entirely within our own Amazon Web Services environment in the United Kingdom (London region) and delivered to our team's mailbox. We do not route contact-form submissions through any third-party form-handling service, and this data is not transferred outside the UK.
+
 ## 7. International Transfers
 
 Some of our service providers may process personal data outside the United Kingdom. Where we transfer personal data outside the UK or the European Economic Area, we ensure appropriate safeguards are in place, such as the UK International Data Transfer Agreement, the UK Addendum to the EU Standard Contractual Clauses, or transfers to jurisdictions with an adequacy decision recognised by the UK government.
