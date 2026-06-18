@@ -198,6 +198,13 @@ export default function ContactForm() {
           </>
         )}
       </button>
+
+      <p className="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed">
+        We use the details you provide solely to respond to your enquiry, on the basis of our
+        legitimate interest in answering it. We do not use them for marketing without your consent.
+        See our <a href="/legal/privacy" className="text-olive-600 dark:text-olive-400 hover:underline">Privacy Policy</a> for
+        how we handle your data and your rights under UK GDPR.
+      </p>
     </form>
   );
 }
