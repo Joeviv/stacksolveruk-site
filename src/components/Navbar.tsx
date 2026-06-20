@@ -54,17 +54,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center gap-2 group" aria-label="Stacksolver UK home">
-              <img
-                src="/general/logo-mark-v2.svg"
-                alt=""
-                className="w-8 h-8 group-hover:scale-110 transition-transform"
-                width="32"
-                height="32"
-              />
+            <a href="/" className="flex items-center gap-2 group" aria-label="Fox&Stack home">
+              {/* TODO: reemplazar con logo Fox&Stack que entregará Johann (por ahora wordmark de texto) */}
               <span className="font-bold text-zinc-900 dark:text-white text-lg tracking-tight inline-flex items-center gap-1.5">
-                Stacksolver
-                <span className="inline-flex items-center justify-center text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded bg-olive-500 text-white">UK</span>
+                Fox<span className="text-olive-500">&amp;</span>Stack
               </span>
             </a>
           </div>

@@ -17,7 +17,7 @@ interface Props {
 
 const {
 	title,
-	description = "Stacksolver UK Limited — independent Cyber Security, AI Engineering and Compliance consultancy. Brighton-based, serving the United Kingdom, Europe and the United States.",
+	description = "Fox&Stack — independent Cyber Security, AI Engineering and Compliance consultancy. Brighton-based, serving the United Kingdom, Europe and the United States.",
 	image = "/og-image.png",
 	keywords = "",
 	type = "website",
@@ -25,7 +25,7 @@ const {
 	robots = "index, follow",
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.href : "https://www.stacksolveruk.com";
+const siteUrl = Astro.site ? Astro.site.href : "https://foxandstack.com";
 const socialImageURL = new URL(image, siteUrl).href;
 ---
 
@@ -63,9 +63,12 @@ const socialImageURL = new URL(image, siteUrl).href;
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={socialImageURL} />
+		<meta property="og:image:alt" content="Fox&Stack" />
+		<meta property="og:site_name" content="Fox&Stack" />
 		<meta property="og:locale" content="en_GB" />
 
 		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:site" content="@foxandstack" />
 		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
@@ -77,12 +80,13 @@ const socialImageURL = new URL(image, siteUrl).href;
 			set:html={JSON.stringify({
 				"@context": "https://schema.org",
 				"@type": "WebSite",
-				name: "Stacksolver UK",
+				name: "Fox&Stack",
 				url: siteUrl,
 				description: description,
 				publisher: {
 					"@type": "Organization",
-					name: "Stacksolver UK Limited",
+					name: "Fox&Stack",
+					legalName: "StackSolver UK Limited",
 					logo: {
 						"@type": "ImageObject",
 						url: `${siteUrl}/favicon.svg`,

@@ -185,7 +185,7 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      <input type="hidden" name="_subject" value="New enquiry from stacksolveruk.com" />
+      <input type="hidden" name="_subject" value="New enquiry from Fox&Stack" />
       <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
       {status === 'ERROR' && (
