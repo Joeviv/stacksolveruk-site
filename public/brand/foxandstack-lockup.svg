@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" width="360" height="210" role="img" aria-label="foxandstack logo">
+  <g transform="translate(132.5,-3)">
+    <polygon points="11,9 0,41 46,41" fill="#FF6A00"></polygon>
+    <polygon points="84,9 95,41 49,41" fill="#85A03A"></polygon>
+    <polygon points="2,45 93,45 78,63 17,63" fill="#FF6A00"></polygon>
+    <polygon points="14,80 81,80 71,95 24,95" fill="#9BAE5C"></polygon>
+    <polygon points="25,110 70,110 60,124 35,124" fill="#85A03A"></polygon>
+  </g>
+  <text x="180" y="172" text-anchor="middle" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="800" font-size="50" letter-spacing="-2">
+    <tspan fill="#FF6A00">fox</tspan><tspan fill="#8a8a8a">and</tspan><tspan fill="#85A03A">stack</tspan>
+  </text>
+</svg>
