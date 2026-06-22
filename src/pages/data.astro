@@ -1,0 +1,108 @@
+---
+// File: src/pages/data.astro
+// Core flow step 01 — Data. The asset everything protects.
+// Verified content: Biblioteca/Sovereign_AI/01_Arquitectura_Referencia_Capas.md (the core)
+// and 02_Riesgos_2026_2027_y_ForwardLook.md (shadow AI, poisoning → L2/L1). EN-UK.
+import LayerPage from "../components/sovereignty/LayerPage.astro";
+
+const points = [
+  {
+    title: "It stays on infrastructure you own",
+    body: "Your documents, records and knowledge live inside the perimeter, on hardware you control. There is no upload step, no copy in a provider's region — the data does not move to be useful.",
+  },
+  {
+    title: "The model comes to the data",
+    body: "Conventional AI sends your data to the model. We reverse it: the model runs where the data already sits. That single inversion is what makes the whole system sovereign.",
+  },
+  {
+    title: "Data lineage you can show",
+    body: "We track where data comes from and where it flows, so a retrieved answer can be traced back to its source. Lineage is also what lets governance prove the model was not fed something it should not have been.",
+  },
+  {
+    title: "Clean inputs, by design",
+    body: "Validated provenance and curated sources guard against data poisoning — tampered inputs that quietly corrupt a model's behaviour. What the model learns from and retrieves is checked, not assumed.",
+  },
+  {
+    title: "Personal data, masked before it is seen",
+    body: "Sensitive and personal fields are detected and masked before they reach the model, so the system can work across your records without exposing the people in them.",
+  },
+  {
+    title: "No training on your data, ever",
+    body: "Your data is yours. It is never sent to a public model, never used to train someone else's product, and never leaves your control to do its job here.",
+  },
+];
+
+const standards = [
+  "Data residency",
+  "Data lineage",
+  "Provenance",
+  "PII masking",
+  "No external training",
+  "Curated sources",
+];
+
+const seoTitle = "Data — kept in-house | Fox&Stack Sovereign AI";
+const seoDescription =
+  "The data step of Fox&Stack's Sovereign AI core: your documents and records stay on infrastructure you own, with lineage, provenance and PII masking — the model comes to your data, never the other way round.";
+---
+
+<LayerPage
+  eyebrow="Core · 01 data"
+  layerTag="The living core · data"
+  title="Your data is the asset everything else protects."
+  lede="The first step of the flow and the thing the whole perimeter exists for. Your documents and records stay on infrastructure you own; the model comes to your data, not the other way round — with lineage, provenance and masking so it can be used without being exposed."
+  seoTitle={seoTitle}
+  seoDescription={seoDescription}
+  points={points}
+  standards={standards}
+>
+  <!-- Why it is the centre -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Why it sits at the centre</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
+        Shadow AI is a data problem. We solve it at the source.
+      </h2>
+      <div class="space-y-5 text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        <p>
+          The most common AI risk in any organisation is the simplest: staff pasting
+          confidential data into a public tool. Policies and training slow it; they do not stop
+          it. The only durable fix is architectural — make it so the
+          <strong>data has no reason to leave</strong> in the first place.
+        </p>
+        <p>
+          That is why data sits at the centre of the core. Keep it in-house, bring the model to
+          it, and the headline sovereignty risk disappears not because people behaved, but
+          because the system was built so they did not have to.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The flow -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">The flow that stays in-house</p>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Data is step one of four.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/model" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-mono text-xs text-olive-600 dark:text-olive-400 mb-1">02</div>
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Model</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">open-weight</div>
+        </a>
+        <a href="/inference" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-mono text-xs text-olive-600 dark:text-olive-400 mb-1">03</div>
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Inference</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">hardware you own</div>
+        </a>
+        <a href="/delivery" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-mono text-xs text-olive-600 dark:text-olive-400 mb-1">04</div>
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Delivery</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">audit-logged</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</LayerPage>

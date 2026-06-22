@@ -1,9 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="foxandstack favicon">
-  <g transform="translate(12.5,-6.5)">
-    <polygon points="11,9 0,41 46,41" fill="#FF6A00"></polygon>
-    <polygon points="84,9 95,41 49,41" fill="#85A03A"></polygon>
-    <polygon points="2,45 93,45 78,63 17,63" fill="#FF6A00"></polygon>
-    <polygon points="14,80 81,80 71,95 24,95" fill="#9BAE5C"></polygon>
-    <polygon points="25,110 70,110 60,124 35,124" fill="#85A03A"></polygon>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Fox&amp;Stack favicon">
+  <rect width="120" height="120" rx="22" fill="#0a0a0a"></rect>
+  <text x="60" y="60" text-anchor="middle" dominant-baseline="central" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="58" letter-spacing="-2">
+    <tspan fill="#fafafa">F</tspan><tspan fill="#85A03A">&amp;</tspan><tspan fill="#fafafa">S</tspan>
+  </text>
 </svg>

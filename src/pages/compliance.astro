@@ -1,0 +1,107 @@
+---
+// File: src/pages/compliance.astro
+// The exemplary sub-page reached from the outermost ring of the home perimeter.
+// Compliance = L4, the certified boundary. EN-UK, sentence case.
+import LayerPage from "../components/sovereignty/LayerPage.astro";
+
+const points = [
+  {
+    title: "ISO 27001 — information security",
+    body: "An information security management system that auditors recognise. Your sovereign AI sits inside an ISMS, not beside one, so the controls that protect the rest of your estate protect the model too.",
+  },
+  {
+    title: "ISO 42001 — AI management",
+    body: "The AI management system the EU AI Act and UK regulators now expect: an AI policy, a system register, risk classification and named ownership — built in from day one, not bolted on after go-live.",
+  },
+  {
+    title: "Cyber Essentials Plus",
+    body: "The UK baseline that opens corporate and public-sector procurement. We hold it ourselves and help you reach it, so your AI deployment clears the first gate every buyer asks about.",
+  },
+  {
+    title: "EU AI Act, mapped",
+    body: "Your AI systems classified against the Act's risk categories and mapped to NIST AI RMF, with a DPIA and AI risk assessment delivered alongside the deployment — ready for the high-risk obligations landing December 2027.",
+  },
+  {
+    title: "Evidence, not assertions",
+    body: "Every claim we make about your system is backed by an artefact: model cards, data lineage, audit logs and immutable interaction records. You can prove it to a regulator, a client or your own board.",
+  },
+  {
+    title: "One team, four standards",
+    body: "Cyber security is our core. We deploy your AI sovereign, secure it, govern it to ISO 42001 and hand you the audit evidence — one accountable team, not four suppliers pointing at each other.",
+  },
+];
+
+const standards = [
+  "ISO 27001",
+  "ISO 42001",
+  "Cyber Essentials Plus",
+  "EU AI Act",
+  "NIST AI RMF",
+  "UK GDPR / ICO",
+  "ISO 27701",
+  "SOC 2",
+];
+
+const seoTitle = "Compliance — the certified boundary | Fox&Stack";
+const seoDescription =
+  "Compliance is the outermost ring of Fox&Stack's Sovereign AI: ISO 27001, ISO 42001, Cyber Essentials Plus and EU AI Act mapping, delivered as evidence you can prove to a regulator, client or board.";
+---
+
+<LayerPage
+  eyebrow="Ring · the certified boundary"
+  layerTag="L4 · Governance & compliance"
+  title="Compliance is the boundary you can prove."
+  lede="The outermost ring of your perimeter. Sovereign architecture keeps your data in; compliance is what turns that into something a regulator, a client or your board will accept — certified, mapped and backed by evidence."
+  seoTitle={seoTitle}
+  seoDescription={seoDescription}
+  points={points}
+  standards={standards}
+>
+  <!-- Why it sits on the outside -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Why it is the outer ring</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
+        The certificate is what others can see.
+      </h2>
+      <div class="space-y-5 text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        <p>
+          Inside the perimeter sit your infrastructure, your models and your guardrails — the
+          machinery that makes the system sovereign and safe. But a buyer, an auditor or a
+          regulator cannot inspect your hardware. What they can inspect is your
+          <strong>certification and your evidence</strong>.
+        </p>
+        <p>
+          That is why compliance is the outermost ring. It is the face your perimeter shows
+          the outside world: the proof that everything within it is controlled, owned and
+          accountable. Get it right and the rest of the architecture becomes <em>defensible</em>,
+          not just <em>good</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The other rings -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">The rings beneath it</p>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Each ring has its own page.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/governance" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Governance & GRC</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">how it is controlled</div>
+        </a>
+        <a href="/security" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Security & guardrails</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">the safety wall</div>
+        </a>
+        <a href="/infrastructure" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Sovereign infrastructure</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">where it runs</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</LayerPage>

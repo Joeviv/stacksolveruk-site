@@ -1,0 +1,122 @@
+---
+// File: src/components/sovereignty/LayerPage.astro
+// Reusable template for a sub-page reached from the home perimeter diagram
+// (a ring or a flow step). The /compliance page is the fully-written exemplar;
+// the other layer/flow pages reuse this with their own copy or a "coming soon"
+// state. EN-UK, sentence case.
+import Layout from "../../layouts/Layout.astro";
+
+interface Point {
+  title: string;
+  body: string;
+}
+interface Props {
+  eyebrow: string;        // e.g. "Ring · the certified boundary"
+  layerTag: string;       // e.g. "L4 · Governance & Compliance"
+  title: string;
+  lede: string;
+  seoTitle: string;
+  seoDescription: string;
+  comingSoon?: boolean;   // render the placeholder state
+  points?: Point[];       // the substance (when not coming soon)
+  standards?: string[];   // chips
+}
+const {
+  eyebrow,
+  layerTag,
+  title,
+  lede,
+  seoTitle,
+  seoDescription,
+  comingSoon = false,
+  points = [],
+  standards = [],
+} = Astro.props;
+---
+
+<Layout title={seoTitle} description={seoDescription} type="article">
+  <!-- Hero -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-20 pb-14 lg:pt-24">
+      <a href="/" class="inline-flex items-center gap-2 text-sm text-olive-600 dark:text-olive-400 mb-8 hover:gap-3 transition-all">
+        <span aria-hidden>←</span> Back to the perimeter
+      </a>
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">{eyebrow}</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-5">{title}</h1>
+      <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-2xl">{lede}</p>
+      <div class="mt-6">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-mono bg-olive-500/10 text-olive-700 dark:text-olive-300 border border-olive-500/30">{layerTag}</span>
+      </div>
+    </div>
+  </section>
+
+  {comingSoon ? (
+    <section class="bg-zinc-50 dark:bg-zinc-950">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+          <span class="w-2 h-2 rounded-full bg-olive-500"></span> Page in progress
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+          We are writing this one up.
+        </h2>
+        <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto mb-8">
+          The full detail for this layer is on its way. In the meantime, the
+          <a href="/compliance" class="text-olive-600 dark:text-olive-400 underline underline-offset-2">Compliance</a>
+          page shows the pattern, and we are happy to walk you through this layer directly.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+            Ask us about it <span aria-hidden>→</span>
+          </a>
+          <a href="/ethical-sovereign-ai" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+            Back to the practice
+          </a>
+        </div>
+      </div>
+    </section>
+  ) : (
+    <>
+      <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {points.map((p) => (
+              <div class="p-7 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+                <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">{p.title}</h3>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{p.body}</p>
+              </div>
+            ))}
+          </div>
+          {standards.length > 0 && (
+            <div class="flex flex-wrap gap-2 pt-10">
+              {standards.map((s) => (
+                <span class="px-3 py-1 rounded-full text-sm bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">{s}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <slot />
+
+      <section class="bg-white dark:bg-black">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+            See it in the lab.
+          </h2>
+          <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
+            Book a demo and we will show this layer working inside a real perimeter,
+            with the evidence you can hand to an auditor.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+              Book a lab demo <span aria-hidden>→</span>
+            </a>
+            <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+              Back to the perimeter
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+</Layout>

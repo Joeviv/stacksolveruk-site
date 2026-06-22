@@ -1,0 +1,136 @@
+---
+// File: src/pages/governance.astro
+// Ring page — Governance & GRC (L4). The differentiator alongside Security.
+// Verified content: Biblioteca/Sovereign_AI/01_Arquitectura_Referencia_Capas.md (L4)
+// and 02_Riesgos_2026_2027_y_ForwardLook.md (regulatory risk → L4). EN-UK, sentence case.
+import LayerPage from "../components/sovereignty/LayerPage.astro";
+
+const points = [
+  {
+    title: "An AI management system, not a policy PDF",
+    body: "We stand up an ISO 42001 AI management system: an AI policy, defined roles, a risk method and a review cadence. Governance becomes something that runs continuously, not a document that ages on a shared drive.",
+  },
+  {
+    title: "A register of every AI system",
+    body: "Each model, agent and use case is recorded, classified by risk and given a named owner. When a regulator, a client or your board asks what AI you run and who is accountable, the answer already exists.",
+  },
+  {
+    title: "Risk classification, mapped to the rules",
+    body: "Your systems are classified against the EU AI Act's risk tiers and mapped to the NIST AI RMF, with a DPIA and an AI risk assessment delivered alongside the deployment — ready for the high-risk obligations landing December 2027.",
+  },
+  {
+    title: "Human oversight, by design",
+    body: "Automated decisions carry the safeguards UK law now expects under the Data (Use and Access) Act 2026: information about the logic, a route to human review and a right to contest. Oversight is wired in, not promised.",
+  },
+  {
+    title: "Evidence that travels",
+    body: "Model cards, data lineage, audit trails and immutable interaction records turn every claim into an artefact. Governance produces the proof your auditors, buyers and board can inspect.",
+  },
+  {
+    title: "Ready for the deadline, without the retrofit",
+    body: "Selling into the EU puts you in scope even from the UK. We build the governance in from the start, so EU AI Act high-risk readiness is a state you maintain — not a costly project you scramble through in 2027.",
+  },
+];
+
+const standards = [
+  "ISO 42001",
+  "ISO 27001",
+  "EU AI Act",
+  "NIST AI RMF",
+  "UK GDPR / DUAA 2026",
+  "ICO ADM guidance",
+  "Model cards",
+  "Data lineage",
+];
+
+const seoTitle = "Governance & GRC — how your sovereign AI is controlled | Fox&Stack";
+const seoDescription =
+  "The governance ring of Fox&Stack's Sovereign AI (L4): an ISO 42001 AI management system, an AI system register, risk classification, human oversight and audit-ready evidence — built in from day one, ready for the EU AI Act high-risk deadline.";
+---
+
+<LayerPage
+  eyebrow="Ring · how it is controlled"
+  layerTag="L4 · Governance & GRC"
+  title="Governance is what keeps it accountable over time."
+  lede="Sovereign architecture keeps your data in; governance is what proves the system stays controlled, owned and answerable as it lives and changes. The AI management system, the risk register, the named owners and the review cadence that turn a deployment into something a regulator will accept."
+  seoTitle={seoTitle}
+  seoDescription={seoDescription}
+  points={points}
+  standards={standards}
+>
+  <!-- Why governance is the differentiator -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Why this ring is the differentiator</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
+        The hyperscalers give you a container. We govern the behaviour.
+      </h2>
+      <div class="space-y-5 text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        <p>
+          A sovereign container — data in the UK, encrypted, on hardware you control — is
+          necessary, but it is not enough for generative AI. The model is a new kind of asset:
+          it acts, it decides, and it can be wrong in ways a database never could. Governance
+          is the layer that makes those decisions <strong>accountable</strong>.
+        </p>
+        <p>
+          This is where we and our security layer pull ahead of "sovereign" alternatives that
+          stop at residency. We do not just keep the data in; we govern the AI to ISO 42001,
+          classify its risk, name its owners and produce the evidence — so the system is not
+          only <em>private</em>, it is <em>defensible</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What the AIMS contains -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Inside the management system</p>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Four things every regulated AI deployment needs.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="font-semibold text-zinc-900 dark:text-white mb-1">An AI policy</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">What the organisation will and will not do with AI, signed off and reviewed.</div>
+        </div>
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="font-semibold text-zinc-900 dark:text-white mb-1">A system register</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">Every model and use case logged, risk-classified and owned by a named person.</div>
+        </div>
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="font-semibold text-zinc-900 dark:text-white mb-1">Impact assessments</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">DPIA and AI risk assessment delivered with the deployment, not after an incident.</div>
+        </div>
+        <div class="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div class="font-semibold text-zinc-900 dark:text-white mb-1">A review cadence</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">Scheduled reviews so the controls stay true as the model and the rules change.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The rings around it -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">The neighbouring rings</p>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Governance proves what the other layers do.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/compliance" class="group block p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Compliance</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">the certified boundary</div>
+        </a>
+        <a href="/security" class="group block p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Security & guardrails</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">the safety wall</div>
+        </a>
+        <a href="/infrastructure" class="group block p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Sovereign infrastructure</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">where it runs</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</LayerPage>

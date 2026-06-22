@@ -1,0 +1,134 @@
+---
+// File: src/pages/security.astro
+// Ring page — Security & guardrails (L3). The "ethical by design" differentiator.
+// Verified content: Biblioteca/Sovereign_AI/01_Arquitectura_Referencia_Capas.md (L3)
+// and 02_Riesgos_2026_2027_y_ForwardLook.md (prompt injection, agentic, deepfakes → L3).
+// EN-UK, sentence case.
+import LayerPage from "../components/sovereignty/LayerPage.astro";
+
+const points = [
+  {
+    title: "Prompt-injection defence",
+    body: "The number-one risk in the OWASP Top 10 for LLM applications. We filter input and output, keep a strict separation of instruction from data, and sanitise the documents and web content a retrieval system pulls in — so a hidden instruction cannot hijack the model.",
+  },
+  {
+    title: "Content safety at runtime",
+    body: "Policy enforcement on every prompt and response: what the model may answer, what it must refuse and what it must redact. Safety is applied live, on the way through, not assumed from the model's training.",
+  },
+  {
+    title: "PII masking before inference",
+    body: "Personal and sensitive data is detected and masked before it ever reaches the model, with allow and deny lists and usage limits — so the system can be useful without exposing the data it works on.",
+  },
+  {
+    title: "A second layer that audits the first",
+    body: "Our design pairs the model with an internal supervisory layer that checks its behaviour — not an external add-on. A self-acting sovereign AI without that oversight is dangerous; this is how high-impact decisions stay traceable and bounded.",
+  },
+  {
+    title: "Guardrails for agents",
+    body: "When the model stops generating text and starts acting — calling tools, querying databases, running code — the blast radius of a single injection grows. We scope permissions to least privilege, keep a human in the loop for irreversible actions, and monitor agent behaviour.",
+  },
+  {
+    title: "Aligned to ISO 42001 — ethical by design",
+    body: "The guardrails are not ad hoc. They map to ISO/IEC 42001 controls and our own safety standards, so the layer that makes the system safe is the same layer your governance can point to as evidence.",
+  },
+];
+
+const standards = [
+  "OWASP LLM Top 10",
+  "OWASP Agentic",
+  "Prompt-injection defence",
+  "Content safety",
+  "PII masking",
+  "ISO 42001 controls",
+  "Least-privilege tools",
+  "Human-in-the-loop",
+];
+
+const seoTitle = "Security & guardrails — the safety wall around the model | Fox&Stack";
+const seoDescription =
+  "The guardrails ring of Fox&Stack's Sovereign AI (L3): prompt-injection defence, content safety and PII masking at runtime, an internal audit layer and agentic guardrails — aligned to ISO 42001, ethical by design.";
+---
+
+<LayerPage
+  eyebrow="Ring · the safety wall"
+  layerTag="L3 · Security & guardrails"
+  title="Security is the safety wall around the model."
+  lede="Sovereign infrastructure keeps the model in your perimeter; guardrails control how it behaves once it is there. Input and output filtering, prompt-injection defence, PII masking and policy enforcement at runtime — the layer that makes a private model an ethical one."
+  seoTitle={seoTitle}
+  seoDescription={seoDescription}
+  points={points}
+  standards={standards}
+>
+  <!-- Why guardrails are the differentiator -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Why this ring is the differentiator</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
+        Owning the model is not the same as controlling it.
+      </h2>
+      <div class="space-y-5 text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        <p>
+          A sovereign deployment can keep every byte inside your walls and still produce harm:
+          a model coaxed by a hidden instruction, an answer that leaks personal data, an agent
+          that takes an action no one approved. Privacy is not safety. The guardrails layer is
+          what turns <strong>"the data never leaves"</strong> into
+          <strong>"and the model behaves"</strong>.
+        </p>
+        <p>
+          This is the layer most "sovereign AI" offers skip. We do not. It is where
+          <em>ethical by design</em> stops being a slogan and becomes a set of controls you can
+          point to — filtering, masking, an internal audit layer and bounded agency — each one
+          mapped to a standard your governance can cite.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risks this layer neutralises -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What this ring neutralises</p>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        The risks that live in the model's behaviour.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/risks#prompt-injection" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Prompt injection</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">OWASP LLM risk #1 — handled at the wall</div>
+        </a>
+        <a href="/risks#agentic" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Excessive agency</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">scoped tools, human in the loop</div>
+        </a>
+        <a href="/risks#deepfakes" class="group block p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Deepfakes & fraud</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">verification controls, monitoring</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The rings around it -->
+  <section class="bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">The neighbouring rings</p>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8">
+        Safety sits between the model and the rules.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/infrastructure" class="group block p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Sovereign infrastructure</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">where it runs</div>
+        </a>
+        <a href="/governance" class="group block p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Governance & GRC</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">how it is controlled</div>
+        </a>
+        <a href="/compliance" class="group block p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="font-semibold text-zinc-900 dark:text-white group-hover:text-olive-600 dark:group-hover:text-olive-400">Compliance</div>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">the certified boundary</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</LayerPage>
