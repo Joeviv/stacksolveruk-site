@@ -24,26 +24,28 @@ const trust = [
 ---
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
-  <!-- HERO: the living perimeter is the star — single centred, stacked column -->
-  <section class="hero-dark hero-full relative overflow-hidden">
-    <div class="relative w-full max-w-3xl mx-auto px-6 lg:px-8 py-14 lg:py-16 flex flex-col items-center">
-      <!-- Compact copy, centred, above the diagram -->
-      <div class="text-center max-w-2xl mx-auto">
+  <!-- HERO: the living perimeter is the star — two columns on desktop (copy left,
+       diagram right) so the whole composition fills one screen and uses the full
+       width; stacks and centres on mobile. -->
+  <section class="hero-dark hero-full relative overflow-hidden flex items-center">
+    <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-6 grid grid-cols-1 lg:grid-cols-[minmax(0,40%)_minmax(0,60%)] gap-10 lg:gap-12 items-center">
+      <!-- Copy — centred on mobile, left-aligned and vertically centred on desktop -->
+      <div class="text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
         <p class="font-mono text-xs uppercase tracking-[0.18em] text-olive-400 mb-4">
           // inside your perimeter · zero data egress
         </p>
-        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-zinc-400 leading-[1.02] mb-3">
+        <h1 class="text-6xl md:text-7xl font-bold tracking-tight text-zinc-400 leading-[1.02] mb-3">
           Sovereign AI
         </h1>
         <p class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight mb-5">
           Where your data lives, and what protects it.
         </p>
-        <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-6 max-w-xl mx-auto">
+        <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
           Sovereign AI from Fox&Stack. Your departments connect from within, your
           data never leaves, and every layer is something we build in and prove —
           from infrastructure to compliance.
         </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
           <a href="/contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-400 transition-colors">
             Book a lab demo <span aria-hidden>→</span>
           </a>
@@ -51,16 +53,15 @@ const trust = [
             Explore the practice
           </a>
         </div>
+        <p class="mt-6 text-xs text-zinc-500">
+          Tip — every box, ring and department in the diagram links to its page.
+        </p>
       </div>
 
-      <!-- The living diagram — large and centred, the star of the hero -->
-      <div class="hero-diagram w-full mt-10 rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-8">
+      <!-- The living diagram — the star, right column on desktop -->
+      <div class="hero-diagram w-full rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-7">
         <EnrichedPerimeter />
       </div>
-
-      <p class="mt-5 text-xs text-zinc-500 text-center">
-        Tip — every box, ring and department in the diagram links to its page.
-      </p>
     </div>
   </section>
 
@@ -194,4 +195,20 @@ const trust = [
   }
   .hero-diagram :global(.ep-public-title) { color: #fafafa; }
   .hero-diagram :global(.ep-lg-out) { background: var(--ss-zinc-700); }
+
+  /* Compact the diagram inside the hero so the full perimeter fits one screen.
+     Scoped to .hero-diagram only — the component keeps its roomier defaults
+     anywhere else it is used. */
+  @media (min-width: 1024px) {
+    .hero-diagram :global(.ep-depts) { margin-bottom: 8px; }
+    .hero-diagram :global(.ep-dept) { padding: 6px 10px; }
+    .hero-diagram :global(.ep-governed) { margin: 2px 0 7px; }
+    .hero-diagram :global(.ep-ring) { padding: 8px 13px 8px; }
+    .hero-diagram :global(.ep-timeline) { margin-bottom: 5px; gap: 2px; }
+    .hero-diagram :global(.ep-rhead) { padding: 2px 0 5px; }
+    .hero-diagram :global(.ep-core) { padding: 8px 13px 9px; }
+    .hero-diagram :global(.ep-core-head) { padding: 2px 0 6px; }
+    .hero-diagram :global(.ep-severed) { margin: 2px 0; }
+    .hero-diagram :global(.ep-public) { margin: 2px auto 8px; }
+  }
 </style>
