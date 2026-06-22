@@ -24,28 +24,25 @@ const trust = [
 ---
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
-  <!-- HERO: the living perimeter is the star — two columns on desktop (copy left,
-       diagram right) so the whole composition fills one screen and uses the full
-       width; stacks and centres on mobile. -->
+  <!-- HERO: ONE column. Compact copy on top, then the living perimeter diagram
+       as wide as the screen allows — it is the star. The diagram auto-scales to
+       fit the viewport height (script below) and reflows responsively on small
+       devices. -->
   <section class="hero-dark hero-full relative overflow-hidden flex items-center">
-    <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-6 grid grid-cols-1 lg:grid-cols-[minmax(0,40%)_minmax(0,60%)] gap-10 lg:gap-12 items-center">
-      <!-- Copy — centred on mobile, left-aligned and vertically centred on desktop -->
-      <div class="text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
-        <p class="font-mono text-xs uppercase tracking-[0.18em] text-olive-400 mb-4">
+    <div id="hero-inner" class="relative w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-5 flex flex-col items-center">
+      <!-- Compact copy, centred, above the diagram — kept slim so the diagram
+           (the star) gets the vertical room and stays large and legible. -->
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="font-mono text-xs uppercase tracking-[0.18em] text-olive-400 mb-3">
           // inside your perimeter · zero data egress
         </p>
-        <h1 class="text-6xl md:text-7xl font-bold tracking-tight text-zinc-400 leading-[1.02] mb-3">
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-zinc-400 leading-[1.02] mb-2">
           Sovereign AI
         </h1>
-        <p class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight mb-5">
+        <p class="text-lg md:text-xl font-semibold tracking-tight text-white leading-tight mb-5">
           Where your data lives, and what protects it.
         </p>
-        <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
-          Sovereign AI from Fox&Stack. Your departments connect from within, your
-          data never leaves, and every layer is something we build in and prove —
-          from infrastructure to compliance.
-        </p>
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+        <div class="flex flex-wrap items-center justify-center gap-3">
           <a href="/contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-400 transition-colors">
             Book a lab demo <span aria-hidden>→</span>
           </a>
@@ -53,40 +50,43 @@ const trust = [
             Explore the practice
           </a>
         </div>
-        <p class="mt-6 text-xs text-zinc-500">
-          Tip — every box, ring and department in the diagram links to its page.
-        </p>
       </div>
 
-      <!-- The living diagram — the star, right column on desktop -->
-      <div class="hero-diagram w-full rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-7">
+      <!-- The living diagram — the star, full width -->
+      <div class="hero-diagram w-full mt-4 rounded-2xl border border-white/10 bg-white/[0.02] p-3 sm:p-4 md:p-5">
         <EnrichedPerimeter />
       </div>
+
+      <p class="mt-2 text-xs text-zinc-500 text-center">
+        Tip — every box, ring and department in the diagram links to its page.
+      </p>
     </div>
   </section>
 
-  <!-- Fit-to-height: on desktop (two-column hero) the diagram is tall; scale it
-       down just enough that the FULL perimeter — including the legend — always
-       fits the viewport, whatever the screen height. Progressive enhancement:
-       if JS is off the CSS layout still works (diagram just scrolls). Uses CSS
-       `zoom` so the layout reflows and reclaims space (no transform gap). -->
+  <!-- Fit-to-height: the full-width diagram is tall; scale it down with CSS
+       `zoom` just enough that the WHOLE perimeter (incl. legend) fits the
+       viewport, whatever the screen height. Measures the non-diagram chrome
+       (copy + tip + paddings) so it works for the single-column stack.
+       Progressive enhancement: no JS ⇒ the diagram just scrolls. Skipped on
+       phones, where the page is expected to scroll. -->
   <script is:inline>
     (function () {
       function fitDiagram() {
         var card = document.querySelector('.hero-diagram');
         var ep = card && card.querySelector('.ep');
-        if (!ep) return;
+        var inner = document.getElementById('hero-inner');
+        if (!ep || !inner) return;
         ep.style.zoom = '';
-        // Only on the two-column desktop layout (lg breakpoint).
-        if (window.matchMedia('(max-width: 1023px)').matches) return;
+        // Let phones reflow + scroll naturally; only fit on tablet/desktop.
+        if (window.matchMedia('(max-width: 767px)').matches) return;
         var nav = document.querySelector('nav');
         var navH = nav ? nav.offsetHeight : 64;
-        // viewport − navbar − section vertical padding (py-6 ×2) − card padding
-        // (p-7 ×2) − a small safety margin.
-        var avail = window.innerHeight - navH - 48 - 56 - 14;
-        var natural = ep.offsetHeight;
-        if (natural > avail) {
-          ep.style.zoom = Math.max(0.62, avail / natural).toFixed(3);
+        var naturalEp = ep.offsetHeight;
+        // Everything in the hero except the diagram (copy, tip, gaps, paddings).
+        var nonDiagram = inner.offsetHeight - naturalEp;
+        var avail = window.innerHeight - navH - nonDiagram - 10;
+        if (naturalEp > avail && avail > 0) {
+          ep.style.zoom = Math.max(0.5, avail / naturalEp).toFixed(3);
         }
       }
       fitDiagram();
