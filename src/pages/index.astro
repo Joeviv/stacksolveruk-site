@@ -65,6 +65,37 @@ const trust = [
     </div>
   </section>
 
+  <!-- Fit-to-height: on desktop (two-column hero) the diagram is tall; scale it
+       down just enough that the FULL perimeter — including the legend — always
+       fits the viewport, whatever the screen height. Progressive enhancement:
+       if JS is off the CSS layout still works (diagram just scrolls). Uses CSS
+       `zoom` so the layout reflows and reclaims space (no transform gap). -->
+  <script is:inline>
+    (function () {
+      function fitDiagram() {
+        var card = document.querySelector('.hero-diagram');
+        var ep = card && card.querySelector('.ep');
+        if (!ep) return;
+        ep.style.zoom = '';
+        // Only on the two-column desktop layout (lg breakpoint).
+        if (window.matchMedia('(max-width: 1023px)').matches) return;
+        var nav = document.querySelector('nav');
+        var navH = nav ? nav.offsetHeight : 64;
+        // viewport − navbar − section vertical padding (py-6 ×2) − card padding
+        // (p-7 ×2) − a small safety margin.
+        var avail = window.innerHeight - navH - 48 - 56 - 14;
+        var natural = ep.offsetHeight;
+        if (natural > avail) {
+          ep.style.zoom = Math.max(0.62, avail / natural).toFixed(3);
+        }
+      }
+      fitDiagram();
+      window.addEventListener('resize', fitDiagram);
+      window.addEventListener('load', fitDiagram);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitDiagram);
+    })();
+  </script>
+
   <!-- Client logo marquee -->
   <ClientMarquee />
 
