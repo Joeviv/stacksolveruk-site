@@ -24,8 +24,8 @@ interface Props {
 const { label, outcome } = Astro.props as Props;
 const seoTitle = `Sovereign AI for ${label} | Fox&Stack`;
 const seoDescription = outcome
-  ? `What Ethical Sovereign AI does for ${label}: ${outcome}`
-  : `Ethical Sovereign AI for ${label} — inside your perimeter, with no data egress, governed to ISO 42001.`;
+  ? `What Sovereign AI does for ${label}: ${outcome}`
+  : `Sovereign AI for ${label} — inside your perimeter, with no data egress, governed to ISO 42001.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription} type="article">
