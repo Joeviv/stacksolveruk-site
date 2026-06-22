@@ -99,10 +99,10 @@ export const RINGS: RingDef[] = [
    ------------------------------------------------------------------------- */
 export const SECTORS: SectorDef[] = [
   {
-    id: "nhs",
-    label: "NHS & public sector",
+    id: "health-public",
+    label: "Health & public sector",
     hint: "patient & citizen data, never egressed",
-    href: "/industries/nhs",
+    href: "/industries/health-public-sector",
   },
   {
     id: "legal",
