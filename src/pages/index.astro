@@ -2,6 +2,7 @@
 // File: src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import HeroV2 from '../components/hero/HeroV2';
+import ClientMarquee from '../components/ClientMarquee.astro';
 import SovereignPerimeter from '../components/sovereignty/SovereignPerimeter.astro';
 
 const seoTitle = "Fox&Stack | Cyber Security, AI Engineering & Compliance Consultancy";
@@ -11,6 +12,9 @@ const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK,
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
   <HeroV2 client:load />
+
+  <!-- Client logo marquee -->
+  <ClientMarquee />
 
   <!-- Ethical Sovereign AI banner -->
   <section class="bg-olive-50 dark:bg-olive-500/[0.04] border-y border-olive-200/60 dark:border-olive-500/20">
