@@ -46,8 +46,8 @@ export const siteSEO = {
 			"PRA SS1/21",
 			"Local AI Stack",
 			"On-Premise AI UK",
-			"AWS Bedrock Private",
-			"Azure OpenAI Dedicated",
+			"Sovereign Private Cloud UK",
+			"UK EU Sovereign AI Hosting",
 			"Boutique Cyber Consultancy UK",
 			"British Cyber Security Boutique",
 			"Mid-Market AI Consultancy"

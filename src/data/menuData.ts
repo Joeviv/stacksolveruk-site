@@ -165,9 +165,9 @@ export const SERVICES_MENU: Section[] = [
       {
         id: 'sovereign-rag',
         title: 'Sovereign RAG',
-        shortDescription: 'Retrieval-augmented generation across your documents, fully on-premise or in your private cloud.',
+        shortDescription: 'Retrieval-augmented generation across your documents, fully on-premise or in a sovereign private cloud you control.',
         fullDescription: COMING_SOON_DESC,
-        techBadge: 'AWS Bedrock · Azure OpenAI · Ollama · vLLM',
+        techBadge: 'Ollama · vLLM · open-weight · UK/EU private cloud',
         implementationPlan: placeholderImpl,
         features: [
           { title: 'Zero data egress', description: 'Models running entirely inside your perimeter. Your data never leaves your infrastructure.' },
@@ -606,15 +606,15 @@ export const SERVICES_MENU: Section[] = [
         image: placeholderImage,
       },
       {
-        id: 'private-cloud-bedrock',
-        title: 'Private Cloud — Bedrock / Azure',
-        shortDescription: 'AWS Bedrock private endpoints, Azure OpenAI dedicated, GCP Vertex AI private.',
+        id: 'sovereign-private-cloud',
+        title: 'Sovereign Private Cloud',
+        shortDescription: 'A dedicated private cloud in a UK or EU region you control — sovereign by architecture, with no US-hyperscaler dependency.',
         fullDescription: COMING_SOON_DESC,
-        techBadge: 'AWS Bedrock · Azure OpenAI · GCP Vertex',
+        techBadge: 'UK/EU region · dedicated tenancy · open-weight',
         implementationPlan: placeholderImpl,
         features: [
-          { title: 'No on-prem requirement', description: 'Sovereignty in your cloud account, not your data centre.' },
-          { title: 'Multi-cloud agnostic', description: 'We are not tied to any single hyperscaler.' }
+          { title: 'No on-premise requirement', description: 'Sovereignty in a private cloud account you control — a UK or EU region, governed by UK/EU law.' },
+          { title: 'Provider-independent', description: 'Open weights mean you can move between sovereign providers — no lock-in, no single hyperscaler.' }
         ],
         image: placeholderImage,
       }
