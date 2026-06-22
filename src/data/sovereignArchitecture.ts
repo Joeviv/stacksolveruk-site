@@ -29,6 +29,13 @@ export interface DepartmentDef {
   href: string;
 }
 
+export interface SectorDef {
+  id: string;        // stable key
+  label: string;     // display name (EN-UK, sentence case)
+  hint: string;      // one-line "why this sector cares"
+  href: string;      // its own vertical page under /industries/
+}
+
 export interface RiskDef {
   key: string;
   title: string;
@@ -81,6 +88,33 @@ export const RINGS: RingDef[] = [
     colour: "#6d8530", // olive-600
     now: ["UK residency", "no egress", "encryption"],
     next: "post-quantum crypto (quantum-ready)",
+  },
+];
+
+/* -------------------------------------------------------------------------
+   Verticals — the sectors a visitor self-identifies with. Shown as the "By
+   sector" strip at the top of the perimeter diagram; each links to its own
+   page under /industries/. Lead three, per GTM (NHS/public, legal, finance).
+   Keep claims defensible — EN-UK, no overclaim.
+   ------------------------------------------------------------------------- */
+export const SECTORS: SectorDef[] = [
+  {
+    id: "nhs",
+    label: "NHS & public sector",
+    hint: "patient & citizen data, never egressed",
+    href: "/industries/nhs",
+  },
+  {
+    id: "legal",
+    label: "Legal",
+    hint: "privilege & confidentiality, absolute",
+    href: "/industries/legal",
+  },
+  {
+    id: "financial-services",
+    label: "Financial services",
+    hint: "FCA, lineage & operational resilience",
+    href: "/industries/financial-services",
   },
 ];
 

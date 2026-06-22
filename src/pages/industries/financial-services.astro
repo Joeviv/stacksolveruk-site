@@ -1,0 +1,46 @@
+---
+// File: src/pages/industries/financial-services.astro
+// Vertical page reached from the home perimeter diagram's "By sector" strip.
+// Sovereign AI framed for financial services. EN-UK, sentence case. Claims are
+// about our architecture/approach — "aligned"/"mapped"/"ready", not unproven
+// certifications.
+import LayerPage from "../../components/sovereignty/LayerPage.astro";
+
+const points = [
+  {
+    title: "Lineage and provenance",
+    body: "Every answer traces back to the data and the model that produced it — the explainability you need for credit, KYC and customer-facing decisions.",
+  },
+  {
+    title: "Operational resilience",
+    body: "Running AI in your own perimeter removes the single-vendor dependency on a foreign API — directly relevant to DORA third-party risk and FCA/PRA operational resilience.",
+  },
+  {
+    title: "Governed and auditable",
+    body: "Human oversight, access control and an audit layer, with an AI risk register mapped to ISO 42001 — governance you can put in front of a regulator.",
+  },
+  {
+    title: "Ready for what is next",
+    body: "Continuous model assurance and quantum-ready encryption, so the deployment holds up as obligations tighten through 2027 and beyond.",
+  },
+];
+
+const standards = [
+  "ISO 27001",
+  "ISO 42001",
+  "DORA (aligned)",
+  "FCA / PRA op-resilience",
+  "Cyber Essentials",
+];
+---
+
+<LayerPage
+  eyebrow="For your sector · Financial services"
+  layerTag="FCA · lineage · resilience"
+  title="Sovereign AI for financial services"
+  lede="The regulatory bar is high and rising — FCA, PRA and DORA. We run AI inside your perimeter with the data lineage, provenance and operational resilience your regulators and your board expect."
+  seoTitle="Sovereign AI for financial services — Fox&Stack"
+  seoDescription="On-premise AI for financial services: data lineage and provenance, operational resilience aligned to DORA and FCA/PRA, and ISO 42001 governance — no dependency on a foreign AI API."
+  points={points}
+  standards={standards}
+/>

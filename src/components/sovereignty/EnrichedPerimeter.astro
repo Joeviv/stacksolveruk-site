@@ -4,13 +4,17 @@
 // Departments connect through governed access into nested rings of protection
 // (Compliance → Governance → Security → Infrastructure) wrapping a living core
 // where data flows 01 → 02 → 03 → 04; a severed red path shows "no data egress"
-// to a public AI service.
+// to a public AI service. A "By sector" strip lets a visitor enter by vertical.
 //
-// Every box / ring / department / step is a real link to its own page.
+// LANDSCAPE layout: each ring's header and its now·2026/+2027 timeline sit on a
+// single row (timeline flows to the right), so the diagram is wide and dense
+// rather than tall — it fills the full-width hero.
+//
+// Every box / ring / department / sector / step is a real link to its own page.
 // Content/links live in src/data/sovereignArchitecture.ts (edit text there).
 // Animation is CSS-only and disabled under prefers-reduced-motion.
 // Concept is our own; not derived word-for-word from any third-party material.
-import { RINGS, FLOW, DEPARTMENTS } from "../../data/sovereignArchitecture";
+import { RINGS, FLOW, DEPARTMENTS, SECTORS } from "../../data/sovereignArchitecture";
 
 // Inline SVG icons (self-hosted, no remote dependency) keyed per ring/core.
 const ICONS: Record<string, string> = {
@@ -26,7 +30,6 @@ const ICONS: Record<string, string> = {
     '<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
 };
 
-// Build the nested rings recursively, innermost = the living core.
 function flowArrow(): string {
   return `<svg class="ep-arrow" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><line x1="1" y1="7" x2="15" y2="7"/><path d="M15 4l5 3-5 3z"/></svg>`;
 }
@@ -35,14 +38,12 @@ function ringIcon(key: string): string {
     key === "core" ? "var(--ep-core)" : "currentColor"
   }" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[key]}</svg>`;
 }
-// Renders the small "NOW · 2026" + "+2027" roadmap lines shown under a ring or
-// the core header. Kept compact (mono chips) so the nested diagram never looks
-// recargado. now: live items (olive); next: forward item (tenue accent).
+// The "now · 2026" live items + "+2027" forward item, on ONE inline row so it
+// flows to the right of the ring header (landscape, fills width). Compact mono
+// chips so the nested diagram never looks recargado.
 function timelineHtml(now: string[], next: string): string {
-  const nowItems = now
-    .map((n) => `<span class="ep-tl-chip">${n}</span>`)
-    .join("");
-  return `<div class="ep-timeline"><div class="ep-tl-row ep-tl-now"><span class="ep-tl-tag">now · 2026</span>${nowItems}</div><div class="ep-tl-row ep-tl-next"><span class="ep-tl-tag">+2027</span><span class="ep-tl-chip ep-tl-chip-next">${next}</span></div></div>`;
+  const nowItems = now.map((n) => `<span class="ep-tl-chip">${n}</span>`).join("");
+  return `<div class="ep-timeline"><span class="ep-tl-tag ep-tl-tag-now">now · 2026</span>${nowItems}<span class="ep-tl-tag ep-tl-tag-next">+2027</span><span class="ep-tl-chip ep-tl-chip-next">${next}</span></div>`;
 }
 function coreHtml(): string {
   const steps = FLOW.map((s, i) => {
@@ -53,14 +54,14 @@ function coreHtml(): string {
     ["data lineage", "open-weight", "provenance"],
     "continuous model assurance"
   );
-  return `<div class="ep-core"><a class="ep-core-head" href="/data"><span style="color:var(--ep-core);display:inline-flex">${ringIcon(
+  return `<div class="ep-core"><div class="ep-rrow"><a class="ep-core-head" href="/data"><span style="color:var(--ep-core);display:inline-flex">${ringIcon(
     "core"
-  )}</span><span class="ep-core-name">Data & models</span><span class="ep-core-tag">· the core</span></a>${timeline}<div class="ep-flow">${steps}</div></div>`;
+  )}</span><span class="ep-core-name">Data & models</span><span class="ep-core-tag">· the core</span></a>${timeline}</div><div class="ep-flow">${steps}</div></div>`;
 }
 function ringHtml(i: number): string {
   if (i >= RINGS.length) return coreHtml();
   const r = RINGS[i];
-  return `<div class="ep-ring" style="border:1.5px solid ${r.colour}"><a class="ep-rhead" href="${
+  return `<div class="ep-ring" style="border:1.5px solid ${r.colour}"><div class="ep-rrow"><a class="ep-rhead" href="${
     r.href
   }"><span style="color:${r.colour};display:inline-flex">${ringIcon(
     r.id
@@ -69,7 +70,7 @@ function ringHtml(i: number): string {
   }</span><span class="ep-open">open →</span></a>${timelineHtml(
     r.now,
     r.next
-  )}<div style="margin-top:4px">${ringHtml(i + 1)}</div></div>`;
+  )}</div><div class="ep-nest">${ringHtml(i + 1)}</div></div>`;
 }
 const ringsMarkup = ringHtml(0);
 ---
@@ -80,8 +81,21 @@ const ringsMarkup = ringHtml(0);
     protection — compliance, governance, security and sovereign infrastructure —
     that wrap a living core where your data flows from data to model to private
     inference to delivery. A severed path shows that no data ever leaves to a
-    public AI service. Each element links to its own page.
+    public AI service. Each element, including the sector entries, links to its
+    own page.
   </figcaption>
+
+  <!-- By sector — the vertical entry: a visitor self-identifies and clicks through -->
+  <div class="ep-sectorlabel">Built for your sector</div>
+  <nav class="ep-sectors" aria-label="Industries served">
+    {SECTORS.map((s) => (
+      <a class="ep-sector" href={s.href}>
+        <span class="ep-sector-name">{s.label}</span>
+        <span class="ep-sector-hint">{s.hint}</span>
+        <span class="ep-sector-go" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </nav>
 
   <!-- Departments -->
   <div class="ep-deptlabel">Your departments</div>
@@ -151,6 +165,46 @@ const ringsMarkup = ringHtml(0);
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
   }
 
+  /* ----- By sector strip (the vertical entry, deliberately prominent) ----- */
+  .ep-sectorlabel {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ep-txt3); margin-bottom: 8px;
+  }
+  .ep-sectors {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+  }
+  .ep-sector {
+    flex: 1 1 200px; position: relative;
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 10px 14px; border-radius: var(--radius-md);
+    border: 1px solid var(--ss-olive); background: var(--ss-olive-soft);
+    text-decoration: none; color: var(--fg-1);
+    transition: border-color var(--dur-base) var(--ease-standard),
+                background-color var(--dur-base) var(--ease-standard),
+                transform var(--dur-base) var(--ease-standard);
+  }
+  .ep-sector:hover, .ep-sector:focus-visible {
+    border-color: var(--ss-olive); background: var(--ss-olive);
+    transform: translateY(-1px);
+  }
+  .ep-sector:hover .ep-sector-name, .ep-sector:focus-visible .ep-sector-name,
+  .ep-sector:hover .ep-sector-hint, .ep-sector:focus-visible .ep-sector-hint {
+    color: var(--ss-zinc-900);
+  }
+  .ep-sector-name { font-size: 14px; font-weight: 600; }
+  .ep-sector-hint { font-size: 11.5px; color: var(--ep-txt3); }
+  .ep-sector-go {
+    position: absolute; top: 10px; right: 12px;
+    font-size: 13px; color: var(--ep-txt3);
+    opacity: 0; transform: translateX(-3px);
+    transition: opacity var(--dur-base) var(--ease-standard),
+                transform var(--dur-base) var(--ease-standard);
+  }
+  .ep-sector:hover .ep-sector-go, .ep-sector:focus-visible .ep-sector-go {
+    opacity: 1; transform: translateX(0); color: var(--ss-zinc-900);
+  }
+
   .ep-deptlabel {
     font-family: var(--font-mono);
     font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
@@ -185,21 +239,27 @@ const ringsMarkup = ringHtml(0);
   .ep-line-gov { stroke: var(--ss-olive); stroke-width: 1.4; }
   .ep-fill-gov { fill: var(--ss-olive); }
 
-  /* ----- nested rings ----- */
+  /* ----- nested rings (landscape: header + timeline on one row) ----- */
   .ep-ring {
     border-radius: var(--radius-lg);
-    padding: 12px 14px 14px;
+    padding: 10px 14px 12px;
     transition: box-shadow var(--dur-base) var(--ease-standard);
+  }
+  .ep-nest { margin-top: 8px; }
+  /* The row that holds the ring header and its inline timeline. */
+  .ep-rrow {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 10px 20px; flex-wrap: wrap;
   }
   .ep-rhead {
     display: flex; align-items: center; gap: 8px;
-    padding: 2px 0 8px; text-decoration: none; color: var(--fg-1);
+    text-decoration: none; color: var(--fg-1); flex: none;
   }
-  .ep-rhead .ep-icon { flex: none; }
+  .ep-rhead .ep-icon { flex: none; align-self: center; }
   .ep-rname { font-size: 14px; font-weight: 600; }
   .ep-rhint { font-size: 12px; color: var(--ep-txt3); }
   .ep-open {
-    margin-left: auto; font-size: 11px; color: var(--ep-txt3);
+    font-size: 11px; color: var(--ep-txt3);
     opacity: 0; transform: translateX(-3px);
     transition: opacity var(--dur-base) var(--ease-standard),
                 transform var(--dur-base) var(--ease-standard);
@@ -211,22 +271,18 @@ const ringsMarkup = ringHtml(0);
     color: var(--ss-olive);
   }
 
-  /* ----- NOW · 2026 / +2027 roadmap lines (per ring + core) ----- */
+  /* ----- NOW · 2026 / +2027 roadmap (inline, flows right) ----- */
   .ep-timeline {
-    display: flex; flex-direction: column; gap: 3px;
-    margin: 0 0 8px; padding-left: 25px; /* align under header text, past icon */
-  }
-  .ep-tl-row {
     display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
-    line-height: 1.3;
+    justify-content: flex-end; flex: 1 1 auto;
   }
   .ep-tl-tag {
     font-family: var(--font-mono);
     font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase;
     font-weight: 600; flex: none;
   }
-  .ep-tl-now .ep-tl-tag { color: var(--ep-flow); }
-  .ep-tl-next .ep-tl-tag { color: var(--ep-txt3); opacity: 0.85; }
+  .ep-tl-tag-now { color: var(--ep-flow); }
+  .ep-tl-tag-next { color: var(--ep-txt3); opacity: 0.85; margin-left: 4px; }
   .ep-tl-chip {
     font-family: var(--font-mono); font-size: 10px; line-height: 1;
     padding: 2.5px 6px; border-radius: var(--radius-sm);
@@ -242,11 +298,11 @@ const ringsMarkup = ringHtml(0);
     border: 2px solid var(--ep-core);
     background: var(--ss-olive-soft);
     border-radius: var(--radius-lg);
-    padding: 12px 14px 14px;
+    padding: 10px 14px 12px;
   }
   .ep-core-head {
     display: flex; align-items: center; gap: 8px;
-    padding: 2px 0 8px; text-decoration: none; color: var(--fg-1);
+    text-decoration: none; color: var(--fg-1); flex: none;
   }
   .ep-core-name { font-size: 14px; font-weight: 600; }
   .ep-core-tag { font-size: 12px; color: var(--ep-core); }
@@ -256,7 +312,7 @@ const ringsMarkup = ringHtml(0);
 
   .ep-flow {
     display: flex; align-items: center; justify-content: center;
-    flex-wrap: wrap; gap: 2px; padding: 4px 0 2px;
+    flex-wrap: wrap; gap: 2px; padding: 8px 0 2px;
   }
   .ep-step {
     text-decoration: none; padding: 4px 6px; border-radius: var(--radius-sm);
@@ -321,6 +377,6 @@ const ringsMarkup = ringHtml(0);
 
   @media (prefers-reduced-motion: reduce) {
     .ep-arrow line, .ep-sev { animation: none; }
-    .ep-dept, .ep-rhead, .ep-step, .ep-public { transition: none; }
+    .ep-dept, .ep-sector, .ep-rhead, .ep-step, .ep-public { transition: none; }
   }
 </style>

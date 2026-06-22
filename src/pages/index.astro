@@ -58,7 +58,7 @@ const trust = [
       </div>
 
       <p class="mt-2 text-xs text-zinc-500 text-center">
-        Tip — every box, ring and department in the diagram links to its page.
+        Tip — every sector, ring, box and department in the diagram links to its page.
       </p>
     </div>
   </section>
@@ -227,18 +227,17 @@ const trust = [
   .hero-diagram :global(.ep-public-title) { color: #fafafa; }
   .hero-diagram :global(.ep-lg-out) { background: var(--ss-zinc-700); }
 
-  /* Compact the diagram inside the hero so the full perimeter fits one screen.
+  /* Tighten the diagram inside the hero so the full perimeter stays compact.
      Scoped to .hero-diagram only — the component keeps its roomier defaults
-     anywhere else it is used. */
+     anywhere else it is used. The fit-to-height script handles the rest. */
   @media (min-width: 1024px) {
+    .hero-diagram :global(.ep-sectors) { margin-bottom: 12px; }
     .hero-diagram :global(.ep-depts) { margin-bottom: 8px; }
     .hero-diagram :global(.ep-dept) { padding: 6px 10px; }
     .hero-diagram :global(.ep-governed) { margin: 2px 0 7px; }
-    .hero-diagram :global(.ep-ring) { padding: 8px 13px 8px; }
-    .hero-diagram :global(.ep-timeline) { margin-bottom: 5px; gap: 2px; }
-    .hero-diagram :global(.ep-rhead) { padding: 2px 0 5px; }
+    .hero-diagram :global(.ep-ring) { padding: 8px 13px 9px; }
+    .hero-diagram :global(.ep-nest) { margin-top: 7px; }
     .hero-diagram :global(.ep-core) { padding: 8px 13px 9px; }
-    .hero-diagram :global(.ep-core-head) { padding: 2px 0 6px; }
     .hero-diagram :global(.ep-severed) { margin: 2px 0; }
     .hero-diagram :global(.ep-public) { margin: 2px auto 8px; }
   }
