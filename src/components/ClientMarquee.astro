@@ -15,11 +15,11 @@ interface Logo {
 
 const logos: Logo[] = [
   { name: 'AQM (SGS)', src: '/clients/aqm-sgs.png' },
-  { name: 'Cromanal (SGS)', src: '/clients/cromanal-sgs.png' },
   { name: 'Eraneos', src: '/clients/eraneos.svg', scale: 0.6 },
   { name: 'Florida Health Institute', src: '/clients/fhi.png' },
-  { name: 'Sandy Port Management', src: '/clients/sandyport.webp' },
+  { name: 'Cromanal (SGS)', src: '/clients/cromanal-sgs.png' },
   { name: 'Wasvelt', src: '/clients/wasvelt.svg' },
+  { name: 'Sandy Port Management', src: '/clients/sandyport.webp' },
   { name: 'Hispanos Sin Fronteras', src: '/clients/hispanos.png' },
 ];
 
@@ -66,7 +66,7 @@ const track = hasLogos ? [...logos, ...logos] : [];
     align-items: center;
     gap: 4.5rem;
     width: max-content;
-    animation: marquee-scroll 65s linear infinite;
+    animation: marquee-scroll 95s linear infinite;
   }
   .marquee:hover .marquee__track {
     animation-play-state: paused;
