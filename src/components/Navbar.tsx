@@ -56,7 +56,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center group" aria-label="Stacksolver UK home">
               <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                Stacksolver<span className="text-olive-500"> UK</span>
+                Stack<span className="text-olive-500">S</span>olver<span className="text-olive-500"> UK</span>
               </span>
             </a>
           </div>
