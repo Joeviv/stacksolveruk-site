@@ -17,7 +17,6 @@ export const siteSEO = {
 			"Incident Response UK",
 			"Security Architecture UK",
 			"AI Engineering UK",
-			"Ethical Sovereign AI",
 			"Sovereign AI",
 			"Ethical AI",
 			"AI Governance",
@@ -46,8 +45,8 @@ export const siteSEO = {
 			"PRA SS1/21",
 			"Local AI Stack",
 			"On-Premise AI UK",
-			"Sovereign Private Cloud UK",
-			"UK EU Sovereign AI Hosting",
+			"AWS Bedrock Private",
+			"Azure OpenAI Dedicated",
 			"Boutique Cyber Consultancy UK",
 			"British Cyber Security Boutique",
 			"Mid-Market AI Consultancy"

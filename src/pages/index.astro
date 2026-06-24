@@ -1,244 +1,170 @@
 ---
 // File: src/pages/index.astro
-// Fox&Stack home — Sovereign AI living-perimeter revamp.
-// 1) Hero: the enriched perimeter (animated, interactive, dark, full-bleed).
-// 2) Built for 2026, ready for 2027 — risk → layer overlay.
-// 3) By department — outcomes.
-// 4) Trust + CTA.
 import Layout from '../layouts/Layout.astro';
+import HeroV2 from '../components/hero/HeroV2';
 import ClientMarquee from '../components/ClientMarquee.astro';
-import EnrichedPerimeter from '../components/sovereignty/EnrichedPerimeter.astro';
-import RiskOverlay from '../components/sovereignty/RiskOverlay.astro';
-import { DEPARTMENT_OUTCOMES } from '../data/sovereignArchitecture';
 
-const seoTitle = "Sovereign AI for regulated business — Fox&Stack";
-const seoDescription = "Sovereign AI from Fox&Stack: your data stays on-premise in the UK, with built-in guardrails and compliance (ISO 27001, ISO 42001, Cyber Essentials), quantum-ready.";
-const seoKeywords = "Sovereign AI, Sovereign AI UK, Ethical Sovereign AI, on-premise AI, no data egress, AI guardrails, ISO 42001, ISO 27001 UK, Cyber Essentials Plus, AI governance, private AI, EU AI Act, NIS2 readiness, quantum-ready, post-quantum cryptography";
-
-const trust = [
-  { label: "ISO 27001", sub: "information security" },
-  { label: "ISO 42001", sub: "AI management" },
-  { label: "Cyber Essentials Plus", sub: "UK baseline" },
-  { label: "EU AI Act aligned", sub: "audit-ready" },
-];
+const seoTitle = "Fox&Stack | Cyber Security, AI Engineering & Compliance Consultancy";
+const seoDescription = "Independent Cyber Security, AI Engineering and Compliance consultancy based in Brighton. Serving the United Kingdom, Europe and the United States. Senior expertise. Lean delivery. Auditable by design.";
+const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK, Sovereign AI, ISO 42001, ISO 27001 UK, NIS2 readiness, DORA compliance, Procurement AI, HR AI, AI Red Teaming, Local AI Stack, Brighton consultancy";
 ---
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
-  <!-- HERO: ONE column. Compact copy on top, then the living perimeter diagram
-       as wide as the screen allows — it is the star. The diagram auto-scales to
-       fit the viewport height (script below) and reflows responsively on small
-       devices. -->
-  <section class="hero-dark hero-full relative overflow-hidden flex items-center">
-    <div id="hero-inner" class="relative w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-5 flex flex-col items-center">
-      <!-- Compact copy, centred, above the diagram — kept slim so the diagram
-           (the star) gets the vertical room and stays large and legible. -->
-      <div class="text-center max-w-2xl mx-auto">
-        <p class="font-mono text-xs uppercase tracking-[0.18em] text-olive-400 mb-3">
-          // inside your perimeter · zero data egress
-        </p>
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-zinc-400 leading-[1.02] mb-2">
-          Sovereign AI
-        </h1>
-        <p class="text-lg md:text-xl font-semibold tracking-tight text-white leading-tight mb-5">
-          Where your data lives, and what protects it.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href="/contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-400 transition-colors">
-            Book a lab demo <span aria-hidden>→</span>
-          </a>
-          <a href="/ethical-sovereign-ai" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-transparent text-white font-medium border border-white/25 hover:border-olive-400 hover:text-olive-300 transition-colors">
-            Explore the practice
-          </a>
-        </div>
-      </div>
-
-      <!-- The living diagram — the star, full width -->
-      <div class="hero-diagram w-full mt-4 rounded-2xl border border-white/10 bg-white/[0.02] p-3 sm:p-4 md:p-5">
-        <EnrichedPerimeter />
-      </div>
-
-      <p class="mt-2 text-xs text-zinc-500 text-center">
-        Tip — every sector, ring, box and department in the diagram links to its page.
-      </p>
-    </div>
-  </section>
-
-  <!-- Fit-to-height: the full-width diagram is tall; scale it down with CSS
-       `zoom` just enough that the WHOLE perimeter (incl. legend) fits the
-       viewport, whatever the screen height. Measures the non-diagram chrome
-       (copy + tip + paddings) so it works for the single-column stack.
-       Progressive enhancement: no JS ⇒ the diagram just scrolls. Skipped on
-       phones, where the page is expected to scroll. -->
-  <script is:inline>
-    (function () {
-      function fitDiagram() {
-        var card = document.querySelector('.hero-diagram');
-        var ep = card && card.querySelector('.ep');
-        var inner = document.getElementById('hero-inner');
-        if (!ep || !inner) return;
-        ep.style.zoom = '';
-        // Let phones reflow + scroll naturally; only fit on tablet/desktop.
-        if (window.matchMedia('(max-width: 767px)').matches) return;
-        var nav = document.querySelector('nav');
-        var navH = nav ? nav.offsetHeight : 64;
-        var naturalEp = ep.offsetHeight;
-        // Everything in the hero except the diagram (copy, tip, gaps, paddings).
-        var nonDiagram = inner.offsetHeight - naturalEp;
-        var avail = window.innerHeight - navH - nonDiagram - 10;
-        if (naturalEp > avail && avail > 0) {
-          ep.style.zoom = Math.max(0.5, avail / naturalEp).toFixed(3);
-        }
-      }
-      fitDiagram();
-      window.addEventListener('resize', fitDiagram);
-      window.addEventListener('load', fitDiagram);
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitDiagram);
-    })();
-  </script>
+  <HeroV2 client:load />
 
   <!-- Client logo marquee -->
   <ClientMarquee />
 
-  <!-- Built for 2026, ready for 2027 -->
+  <!-- Intro section -->
   <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-      <div class="max-w-2xl mb-12">
-        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Credibility · quantum-ready</p>
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-1">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Who we are</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Built for 2026, ready for 2027.
+          A British consultancy with a clear specialty.
         </h2>
-        <p class="mt-4 text-zinc-600 dark:text-zinc-400 text-lg">
-          The threats facing sovereign AI — and the layer of ours that handles each.
-          Tagged for what matters now and what is coming next.
+      </div>
+      <div class="lg:col-span-2 space-y-5 text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed">
+        <p>
+          Fox&Stack is a Brighton-based consultancy serving organisations across the
+          <strong>United Kingdom, Europe and the United States</strong>.
+          <strong>Cyber security is our specialty</strong> — and the rest of what we do, from
+          AI engineering to governance and compliance, is built around it.
+        </p>
+        <p>
+          Our work spans <strong>Cyber Essentials Plus and penetration testing</strong>,
+          <strong>AI engineering with a strong focus on Procurement + AI and HR + AI</strong>,
+          <strong>ISO 27001 and ISO 42001</strong> implementation, and
+          <strong>NIS2, DORA and supply chain risk</strong> programmes for firms with European exposure.
+        </p>
+        <p>
+          We work primarily with <strong>regulated industries</strong>: financial services, healthcare,
+          professional services, technology and corporate services, where audit trails and
+          data sovereignty are not optional.
         </p>
       </div>
-      <RiskOverlay />
     </div>
   </section>
 
-  <!-- By department -->
+  <!-- Pillars section -->
   <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-      <div class="max-w-2xl mb-12">
-        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What it means for you</p>
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What we do</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          The same perimeter, an outcome for every team.
+          Cyber as our core, with four practices around it.
         </h2>
-        <p class="mt-4 text-zinc-600 dark:text-zinc-400 text-lg">
-          AI embedded in the function, not floating above it. Here is what sovereign AI
-          does for each department — without a single document leaving your control.
-        </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {DEPARTMENT_OUTCOMES.map((d) => (
-          <a href={d.href} class="group flex flex-col p-7 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-3 group-hover:text-olive-600 dark:group-hover:text-olive-400 transition-colors">{d.label}</h3>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-grow">{d.outcome}</p>
-            <span class="mt-5 text-sm font-medium text-olive-600 dark:text-olive-400 inline-flex items-center gap-1">
-              See the outcome <span aria-hidden class="transition-transform group-hover:translate-x-1">→</span>
-            </span>
-          </a>
-        ))}
+
+      <!-- Featured: Cyber -->
+      <a href="/services/cyber" class="group block mb-6 p-8 bg-white dark:bg-zinc-900 border-2 border-olive-500 rounded-xl hover:bg-olive-50 dark:hover:bg-olive-500/5 transition-colors">
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-olive-500 flex items-center justify-center text-white font-bold text-lg">
+            01
+          </div>
+          <div class="flex-1">
+            <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">Our specialty</div>
+            <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Cyber Security</h3>
+            <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              Cyber Essentials Plus, penetration testing, vCISO, security architecture and incident response —
+              for UK businesses entering corporate procurement and for firms preparing for the next regulator.
+            </p>
+          </div>
+          <div class="flex-shrink-0 text-olive-500 self-center text-xl" aria-hidden>→</div>
+        </div>
+      </a>
+
+      <!-- Other 4 practices -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <a href="/services/ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">02 · AI Engineering</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">AI &amp; All Its Flavours</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Sovereign AI inside your perimeter. Ethical by default. ISO 42001 ready.
+          </p>
+        </a>
+
+        <a href="/services/areas-ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">03 · Areas + AI</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Procurement + AI · HR + AI</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            AI embedded in the function, not floating above it. Outcomes by department.
+          </p>
+        </a>
+
+        <a href="/services/grc" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">04 · GRC</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Governance &amp; Compliance</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Risk register, vCISO retainer, DPO-as-a-Service, internal audit. Designed in, not bolted on.
+          </p>
+        </a>
+
+        <a href="/services/risk-resilience" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
+          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">05 · Resilience</div>
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">NIS2 · DORA · TPRM</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Regulatory tailwind 2026–2027. Ready your operations for European supervision.
+          </p>
+        </a>
       </div>
-      <p class="mt-8 text-sm text-zinc-500 dark:text-zinc-500">
-        Procurement · Finance · HR · Operations · Legal · Sales · Marketing · IT · Security ·
-        Customer service · R&D / Product · Data &amp; analytics · Supply chain · Executive / Board —
-        the perimeter accommodates them all.
-      </p>
+
+      <!-- Secondary services row -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/services/iso-compliance" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="text-sm font-semibold text-zinc-900 dark:text-white">ISO Frameworks</div>
+          <div class="text-xs text-zinc-500 dark:text-zinc-500">27001 · 42001 · 27701 · 22301 · SOC 2</div>
+        </a>
+        <a href="/services/ai-security" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="text-sm font-semibold text-zinc-900 dark:text-white">AI Security &amp; Red Teaming</div>
+          <div class="text-xs text-zinc-500 dark:text-zinc-500">OWASP Top 10 LLM · MITRE ATLAS</div>
+        </a>
+        <a href="/services/local-ai" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
+          <div class="text-sm font-semibold text-zinc-900 dark:text-white">Local AI Stack</div>
+          <div class="text-xs text-zinc-500 dark:text-zinc-500">Apple Silicon · NVIDIA · Bedrock private</div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Trust + CTA -->
+  <!-- Industries strip -->
   <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Auditable by design</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Certified, governed, and provable to your board.
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+      <div class="text-center mb-10">
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Who we work with</p>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Built for regulated industries.
         </h2>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
-        {trust.map((t) => (
-          <div class="p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-center">
-            <div class="font-semibold text-zinc-900 dark:text-white">{t.label}</div>
-            <div class="text-xs text-zinc-500 dark:text-zinc-500 mt-1">{t.sub}</div>
-          </div>
-        ))}
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
+        <a href="/industries#tech" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Technology</a>
+        <a href="/industries#professional-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Professional Services</a>
+        <a href="/industries#financial-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Financial Services</a>
+        <a href="/industries#healthcare" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Healthcare</a>
+        <a href="/industries#corporate-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Corporate Services</a>
       </div>
-      <div class="text-center">
-        <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
-          Book a lab demo.
-        </h3>
-        <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-          See sovereign AI running in our lab — inside a perimeter, with no data egress —
-          and tell us about your data, your regulators and your timeline.
-          We will reply within two working days.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
-            Book a lab demo <span aria-hidden>→</span>
-          </a>
-          <a href="/trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
-            Trust Centre
-          </a>
-        </div>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
+        Ready to talk?
+      </h2>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
+        Tell us about your project, your constraints and your timeline.
+        We will reply within two working days.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
+          Contact us <span aria-hidden>→</span>
+        </a>
+        <a href="/trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+          Trust Center
+        </a>
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  /* The hero aims to fill the viewport on entry (navbar is sticky, 4rem/h-16
-     tall) but the diagram is the priority: min-height (never a fixed height)
-     lets the section grow with natural scroll when the stacked copy + diagram
-     are taller than the viewport, so the full perimeter — departments, rings,
-     core, severed path and legend — is always shown and never clipped. dvh
-     tracks mobile browser chrome. */
-  .hero-full {
-    min-height: 100vh;            /* fallback for browsers without dvh */
-    min-height: calc(100dvh - 4rem);
-  }
-  /* When motion is reduced the layout is unchanged; the diagram's own
-     animations already honour prefers-reduced-motion in the component. Nothing
-     here scrolls or moves, so no further opt-out is required. */
-
-  /* The hero is always dark, regardless of the site theme, to match the
-     approved reference aesthetic. */
-  .hero-dark {
-    background:
-      radial-gradient(120% 90% at 80% -10%, rgba(133, 160, 58, 0.14), transparent 60%),
-      radial-gradient(90% 70% at 0% 110%, rgba(75, 83, 32, 0.18), transparent 55%),
-      #0a0a0a;
-    color: #fafafa;
-  }
-  /* Force the diagram's dark-mode tokens inside the always-dark hero, even when
-     the rest of the site is in light mode. */
-  .hero-diagram :global(.ep) {
-    --ep-bd: rgba(255, 255, 255, 0.12);
-    --ep-bd2: rgba(255, 255, 255, 0.22);
-    --ep-txt2: #9a9b92;
-    --ep-txt3: #6c6d64;
-    --ep-surface: rgba(255, 255, 255, 0.02);
-    --ep-flow: #a6c04d;
-    --ep-core: #a6c04d;
-    --ep-sevcol: #f4658f;
-    --fg-1: #fafafa;
-  }
-  .hero-diagram :global(.ep-public-title) { color: #fafafa; }
-  .hero-diagram :global(.ep-lg-out) { background: var(--ss-zinc-700); }
-
-  /* Tighten the diagram inside the hero so the full perimeter stays compact.
-     Scoped to .hero-diagram only — the component keeps its roomier defaults
-     anywhere else it is used. The fit-to-height script handles the rest. */
-  @media (min-width: 1024px) {
-    .hero-diagram :global(.ep-sectors) { margin-bottom: 12px; }
-    .hero-diagram :global(.ep-depts) { margin-bottom: 8px; }
-    .hero-diagram :global(.ep-dept) { padding: 6px 10px; }
-    .hero-diagram :global(.ep-governed) { margin: 2px 0 7px; }
-    .hero-diagram :global(.ep-ring) { padding: 8px 13px 9px; }
-    .hero-diagram :global(.ep-nest) { margin-top: 7px; }
-    .hero-diagram :global(.ep-core) { padding: 8px 13px 9px; }
-    .hero-diagram :global(.ep-severed) { margin: 2px 0; }
-    .hero-diagram :global(.ep-public) { margin: 2px auto 8px; }
-  }
-</style>
