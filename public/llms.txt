@@ -11,8 +11,7 @@
 
 Stacksolver UK Limited is a Brighton-based consultancy that designs and delivers bespoke enterprise systems where governance, risk and compliance are not bolted on — they are built in.
 
-- **Director:** Johann Vivas (engineer, CPE Cambridge C2, 18+ years on Claris FileMaker — since 2008)
-- **Co-director:** Ferdie Langdon (UK resident)
+- **Leadership:** engineering-led — 18+ years on Claris FileMaker (since 2008), CPE Cambridge C2
 - **Operating languages:** English (C2)
 - **Engagement model:** Remote across any time zone, on-site when the project requires it
 

@@ -25,7 +25,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     category: 'Statement',
     reviewDate: LAST_REVIEWED,
     nextReview: NEXT_REVIEW_ANNUAL,
-    signatories: ['Johann Vivas, Director', 'Ferdie Langdon, Director'],
+    signatories: ['The Board of Directors'],
     body: `## 1. Introduction
 
 Stacksolver UK Limited ("Stacksolver", "we", "us", "our") is a Brighton-based technology consultancy delivering cyber security, AI engineering, and governance, risk and compliance (GRC) services to clients across the United Kingdom, the European Union and the United States.
@@ -314,7 +314,7 @@ We may update these Terms from time to time. The current version is always avail
     category: 'Statement',
     reviewDate: LAST_REVIEWED,
     nextReview: NEXT_REVIEW_TRIANNUAL,
-    signatories: ['Johann Vivas, Director', 'Ferdie Langdon, Director'],
+    signatories: ['The Board of Directors'],
     body: `## 1. Our Position
 
 Stacksolver UK Limited ("Stacksolver", "we", "us", "our") operates a strict zero-tolerance approach to bribery and corruption in any form. We are committed to acting professionally, fairly and with integrity in all business dealings and relationships, wherever we operate.
