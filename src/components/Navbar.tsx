@@ -52,19 +52,12 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo — Fox&Stack wordmark (no symbol; "&" in brand olive) */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center gap-2 group" aria-label="foxandstack home">
-              <img
-                src="/brand/foxandstack-mark.svg"
-                alt=""
-                className="h-8 w-auto group-hover:scale-110 transition-transform"
-              />
-              <img
-                src="/brand/foxandstack-wordmark.svg"
-                alt="foxandstack"
-                className="h-5 w-auto"
-              />
+            <a href="/" className="flex items-center group" aria-label="Fox&Stack home">
+              <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                Fox<span className="text-olive-500">&amp;</span>Stack
+              </span>
             </a>
           </div>
 
