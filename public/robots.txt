@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://foxandstack.com/sitemap-index.xml
+Sitemap: https://www.stacksolveruk.com/sitemap-index.xml
 
 # Allow major AI/search bots to index public content
 User-agent: GPTBot

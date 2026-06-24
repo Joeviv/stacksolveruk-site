@@ -1,15 +1,15 @@
-# Fox&Stack
+# Stacksolver UK
 
-> Fox&Stack (a StackSolver UK Limited brand) is a Brighton-based technology consultancy specialising in **bespoke ERP, native GRC and sovereign AI** for organisations that need technology adapted to their processes — not the other way round. **Official Claris FileMaker Partner** serving the **United Kingdom, Europe and the United States**.
+> Stacksolver UK Limited is a Brighton-based technology consultancy specialising in **bespoke ERP, native GRC and sovereign AI** for organisations that need technology adapted to their processes — not the other way round. **Official Claris FileMaker Partner** serving the **United Kingdom, Europe and the United States**.
 
-**Official site:** https://foxandstack.com
+**Official site:** https://www.stacksolveruk.com
 **Contact:** hello@foxfifth.com
 **Registered office:** 215 Ditchling Road, Brighton, BN1 6JD, United Kingdom
 **Company Number:** 16227080
 
 ## Who we are
 
-Fox&Stack (a StackSolver UK Limited brand) is a Brighton-based consultancy that designs and delivers bespoke enterprise systems where governance, risk and compliance are not bolted on — they are built in.
+Stacksolver UK Limited is a Brighton-based consultancy that designs and delivers bespoke enterprise systems where governance, risk and compliance are not bolted on — they are built in.
 
 - **Director:** Johann Vivas (engineer, CPE Cambridge C2, 18+ years on Claris FileMaker — since 2008)
 - **Co-director:** Ferdie Langdon (UK resident)
@@ -20,24 +20,24 @@ Fox&Stack (a StackSolver UK Limited brand) is a Brighton-based consultancy that 
 
 ### Bespoke ERP
 Finance, HR, projects, inventory and operations in one tailored system. Built on **Claris FileMaker** — a stable, auditable platform with 30+ years of enterprise pedigree.
-- Page: https://foxandstack.com/services/erp-filemaker
+- Page: https://www.stacksolveruk.com/services/erp-filemaker
 - Differentiator: we do not sell off-the-shelf licences. Every system is configured and built around the client's process.
 - Typical timeline: MVP in 4-8 weeks, additional modules delivered iteratively
 
 ### Native GRC (Governance, Risk and Compliance)
 Automated audits, risk management and regulatory compliance embedded in every transaction. Not a separate bolt-on module that adds work — an invisible layer that generates audit evidence automatically.
 - Frameworks covered: ISO 27001, ISO 42001 (AI), UK GDPR, EU AI Act
-- Page: https://foxandstack.com/services/grc
+- Page: https://www.stacksolveruk.com/services/grc
 
 ### Sovereign AI (Local-first AI)
 Specialised agents (legal, financial, operational) running on the client's own infrastructure. **Your data never leaves your perimeter** — full sovereignty.
 - Stack: Rust + SurrealDB + specialised agents
 - Differentiator vs cloud LLM products: no cloud dependency, no sensitive data leakage to third parties
-- Page: https://foxandstack.com/services/ai-local
+- Page: https://www.stacksolveruk.com/services/ai-local
 
 ### Apple Business Manager
 Apple Business Manager rollout, MDM integration, Managed Apple IDs and ongoing support for organisations standardising on Apple devices (10–500 device fleets).
-- Page: https://foxandstack.com/services/apple-business
+- Page: https://www.stacksolveruk.com/services/apple-business
 
 ## Coverage
 

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://foxandstack.com',
+  site: 'https://www.stacksolveruk.com',
   integrations: [
     react(),
     sitemap({

@@ -2,11 +2,11 @@
 
 export const siteSEO = {
 	global: {
-		siteName: "Fox&Stack",
-		siteUrl: "https://foxandstack.com",
+		siteName: "Stacksolver UK",
+		siteUrl: "https://www.stacksolveruk.com",
 		defaultImage: "/og-image.png",
-		author: "Fox&Stack Team",
-		twitterHandle: "@foxandstack",
+		author: "Stacksolver UK Team",
+		twitterHandle: "@stacksolveruk",
 
 		keywords: [
 			"Cyber Security Consultancy UK",
@@ -55,7 +55,7 @@ export const siteSEO = {
 
 	pages: {
 		home: {
-			title: "Fox&Stack | Cyber Security, AI Engineering & Compliance",
+			title: "Stacksolver UK | Cyber Security, AI Engineering & Compliance",
 			description: "Independent Cyber Security, AI Engineering and Compliance consultancy based in Brighton. Senior expertise. Lean delivery. Auditable by design. Serving the UK, EU and US.",
 			keywords: [
 				"Cyber Security Consultancy UK",
@@ -67,27 +67,27 @@ export const siteSEO = {
 			]
 		},
 		about: {
-			title: "About | Fox&Stack",
+			title: "About | Stacksolver UK",
 			description: "A British boutique consultancy with a clear specialty: Cyber Security. Built around it: AI Engineering, GRC and Compliance for regulated industries.",
 			keywords: ["British Cyber Security Boutique", "Lean Delivery Consultancy"]
 		},
 		method: {
-			title: "Method | Fox&Stack",
+			title: "Method | Stacksolver UK",
 			description: "How we work. Senior practitioners only. Lean overhead. Fixed-fee where it makes sense. Compliance by design. Independent.",
 			keywords: ["Senior Cyber Consultancy", "Lean Delivery"]
 		},
 		contact: {
-			title: "Contact | Fox&Stack",
+			title: "Contact | Stacksolver UK",
 			description: "Talk to us about Cyber, AI, GRC or NIS2 / DORA. We reply within two working days.",
 			keywords: ["Cyber Security Quote UK", "AI Consultancy Quote"]
 		},
 		industries: {
-			title: "Industries | Fox&Stack",
+			title: "Industries | Stacksolver UK",
 			description: "Cyber Security, AI Engineering and Compliance for Technology, Professional Services, Financial Services, Healthcare and Corporate Services.",
 			keywords: ["Cyber Consultancy Financial Services", "AI Healthcare UK", "Compliance Tech UK"]
 		},
 		trust: {
-			title: "Trust Center | Fox&Stack",
+			title: "Trust Center | Stacksolver UK",
 			description: "Our compliance posture, certifications, insurance and policies. We hold ourselves to what we ask of others.",
 			keywords: ["Trust Center", "Cyber Essentials Plus", "ICO Registration"]
 		}

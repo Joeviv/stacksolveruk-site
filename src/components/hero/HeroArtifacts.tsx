@@ -86,7 +86,7 @@ export function ERPDashboardMock({ theme = 'light' }: ERPDashboardMockProps) {
           <span style={{ width: 7, height: 7, borderRadius: 9999, background: '#22c55e' }} />
         </div>
         <div style={{ fontSize: 10, color: muted, letterSpacing: '-0.01em' }}>
-          Fox&Stack Console · <span style={{ color: strong, fontWeight: 500 }}>Operations</span>
+          StackSolver Console · <span style={{ color: strong, fontWeight: 500 }}>Operations</span>
         </div>
       </div>
 

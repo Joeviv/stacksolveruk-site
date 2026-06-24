@@ -11,26 +11,15 @@ export default function ContactForm() {
     setStatus('SUBMITTING');
 
     const form = e.currentTarget;
-    const fd = new FormData(form);
-    const payload = {
-      name: fd.get('name'),
-      email: fd.get('email'),
-      organisation: fd.get('organisation'),
-      phone: fd.get('phone'),
-      topic: fd.get('topic'),
-      message: fd.get('message'),
-      _gotcha: fd.get('_gotcha'),
-    };
+    const formData = new FormData(form);
 
     try {
-      // Sovereign endpoint: our own AWS Lambda + SES in eu-west-2 (London). No third-party form processor.
-      const response = await fetch("https://3q32yvnja6bqkxwk3e4r44zrti0vkjfn.lambda-url.eu-west-2.on.aws/", {
+      const response = await fetch("https://formspree.io/f/xqaqgdoy", {
         method: "POST",
+        body: formData,
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(payload),
+          'Accept': 'application/json'
+        }
       });
 
       if (response.ok) {
@@ -185,7 +174,7 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      <input type="hidden" name="_subject" value="New enquiry from Fox&Stack" />
+      <input type="hidden" name="_subject" value="New enquiry from stacksolveruk.com" />
       <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
       {status === 'ERROR' && (
@@ -209,13 +198,6 @@ export default function ContactForm() {
           </>
         )}
       </button>
-
-      <p className="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed">
-        We use the details you provide solely to respond to your enquiry, on the basis of our
-        legitimate interest in answering it. We do not use them for marketing without your consent.
-        See our <a href="/legal/privacy" className="text-olive-600 dark:text-olive-400 hover:underline">Privacy Policy</a> for
-        how we handle your data and your rights under UK GDPR.
-      </p>
     </form>
   );
 }
