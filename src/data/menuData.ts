@@ -218,10 +218,10 @@ export const SERVICES_MENU: Section[] = [
     ]
   },
 
-  // ===== AREAS + AI (Procurement+AI and HR+AI as anchors) =====
+  // ===== AI BY FUNCTION (Procurement+AI and HR+AI as anchors) =====
   {
     id: 'areas-ai',
-    title: 'Areas + AI Integrations',
+    title: 'AI by Function',
     icon: PuzzlePieceIcon,
     subsections: [
       {

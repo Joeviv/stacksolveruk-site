@@ -133,7 +133,7 @@ export default function ContactForm() {
             <option value="agentic-ai">Agentic AI</option>
             <option value="ai-act-compliance">EU AI Act compliance</option>
           </optgroup>
-          <optgroup label="Areas + AI">
+          <optgroup label="AI by Function">
             <option value="procurement-ai">Procurement + AI</option>
             <option value="hr-ai">HR + AI</option>
             <option value="finance-ai">Finance + AI</option>

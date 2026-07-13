@@ -27,7 +27,7 @@ export const siteSEO = {
 			"MITRE ATLAS",
 			"Procurement AI",
 			"HR AI",
-			"Areas plus AI",
+			"AI by Function",
 			"GRC Consultancy UK",
 			"ISO 27001 Implementation UK",
 			"ISO 27701 Privacy UK",
