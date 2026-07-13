@@ -9,6 +9,8 @@ import {
   ScaleIcon,
   BugAntIcon,
   ServerIcon,
+  CircleStackIcon,
+  UsersIcon,
 } from '@heroicons/react/24/outline';
 
 export type ImplementationStep = {
@@ -43,7 +45,7 @@ export type Section = {
   subsections: SubSection[];
 };
 
-const COMING_SOON_DESC = 'Detailed page in preparation. Please contact us at hello@foxfifth.com for current scope, methodology and engagement options.';
+const COMING_SOON_DESC = 'Detailed page in preparation. Please contact us at hello@stacksolveruk.com for current scope, methodology and engagement options.';
 
 const placeholderImpl: ImplementationStep[] = [
   { step: 1, title: 'Discovery', description: 'Initial assessment of your current state, regulatory constraints and objectives.' },
@@ -615,6 +617,100 @@ export const SERVICES_MENU: Section[] = [
         features: [
           { title: 'No on-prem requirement', description: 'Sovereignty in your cloud account, not your data centre.' },
           { title: 'Multi-cloud agnostic', description: 'We are not tied to any single hyperscaler.' }
+        ],
+        image: placeholderImage,
+      }
+    ]
+  },
+
+  // ===== ERP & BUSINESS APPLICATIONS =====
+  {
+    id: 'erp',
+    title: 'ERP & Business Applications',
+    icon: CircleStackIcon,
+    subsections: [
+      {
+        id: 'claris-filemaker-erp',
+        title: 'Claris FileMaker ERP',
+        shortDescription: 'Custom ERP and business applications built on Claris FileMaker: projects, operations, compliance and reporting in one auditable system.',
+        fullDescription: COMING_SOON_DESC,
+        techBadge: 'Claris FileMaker · FileMaker Server · Data API',
+        implementationPlan: placeholderImpl,
+        features: [
+          { title: 'Bespoke ERP design', description: 'Projects, operations, GRC and reporting modelled to how your business actually works.' },
+          { title: 'Server, API and integrations', description: 'FileMaker Server, Data API and integrations with the systems you already run.' },
+          { title: 'Own your platform', description: 'A system you own and can audit, not a per-seat subscription you rent.' }
+        ],
+        image: placeholderImage,
+      },
+      {
+        id: 'erp-consulting-migration',
+        title: 'ERP Consulting & Migration',
+        shortDescription: 'Independent, platform-neutral advice on ERP selection and migration, including NetSuite and other systems.',
+        fullDescription: COMING_SOON_DESC,
+        techBadge: 'NetSuite · Claris FileMaker · Data migration',
+        implementationPlan: placeholderImpl,
+        features: [
+          { title: 'Platform-neutral assessment', description: 'We help you choose the right fit, then migrate you to or from NetSuite and other platforms.' },
+          { title: 'Clean data migration', description: 'Validated migration with a documented cutover and no surprises.' },
+          { title: 'Sovereign by default', description: 'Where a bespoke, auditable ERP suits you best, we build it on Claris FileMaker.' }
+        ],
+        image: placeholderImage,
+      },
+      {
+        id: 'business-systems-support',
+        title: 'Support & Continuous Improvement',
+        shortDescription: 'Ongoing support, enhancements and continuous improvement for your business systems.',
+        fullDescription: COMING_SOON_DESC,
+        implementationPlan: placeholderImpl,
+        features: [
+          { title: 'Named support', description: 'A retainer with defined response times and a practitioner who knows your build.' },
+          { title: 'Continuous improvement', description: 'Enhancements and new modules as your operations evolve.' }
+        ],
+        image: placeholderImage,
+      }
+    ]
+  },
+
+  // ===== HR SUPPORT =====
+  {
+    id: 'hr-support',
+    title: 'HR Support',
+    icon: UsersIcon,
+    subsections: [
+      {
+        id: 'hr-advisory',
+        title: 'HR Advisory & Documentation',
+        shortDescription: 'Practical HR support for small and growing teams: contracts, policies and handbooks that keep you compliant.',
+        fullDescription: COMING_SOON_DESC,
+        implementationPlan: placeholderImpl,
+        features: [
+          { title: 'Contracts and policies', description: 'Employment contracts, handbooks and policies aligned with UK employment law.' },
+          { title: 'Day-to-day advice', description: 'A sounding board for the HR questions that come up as you grow.' }
+        ],
+        image: placeholderImage,
+      },
+      {
+        id: 'hr-onboarding',
+        title: 'Onboarding & Offboarding',
+        shortDescription: 'Structured onboarding and offboarding, done properly and on time.',
+        fullDescription: COMING_SOON_DESC,
+        implementationPlan: placeholderImpl,
+        features: [
+          { title: 'Joiner and leaver processes', description: 'Right-to-work checks, documentation and a consistent experience.' },
+          { title: 'Secure by default', description: 'Access provisioning and de-provisioning coordinated with IT and security.' }
+        ],
+        image: placeholderImage,
+      },
+      {
+        id: 'hr-payroll-benefits',
+        title: 'Payroll & Benefits Coordination',
+        shortDescription: 'Coordination of payroll, pensions and benefits with your providers.',
+        fullDescription: COMING_SOON_DESC,
+        implementationPlan: placeholderImpl,
+        features: [
+          { title: 'Payroll coordination', description: 'We work with your payroll provider so people are paid correctly and on time.' },
+          { title: 'Pensions and benefits', description: 'Auto-enrolment and benefits administration handled.' }
         ],
         image: placeholderImage,
       }

@@ -28,21 +28,21 @@ export const LEGAL_DOCS: LegalDoc[] = [
     signatories: ['The Board of Directors'],
     body: `## 1. Introduction
 
-Stacksolver UK Limited ("Stacksolver", "we", "us", "our") is a Brighton-based technology consultancy delivering cyber security, AI engineering, and governance, risk and compliance (GRC) services to clients across the United Kingdom, the European Union and the United States.
+StackSolver UK Limited ("StackSolver", "we", "us", "our") is a Brighton-based technology consultancy delivering cyber security, AI engineering, and governance, risk and compliance (GRC) services to clients across the United Kingdom, the European Union and the United States.
 
-This statement is made on a voluntary basis. Stacksolver UK Limited is not currently within the scope of section 54 of the Modern Slavery Act 2015 (the "Act"), which applies to commercial organisations with an annual turnover of £36 million or more. We publish this statement because we recognise that modern slavery is a global issue, that every business — regardless of size — has a role to play in preventing it, and that our clients and partners are entitled to understand the standards by which we operate.
+This statement is made on a voluntary basis. StackSolver UK Limited is not currently within the scope of section 54 of the Modern Slavery Act 2015 (the "Act"), which applies to commercial organisations with an annual turnover of £36 million or more. We publish this statement because we recognise that modern slavery is a global issue, that every business — regardless of size — has a role to play in preventing it, and that our clients and partners are entitled to understand the standards by which we operate.
 
-This statement sets out the steps Stacksolver has taken, and continues to take, to ensure that modern slavery and human trafficking are not taking place within our own operations or our supply chain.
+This statement sets out the steps StackSolver has taken, and continues to take, to ensure that modern slavery and human trafficking are not taking place within our own operations or our supply chain.
 
 ## 2. Our Business
 
-Stacksolver UK Limited is a Private Limited Company incorporated in England and Wales (Company Number 16227080), with its registered office at 215 Ditchling Road, Brighton, BN1 6JD. We operate as a small, lean consultancy. Our delivery model relies primarily on a small core team supported by carefully selected independent professionals (subcontractors operating through their own limited companies in accordance with UK self-employment rules) engaged on a per-project basis. We do not operate physical manufacturing facilities, distribution networks, or large-scale labour operations.
+StackSolver UK Limited is a Private Limited Company incorporated in England and Wales (Company Number 16227080), with its registered office at 215 Ditchling Road, Brighton, BN1 6JD. We operate as a small, lean consultancy. Our delivery model relies primarily on a small core team supported by carefully selected independent professionals (subcontractors operating through their own limited companies in accordance with UK self-employment rules) engaged on a per-project basis. We do not operate physical manufacturing facilities, distribution networks, or large-scale labour operations.
 
 The majority of our work is delivered remotely from within the United Kingdom and the European Economic Area to clients in regulated industries, including financial services, healthcare and life sciences, professional services, technology, and corporate services.
 
 ## 3. Our Commitment
 
-Stacksolver is committed to:
+StackSolver is committed to:
 
 - Conducting all of our business in an honest and ethical manner, with a zero-tolerance approach to modern slavery, forced labour, child labour, and human trafficking in any form.
 - Acting with integrity in all our business relationships and ensuring that effective systems and controls are in place to prevent slavery and human trafficking from taking place anywhere in our supply chain.
@@ -88,9 +88,9 @@ We will not tolerate any form of retaliation against an individual who, in good 
 
 ## 8. Governance and Approval
 
-Responsibility for compliance with this statement sits with the Directors of Stacksolver UK Limited. Operational responsibility for day-to-day implementation rests with the Director responsible for operations and compliance.
+Responsibility for compliance with this statement sits with the Directors of StackSolver UK Limited. Operational responsibility for day-to-day implementation rests with the Director responsible for operations and compliance.
 
-This statement is reviewed annually and updated as appropriate. It is approved by the board of directors of Stacksolver UK Limited.`,
+This statement is reviewed annually and updated as appropriate. It is approved by the board of directors of StackSolver UK Limited.`,
   },
   {
     slug: 'privacy',
@@ -101,7 +101,7 @@ This statement is reviewed annually and updated as appropriate. It is approved b
     nextReview: NEXT_REVIEW_ANNUAL,
     body: `## 1. About this Privacy Policy
 
-Stacksolver UK Limited ("Stacksolver", "we", "us", "our") is committed to protecting your personal data and respecting your privacy. This Privacy Policy explains how we collect, use, share, and protect personal data when you visit our website (stacksolveruk.com), engage with us as a prospective client, contract with us as a client, or interact with us in any other capacity.
+StackSolver UK Limited ("StackSolver", "we", "us", "our") is committed to protecting your personal data and respecting your privacy. This Privacy Policy explains how we collect, use, share, and protect personal data when you visit our website (stacksolveruk.com), engage with us as a prospective client, contract with us as a client, or interact with us in any other capacity.
 
 This policy is issued in accordance with the United Kingdom General Data Protection Regulation ("UK GDPR"), the Data Protection Act 2018, and the Privacy and Electronic Communications Regulations 2003 ("PECR").
 
@@ -109,7 +109,7 @@ This policy is issued in accordance with the United Kingdom General Data Protect
 
 The data controller responsible for your personal data is:
 
-**Stacksolver UK Limited**
+**StackSolver UK Limited**
 215 Ditchling Road, Brighton, BN1 6JD, United Kingdom
 Company Number: 16227080
 ICO Registration: pending — to be added once registered
@@ -249,7 +249,7 @@ We review this policy at least annually and update it whenever our cookie usage 
     nextReview: NEXT_REVIEW_ANNUAL,
     body: `## 1. About these Terms
 
-These Terms of Service ("Terms") govern your use of the website operated by Stacksolver UK Limited ("Stacksolver", "we", "us", "our") at stacksolveruk.com (the "Site"). By accessing or using the Site, you agree to be bound by these Terms. If you do not agree, please do not use the Site.
+These Terms of Service ("Terms") govern your use of the website operated by StackSolver UK Limited ("StackSolver", "we", "us", "our") at stacksolveruk.com (the "Site"). By accessing or using the Site, you agree to be bound by these Terms. If you do not agree, please do not use the Site.
 
 These Terms apply to general use of the Site only. Engagements for paid consultancy services are governed separately by a written Master Services Agreement and Statement of Work signed by both parties.
 
@@ -265,11 +265,11 @@ You agree to use the Site only for lawful purposes and in a manner consistent wi
 
 ## 3. Intellectual Property
 
-All content on the Site — including text, graphics, logos, images, software and design — is the property of Stacksolver UK Limited or its licensors, protected by United Kingdom and international copyright, trade mark and other intellectual property laws.
+All content on the Site — including text, graphics, logos, images, software and design — is the property of StackSolver UK Limited or its licensors, protected by United Kingdom and international copyright, trade mark and other intellectual property laws.
 
 You may view and print individual pages for your own non-commercial reference. You may not reproduce, redistribute, modify or commercially exploit any part of the Site without our prior written consent.
 
-The trade mark "Stacksolver" and any associated logos are owned by us or our affiliates.
+The trade mark "StackSolver" and any associated logos are owned by us or our affiliates.
 
 ## 4. Information on the Site
 
@@ -287,7 +287,7 @@ The Site is provided on an "as is" and "as available" basis. To the fullest exte
 
 ## 7. Limitation of Liability
 
-To the fullest extent permitted by applicable law, Stacksolver UK Limited shall not be liable for any indirect, incidental, consequential, special or exemplary loss or damage arising from your use of, or inability to use, the Site, even if we have been advised of the possibility of such loss.
+To the fullest extent permitted by applicable law, StackSolver UK Limited shall not be liable for any indirect, incidental, consequential, special or exemplary loss or damage arising from your use of, or inability to use, the Site, even if we have been advised of the possibility of such loss.
 
 Nothing in these Terms excludes or limits liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded under English law.
 
@@ -295,7 +295,7 @@ Nothing in these Terms excludes or limits liability for death or personal injury
 
 For all enquiries about these Terms, contact:
 
-**Stacksolver UK Limited**
+**StackSolver UK Limited**
 215 Ditchling Road, Brighton, BN1 6JD
 office@stacksolveruk.com
 
@@ -317,13 +317,13 @@ We may update these Terms from time to time. The current version is always avail
     signatories: ['The Board of Directors'],
     body: `## 1. Our Position
 
-Stacksolver UK Limited ("Stacksolver", "we", "us", "our") operates a strict zero-tolerance approach to bribery and corruption in any form. We are committed to acting professionally, fairly and with integrity in all business dealings and relationships, wherever we operate.
+StackSolver UK Limited ("StackSolver", "we", "us", "our") operates a strict zero-tolerance approach to bribery and corruption in any form. We are committed to acting professionally, fairly and with integrity in all business dealings and relationships, wherever we operate.
 
 This statement is issued in accordance with the United Kingdom Bribery Act 2010 (the "Act"), which applies to all UK companies regardless of size and includes extraterritorial reach.
 
 ## 2. Scope
 
-This statement applies to all directors and employees of Stacksolver UK Limited, all subcontractors, consultants, agents and other third parties acting on our behalf, and all business activities including procurement, sales, partnerships and government interactions.
+This statement applies to all directors and employees of StackSolver UK Limited, all subcontractors, consultants, agents and other third parties acting on our behalf, and all business activities including procurement, sales, partnerships and government interactions.
 
 We expect those with whom we contract to maintain equivalent standards.
 
@@ -346,7 +346,7 @@ We will decline or return any gift or hospitality that does not meet these crite
 
 ## 5. Charitable and Political Contributions
 
-Stacksolver does not make political donations of any kind. Charitable contributions, where made, are documented and reviewed to ensure they are not used as a means of improperly influencing any decision-maker.
+StackSolver does not make political donations of any kind. Charitable contributions, where made, are documented and reviewed to ensure they are not used as a means of improperly influencing any decision-maker.
 
 ## 6. Subcontractor and Supplier Due Diligence
 
@@ -364,7 +364,7 @@ All directors and employees receive briefing on this statement on joining and at
 
 ## 9. Governance
 
-Responsibility for compliance with this statement sits with the Directors of Stacksolver UK Limited. The board reviews this statement at least every three years, or sooner if relevant law or business circumstances change.`,
+Responsibility for compliance with this statement sits with the Directors of StackSolver UK Limited. The board reviews this statement at least every three years, or sooner if relevant law or business circumstances change.`,
   },
   {
     slug: 'whistleblowing',
@@ -375,7 +375,7 @@ Responsibility for compliance with this statement sits with the Directors of Sta
     nextReview: NEXT_REVIEW_ANNUAL,
     body: `## 1. Purpose
 
-Stacksolver UK Limited ("Stacksolver", "we", "us", "our") is committed to the highest standards of openness, integrity and accountability. This Policy provides a framework for any person — whether a member of our team, a subcontractor, a supplier, a client or any other interested party — to raise concerns about wrongdoing without fear of reprisal.
+StackSolver UK Limited ("StackSolver", "we", "us", "our") is committed to the highest standards of openness, integrity and accountability. This Policy provides a framework for any person — whether a member of our team, a subcontractor, a supplier, a client or any other interested party — to raise concerns about wrongdoing without fear of reprisal.
 
 This Policy is informed by the Public Interest Disclosure Act 1998 ("PIDA") and aligned with UK corporate governance practice.
 
@@ -390,7 +390,7 @@ This Policy is not intended for personal grievances about employment terms, line
 Concerns may be raised:
 
 - **By email** to office@stacksolveruk.com, marking the subject line "CONFIDENTIAL — SPEAK UP".
-- **By post** in a sealed envelope marked "PRIVATE AND CONFIDENTIAL — DIRECTOR" addressed to: Stacksolver UK Limited, 215 Ditchling Road, Brighton, BN1 6JD.
+- **By post** in a sealed envelope marked "PRIVATE AND CONFIDENTIAL — DIRECTOR" addressed to: StackSolver UK Limited, 215 Ditchling Road, Brighton, BN1 6JD.
 
 You are encouraged to identify yourself when raising a concern, as this allows us to investigate more effectively and to keep you informed. However, anonymous concerns will also be considered.
 
@@ -422,7 +422,7 @@ We keep records of concerns raised, the investigations conducted and the outcome
 
 ## 9. Governance
 
-This Policy is owned by the Directors of Stacksolver UK Limited and reviewed annually.`,
+This Policy is owned by the Directors of StackSolver UK Limited and reviewed annually.`,
   },
   {
     slug: 'equal-opportunities',
@@ -433,13 +433,13 @@ This Policy is owned by the Directors of Stacksolver UK Limited and reviewed ann
     nextReview: NEXT_REVIEW_ANNUAL,
     body: `## 1. Our Commitment
 
-Stacksolver UK Limited ("Stacksolver", "we", "us", "our") is committed to providing equal opportunities and to creating an inclusive environment in which every individual is treated with dignity and respect. We do not tolerate discrimination, harassment, victimisation or unfair treatment of any kind.
+StackSolver UK Limited ("StackSolver", "we", "us", "our") is committed to providing equal opportunities and to creating an inclusive environment in which every individual is treated with dignity and respect. We do not tolerate discrimination, harassment, victimisation or unfair treatment of any kind.
 
 This statement is informed by the Equality Act 2010 and the principles of fair employment practice in the United Kingdom.
 
 ## 2. Scope
 
-This statement applies to all directors and employees of Stacksolver UK Limited, all applicants for employment or engagement, all subcontractors, consultants, suppliers, clients and visitors, and all aspects of our business activity — including recruitment, engagement, training, allocation of work, advancement opportunities, day-to-day interactions and termination.
+This statement applies to all directors and employees of StackSolver UK Limited, all applicants for employment or engagement, all subcontractors, consultants, suppliers, clients and visitors, and all aspects of our business activity — including recruitment, engagement, training, allocation of work, advancement opportunities, day-to-day interactions and termination.
 
 ## 3. Protected Characteristics
 
@@ -459,7 +459,7 @@ We treat all concerns seriously, investigate them promptly and impartially, and 
 
 ## 6. Governance
 
-Responsibility for this statement sits with the Directors of Stacksolver UK Limited. We review the statement at least annually.`,
+Responsibility for this statement sits with the Directors of StackSolver UK Limited. We review the statement at least annually.`,
   },
   {
     slug: 'acceptable-use',
@@ -470,7 +470,7 @@ Responsibility for this statement sits with the Directors of Stacksolver UK Limi
     nextReview: NEXT_REVIEW_ANNUAL,
     body: `## 1. Purpose
 
-This Acceptable Use Policy ("AUP") sets out the rules governing access to and use of the website operated by Stacksolver UK Limited ("Stacksolver", "we", "us", "our") at stacksolveruk.com (the "Site"), and any online tools, demonstrations or environments we make available to you.
+This Acceptable Use Policy ("AUP") sets out the rules governing access to and use of the website operated by StackSolver UK Limited ("StackSolver", "we", "us", "our") at stacksolveruk.com (the "Site"), and any online tools, demonstrations or environments we make available to you.
 
 By accessing or using the Site or any of our online resources, you agree to comply with this AUP. It supplements our Terms of Service.
 
@@ -516,7 +516,7 @@ We may update this AUP from time to time. The current version is always availabl
     nextReview: NEXT_REVIEW_ANNUAL,
     body: `## Status
 
-Stacksolver UK Limited is in the process of completing its registration with the United Kingdom Information Commissioner's Office (ICO) as a data controller under the Data Protection (Charges and Information) Regulations 2018.
+StackSolver UK Limited is in the process of completing its registration with the United Kingdom Information Commissioner's Office (ICO) as a data controller under the Data Protection (Charges and Information) Regulations 2018.
 
 Once registration is complete, this page will publish:
 

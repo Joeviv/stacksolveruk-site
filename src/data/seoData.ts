@@ -2,10 +2,10 @@
 
 export const siteSEO = {
 	global: {
-		siteName: "Stacksolver UK",
+		siteName: "StackSolver UK",
 		siteUrl: "https://www.stacksolveruk.com",
 		defaultImage: "/og-image.png",
-		author: "Stacksolver UK Team",
+		author: "StackSolver UK Team",
 		twitterHandle: "@stacksolveruk",
 
 		keywords: [
@@ -55,7 +55,7 @@ export const siteSEO = {
 
 	pages: {
 		home: {
-			title: "Stacksolver UK | Cyber Security, AI Engineering & Compliance",
+			title: "StackSolver UK | Cyber Security, AI Engineering & Compliance",
 			description: "Independent Cyber Security, AI Engineering and Compliance consultancy based in Brighton. Senior expertise. Lean delivery. Auditable by design. Serving the UK, EU and US.",
 			keywords: [
 				"Cyber Security Consultancy UK",
@@ -67,27 +67,27 @@ export const siteSEO = {
 			]
 		},
 		about: {
-			title: "About | Stacksolver UK",
+			title: "About | StackSolver UK",
 			description: "A British boutique consultancy with a clear specialty: Cyber Security. Built around it: AI Engineering, GRC and Compliance for regulated industries.",
 			keywords: ["British Cyber Security Boutique", "Lean Delivery Consultancy"]
 		},
 		method: {
-			title: "Method | Stacksolver UK",
+			title: "Method | StackSolver UK",
 			description: "How we work. Senior practitioners only. Lean overhead. Fixed-fee where it makes sense. Compliance by design. Independent.",
 			keywords: ["Senior Cyber Consultancy", "Lean Delivery"]
 		},
 		contact: {
-			title: "Contact | Stacksolver UK",
+			title: "Contact | StackSolver UK",
 			description: "Talk to us about Cyber, AI, GRC or NIS2 / DORA. We reply within two working days.",
 			keywords: ["Cyber Security Quote UK", "AI Consultancy Quote"]
 		},
 		industries: {
-			title: "Industries | Stacksolver UK",
+			title: "Industries | StackSolver UK",
 			description: "Cyber Security, AI Engineering and Compliance for Technology, Professional Services, Financial Services, Healthcare and Corporate Services.",
 			keywords: ["Cyber Consultancy Financial Services", "AI Healthcare UK", "Compliance Tech UK"]
 		},
 		trust: {
-			title: "Trust Center | Stacksolver UK",
+			title: "Trust Center | StackSolver UK",
 			description: "Our compliance posture, certifications, insurance and policies. We hold ourselves to what we ask of others.",
 			keywords: ["Trust Center", "Cyber Essentials Plus", "ICO Registration"]
 		}

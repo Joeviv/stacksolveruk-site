@@ -52,9 +52,9 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo — Stacksolver UK wordmark (no symbol; "UK" in brand olive) */}
+          {/* Logo — StackSolver UK wordmark (no symbol; "UK" in brand olive) */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center group" aria-label="Stacksolver UK home">
+            <a href="/" className="flex items-center group" aria-label="StackSolver UK home">
               <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
                 <span className="text-olive-500">S</span>tack<span className="text-olive-500">S</span>olver<span className="text-olive-500"> UK</span>
               </span>

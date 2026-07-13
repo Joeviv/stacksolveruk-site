@@ -17,7 +17,7 @@ interface Props {
 
 const {
 	title,
-	description = "Stacksolver UK Limited — independent Cyber Security, AI Engineering and Compliance consultancy. Brighton-based, serving the United Kingdom, Europe and the United States.",
+	description = "StackSolver UK Limited — independent Cyber Security, AI Engineering and Compliance consultancy. Brighton-based, serving the United Kingdom, Europe and the United States.",
 	image = "/og-image.png",
 	keywords = "",
 	type = "website",
@@ -77,12 +77,12 @@ const socialImageURL = new URL(image, siteUrl).href;
 			set:html={JSON.stringify({
 				"@context": "https://schema.org",
 				"@type": "WebSite",
-				name: "Stacksolver UK",
+				name: "StackSolver UK",
 				url: siteUrl,
 				description: description,
 				publisher: {
 					"@type": "Organization",
-					name: "Stacksolver UK Limited",
+					name: "StackSolver UK Limited",
 					logo: {
 						"@type": "ImageObject",
 						url: `${siteUrl}/favicon.svg`,
