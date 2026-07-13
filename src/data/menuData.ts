@@ -54,7 +54,7 @@ const placeholderImpl: ImplementationStep[] = [
   { step: 4, title: 'Support',   description: 'Ongoing retainer covering enhancements and continuous improvement.' }
 ];
 
-const placeholderImage = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop';
+const placeholderImage = '/og-image.png';
 
 export const SERVICES_MENU: Section[] = [
 
