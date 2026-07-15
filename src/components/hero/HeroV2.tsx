@@ -20,7 +20,7 @@ const HERO_COPY = {
   metrics: [
     'UK-based, EU-wide delivery',
     '18+ years in regulated systems',
-    'ISO 27001 · Cyber Essentials Plus',
+    'ISO 27001-aligned',
   ],
 };
 

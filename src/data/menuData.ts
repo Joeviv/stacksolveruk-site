@@ -165,7 +165,7 @@ export const SERVICES_MENU: Section[] = [
         image: placeholderImage,
       },
       {
-        id: 'sovereign-rag',
+        id: 'private-rag',
         title: 'Private RAG',
         shortDescription: 'Retrieval-augmented generation across your documents, fully on-premise or in your private cloud.',
         fullDescription: COMING_SOON_DESC,

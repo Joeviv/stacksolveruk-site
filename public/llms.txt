@@ -1,6 +1,6 @@
 # StackSolver UK
 
-> StackSolver UK Limited is a Brighton-based technology consultancy specialising in **bespoke ERP, native GRC and private AI** for organisations that need technology adapted to their processes — not the other way round. **Official Claris FileMaker Partner** serving the **United Kingdom, Europe and the United States**.
+> StackSolver UK Limited is a Brighton-based technology consultancy for regulated industries. **Cyber security is our specialty**; around it we build **private AI, custom ERP and native GRC** — technology adapted to an organisation's processes, with governance built in rather than bolted on. **Official Claris FileMaker Partner** serving the **United Kingdom, Europe and the United States**.
 
 **Official site:** https://www.stacksolveruk.com
 **Contact:** hello@stacksolveruk.com
@@ -9,35 +9,36 @@
 
 ## Who we are
 
-StackSolver UK Limited is a Brighton-based consultancy that designs and delivers bespoke enterprise systems where governance, risk and compliance are not bolted on — they are built in.
+StackSolver UK Limited designs, builds and secures enterprise systems for organisations in regulated sectors. Cyber security is the core practice; private AI, custom ERP and compliance are built around it, so that governance, risk and compliance are not a separate bolt-on — they are engineered in.
 
-- **Leadership:** engineering-led — 18+ years on Claris FileMaker (since 2008), CPE Cambridge C2
+- **Leadership:** engineering-led — 18+ years in regulated systems, CPE Cambridge C2
 - **Operating languages:** English (C2)
 - **Engagement model:** Remote across any time zone, on-site when the project requires it
 
 ## Services
 
-### Bespoke ERP
-Finance, HR, projects, inventory and operations in one tailored system. Built on **Claris FileMaker** — a stable, auditable platform with 30+ years of enterprise pedigree.
-- Page: https://www.stacksolveruk.com/services/erp-filemaker
-- Differentiator: we do not sell off-the-shelf licences. Every system is configured and built around the client's process.
-- Typical timeline: MVP in 4-8 weeks, additional modules delivered iteratively
-
-### Native GRC (Governance, Risk and Compliance)
-Automated audits, risk management and regulatory compliance embedded in every transaction. Not a separate bolt-on module that adds work — an invisible layer that generates audit evidence automatically.
-- Frameworks covered: ISO 27001, ISO 42001 (AI), UK GDPR, EU AI Act
-- Page: https://www.stacksolveruk.com/services/grc
+### Cyber Security (our specialty)
+Network defence, identity hardening, incident response and independent assurance for organisations that must prove their security posture.
+- Page: https://www.stacksolveruk.com/services/cyber
+- Includes: Cyber Essentials Plus preparation, penetration testing, Virtual CISO (vCISO), security architecture, incident response and security awareness.
 
 ### Private AI (Local-first AI)
-Specialised agents (legal, financial, operational) running on the client's own infrastructure. **Your data never leaves your perimeter** — full data residency.
-- Stack: Rust + SurrealDB + specialised agents
-- Differentiator vs cloud LLM products: no cloud dependency, no sensitive data leakage to third parties
-- Page: https://www.stacksolveruk.com/services/ai-local
+Specialised agents (legal, financial, operational) and retrieval running on the client's own infrastructure. **Your data never leaves your perimeter** — full data residency.
+- Page: https://www.stacksolveruk.com/services/ai
+- Includes: private RAG, AI governance (ISO 42001), agentic AI, EU AI Act compliance and an ethical AI sandbox.
+- Differentiator vs cloud LLM products: no cloud dependency, no sensitive data leakage to third parties.
 
-### Apple Business Manager
-Apple Business Manager rollout, MDM integration, Managed Apple IDs and ongoing support for organisations standardising on Apple devices (10–500 device fleets).
-- Page: https://www.stacksolveruk.com/services/apple-business
+### Governance, Risk & Compliance (GRC)
+Audits, risk registers, DPO-as-a-Service and internal audit, with audit evidence designed in — not bolted on.
+- Page: https://www.stacksolveruk.com/services/grc
+- Frameworks delivered: ISO 27001, ISO 42001 (AI), ISO 27701 (privacy), ISO 22301, SOC 2, UK & EU GDPR — see https://www.stacksolveruk.com/services/iso-compliance
+- Regulatory readiness: NIS2, DORA and third-party / supply-chain risk — see https://www.stacksolveruk.com/services/risk-resilience
+
+### Custom ERP & Business Applications
+Bespoke ERP built on **Claris FileMaker** — finance, HR, projects, operations and reporting in one tailored, auditable system you own. Migration from NetSuite and legacy systems.
+- Page: https://www.stacksolveruk.com/services/erp
+- Differentiator: we do not sell off-the-shelf licences. Every system is configured around the client's process.
 
 ## Coverage
 
-We work with organisations across the **United Kingdom, Europe and the United States**, primarily in **regulated industries**: fiduciary services, corporate services, legal, financial services and AI-sensitive sectors.
+We work with organisations across the **United Kingdom, Europe and the United States**, primarily in **regulated industries**: financial services, healthcare, professional services and technology.
