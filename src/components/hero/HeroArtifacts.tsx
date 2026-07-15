@@ -327,10 +327,10 @@ export function CityMarker({ city, theme = 'light' }: CityMarkerProps) {
 // ---------- CapabilityStrip ----------
 interface Cap { icon: ReactNode; title: string; desc: string; tag: string; href: string; }
 const CAPS: Cap[] = [
-  { icon: <IconCpu />,      title: 'Applied AI',      desc: 'Practical AI built into the systems you already run — copilots, decision support, document automation, with full auditability.', tag: 'AGENTS · RAG · EVALS',     href: '/services/ai' },
-  { icon: <IconShield />,   title: 'Cyber Security',  desc: 'Network defence, identity hardening, incident response and assurance against ISO 27001 and Cyber Essentials Plus.',                tag: 'SOC · MDR · ASSURANCE',    href: '/services/cyber' },
-  { icon: <IconBranch />,   title: 'Procurement',     desc: 'Sourcing, supplier risk and contract intelligence — purpose-built for regulated industries and public-sector buyers.',             tag: 'CCS · GCLOUD · DPS',       href: '/services/areas-ai/procurement-ai' },
-  { icon: <IconDatabase />, title: 'Industry Stacks', desc: 'Reference implementations for financial services, healthcare, manufacturing and the public sector. Compliance-first.',            tag: 'FCA · NHS · MOD · GDS',    href: '/industries' },
+  { icon: <IconCpu />,      title: 'Applied AI',              desc: 'Private AI built into the systems you already run — copilots, RAG and document automation, fully auditable.',        tag: 'PRIVATE AI · RAG · EVALS',    href: '/services/ai' },
+  { icon: <IconShield />,   title: 'Cyber Security',          desc: 'Network defence, identity hardening, incident response and assurance against ISO 27001 and Cyber Essentials Plus.', tag: 'SOC · MDR · ASSURANCE',       href: '/services/cyber' },
+  { icon: <IconBranch />,   title: 'Governance & Compliance', desc: 'ISO 27001 and 42001, UK GDPR and DPO-as-a-Service, with audit evidence designed in — not bolted on.',             tag: 'ISO 27001 · 42001 · GDPR',    href: '/services/grc' },
+  { icon: <IconDatabase />, title: 'Regulated Industries',    desc: 'Built for financial services, healthcare, professional services, technology and corporate services.',               tag: 'FINSERV · HEALTH · PROF SVCS', href: '/industries' },
 ];
 
 interface CapabilityStripProps { theme?: 'dark' | 'light'; }

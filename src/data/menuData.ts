@@ -166,7 +166,7 @@ export const SERVICES_MENU: Section[] = [
       },
       {
         id: 'sovereign-rag',
-        title: 'Sovereign RAG',
+        title: 'Private RAG',
         shortDescription: 'Retrieval-augmented generation across your documents, fully on-premise or in your private cloud.',
         fullDescription: COMING_SOON_DESC,
         techBadge: 'AWS Bedrock · Azure OpenAI · Ollama · vLLM',
@@ -571,12 +571,12 @@ export const SERVICES_MENU: Section[] = [
       {
         id: 'lean-tier-mac-studio',
         title: 'Lean Tier — Apple Silicon',
-        shortDescription: 'Mac Studio M-series single-node deployment for 5–20 concurrent users. Fast to deploy, fully sovereign.',
+        shortDescription: 'Mac Studio M-series single-node deployment for 5–20 concurrent users. Fast to deploy, fully private.',
         fullDescription: COMING_SOON_DESC,
         techBadge: 'Apple Silicon · Ollama · Llama 3.3',
         implementationPlan: placeholderImpl,
         features: [
-          { title: 'Sovereign by design', description: 'Models, vector store and UI all on hardware you own.' },
+          { title: 'Private by design', description: 'Models, vector store and UI all on hardware you own.' },
           { title: 'Predictable cost', description: 'One-time hardware investment plus implementation and support.' }
         ],
         image: placeholderImage,
@@ -615,7 +615,7 @@ export const SERVICES_MENU: Section[] = [
         techBadge: 'AWS Bedrock · Azure OpenAI · GCP Vertex',
         implementationPlan: placeholderImpl,
         features: [
-          { title: 'No on-prem requirement', description: 'Sovereignty in your cloud account, not your data centre.' },
+          { title: 'No on-prem requirement', description: 'Data residency in your cloud account, not your data centre.' },
           { title: 'Multi-cloud agnostic', description: 'We are not tied to any single hyperscaler.' }
         ],
         image: placeholderImage,
@@ -653,7 +653,7 @@ export const SERVICES_MENU: Section[] = [
         features: [
           { title: 'Platform-neutral assessment', description: 'We help you choose the right fit, then migrate you to or from NetSuite and other platforms.' },
           { title: 'Clean data migration', description: 'Validated migration with a documented cutover and no surprises.' },
-          { title: 'Sovereign by default', description: 'Where a bespoke, auditable ERP suits you best, we build it on Claris FileMaker.' }
+          { title: 'Private by default', description: 'Where a bespoke, auditable ERP suits you best, we build it on Claris FileMaker.' }
         ],
         image: placeholderImage,
       },

@@ -12,9 +12,9 @@ import {
 } from './HeroArtifacts';
 
 const HERO_COPY = {
-  eyebrow: 'AI · CYBER SECURITY · PROCUREMENT',
-  headline: 'AI, cyber and procurement, embedded into the systems that already run your business.',
-  sub: 'A British technology partner working across regulated industries — financial services, healthcare, manufacturing and the public sector. We make AI accountable, networks defensible, and procurement faster.',
+  eyebrow: 'CYBER SECURITY · AI ENGINEERING · COMPLIANCE',
+  headline: 'Cyber security, AI and compliance, built into the systems that already run your business.',
+  sub: 'StackSolver UK is a Brighton consultancy for regulated industries — financial services, healthcare, professional services and technology. Cyber security is our specialty; around it we build private AI, custom ERP and the governance that keeps auditors satisfied.',
   primary: 'Book a discovery call',
   secondary: 'See our method',
   metrics: [

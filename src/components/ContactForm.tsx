@@ -128,7 +128,7 @@ export default function ContactForm() {
           </optgroup>
           <optgroup label="AI Engineering">
             <option value="ethical-ai-sandbox">Ethical AI Sandbox / pilot</option>
-            <option value="sovereign-rag">Sovereign RAG / private AI</option>
+            <option value="sovereign-rag">Private RAG</option>
             <option value="ai-governance">AI Governance / ISO 42001</option>
             <option value="agentic-ai">Agentic AI</option>
             <option value="ai-act-compliance">EU AI Act compliance</option>

@@ -17,7 +17,7 @@ export const siteSEO = {
 			"Incident Response UK",
 			"Security Architecture UK",
 			"AI Engineering UK",
-			"Sovereign AI",
+			"Private AI",
 			"Ethical AI",
 			"AI Governance",
 			"ISO 42001 Implementation UK",
@@ -63,7 +63,7 @@ export const siteSEO = {
 				"GRC Consultancy UK",
 				"Cyber Essentials Plus",
 				"ISO 42001 UK",
-				"Sovereign AI"
+				"Private AI"
 			]
 		},
 		about: {
