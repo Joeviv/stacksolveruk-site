@@ -30,7 +30,13 @@ customHeaders:
         value: 'accelerometer=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), interest-cohort=(), autoplay=(self "https://player.vimeo.com"), fullscreen=(self "https://player.vimeo.com")'
       # Third-party inventory measured 2026-08-06 across src/ and public/:
       #   frame-src   player.vimeo.com  (service subsection pages)
-      #   connect-src formspree.io      (contact form fetch)
+      #   connect-src formspree.io      (contact form fetch — verified in the served bundle
+      #               on 2026-08-10: it is the form's ONLY external destination)
       #   the dead pdf.js CDN script was removed in PR #3 — no external <script src> left
-      - key: 'Content-Security-Policy-Report-Only'
+      #
+      # BINDING since 2026-08-10. It ran as Report-Only first and this site reported ZERO
+      # violations across the home page and a service page — the only site of the four that
+      # needed no adjustment. Note `font-src 'self'` WITHOUT `data:`: unlike the other two,
+      # this build does not inline its fonts as data URIs, so the stricter value holds.
+      - key: 'Content-Security-Policy'
         value: "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; frame-src https://player.vimeo.com; form-action 'self' https://formspree.io"
