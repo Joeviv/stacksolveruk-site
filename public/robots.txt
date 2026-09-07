@@ -16,3 +16,6 @@ Allow: /
 
 User-agent: PerplexityBot
 Allow: /
+
+User-agent: Google-Extended
+Allow: /
