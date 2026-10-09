@@ -81,9 +81,9 @@ export const SERVICES_MENU: Section[] = [
       {
         id: 'penetration-testing',
         title: 'Penetration Testing',
-        shortDescription: 'Independent security testing by CREST-certified practitioners.',
+        shortDescription: 'Independent security testing of your web applications, networks and cloud.',
         fullDescription: COMING_SOON_DESC,
-        techBadge: 'CREST · OWASP · NCSC CHECK',
+        techBadge: 'OWASP · CIS Benchmarks',
         implementationPlan: placeholderImpl,
         features: [
           { title: 'Web application testing', description: 'OWASP-aligned assessment of your web platforms and APIs.' },
@@ -468,11 +468,10 @@ export const SERVICES_MENU: Section[] = [
         title: 'TLPT (Threat-Led Penetration Testing)',
         shortDescription: 'DORA-mandated threat-led penetration testing for significant financial entities.',
         fullDescription: COMING_SOON_DESC,
-        techBadge: 'TIBER-EU · CREST',
+        techBadge: 'TIBER-EU · DORA',
         implementationPlan: placeholderImpl,
         features: [
-          { title: 'TIBER-EU aligned', description: 'Methodology consistent with EU regulator expectations.' },
-          { title: 'CREST-certified testers', description: 'All testing performed by accredited practitioners.' }
+          { title: 'TIBER-EU aligned', description: 'Methodology consistent with EU regulator expectations.' }
         ],
         image: placeholderImage,
       },

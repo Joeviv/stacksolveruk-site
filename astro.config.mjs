@@ -8,8 +8,11 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      // Exclude the private internal working document from the sitemap.
-      filter: (page) => !page.includes('/fox4ndstack'),
+      // Exclude the private internal working document and the pages that only redirect.
+      filter: (page) =>
+        !page.includes('/fox4ndstack') &&
+        !/\/services\/.+/.test(page) &&
+        !/\/(trust|method|industries)\/?$/.test(page),
     })
   ],
   vite: {

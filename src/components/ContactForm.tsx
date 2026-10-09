@@ -1,10 +1,20 @@
 // File: src/components/ContactForm.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PaperAirplaneIcon, CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'IDLE' | 'SUBMITTING' | 'SUCCESS' | 'ERROR'>('IDLE');
   const [errorMessage, setErrorMessage] = useState('');
+  const [topic, setTopic] = useState('');
+  const topicRef = useRef<HTMLSelectElement>(null);
+
+  // Preselect the topic from ?topic= (sent by the service guide). Only values that already exist as options are accepted.
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get('topic');
+    const select = topicRef.current;
+    if (!wanted || !select) return;
+    if (Array.from(select.options).some((o) => o.value === wanted && !o.disabled)) setTopic(wanted);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +35,7 @@ export default function ContactForm() {
       if (response.ok) {
         setStatus('SUCCESS');
         form.reset();
+        setTopic('');
       } else {
         const data = await response.json();
         if (Object.hasOwn(data, 'errors')) {
@@ -114,7 +125,9 @@ export default function ContactForm() {
           required
           name="topic"
           id="topic"
-          defaultValue=""
+          ref={topicRef}
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
           className="w-full bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 text-zinc-900 dark:text-white focus:border-olive-500 outline-none focus:ring-1 focus:ring-olive-500/50 transition-all"
         >
           <option value="" disabled>Select an area…</option>

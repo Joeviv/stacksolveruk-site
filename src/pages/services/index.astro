@@ -1,0 +1,123 @@
+---
+// File: src/pages/services/index.astro
+// All services on one page, grouped by the six areas. Each service has its own anchor (/services#<id>).
+import Layout from '../../layouts/Layout.astro';
+import ServiceArt from '../../components/ServiceArt';
+import { SERVICES_MENU } from '../../data/menuData';
+import { AREAS, AREA_SERVICES, MOTIF_BY_AREA, MOTIF_BY_SERVICE, contactTopic, validateGuide } from '../../data/serviceGuide';
+
+const all = SERVICES_MENU.flatMap((section) => section.subsections);
+validateGuide(all.map((s) => s.id));
+const byId = new Map(all.map((s) => [s.id, s]));
+const areaOf = new Map(AREAS.flatMap((a) => AREA_SERVICES[a.id].services.map((id) => [id, a] as const)));
+
+const sections = AREAS.map((area) => ({
+  area,
+  services: AREA_SERVICES[area.id].services.map((id) => byId.get(id)!),
+  related: AREA_SERVICES[area.id].related.map((id) => ({ s: byId.get(id)!, home: areaOf.get(id)! })),
+}));
+
+const featureText = (f: string | { title: string; description: string }) => (typeof f === 'string' ? f : f.title);
+---
+
+<Layout
+  title="Services | StackSolver UK"
+  description="Cyber security, governance, risk, compliance, HR and business systems for regulated UK organisations. Every service in one place."
+>
+  <section class="relative overflow-hidden bg-white dark:bg-black">
+    <div aria-hidden class="pointer-events-none absolute -top-48 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-olive-500/10 blur-3xl"></div>
+    <div class="relative max-w-6xl mx-auto px-6 lg:px-8 pt-14 pb-10 lg:pt-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">Services</p>
+      <h1 class="mt-3 text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white">Six areas. One specialty.</h1>
+      <p class="mt-3 text-lg text-zinc-500">
+        Cyber security at the core. Not sure where to start? <a href="/" class="text-zinc-900 dark:text-white underline underline-offset-4 hover:text-olive-600">Answer two questions</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Area bar: sticks under the navigation -->
+  <nav aria-label="Service areas" class="sticky top-16 z-30 border-y border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-black/90 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 flex gap-1 overflow-x-auto py-2">
+      {AREAS.map((area) => (
+        <a href={`#${area.id}`} class="flex-shrink-0 rounded-lg px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-olive-500/10 hover:text-zinc-900 dark:hover:text-white transition-colors">{area.label}</a>
+      ))}
+    </div>
+  </nav>
+
+  {sections.map(({ area, services, related }, k) => (
+    <section id={area.id} class={`scroll-mt-28 border-b border-zinc-200 dark:border-zinc-800 ${k % 2 ? 'bg-zinc-50 dark:bg-zinc-950' : 'bg-white dark:bg-black'}`}>
+      <div class="relative max-w-6xl mx-auto px-6 lg:px-8 py-16">
+        <ServiceArt
+          motif={MOTIF_BY_AREA[area.id]}
+          seedKey={`sa-${area.id}`}
+          className="pointer-events-none absolute right-0 top-4 hidden h-48 w-80 text-olive-600 opacity-40 dark:text-olive-400 md:block [mask-image:radial-gradient(ellipse_70%_80%_at_65%_45%,black_40%,transparent_78%)]"
+        />
+        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">0{k + 1}</p>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">{area.label}</h2>
+        <p class="mt-2 text-zinc-500">{area.hint}</p>
+
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <article
+              id={s.id}
+              class="group relative flex scroll-mt-36 flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-olive-500/60 target:border-olive-500 target:ring-2 target:ring-olive-500/60 dark:border-zinc-800 dark:bg-black"
+            >
+              <div class="relative h-28 overflow-hidden" aria-hidden="true">
+                <div class="absolute inset-0 opacity-40 dark:opacity-30 [background-image:linear-gradient(to_right,rgb(133_160_58/0.16)_1px,transparent_1px),linear-gradient(to_bottom,rgb(133_160_58/0.16)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent)]"></div>
+                <ServiceArt
+                  motif={MOTIF_BY_SERVICE[s.id] ?? 'network'}
+                  seedKey={`sv-${s.id}`}
+                  className="pointer-events-none absolute inset-0 h-full w-full text-olive-600 opacity-60 transition-opacity duration-300 group-hover:opacity-100 dark:text-olive-400 [mask-image:radial-gradient(ellipse_75%_95%_at_65%_45%,black_45%,transparent_80%)]"
+                />
+              </div>
+              <div class="flex flex-1 flex-col p-5">
+                <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">{s.title}</h3>
+                <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{s.shortDescription}</p>
+                {s.features.length > 0 && (
+                  <details class="mt-3 text-sm group/d">
+                    <summary class="cursor-pointer list-none text-zinc-500 hover:text-zinc-900 dark:hover:text-white">
+                      <span class="group-open/d:hidden">+ What's included</span><span class="hidden group-open/d:inline">− What's included</span>
+                    </summary>
+                    <ul class="mt-2 space-y-1 text-zinc-600 dark:text-zinc-400">
+                      {s.features.map((f) => (
+                        <li class="flex items-start gap-2"><span class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-olive-500"></span>{featureText(f)}</li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
+                <div class="mt-auto pt-5">
+                  <a href={`/contact?topic=${encodeURIComponent(contactTopic(s.id))}`} class="inline-flex items-center gap-2 rounded-lg border border-olive-500 bg-olive-500 px-3.5 py-2 text-sm font-semibold text-zinc-900 transition-colors hover:bg-olive-600">
+                    Discuss this with us <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {related.length > 0 && (
+          <p class="mt-6 text-sm text-zinc-500">
+            Also relevant:{' '}
+            {related.map(({ s, home }, i) => (
+              <>
+                <a href={`#${s.id}`} class="text-zinc-700 dark:text-zinc-300 underline underline-offset-4 hover:text-zinc-900 dark:hover:text-white">{s.title}</a>
+                <span> ({home.label})</span>{i < related.length - 1 ? ' · ' : ''}
+              </>
+            ))}
+          </p>
+        )}
+      </div>
+    </section>
+  ))}
+
+  <section class="bg-white dark:bg-black">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-16 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">Not sure which one?</h2>
+      <p class="mt-3 text-zinc-600 dark:text-zinc-400">Tell us what is happening and we will point you to the right place.</p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">Find my starting point <span aria-hidden="true">→</span></a>
+        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">Contact us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
