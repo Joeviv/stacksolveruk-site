@@ -6,14 +6,15 @@ export default function ThemeToggle() {
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
     useEffect(() => {
-        // Default dark; respetar preferencia 'light' si el user la guardo antes.
+        // Default light, same as the inline script in Layout.astro;
+        // dark only if the visitor chose it before.
         const storedTheme = localStorage.getItem('theme');
-        if (storedTheme === 'light') {
-            setTheme('light');
-            document.documentElement.classList.remove('dark');
-        } else {
+        if (storedTheme === 'dark') {
             setTheme('dark');
             document.documentElement.classList.add('dark');
+        } else {
+            setTheme('light');
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 

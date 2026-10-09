@@ -1,178 +1,95 @@
 ---
 // File: src/pages/index.astro
+// Home: the page builds itself from the visitor's choices (HomeExperience).
+// Services listed in HIDDEN_SERVICES stay off the site.
 import Layout from '../layouts/Layout.astro';
-import HeroV2 from '../components/hero/HeroV2';
+import HomeExperience from '../components/HomeExperience';
+import { SERVICES_MENU } from '../data/menuData';
+import { AREAS, HIDDEN_SERVICES, servicesForArea, validateGuide, type GuideService } from '../data/serviceGuide';
 
-const seoTitle = "StackSolver UK | Cyber Security, AI Engineering & Compliance Consultancy";
-const seoDescription = "Independent Cyber Security, AI Engineering and Compliance consultancy based in Brighton. Serving the United Kingdom, Europe and the United States. Senior expertise. Lean delivery. Auditable by design.";
-const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK, Private AI, ISO 42001, ISO 27001 UK, NIS2 readiness, DORA compliance, Procurement AI, HR AI, AI Red Teaming, Local AI Stack, Claris FileMaker ERP, ERP consulting UK, NetSuite migration, HR support UK, Brighton consultancy";
+const seoTitle = "StackSolver UK | Cyber Security, Governance, Risk & Compliance Consultancy";
+const seoDescription = "Independent cyber security, governance, risk and compliance consultancy based in Brighton. Serving the United Kingdom, Europe and the United States. Senior expertise. Lean delivery. Auditable by design.";
+const seoKeywords = "Cyber Essentials Plus UK, Penetration Testing UK, vCISO UK, ISO 27001 UK, SOC 2, UK GDPR, NIS2 readiness, DORA compliance, third-party risk, business continuity, Claris FileMaker ERP, ERP consulting UK, HR support UK, Brighton consultancy";
+
+const allServices: GuideService[] = SERVICES_MENU.flatMap((section) =>
+  section.subsections.map((sub) => ({
+    id: sub.id,
+    title: sub.title,
+    summary: sub.shortDescription,
+    href: `/services#${sub.id}`,
+    section: section.title,
+    features: sub.features.map((f) => (typeof f === 'string' ? f : f.title)),
+    plan: sub.implementationPlan.map((p) => ({ title: p.title, description: p.description })),
+  })),
+);
+validateGuide(allServices.map((s) => s.id));
+const homeServices = allServices.filter((s) => !HIDDEN_SERVICES.has(s.id));
+const byId = new Map(homeServices.map((s) => [s.id, s]));
+const columns = AREAS.map((area) => ({
+  area,
+  services: servicesForArea(area.id).map((id) => byId.get(id)).filter((s): s is GuideService => Boolean(s)),
+}));
 ---
 
 <Layout title={seoTitle} description={seoDescription} keywords={seoKeywords}>
-  <HeroV2 client:load />
+  <HomeExperience client:load services={homeServices} />
 
-  <!-- Intro section -->
-  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
-      <div class="lg:col-span-1">
-        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Who we are</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          A British consultancy with a clear specialty.
-        </h2>
-      </div>
-      <div class="lg:col-span-2 space-y-5 text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed">
-        <p>
-          StackSolver UK Limited is a Brighton-based consultancy serving organisations across the
-          <strong>United Kingdom, Europe and the United States</strong>.
-          <strong>Cyber security is our specialty</strong> — and the rest of what we do, from
-          AI engineering and custom ERP to governance and compliance, is built around it.
-        </p>
-        <p>
-          Our work spans <strong>Cyber Essentials Plus and penetration testing</strong>,
-          <strong>AI engineering with a strong focus on Procurement + AI and HR + AI</strong>,
-          <strong>ISO 27001 and ISO 42001</strong> implementation, and
-          <strong>NIS2, DORA and supply chain risk</strong> programmes for firms with European exposure.
-        </p>
-        <p>
-          We work primarily with <strong>regulated industries</strong>: financial services, healthcare,
-          professional services, technology and corporate services, where audit trails and
-          data residency are not optional.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pillars section -->
+  <!-- Everything we do: follows the area chosen above -->
   <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">What we do</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Cyber as our core, with specialist practices around it.
-        </h2>
-      </div>
-
-      <!-- Featured: Cyber -->
-      <a href="/services/cyber" class="group block mb-6 p-8 bg-white dark:bg-zinc-900 border-2 border-olive-500 rounded-xl hover:bg-olive-50 dark:hover:bg-olive-500/5 transition-colors">
-        <div class="flex items-start gap-6">
-          <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-olive-500 flex items-center justify-center text-white font-bold text-lg">
-            01
-          </div>
-          <div class="flex-1">
-            <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-2">Our specialty</div>
-            <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Cyber Security</h3>
-            <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Cyber Essentials Plus, penetration testing, vCISO, security architecture and incident response —
-              for UK businesses entering corporate procurement and for firms preparing for the next regulator.
-            </p>
-          </div>
-          <div class="flex-shrink-0 text-olive-500 self-center text-xl" aria-hidden>→</div>
-        </div>
-      </a>
-
-      <!-- Other practices -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-
-        <a href="/services/ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">02 · AI Engineering</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">AI &amp; All Its Flavours</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Private AI inside your perimeter. Ethical by default. ISO 42001 ready.
-          </p>
-        </a>
-
-        <a href="/services/areas-ai" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">03 · AI by Function</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Procurement + AI · HR + AI</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            AI embedded in the function, not floating above it. Outcomes by department.
-          </p>
-        </a>
-
-        <a href="/services/grc" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">04 · GRC</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Governance &amp; Compliance</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Risk register, vCISO retainer, DPO-as-a-Service, internal audit. Designed in, not bolted on.
-          </p>
-        </a>
-
-        <a href="/services/risk-resilience" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">05 · Resilience</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">NIS2 · DORA · TPRM</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Regulatory tailwind 2026–2027. Ready your operations for European supervision.
-          </p>
-        </a>
-
-        <a href="/services/erp" class="group block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-olive-500 dark:hover:border-olive-500 transition-colors">
-          <div class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-3">06 · ERP &amp; Systems</div>
-          <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Claris FileMaker · ERP</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Custom ERP you own and can audit. Migration from NetSuite and legacy systems.
-          </p>
-        </a>
-      </div>
-
-      <!-- Secondary services row -->
-      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="/services/iso-compliance" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
-          <div class="text-sm font-semibold text-zinc-900 dark:text-white">ISO Frameworks</div>
-          <div class="text-xs text-zinc-500 dark:text-zinc-500">27001 · 42001 · 27701 · 22301 · SOC 2</div>
-        </a>
-        <a href="/services/ai-security" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
-          <div class="text-sm font-semibold text-zinc-900 dark:text-white">AI Security &amp; Red Teaming</div>
-          <div class="text-xs text-zinc-500 dark:text-zinc-500">OWASP Top 10 LLM · MITRE ATLAS</div>
-        </a>
-        <a href="/services/local-ai" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
-          <div class="text-sm font-semibold text-zinc-900 dark:text-white">Local AI Stack</div>
-          <div class="text-xs text-zinc-500 dark:text-zinc-500">Apple Silicon · NVIDIA · Bedrock private</div>
-        </a>
-        <a href="/services/hr-support" class="block px-5 py-4 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors">
-          <div class="text-sm font-semibold text-zinc-900 dark:text-white">HR Support</div>
-          <div class="text-xs text-zinc-500 dark:text-zinc-500">Contracts · Onboarding · Payroll coordination</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Industries strip -->
-  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16">
-      <div class="text-center mb-10">
-        <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400 mb-4">Who we work with</p>
-        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Built for regulated industries.
-        </h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
-        <a href="/industries#tech" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Technology</a>
-        <a href="/industries#professional-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Professional Services</a>
-        <a href="/industries#financial-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Financial Services</a>
-        <a href="/industries#healthcare" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Healthcare</a>
-        <a href="/industries#corporate-services" class="text-center px-4 py-5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-olive-500 transition-colors text-zinc-700 dark:text-zinc-300">Corporate Services</a>
+      <p class="text-xs font-mono uppercase tracking-widest text-olive-600 dark:text-olive-400">Everything we do</p>
+      <div class="mt-6 grid grid-cols-2 lg:grid-cols-6 gap-3">
+        {columns.map(({ area, services }) => (
+          <div
+            data-guide-area={area.id}
+            class="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-black p-4 transition-all duration-300 data-[active=true]:border-olive-500 data-[active=true]:ring-1 data-[active=true]:ring-olive-500 data-[active=false]:opacity-50"
+          >
+            <h2 class="text-sm font-semibold text-zinc-900 dark:text-white">{area.label}</h2>
+            <ul class="mt-3 space-y-1.5">
+              {services.map((s) => (
+                <li><a href={s.href} class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-olive-600 dark:hover:text-olive-400">{s.title}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA section -->
-  <section class="bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">
-        Ready to talk?
-      </h2>
-      <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-        Tell us about your project, your constraints and your timeline.
-        We will reply within two working days.
+  <!-- Who we are, short -->
+  <section class="bg-white dark:bg-black border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-16 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">A British consultancy with a clear specialty.</h2>
+      <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+        StackSolver UK Limited is a Brighton-based consultancy serving organisations across the United Kingdom,
+        Europe and the United States. Cyber security is our specialty.
       </p>
-      <div class="flex flex-wrap items-center justify-center gap-3">
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-olive-500 text-zinc-900 font-semibold border border-olive-500 hover:bg-olive-600 transition-colors">
           Contact us <span aria-hidden>→</span>
         </a>
-        <a href="/trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
+        <a href="/about#trust" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white font-medium border border-olive-500 hover:bg-olive-500/10 transition-colors">
           Trust Center
         </a>
       </div>
     </div>
   </section>
+
 </Layout>
+
+<script>
+  // Highlight the chosen area in "Everything we do" and move it first.
+  window.addEventListener('guide:area', (event) => {
+    const chosen = (event as CustomEvent<string | null>).detail;
+    document.querySelectorAll<HTMLElement>('[data-guide-area]').forEach((el) => {
+      if (!chosen) {
+        delete el.dataset.active;
+        el.style.order = '';
+        return;
+      }
+      const on = el.dataset.guideArea === chosen;
+      el.dataset.active = String(on);
+      el.style.order = on ? '-1' : '';
+    });
+  });
+</script>
