@@ -149,7 +149,8 @@ export const NEEDS: Need[] = [
 ];
 
 export const SIZES: Choice[] = [
-  { id: 'small', label: '1–49' },
+  { id: 'micro', label: '1–9' },
+  { id: 'small', label: '10–49' },
   { id: 'medium', label: '50–249' },
   { id: 'large', label: '250+' },
 ];
@@ -173,7 +174,8 @@ export const BOOSTS: Boost[] = [
     weights: { 'dora-readiness': 2, 'tlpt-testing': 2, 'operational-resilience-uk': 1 } },
   { when: { sector: 'health' }, reason: 'Healthcare', weights: { 'gdpr-uk-gdpr': 1, 'dpo-as-service': 1 } },
   { when: { eu: 'yes' }, reason: 'Works in the EU', weights: { 'nis2-readiness': 2, 'gdpr-uk-gdpr': 1 } },
-  { when: { size: 'small' }, reason: 'Team of 1–49', weights: { 'cyber-essentials-plus': 1, 'vciso-retainer': 1 } },
+  { when: { size: 'micro' }, reason: 'Team of 1–9', weights: { 'cyber-essentials-plus': 1, 'vciso-retainer': 1 } },
+  { when: { size: 'small' }, reason: 'Team of 10–49', weights: { 'cyber-essentials-plus': 1, 'vciso-retainer': 1 } },
   { when: { size: 'large' }, reason: 'Team of 250+', weights: { 'internal-audit': 1 } },
   { when: { urgent: true, need: 'incident' }, reason: 'It is urgent', weights: { 'incident-response': 5 } },
 ];
