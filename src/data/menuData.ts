@@ -67,14 +67,14 @@ export const SERVICES_MENU: Section[] = [
       {
         id: 'cyber-essentials-plus',
         title: 'Cyber Essentials Plus',
-        shortDescription: 'Get certified fast. Enter corporate procurement with the badge UK buyers expect.',
+        shortDescription: 'We prepare you for Cyber Essentials and Cyber Essentials Plus, and keep you compliant all year.',
         fullDescription: COMING_SOON_DESC,
-        techBadge: 'NCSC · IASME · CyberSmart',
+        techBadge: 'Requirements v3.3 · 5 controls',
         implementationPlan: placeholderImpl,
         features: [
-          { title: 'Rapid certification', description: 'Streamlined preparation for organisations that need the badge quickly.' },
-          { title: 'Annual recertification', description: 'Continuous compliance support to maintain the certification year on year.' },
-          { title: 'Remediation expertise', description: 'For firms that have failed previous Cyber Essentials Plus audits and need a structured fix.' }
+          { title: 'Readiness and remediation', description: 'We check your devices, cloud services and accounts against the five controls and fix the gaps before the assessment, including after a failed audit.' },
+          { title: 'Assessment by a licensed body', description: 'The certificate is issued by an IASME-licensed Certification Body, not by us. We prepare you and stay with you through the assessment.' },
+          { title: 'Compliant all year', description: 'Patches within 14 days, MFA on every service and regular device checks, with a reminder well before renewal.' }
         ],
         image: placeholderImage,
       },
