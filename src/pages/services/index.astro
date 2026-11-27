@@ -4,6 +4,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceArt from '../../components/ServiceArt';
 import { SERVICES_MENU } from '../../data/menuData';
+import { servicesJsonLd } from '../../data/catalog';
 import { AREAS, AREA_SERVICES, MOTIF_BY_AREA, MOTIF_BY_SERVICE, contactTopic, validateGuide } from '../../data/serviceGuide';
 
 const all = SERVICES_MENU.flatMap((section) => section.subsections);
@@ -24,6 +25,7 @@ const featureText = (f: string | { title: string; description: string }) => (typ
   title="Services | StackSolver UK"
   description="Cyber security, governance, risk, compliance, HR and business systems for regulated UK organisations. Every service in one place."
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(servicesJsonLd())} />
   <section class="relative overflow-hidden bg-white dark:bg-black">
     <div aria-hidden class="pointer-events-none absolute -top-48 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-olive-500/10 blur-3xl"></div>
     <div class="relative max-w-6xl mx-auto px-6 lg:px-8 pt-14 pb-10 lg:pt-20">

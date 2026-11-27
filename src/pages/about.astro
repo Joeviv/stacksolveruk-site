@@ -5,41 +5,12 @@
 import Layout from '../layouts/Layout.astro';
 import ServiceArt from '../components/ServiceArt';
 import { LEGAL_DOCS } from '../data/legal';
+import { PRINCIPLES, SECTORS, CREDENTIALS } from '../data/catalog';
 
-const principles = [
-  { title: 'Senior practitioners only', text: 'No junior staff billed at senior rates.' },
-  { title: 'Cyber security at the core', text: 'Control, evidence and audit trail under everything we do.' },
-  { title: 'Lean overhead, honest pricing', text: 'No rotating account managers, no partner pyramid to feed.' },
-  { title: 'Fixed fees where scope is clear', text: 'You know what it costs before we start.' },
-  { title: 'Compliance by design', text: 'Risk registers, evidence and audit trails from week one.' },
-  { title: 'Independent', text: 'We do not resell tools we cannot defend. No kickbacks.' },
-];
-
-const sectors = ['Technology', 'Professional Services', 'Financial Services', 'Healthcare', 'Corporate Services'];
-
-const trust = [
-  {
-    name: 'Companies House',
-    status: 'Active',
-    detail: 'StackSolver UK Limited · No. 16227080 · England and Wales',
-    link: 'https://find-and-update.company-information.service.gov.uk/company/16227080',
-    linkLabel: 'Public registry',
-  },
-  {
-    name: 'Cyber Essentials',
-    status: 'In progress',
-    detail: 'UK Government-backed certification. Badge published once issued.',
-    link: 'https://www.ncsc.gov.uk/cyberessentials/overview',
-    linkLabel: 'NCSC scheme',
-  },
-  {
-    name: 'ICO registration',
-    status: 'In progress',
-    detail: 'Registration as a data controller. Number published once issued.',
-    link: '/legal/ico-registration',
-    linkLabel: 'See notice',
-  },
-];
+// Facts come from the knowledge catalogue (src/data/catalog.ts): change them there, not here.
+const principles = PRINCIPLES;
+const sectors = SECTORS;
+const trust = CREDENTIALS;
 const isExternal = (href: string) => href.startsWith('http');
 ---
 

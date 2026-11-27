@@ -4,6 +4,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
+import { organizationJsonLd, ORG_ID } from "../data/catalog";
 
 interface Props {
 	title: string;
@@ -76,18 +77,16 @@ const socialImageURL = new URL(image, siteUrl).href;
 			is:inline
 			set:html={JSON.stringify({
 				"@context": "https://schema.org",
-				"@type": "WebSite",
-				name: "StackSolver UK",
-				url: siteUrl,
-				description: description,
-				publisher: {
-					"@type": "Organization",
-					name: "StackSolver UK Limited",
-					logo: {
-						"@type": "ImageObject",
-						url: `${siteUrl}/favicon.svg`,
+				"@graph": [
+					organizationJsonLd(),
+					{
+						"@type": "WebSite",
+						name: "StackSolver UK",
+						url: siteUrl,
+						description: description,
+						publisher: { "@id": ORG_ID },
 					},
-				},
+				],
 			})}
 		/>
 
