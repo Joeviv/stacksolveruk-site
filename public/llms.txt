@@ -21,7 +21,7 @@
 
 ### Cyber Security (our specialty)
 Certify, test, respond. https://www.stacksolveruk.com/services#cyber
-- [Cyber Essentials Plus](https://www.stacksolveruk.com/services#cyber-essentials-plus): enter corporate procurement with the badge UK buyers expect.
+- [Cyber Essentials Plus](https://www.stacksolveruk.com/services#cyber-essentials-plus): preparation for Cyber Essentials and Cyber Essentials Plus, assessed by an IASME-licensed Certification Body, and year-round support to stay compliant.
 - [Penetration Testing](https://www.stacksolveruk.com/services#penetration-testing): independent security testing of your web applications, networks and cloud.
 - [Virtual CISO (vCISO)](https://www.stacksolveruk.com/services#vciso-retainer): senior security leadership on retainer, without the cost of a full-time hire.
 - [Security Architecture](https://www.stacksolveruk.com/services#security-architecture): Zero Trust, identity, network segmentation and cloud security design.

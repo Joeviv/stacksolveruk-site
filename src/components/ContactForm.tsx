@@ -132,7 +132,7 @@ export default function ContactForm() {
         >
           <option value="" disabled>Select an area…</option>
           <optgroup label="Cyber Security">
-            <option value="cyber-essentials-plus">Cyber Essentials Plus certification</option>
+            <option value="cyber-essentials-plus">Cyber Essentials / Plus preparation</option>
             <option value="penetration-testing">Penetration testing</option>
             <option value="vciso">vCISO retainer</option>
             <option value="security-architecture">Security architecture</option>
